@@ -45,4 +45,9 @@
 			p:mapperInterface="com.sist.video.VideoMapper"
 			
 			/>
+		<bean id="mapper5" class="org.mybatis.spring.mapper.MapperFactoryBean"
+			p:sqlSessionFactory-ref="ssf"
+			p:mapperInterface="com.sist.news.NewsMapper"
+		/>	
+		
 </beans>
