@@ -38,8 +38,8 @@ public class BoardController {
 	    map.put("end",end);
 	      
 	    int block=10;
-	    int fromPage = ((curpage-1)/block*block)+1;  //º¸¿©ÁÙ ÆäÀÌÁöÀÇ ½ÃÀÛ
-	    int toPage = ((curpage-1)/block*block)+block; //º¸¿©ÁÙ ÆäÀÌÁöÀÇ ³¡
+	    int fromPage = ((curpage-1)/block*block)+1;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	    int toPage = ((curpage-1)/block*block)+block; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	      
 
 	    if(toPage>totalpage)
@@ -59,7 +59,7 @@ public class BoardController {
 		File ff=new File("c:\\download");
 		if(!ff.exists())
 			ff.mkdir();
-		System.out.println("ÀÌ¸§:"+uploadForm.getBoard_name());
+		System.out.println("ï¿½Ì¸ï¿½:"+uploadForm.getBoard_name());
 		if(list!=null && list.size()>0 )
 		   {
 			   String fn="";
