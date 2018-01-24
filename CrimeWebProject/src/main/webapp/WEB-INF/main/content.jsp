@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +16,11 @@
 	margin: 10px;
 	padding: 20px;
 	color: #4f525b;
+}
+
+.content_list .btn {
+	color: white;
+	background-color: #2961d3;
 }
 
 .content_list > h3 {
@@ -34,6 +40,12 @@
 	width: 47.5%;
 }
 
+
+.content_news_c {
+	padding: 20px;
+	border: 1px solid #dcdce6;
+}
+
 @media screen and (max-width: 1050px) {
 	.content_list {
 		width: 90%;
@@ -45,23 +57,31 @@
 <body>
 	<center>
 		<div class="content_list cl2 text-left">
-			<h3>그래프</h3>
+			<h3>그래프</h3><br>
 		</div>
 		<div class="content_list cl1 text-left" >
-			<h3>지도</h3>
+			<h3>지도</h3><br>
 		</div>
 		<br>
 
 		<div class="content_list cl1 text-left">
-			<h3>뉴스</h3>
+			<h3>뉴스</h3><br>
+			
+			<c:forEach var="i" begin="1" end="5">
+				<input value="제목${i}" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i}">
+				<div id="content_news_${i}" class="collapse content_news_c">
+					내용 ${i}
+				</div><br><br>
+			</c:forEach>
+			
 		</div>
 		<div class="content_list cl2 text-left">
-			<h3>동영상</h3>
+			<h3>동영상</h3><br>
 		</div>
 		<br>
 
 		<div class="content_list cl3 text-left">
-			<h3>갤러리</h3>
+			<h3>갤러리</h3><br>
 			<table class="table">
 				<tr style="background-color: #2961d3; color: white;">
 					<th>번호</th>
@@ -70,21 +90,28 @@
 					<th>작성일</th>
 					<th>조회수</th>
 				</tr>
+				
+				<c:forEach var="i" begin="1" end="5">
+					<tr>
+						<td>${i}</td>
+						<td>테스트</td>
+						<td>테스트</td>
+						<td>테스트</td>
+						<td>테스트</td>
+					</tr>
+				</c:forEach>
+				
 				<tr>
-					<td>테스트</td>
-					<td><img src="images/menu_main.png" width="50px"></td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-				</tr>
-				<tr>
-					<td colspan="5" class="text-right">더보기</td>
+					<td colspan="5" class="text-right">
+						<a href="#" class="btn btn-sm">더보기</a>
+					</td>
 				</tr>
 			</table>
 		</div>
 		<div class="content_list cl3 text-left">
-			<h3>진실의 방</h3>
+			<h3>진실의 방</h3><br>
 			<table class="table">
+			
 				<tr style="background-color: #2961d3; color: white;">
 					<th>번호</th>
 					<th>제목</th>
@@ -92,43 +119,21 @@
 					<th>작성일</th>
 					<th>조회수</th>
 				</tr>
+				
+				<c:forEach var="i" begin="1" end="5">
+					<tr>
+						<td>${i}</td>
+						<td>테스트</td>
+						<td>테스트</td>
+						<td>테스트</td>
+						<td>테스트</td>
+					</tr>
+				</c:forEach>
+				
 				<tr>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-				</tr>
-				<tr>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-				</tr>
-				<tr>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-				</tr>
-				<tr>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-				</tr>
-				<tr>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-					<td>테스트</td>
-				</tr>
-				<tr>
-					<td colspan="5" class="text-right">더보기</td>
+					<td colspan="5" class="text-right">
+						<a href="#" class="btn btn-sm">더보기</a>
+					</td>
 				</tr>
 			</table>
 		</div>

@@ -5,8 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.header_logo{
+	font-size: 21pt;
+}
+</style>
 </head>
 <body>
-	<img alt="로고" src="images/logo.png">
+	<b class="header_logo">범죄도시</b>
 </body>
 </html>
