@@ -115,10 +115,17 @@
 background-color: white !important;
 }
 
+
 </style>
 
 
 <script>
+function go(no, curpage){
+	var url = "videocontent.do?no="+no+"&page="+curpage;
+	location.href=url;
+	
+}
+
 function clearText(field){
 if(field.defaultValue == field.value) field.value = '';
 else if(field.value == '') field.value = field.defaultValue;
@@ -163,7 +170,7 @@ $(function () {
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
 									<div class="tt-title-block">
-										<h3 class="tt-title-text">Top 7</h3>
+										<h3 class="tt-title-text">Weekly Top 7</h3>
 									</div>
 									<div class="empty-space  marg-lg-b25"></div>
 									<div class="row">
@@ -171,30 +178,28 @@ $(function () {
 										
 										<div class="col-md-6 col-md-push-3">
 											<div class="tt-post">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="//fast.wistia.net/embed/iframe/g5pnf59ala?videoFoam=true?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v1.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v1.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span> <span class="tt-post-length">${v1.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v1.youtubekey }/mqdefault.jpg"
-													alt="" width="608" height="505">	<!-- 608x505 -->
+													alt="" width="608" height="505">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/food/"
-															rel="category tag">${v1.sortname }</a>
+														<a rel="category tag">${v1.sortname }</a>
 													</div>
+													
 													<a class="tt-post-title c-h2"
-														href="http://themebubble.com/demo/videoly/9-best-dessert-recipes/">${v1.title }</a>
+														href="videocontent.do?no=${v1.no }&page=${curpage}">${v1.title }</a>
 													<div class="tt-post-label">
 														<span><fmt:formatDate value="${v1.regdate }" pattern="yyyy.MM.dd"/></span>
 													</div>
 													<div class="simple-text">
 														<c:choose>
-															<c:when test="${fn:length(v1.content)>200}">
-																<p>${fn:substring(v1.content,0,200) }...</p>
+															<c:when test="${fn:length(v1.content)>230}">
+																<p>${fn:substring(v1.content,0,230) }...</p>
 															</c:when>
 															<c:otherwise>
 																<p>${v1.content }</p>
@@ -202,9 +207,8 @@ $(function () {
 														</c:choose>
 													</div>
 													<div class="tt-post-bottom">
-														<span><a href="#"><i class="fa fa-eye"
-																aria-hidden="true"></i>${v1.hit } Views</a></span> <span><a
-															href="#"><i class="fa fa-comment" aria-hidden="true"></i>0 Comments</a></span>
+														<span><a><i class="fa fa-eye" aria-hidden="true"></i>${v1.hit } Views</a></span>
+														<span><a><i class="fa fa-comment" aria-hidden="true"></i>0 Comments</a></span>
 													</div>
 												</div>
 											</div>
@@ -214,65 +218,86 @@ $(function () {
 										
 										<div class="col-sm-6 col-md-3 col-md-pull-6">
 											<div class="tt-post type-5">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="https://player.vimeo.com/video/217499569?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v2.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v2.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span> 
+														<span class="tt-post-length">${v2.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v2.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">${v2.sortname }</a>
+														<a rel="category tag">${v2.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v2.title }</small></a>
+														href="videocontent.do?no=${v2.no }&page=${curpage}"><small>
+														<c:choose>
+															<c:when test="${fn:length(v2.title)>45}">
+																${fn:substring(v2.title,0,45) }...
+															</c:when>
+															<c:otherwise>
+																${v2.title }
+															</c:otherwise>
+														</c:choose>
+													</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="https://player.vimeo.com/video/217499569?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v3.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v3.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span> 
+														<span class="tt-post-length">${v3.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v3.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">${v3.sortname }</a>
+														<a rel="category tag">${v3.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v3.title }</small></a>
+														href="videocontent.do?no=${v3.no }&page=${curpage}"><small>
+														<c:choose>
+															<c:when test="${fn:length(v3.title)>45}">
+																${fn:substring(v3.title,0,45) }...
+															</c:when>
+															<c:otherwise>
+																${v3.title }
+															</c:otherwise>
+														</c:choose>
+													</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="https://player.vimeo.com/video/217499569?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v4.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v4.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span> 
+														<span class="tt-post-length">${v4.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v4.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">${v4.sortname }</a>
+														<a rel="category tag">${v4.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v4.title }</small></a>
+														href="videocontent.do?no=${v4.no }&page=${curpage}"><small>
+														<c:choose>
+															<c:when test="${fn:length(v4.title)>45}">
+																${fn:substring(v4.title,0,45) }...
+															</c:when>
+															<c:otherwise>
+																${v4.title }
+															</c:otherwise>
+														</c:choose>
+													</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-xs-b25"></div>
@@ -280,65 +305,86 @@ $(function () {
 										
 										<div class="col-sm-6 col-md-3">
 											<div class="tt-post type-5">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="https://player.vimeo.com/video/217499569?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v5.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v5.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span>
+														<span class="tt-post-length">${v5.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v5.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">${v5.sortname }</a>
+														<a rel="category tag">${v5.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v5.title }</small></a>
+														href="videocontent.do?no=${v5.no }&page=${curpage}"><small>
+														<c:choose>
+															<c:when test="${fn:length(v5.title)>45}">
+																${fn:substring(v5.title,0,45) }...
+															</c:when>
+															<c:otherwise>
+																${v5.title }
+															</c:otherwise>
+														</c:choose>
+													</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="https://player.vimeo.com/video/217499569?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v6.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v6.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span> 
+														<span class="tt-post-length">${v6.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v6.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">${v6.sortname }</a>
+														<a rel="category tag">${v6.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v6.title }</small></a>
+														href="videocontent.do?no=${v6.no }&page=${curpage}"><small>
+														<c:choose>
+															<c:when test="${fn:length(v6.title)>45}">
+																${fn:substring(v6.title,0,45) }...
+															</c:when>
+															<c:otherwise>
+																${v6.title }
+															</c:otherwise>
+														</c:choose>
+													</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
-												<a class="tt-post-img tt-video-open custom-hover "
-													href="https://player.vimeo.com/video/217499569?autoplay=1">
+												<a class="tt-post-img custom-hover" href="videocontent.do?no=${v7.no }&page=${curpage}">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">${v7.length }</span>
-													</div> <img class="img-responsive"
+														<span class="tt-post-quality">HD</span> 
+														<span class="tt-post-length">${v7.length }</span>
+													</div>
+													<img class="img-responsive"
 													src="https://img.youtube.com/vi/${v7.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">${v7.sortname }</a>
+														<a rel="category tag">${v7.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v7.title }</small></a>
+														href="videocontent.do?no=${v7.no }&page=${curpage}"><small>
+														<c:choose>
+															<c:when test="${fn:length(v7.title)>45}">
+																${fn:substring(v7.title,0,45) }...
+															</c:when>
+															<c:otherwise>
+																${v7.title }
+															</c:otherwise>
+														</c:choose>
+													</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
@@ -687,7 +733,7 @@ $(function () {
 									<c:forEach var="vo" items="${list }">
 									<div
 										class="tt-post type-6 clearfix post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
-										<a class="tt-post-img tt-video-open custom-hover "
+										<a class="tt-post-img tt-video-open custom-hover"
 											href="videocontent.do?no=${vo.no }&page=${curpage}">
 											<div class="tt-video-attributes">
 												<span class="tt-post-quality">HD</span> <span
@@ -698,7 +744,7 @@ $(function () {
 										</a>
 										<div class="tt-post-info">
 											<div class="tt-post-cat">
-												<a href="#" rel="category tag">${vo.sortname }</a>
+												<a rel="category tag">${vo.sortname }</a>
 											</div>
 											<a class="tt-post-title c-h5" href="videocontent.do?no=${vo.no }&page=${curpage}">${vo.title }</a>
 											<div class="tt-post-label">
@@ -717,8 +763,8 @@ $(function () {
 												</c:choose>
 											</div>
 											<div class="tt-post-bottom">
-												<span><a href="#"><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 
-												<span><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>01 Comment</a></span>
+												<span><a><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 
+												<span><a><i class="fa fa-comment" aria-hidden="true"></i>01 Comment</a></span>
 											</div>
 										</div>
 									</div>

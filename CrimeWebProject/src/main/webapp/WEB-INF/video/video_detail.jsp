@@ -105,28 +105,6 @@
 									<div class="wpb_column vc_column_container vc_col-sm-12">
 										<div class="vc_column-inner ">
 											<div class="wpb_wrapper">
-												<!-- <div class="simple-text size-3 color-2">
-													<p>
-														We look our best in <strong>subdued</strong> colors,
-														sophisticated cuts, and a general air of sleek
-														understatement. When I was young, I lived like an old
-														woman, and when I got old, I had to live like a young
-														person.
-													</p>
-												</div>
-												<div class="empty-space marg-lg-b10"></div>
-												<p>
-													Men have got more of a discerning eye. They appreciate cut
-													and details, things that aren&#8217;t so obvious. They like
-													things that have cachet and gentlemanliness. Elegance is
-													not the prerogative of those who have just escaped from
-													adolescence, but of those who have already taken possession
-													of their future. My shows are about the complete woman who
-													swallows it all. It&#8217;s a question of survival. We look
-													our best in <a href="#">subdued</a> colors, sophisticated
-													cuts, and a general air sleek understatement. There is
-													always an emotional element to anything that you make.
-												</p> -->
 												<p>
 													<pre style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;background-color: #ffffff;">${vo.content }</pre>
 												</p>
