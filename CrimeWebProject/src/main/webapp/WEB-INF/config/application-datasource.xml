@@ -16,12 +16,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-<!-- <util:properties id="db" location="/WEB-INF/config/db.properties"/> -->
+<util:properties id="db" location="/WEB-INF/config/db.properties"/>
 		<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
-			p:driverClassName="oracle.jdbc.driver.OracleDriver"
-			p:url="jdbc:oracle:thin:@211.238.142.223:1521:ORCL"
-			p:username="scott"
-			p:password="1234"
+			p:driverClassName="#{db['driver']}"
+			p:url="#{db['url']}"
+			p:username="#{db['username']}"
+			p:password="#{db['password']}"
 		/>
 		<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
 			p:dataSource-ref="ds"
