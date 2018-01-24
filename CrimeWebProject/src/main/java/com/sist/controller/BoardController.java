@@ -21,7 +21,7 @@ public class BoardController {
 	@Autowired
 	private BoardDAO dao;
 	
-
+//페이지 나눈기 , 자유게시판 메인
 	@RequestMapping("boardmain.do")
 		public String main_list(String page,Model model){
 		if(page==null){
@@ -48,7 +48,7 @@ public class BoardController {
 		model.addAttribute("list",list);
 		return "freeboard/boardmain";
 	}
-	
+	// 추가부분
 	@RequestMapping("insert.do")
 	public String board_insert(){
 		return "freeboard/insert";
@@ -101,5 +101,25 @@ public class BoardController {
 		model.addAttribute("vo",vo);
 		return "freeboard/bcontent";
 	}
-	
+	@RequestMapping("delete.do")
+	public String freeboard_delete(int no,Model model){
+		model.addAttribute("no",no);
+		return "freeboard/delete";
+	}
+	@RequestMapping("delete_ok.do")
+	public String board_delete_ok(int no,String pwd){
+		String data="";
+		   boolean bCheck=dao.boardDelete(no, pwd);
+		   if(bCheck==true)
+		   {
+			   data="<script>location.href=\"boardmain.do\";"
+				   +"</script>";
+		   }
+		   else
+		   {
+			  data="<script>alert(\"비밀번호가 틀립니다!!\");"
+				  +"history.back();</script>"; 
+		   }
+		   return data;
+	}
 }
