@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 .content_list {
@@ -45,90 +45,90 @@
 <body>
 	<center>
 		<div class="content_list cl2 text-left">
-			<h3>╠в╥║га</h3>
+			<h3>Й╥╦К·≤М■└</h3>
 		</div>
 		<div class="content_list cl1 text-left" >
-			<h3>аЖ╣╣</h3>
+			<h3>Л╖─К▐└</h3>
 		</div>
 		<br>
 
 		<div class="content_list cl1 text-left">
-			<h3>╢╨╫╨</h3>
+			<h3>К┴╢Л┼╓</h3>
 		</div>
 		<div class="content_list cl2 text-left">
-			<h3>╣©©╣╩С</h3>
+			<h3>К▐≥Л≤│Л┐│</h3>
 		</div>
 		<br>
 
 		<div class="content_list cl3 text-left">
-			<h3>╟╤╥╞╦╝</h3>
+			<h3>Й╟╓К÷╛К╕╛</h3>
 			<table class="table">
 				<tr style="background-color: #2961d3; color: white;">
-					<th>╧Ьхё</th>
-					<th>а╕╦Я</th>
-					<th>юш╪╨юз</th>
-					<th>юш╪╨юо</th>
-					<th>а╤х╦╪Ж</th>
+					<th>К╡┬М≤╦</th>
+					<th>Л═°К╙╘</th>
+					<th>Л·▒Л└╠Л·░</th>
+					<th>Л·▒Л└╠Л²╪</th>
+					<th>Л║╟М ▄Л┬≤</th>
 				</tr>
 				<tr>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 					<td><img src="images/menu_main.png" width="50px"></td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 				</tr>
 				<tr>
-					<td colspan="5" class="text-right">╢У╨╦╠Б</td>
+					<td colspan="5" class="text-right">К█■КЁ╢Й╦╟</td>
 				</tr>
 			</table>
 		</div>
 		<div class="content_list cl3 text-left">
-			<h3>аЬ╫гюг ╧Ф</h3>
+			<h3>Л╖└Л▀╓Л²≤ К╟╘</h3>
 			<table class="table">
 				<tr style="background-color: #2961d3; color: white;">
-					<th>╧Ьхё</th>
-					<th>а╕╦Я</th>
-					<th>юш╪╨юз</th>
-					<th>юш╪╨юо</th>
-					<th>а╤х╦╪Ж</th>
+					<th>К╡┬М≤╦</th>
+					<th>Л═°К╙╘</th>
+					<th>Л·▒Л└╠Л·░</th>
+					<th>Л·▒Л└╠Л²╪</th>
+					<th>Л║╟М ▄Л┬≤</th>
 				</tr>
 				<tr>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 				</tr>
 				<tr>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 				</tr>
 				<tr>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 				</tr>
 				<tr>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 				</tr>
 				<tr>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
-					<td>ев╫╨ф╝</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
+					<td>М┘▄Л┼╓М┼╦</td>
 				</tr>
 				<tr>
-					<td colspan="5" class="text-right">╢У╨╦╠Б</td>
+					<td colspan="5" class="text-right">К█■КЁ╢Й╦╟</td>
 				</tr>
 			</table>
 		</div>

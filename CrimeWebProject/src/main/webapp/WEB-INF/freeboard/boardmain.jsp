@@ -1,37 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%--
       ${fn:substring("aaa",1,3)}
-      fn => ¹®ÀÚ¿­(String),List
+      fn => ë¬¸ìžì—´(String),List
  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Áø½ÇÀÇ ¹æ</title>
-<!-- ºÎÆ®½ºÆ®·¦ ±âº» CSS ¿¬°á -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì§„ì‹¤ì˜ ë°©</title>
+<!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© ê¸°ë³¸ CSS ì—°ê²° -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<!-- ÆÛ¿À±â CSS -->
+<!-- í¼ì˜¤ê¸° CSS -->
 <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-<!-- ¹öÆ° UI  -->
+<!-- ë²„íŠ¼ UI  -->
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- ¹öÆ°Å¬¸¯½Ã º¯È­ -->
+<!-- ë²„íŠ¼í´ë¦­ì‹œ ë³€í™” -->
 <script>
 	$(function() {
 		$("input").checkboxradio();
 	});
 </script>
 
-<!-- ÀüÃ¼ Å©±â  -->
+<!-- ì „ì²´ í¬ê¸°  -->
 <style type="text/css">
 .row {
 	margin: 0px auto;
@@ -41,11 +41,11 @@
 .goo {
 	margin-right: 10px;
 }
-/* ¹Ú½º°£ÀÇ °£°Ý */
+/* ë°•ìŠ¤ê°„ì˜ ê°„ê²© */
 #goobox {
 	margin-bottom: 10px;
 }
-/* ÁÙ  ¹Ù²Þ */
+/* ì¤„  ë°”ê¿ˆ */
 #gooOneLine {
 	margin-bottom: 10px;
 }
@@ -57,7 +57,7 @@
 #menu {
 	text-align: left;
 }
-/* °Ë»öÃ¢ ¿·¿¡ ¼±ÅÃ °Ë»ö */
+/* ê²€ìƒ‰ì°½ ì˜†ì— ì„ íƒ ê²€ìƒ‰ */
 select {
 	width: 150px;
 	height: 27px;
@@ -95,72 +95,72 @@ label {
 		<div class="container-fluid">
 			<div class="container">
 				<div class="row">
-					<!-- Áø½ÇÀÇ ¹æ ·Î°í -->
+					<!-- ì§„ì‹¤ì˜ ë°© ë¡œê³  -->
 					<center id="menu">
 						<img src="image/menu.png">
 					</center>
 
-					<!-- ±¸ ¼±ÅÃ Å¸ÀÌÆ² -->
+					<!-- êµ¬ ì„ íƒ íƒ€ì´í‹€ -->
 					<table>
-						<h2 class="text-left">µ¿³×</h2¤¤>
+						<h2 class="text-left">ë™ë„¤</h2ã„´>
 					</table>
 
 
-					<!-- Ã¼Å©¹Ú½º(±¸) °¡ µé¾î°¥ °ø°£ -->
+					<!-- ì²´í¬ë°•ìŠ¤(êµ¬) ê°€ ë“¤ì–´ê°ˆ ê³µê°„ -->
 					<div class="container" id="goobox">
-						<!-- 1¹øÂ° Line -->
+						<!-- 1ë²ˆì§¸ Line -->
 
 
 						<label class="goo btn btn-success"> <input type="checkbox"
-							autocomplete="off"> Á¾·Î±¸
+							autocomplete="off"> ì¢…ë¡œêµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> Áß±¸±¸
+							type="checkbox" autocomplete="off"> ì¤‘êµ¬êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¿ë»ê±¸
+							type="checkbox" autocomplete="off"> ìš©ì‚°êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¼ºµ¿±¸
+							type="checkbox" autocomplete="off"> ì„±ë™êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ±¤Áø±¸
+							type="checkbox" autocomplete="off"> ê´‘ì§„êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> µ¿´ë¹®±¸
+							type="checkbox" autocomplete="off"> ë™ëŒ€ë¬¸êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> Áß¶û±¸
+							type="checkbox" autocomplete="off"> ì¤‘ëž‘êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¼ººÏ±¸
+							type="checkbox" autocomplete="off"> ì„±ë¶êµ¬
 						</label> <br> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> °­ºÏ±¸
+							type="checkbox" autocomplete="off"> ê°•ë¶êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> µµºÀ±¸
+							type="checkbox" autocomplete="off"> ë„ë´‰êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ³ë¿ø±¸
+							type="checkbox" autocomplete="off"> ë…¸ì›êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ÀºÆò±¸
+							type="checkbox" autocomplete="off"> ì€í‰êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¼­´ë¹®±¸
+							type="checkbox" autocomplete="off"> ì„œëŒ€ë¬¸êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¸¶Æ÷±¸
+							type="checkbox" autocomplete="off"> ë§ˆí¬êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¾çÃµ±¸
+							type="checkbox" autocomplete="off"> ì–‘ì²œêµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> °­¼­±¸
+							type="checkbox" autocomplete="off"> ê°•ì„œêµ¬
 						</label> <br> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ±¸·Î±¸
+							type="checkbox" autocomplete="off"> êµ¬ë¡œêµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ±ÝÃµ±¸
+							type="checkbox" autocomplete="off"> ê¸ˆì²œêµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¿µµîÆ÷±¸
+							type="checkbox" autocomplete="off"> ì˜ë“±í¬êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> µ¿ÀÛ±¸
+							type="checkbox" autocomplete="off"> ë™ìž‘êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> °ü¾Ç±¸
+							type="checkbox" autocomplete="off"> ê´€ì•…êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¼­ÃÊ±¸
+							type="checkbox" autocomplete="off"> ì„œì´ˆêµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> °­³²±¸
+							type="checkbox" autocomplete="off"> ê°•ë‚¨êµ¬
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> ¼ÛÆÄ±¸
+							type="checkbox" autocomplete="off"> ì†¡íŒŒêµ¬
 						</label> <br> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> °­µ¿±¸
+							type="checkbox" autocomplete="off"> ê°•ë™êµ¬
 						</label>
 
 
@@ -170,23 +170,23 @@ label {
 
 
 
-					<!-- ºÐ·ù µé¾î°¡´Â °÷ -->
+					<!-- ë¶„ë¥˜ ë“¤ì–´ê°€ëŠ” ê³³ -->
 					<table>
-						<h2 class="text-center">ºÐ·ù</h2>
+						<h2 class="text-center">ë¶„ë¥˜</h2>
 					</table>
 
-					<!-- ºÐ·ù µé¾î°¡´Â °÷ -->
+					<!-- ë¶„ë¥˜ ë“¤ì–´ê°€ëŠ” ê³³ -->
 					<div class="container" id="goobox">
 						<div class="btn-group" data-toggle="buttons">
 
 							<label class="goo btn btn-success"> <input
 								type="checkbox" autocomplete="off"> HELP!
 							</label> <label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> ÀÚÀ¯
+								type="checkbox" autocomplete="off"> ìžìœ 
 							</label> <label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> ÃßÃµ
+								type="checkbox" autocomplete="off"> ì¶”ì²œ
 							</label> <label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> ¹®ÀÇ
+								type="checkbox" autocomplete="off"> ë¬¸ì˜
 							</label>
 
 
@@ -199,19 +199,19 @@ label {
 
 					</table>
 
-					<!-- °Ô½ÃÆÇ Å×ÀÌºí -->
+					<!-- ê²Œì‹œíŒ í…Œì´ë¸” -->
 					<table class="table table-hover" width=700>
 
 						<tr class="info">
-							<th class="text-center" width=7%>¹øÈ£</th>
-							<th class="text-center" width=10%>ºÐ·ù</th>
-							<th class="text-center" width=10%>Áö¿ª</th>
-							<th class="text-left" width=30%>Á¦¸ñ</th>
-							<th class="text-center" width=15%>±Û¾´ÀÌ</th>
-							<th class="text-center" width=20%>ÀÛ¼ºÀÏ</th>
-							<th class="text-center" width=10%>Á¶È¸¼ö</th>
+							<th class="text-center" width=7%>ë²ˆí˜¸</th>
+							<th class="text-center" width=10%>ë¶„ë¥˜</th>
+							<th class="text-center" width=10%>ì§€ì—­</th>
+							<th class="text-left" width=30%>ì œëª©</th>
+							<th class="text-center" width=15%>ê¸€ì“´ì´</th>
+							<th class="text-center" width=20%>ìž‘ì„±ì¼</th>
+							<th class="text-center" width=10%>ì¡°íšŒìˆ˜</th>
 						</tr>
-						<!-- DB¿¡ ÀúÀåµÈ °Ô½Ã±Û  -->
+						<!-- DBì— ì €ìž¥ëœ ê²Œì‹œê¸€  -->
 						<c:set var="color" value="default" />
 						<c:forEach var="vo" items="${list }" varStatus="s">
 
@@ -232,19 +232,19 @@ label {
 
 					</table>
 
-					<!-- ÆäÀÌÂ¡, »õ±Û ³²±â±â  °Ô½ÃÆÇ ³»¿ë º¸ÀÌ´Â °÷-->
+					<!-- íŽ˜ì´ì§•, ìƒˆê¸€ ë‚¨ê¸°ê¸°  ê²Œì‹œíŒ ë‚´ìš© ë³´ì´ëŠ” ê³³-->
 					<table class="table table-hover" width=700>
 						<ul class="pagination">
-							<%-- <a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-primary">ÀÌÀü</a>&nbsp;
-                <a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-info">´ÙÀ½</a>&nbsp;&nbsp; --%>
+							<%-- <a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-primary">ì´ì „</a>&nbsp;
+                <a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-info">ë‹¤ìŒ</a>&nbsp;&nbsp; --%>
 							<c:choose>
 								<c:when test="${curpage>block }">
-									<li><a href="Oim_meetpage.do?page=1">|¢¸</a></li>
-									<li><a href="Oim_meetpage.do?page=${fromPage-1 }">¢¸</a></li>
+									<li><a href="Oim_meetpage.do?page=1">|â—€</a></li>
+									<li><a href="Oim_meetpage.do?page=${fromPage-1 }">â—€</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><span style="color: gray">|¢¸</span></li>
-									<li><span style="color: gray">¢¸</span></li>
+									<li><span style="color: gray">|â—€</span></li>
+									<li><span style="color: gray">â—€</span></li>
 								</c:otherwise>
 							</c:choose>
 							<c:forEach var="i" begin="${fromPage }" end="${toPage }">
@@ -257,26 +257,26 @@ label {
 							</c:forEach>
 							<c:choose>
 								<c:when test="${toPage<totalpage }">
-									<li><a href="Oim_meetpage.do?page=${toPage+1 }">¢º</a></li>
-									<li><a href="Oim_meetpage.do?page=${totalpage }">¢º|</a></li>
+									<li><a href="Oim_meetpage.do?page=${toPage+1 }">â–¶</a></li>
+									<li><a href="Oim_meetpage.do?page=${totalpage }">â–¶|</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><span style="color: gray">¢º</span></li>
-									<li><span style="color: gray">¢º|</span></li>
+									<li><span style="color: gray">â–¶</span></li>
+									<li><span style="color: gray">â–¶|</span></li>
 								</c:otherwise>
 							</c:choose>
 						</ul>
 						
 						<td class="text-right">
 						<select>
-							<option>ÀüÃ¼</option>
-							<option>³»¿ë</option>
-							<option>Á¦¸ñ</option>
-							<option>±Û¾´ÀÌ</option>
+							<option>ì „ì²´</option>
+							<option>ë‚´ìš©</option>
+							<option>ì œëª©</option>
+							<option>ê¸€ì“´ì´</option>
 						</select>
 						<input type="text" szie=10>
-						<button>°Ë»ö</button>
-						<a href="insert.do" class="btn btn-sm btn-primary">»õ±Û</a>
+						<button>ê²€ìƒ‰</button>
+						<a href="insert.do" class="btn btn-sm btn-primary">ìƒˆê¸€</a>
 							</td>
 					</table>
 

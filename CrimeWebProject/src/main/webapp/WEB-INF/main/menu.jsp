@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	.menu_list {
@@ -48,12 +48,12 @@
 </script>
 </head>
 <body>
-	<div class="menu_list menu_hover" id="menu_main" onclick="location.href='main.do'"><img src="images/menu_main.png">È¨</div>
-	<div class="menu_list menu_hover" id="menu_crimerate" onclick="location.href='crimerate.do'"><img src="images/menu_crimerate.png">Áöµµ</div>
-	<div class="menu_list menu_hover" id="menu_table" onclick="location.href='table.do'"><img src="images/menu_table.png">Å×ÀÌºí</a></div>
-	<div class="menu_list menu_hover" id="menu_news" onclick="location.href='news.do'"><img src="images/menu_news.png">´º½º</div>
-	<div class="menu_list menu_hover" id="menu_videolist" onclick="location.href='videolist.do'"><img src="images/menu_videolist.png">µ¿¿µ»ó</div>
-	<div class="menu_list menu_hover" id="menu_gallery" onclick="location.href='#'"><img src="images/menu_gallery.png">°¶·¯¸®</div>
-	<div class="menu_list menu_hover" id="menu_list" onclick="location.href='#'"><img src="images/menu_list.png">Áø½ÇÀÇ ¹æ</div>
+	<div class="menu_list menu_hover" id="menu_main" onclick="location.href='main.do'"><img src="images/menu_main.png">í™ˆ</div>
+	<div class="menu_list menu_hover" id="menu_crimerate" onclick="location.href='crimerate.do'"><img src="images/menu_crimerate.png">ì§€ë„</div>
+	<div class="menu_list menu_hover" id="menu_table" onclick="location.href='table.do'"><img src="images/menu_table.png">í…Œì´ë¸”</a></div>
+	<div class="menu_list menu_hover" id="menu_news" onclick="location.href='news.do'"><img src="images/menu_news.png">ë‰´ìŠ¤</div>
+	<div class="menu_list menu_hover" id="menu_videolist" onclick="location.href='videolist.do'"><img src="images/menu_videolist.png">ë™ì˜ìƒ</div>
+	<div class="menu_list menu_hover" id="menu_gallery" onclick="location.href='#'"><img src="images/menu_gallery.png">ê°¤ëŸ¬ë¦¬</div>
+	<div class="menu_list menu_hover" id="menu_list" onclick="location.href='#'"><img src="images/menu_list.png">ì§„ì‹¤ì˜ ë°©</div>
 </body>
 </html>

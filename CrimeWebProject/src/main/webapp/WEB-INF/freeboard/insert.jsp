@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
@@ -15,7 +15,7 @@
 	width: 700px;
 }
 </style>
-<!-- ÆÄÀÏ ¾÷·Îµå ºÎºÐ  -->
+<!-- íŒŒì¼ ì—…ë¡œë“œ ë¶€ë¶„  -->
 <script type="text/javascript">
 	var fileIndex = 0;
 	$(function() {
@@ -38,7 +38,7 @@
 											'<tr id=f'
 													+ (fileIndex)
 													+ '>'
-													+ '<td width=20%>ÆÄÀÏ'
+													+ '<td width=20%>íŒŒì¼'
 													+ (fileIndex + 1)
 													+ '</td>'
 													+ '<td width=80% align=left>'
@@ -68,81 +68,81 @@ select {
 	<div class="container">
 		<div class="row">
 			<center>
-				<h3>±Û¾²±â</h3>
+				<h3>ê¸€ì“°ê¸°</h3>
 			</center>
 			<form:form method="post" action="insert_ok.do"
 				enctype="multipart/form-data" modelAttribute="uploadForm">
 				<table class="table table-hover">
-					<!-- ºÐ·ù ,µ¿³× ¼±ÅÃ ºÎºÐ -->
-					<h4>ºÐ·ù&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						&nbsp; &nbsp; µ¿³×</h4>
+					<!-- ë¶„ë¥˜ ,ë™ë„¤ ì„ íƒ ë¶€ë¶„ -->
+					<h4>ë¶„ë¥˜&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; ë™ë„¤</h4>
 					<select name="board_group">
-						<option>ÀÚÀ¯</option>
+						<option>ìžìœ </option>
 						<option>HELP!</option>
-						<option>ÃßÃµ</option>
-						<option>¹®ÀÇ</option>
+						<option>ì¶”ì²œ</option>
+						<option>ë¬¸ì˜</option>
 					</select> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
 					&nbsp;
 
 
 					<select name="board_area">
-						<option>Á¾·Î±¸</option>
-						<option>Áß±¸±¸</option>
-						<option>¿ë»ê±¸</option>
-						<option>¼ºµ¿±¸</option>
-						<option>±¤Áø±¸</option>
-						<option>µ¿´ë¹®±¸</option>
-						<option>Áß¶û±¸</option>
-						<option>¼ººÏ±¸</option>
-						<option>°­ºÏ±¸</option>
-						<option>µµºÀ±¸</option>
-						<option>³ë¿ø±¸</option>
-						<option>ÀºÆò±¸</option>
-						<option>¼­´ë¹®±¸</option>
-						<option>¸¶Æ÷±¸</option>
-						<option>¾çÃµ±¸</option>
-						<option>°­¼­±¸</option>
-						<option>±¸·Î±¸</option>
-						<option>±ÝÃµ±¸</option>
-						<option>¿µµîÆ÷±¸</option>
-						<option>µ¿ÀÛ±¸</option>
-						<option>°ü¾Ç±¸</option>
-						<option>¼­ÃÊ±¸</option>
-						<option>°­³²±¸</option>
-						<option>¼ÛÆÄ±¸</option>
-						<option>°­µ¿±¸</option>
+						<option>ì¢…ë¡œêµ¬</option>
+						<option>ì¤‘êµ¬êµ¬</option>
+						<option>ìš©ì‚°êµ¬</option>
+						<option>ì„±ë™êµ¬</option>
+						<option>ê´‘ì§„êµ¬</option>
+						<option>ë™ëŒ€ë¬¸êµ¬</option>
+						<option>ì¤‘ëž‘êµ¬</option>
+						<option>ì„±ë¶êµ¬</option>
+						<option>ê°•ë¶êµ¬</option>
+						<option>ë„ë´‰êµ¬</option>
+						<option>ë…¸ì›êµ¬</option>
+						<option>ì€í‰êµ¬</option>
+						<option>ì„œëŒ€ë¬¸êµ¬</option>
+						<option>ë§ˆí¬êµ¬</option>
+						<option>ì–‘ì²œêµ¬</option>
+						<option>ê°•ì„œêµ¬</option>
+						<option>êµ¬ë¡œêµ¬</option>
+						<option>ê¸ˆì²œêµ¬</option>
+						<option>ì˜ë“±í¬êµ¬</option>
+						<option>ë™ìž‘êµ¬</option>
+						<option>ê´€ì•…êµ¬</option>
+						<option>ì„œì´ˆêµ¬</option>
+						<option>ê°•ë‚¨êµ¬</option>
+						<option>ì†¡íŒŒêµ¬</option>
+						<option>ê°•ë™êµ¬</option>
 					</select>
 
 
 					<tr>
-						<td width=20% class="text-right">´Ð³×ÀÓ</td>
+						<td width=20% class="text-right">ë‹‰ë„¤ìž„</td>
 						<td width=80% class="text-left"><input type=text
 							name=board_name size=15></td>
 					</tr>
 
 
 					<tr>
-						<td width=20% class="text-right">Á¦¸ñ</td>
+						<td width=20% class="text-right">ì œëª©</td>
 						<td width=80% class="text-left"><input type=text
 							name=board_subject size=45></td>
 					</tr>
 
 
 					<tr>
-						<td width=20% class="text-right">³»¿ë</td>
+						<td width=20% class="text-right">ë‚´ìš©</td>
 						<td width=80% class="text-left"><textarea rows="10" cols="50"
 								name="board_content"></textarea></td>
 					</tr>
 
 					<tr>
-						<td width=20% class="text-right">Ã·ºÎÆÄÀÏ</td>
+						<td width=20% class="text-right">ì²¨ë¶€íŒŒì¼</td>
 						<td width=80% class="text-left">
 							<table class="table table-hover">
 								<tr>
 									<td class="text-right"><input type=button
-										class="btn btn-sm btn-primary" id="add" value="Ãß°¡"> <input
+										class="btn btn-sm btn-primary" id="add" value="ì¶”ê°€"> <input
 										type=button class="btn btn-sm btn-danger" id="cancel"
-										value="Ãë¼Ò"></td>
+										value="ì·¨ì†Œ"></td>
 								</tr>
 							</table>
 							<table class="table table-hover" id="fileView">
@@ -153,7 +153,7 @@ select {
 
 
 					<tr>
-						<td width=20% class="text-right">ºñ¹Ð¹øÈ£</td>
+						<td width=20% class="text-right">ë¹„ë°€ë²ˆí˜¸</td>
 						<td width=80% class="text-left"><input type=password
 							name=board_pwd size=10></td>
 					</tr>
@@ -162,8 +162,8 @@ select {
 					<tr>
 
 						<td colspan="2" class="text-center"><input type=submit
-							value=±Û¾²±â class="btn btn-sm btn-success"> <input
-							type=button value=Ãë¼Ò class="btn btn-sm btn-danger"
+							value=ê¸€ì“°ê¸° class="btn btn-sm btn-success"> <input
+							type=button value=ì·¨ì†Œ class="btn btn-sm btn-danger"
 							onclick="javascript:history.back()"></td>
 
 					</tr>

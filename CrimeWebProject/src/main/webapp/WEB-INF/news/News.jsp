@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
@@ -158,7 +158,7 @@ $(function(){
 		<div>
 			<img src="images/news_head.png" style="width: 4.5%; height: auto; margin: 30px 15px 0 15px; float: left;">
 		</div>
-		<div style="margin: 25px 0 0 0; float: left;"><strong style="font-size: 45px; font-weight: bold;">´º½º</strong></div>
+		<div style="margin: 25px 0 0 0; float: left;"><strong style="font-size: 45px; font-weight: bold;">ë‰´ìŠ¤</strong></div>
 		<div style="height:100px;"></div>
 		
     
@@ -166,15 +166,15 @@ $(function(){
 	<div id="contents">
 			<div class="floating-menu">
 				<div style="height:100px;"></div>
-				<div class="searchBtn1" >ÀüÃ¼</div>
-				<div class="searchBtn1" >»ìÀÎ</div>
-				<div class="searchBtn1" >ÆøÇà</div>
-				<div class="searchBtn1" >Àýµµ</div>
-				<div class="searchBtn1" >¼º¹üÁË</div>
-				<div class="searchBtn1" >¹æÈ­</div>
-				<div class="searchBtn1" style="font-size: 20px; padding-top: 5px;">°æÁ¦»ç¹ü</div>
-				<div class="searchBtn1" >»ç±â</div>
-				<div class="searchBtn1" >Çù¹Ú</div>
+				<div class="searchBtn1" >ì „ì²´</div>
+				<div class="searchBtn1" >ì‚´ì¸</div>
+				<div class="searchBtn1" >í­í–‰</div>
+				<div class="searchBtn1" >ì ˆë„</div>
+				<div class="searchBtn1" >ì„±ë²”ì£„</div>
+				<div class="searchBtn1" >ë°©í™”</div>
+				<div class="searchBtn1" style="font-size: 20px; padding-top: 5px;">ê²½ì œì‚¬ë²”</div>
+				<div class="searchBtn1" >ì‚¬ê¸°</div>
+				<div class="searchBtn1" >í˜‘ë°•</div>
 				
 			</div>
 			
