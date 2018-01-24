@@ -67,7 +67,7 @@
   line-height: 1em;
   margin: 3px 10px;
   outline: none;
-  padding: 12px 35px 10px;
+  padding: 12px 40px 10px;
   position: relative;
   /* text-transform: uppercase; */
   font-weight: 700;
@@ -100,7 +100,7 @@
 }
 .snip1535:hover,
 .snip1535.hover {
-  background-color: rgb(255,2,103);
+  background-color: rgb(75, 46, 204);
 }
 .snip1535:hover:before,
 .snip1535.hover:before,
@@ -108,7 +108,7 @@
 .snip1535.hover:after {
   height: 100%;
   width: 100%;
-  border-color: rgb(255,2,103);
+  border-color: rgb(75, 46, 204);
 }
 
 .tt-nav-tab .active, .tt-tabs-content .active {
@@ -175,34 +175,36 @@ $(function () {
 													href="//fast.wistia.net/embed/iframe/g5pnf59ala?videoFoam=true?autoplay=1">
 													<div class="tt-video-attributes">
 														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">18:13</span>
+															class="tt-post-length">${v1.length }</span>
 													</div> <img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-1-608x505.jpg"
-													alt="">
+													src="https://img.youtube.com/vi/${v1.youtubekey }/mqdefault.jpg"
+													alt="" width="608" height="505">	<!-- 608x505 -->
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
 														<a
 															href="http://themebubble.com/demo/videoly/category/food/"
-															rel="category tag">Food</a>
+															rel="category tag">${v1.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h2"
-														href="http://themebubble.com/demo/videoly/9-best-dessert-recipes/">Mozzarella
-														Chicken Roll Recipe</a>
+														href="http://themebubble.com/demo/videoly/9-best-dessert-recipes/">${v1.title }</a>
 													<div class="tt-post-label">
-														<span><a href="#">George Steven</a></span> <span>Mar
-															08</span>
+														<span><fmt:formatDate value="${v1.regdate }" pattern="yyyy.MM.dd"/></span>
 													</div>
 													<div class="simple-text">
-														<p>Baked Mozzarella Chicken Rolls! Easy, delicious,
-															and beautiful with fresh basil and a delicious tomato
-															sauce. This meal has summer ...</p>
+														<c:choose>
+															<c:when test="${fn:length(v1.content)>200}">
+																<p>${fn:substring(v1.content,0,200) }...</p>
+															</c:when>
+															<c:otherwise>
+																<p>${v1.content }</p>
+															</c:otherwise>
+														</c:choose>
 													</div>
 													<div class="tt-post-bottom">
 														<span><a href="#"><i class="fa fa-eye"
-																aria-hidden="true"></i>320 Views</a></span> <span><a
-															href="#"><i class="fa fa-comment" aria-hidden="true"></i>0
-																Comments</a></span>
+																aria-hidden="true"></i>${v1.hit } Views</a></span> <span><a
+															href="#"><i class="fa fa-comment" aria-hidden="true"></i>0 Comments</a></span>
 													</div>
 												</div>
 											</div>
@@ -216,56 +218,61 @@ $(function () {
 													href="https://player.vimeo.com/video/217499569?autoplay=1">
 													<div class="tt-video-attributes">
 														<span class="tt-post-quality">HD</span> <span
-															class="tt-post-length">16:47</span>
+															class="tt-post-length">${v2.length }</span>
 													</div> <img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/hair-290x162.jpg"
+													src="https://img.youtube.com/vi/${v2.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
 														<a
 															href="http://themebubble.com/demo/videoly/category/fashion/"
-															rel="category tag">Fashion</a>
+															rel="category tag">${v2.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>How
-															Does an Editor Think And Feel?</small></a>
+														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v2.title }</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
-												<a class="tt-post-img custom-hover" href="?autoplay=1">
-													<img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/Untitled-1-3-290x162.jpg"
+												<a class="tt-post-img tt-video-open custom-hover "
+													href="https://player.vimeo.com/video/217499569?autoplay=1">
+													<div class="tt-video-attributes">
+														<span class="tt-post-quality">HD</span> <span
+															class="tt-post-length">${v3.length }</span>
+													</div> <img class="img-responsive"
+													src="https://img.youtube.com/vi/${v3.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
 														<a
-															href="http://themebubble.com/demo/videoly/category/food/"
-															rel="category tag">Food</a>
+															href="http://themebubble.com/demo/videoly/category/fashion/"
+															rel="category tag">${v3.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/the-long-lost-art-of-melancholy-suicidal-depression/"><small>The
-															Long-lost Art of Melancholy</small></a>
+														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v3.title }</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
-												<a class="tt-post-img custom-hover" href="?autoplay=1">
-													<img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/dog-290x162.jpg"
+												<a class="tt-post-img tt-video-open custom-hover "
+													href="https://player.vimeo.com/video/217499569?autoplay=1">
+													<div class="tt-video-attributes">
+														<span class="tt-post-quality">HD</span> <span
+															class="tt-post-length">${v4.length }</span>
+													</div> <img class="img-responsive"
+													src="https://img.youtube.com/vi/${v4.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
 														<a
-															href="http://themebubble.com/demo/videoly/category/food/"
-															rel="category tag">Food</a>
+															href="http://themebubble.com/demo/videoly/category/fashion/"
+															rel="category tag">${v4.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/it-all-started-when-we-used-to-talk-sleep/"><small>It
-															All Started when We used to Talk &#038; Sleep</small></a>
+														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v4.title }</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-xs-b25"></div>
@@ -273,67 +280,71 @@ $(function () {
 										
 										<div class="col-sm-6 col-md-3">
 											<div class="tt-post type-5">
-												<a class="tt-post-img custom-hover" href="?autoplay=1">
-													<img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/battery-290x162.jpg"
+												<a class="tt-post-img tt-video-open custom-hover "
+													href="https://player.vimeo.com/video/217499569?autoplay=1">
+													<div class="tt-video-attributes">
+														<span class="tt-post-quality">HD</span> <span
+															class="tt-post-length">${v5.length }</span>
+													</div> <img class="img-responsive"
+													src="https://img.youtube.com/vi/${v5.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
 														<a
-															href="http://themebubble.com/demo/videoly/category/food/"
-															rel="category tag">Food</a>
+															href="http://themebubble.com/demo/videoly/category/fashion/"
+															rel="category tag">${v5.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/7-habits-you-need-to-change/"><small>7
-															Habits You Need To Change</small></a>
-												</div>
-											</div>
-											<div class="empty-space marg-lg-b25"></div>
-											<div class="tt-post type-5">
-												<a class="tt-post-img custom-hover" href="?autoplay=1">
-													<img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/Untitled-1-3-290x162.jpg"
-													alt="">
-												</a>
-												<div class="tt-post-info">
-													<div class="tt-post-cat">
-														<a
-															href="http://themebubble.com/demo/videoly/category/food/"
-															rel="category tag">Food</a>
-													</div>
-													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/the-long-lost-art-of-melancholy-suicidal-depression/"><small>The
-															Long-lost Art of Melancholy</small></a>
+														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v5.title }</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 											<div class="tt-post type-5">
 												<a class="tt-post-img tt-video-open custom-hover "
-													href="http://themebubble.com/demo/adios/wp-content/uploads/2016/08/video.mp4?autoplay=1">
+													href="https://player.vimeo.com/video/217499569?autoplay=1">
 													<div class="tt-video-attributes">
-														<span class="tt-post-quality">CAM</span> <span
-															class="tt-post-length">4:14</span>
+														<span class="tt-post-quality">HD</span> <span
+															class="tt-post-length">${v6.length }</span>
 													</div> <img class="img-responsive"
-													src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/Stocksy_comp_1272436-1-290x162.jpg"
+													src="https://img.youtube.com/vi/${v6.youtubekey }/mqdefault.jpg"
 													alt="">
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
 														<a
-															href="http://themebubble.com/demo/videoly/category/animation/"
-															rel="category tag">Animation</a>
+															href="http://themebubble.com/demo/videoly/category/fashion/"
+															rel="category tag">${v6.sortname }</a>
 													</div>
 													<a class="tt-post-title c-h5"
-														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme/"><small>How
-															To Read Painting</small></a>
+														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v6.title }</small></a>
+												</div>
+											</div>
+											<div class="empty-space marg-lg-b25"></div>
+											<div class="tt-post type-5">
+												<a class="tt-post-img tt-video-open custom-hover "
+													href="https://player.vimeo.com/video/217499569?autoplay=1">
+													<div class="tt-video-attributes">
+														<span class="tt-post-quality">HD</span> <span
+															class="tt-post-length">${v7.length }</span>
+													</div> <img class="img-responsive"
+													src="https://img.youtube.com/vi/${v7.youtubekey }/mqdefault.jpg"
+													alt="">
+												</a>
+												<div class="tt-post-info">
+													<div class="tt-post-cat">
+														<a
+															href="http://themebubble.com/demo/videoly/category/fashion/"
+															rel="category tag">${v7.sortname }</a>
+													</div>
+													<a class="tt-post-title c-h5"
+														href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/"><small>${v7.title }</small></a>
 												</div>
 											</div>
 											<div class="empty-space marg-lg-b25"></div>
 										</div>
 									</div>
 									<div class="empty-space marg-lg-b40 marg-sm-b30"></div>
-									<div class="empty-space  marg-lg-b30"></div>
 								</div>
 							</div>
 								
@@ -635,7 +646,6 @@ $(function () {
 											</div>
 										</div>
 									</div>
-									<div class="empty-space marg-lg-b30"></div>
 									
 								</div>
 							</div>
@@ -644,7 +654,6 @@ $(function () {
 						</div>
 					</div>
 					
-					<div class="empty-space marg-lg-b30"></div>
 					
 					<!-- 동영상목록 -->
 					<div class="vc_row wpb_row vc_row-fluid">
@@ -679,7 +688,7 @@ $(function () {
 									<div
 										class="tt-post type-6 clearfix post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
 										<a class="tt-post-img tt-video-open custom-hover "
-											href="#">
+											href="videocontent.do?no=${vo.no }&page=${curpage}">
 											<div class="tt-video-attributes">
 												<span class="tt-post-quality">HD</span> <span
 													class="tt-post-length">${vo.length }</span>
@@ -698,12 +707,14 @@ $(function () {
 												</span>
 											</div>
 											<div class="simple-text">
-												<c:if test="${fn:length(vo.content)>150}">
-													<p>${fn:substring(vo.content,0,150) }...</p>
-												</c:if>
-												<c:if test="${fn:length(vo.content)<=150}">
-													<p>${vo.content }</p>
-												</c:if>
+												<c:choose>
+													<c:when test="${fn:length(vo.content)>150}">
+														<p>${fn:substring(vo.content,0,150) }...</p>
+													</c:when>
+													<c:otherwise>
+														<p>${vo.content }</p>
+													</c:otherwise>
+												</c:choose>
 											</div>
 											<div class="tt-post-bottom">
 												<span><a href="#"><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 

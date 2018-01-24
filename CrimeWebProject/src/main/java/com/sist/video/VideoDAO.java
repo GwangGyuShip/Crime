@@ -24,5 +24,9 @@ public class VideoDAO {
 		vm.videoHitIncrement(no);
 		return vm.videoContentData(no);
 	}
+	
+	public List<VideoVO> videoTop7ListData(Map map) {
+		return vm.videoTop7ListData(map);
+	}
 
 }

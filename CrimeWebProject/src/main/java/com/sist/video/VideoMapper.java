@@ -27,5 +27,13 @@ public interface VideoMapper {
 	//내용보기
 	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit FROM bvideo WHERE no=#{no}")
 	public VideoVO videoContentData(int no);
+	
+	//TOP7
+	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,num "
+			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,rownum as num "
+			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit "
+			+ "FROM bvideo ORDER BY hit DESC)) "
+			+ "WHERE num<=7")
+	public List<VideoVO> videoTop7ListData(Map map);
 
 }

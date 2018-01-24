@@ -35,7 +35,25 @@ public class VideoController {
 		
 		
 		List<VideoVO> list = dao.videoListData(map);
+		List<VideoVO> list_top7 = dao.videoTop7ListData(map);
 		model.addAttribute("list", list);
+		model.addAttribute("list_top7", list_top7);
+		
+		VideoVO v1 = list_top7.get(0);
+		VideoVO v2 = list_top7.get(1);
+		VideoVO v3 = list_top7.get(2);
+		VideoVO v4 = list_top7.get(3);
+		VideoVO v5 = list_top7.get(4);
+		VideoVO v6 = list_top7.get(5);
+		VideoVO v7 = list_top7.get(6);
+		model.addAttribute("v1", v1);
+		model.addAttribute("v2", v2);
+		model.addAttribute("v3", v3);
+		model.addAttribute("v4", v4);
+		model.addAttribute("v5", v5);
+		model.addAttribute("v6", v6);
+		model.addAttribute("v7", v7);
+		
 		int totalpage = dao.videoTotalPage();
 		if(toPage>totalpage)
 			   toPage=totalpage;
@@ -53,5 +71,6 @@ public class VideoController {
 		model.addAttribute("vo",vo);
 		return "video/video_detail";
 	}
+	
 
 }

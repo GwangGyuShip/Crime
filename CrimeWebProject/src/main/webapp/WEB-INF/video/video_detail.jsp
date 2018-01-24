@@ -128,7 +128,7 @@
 													always an emotional element to anything that you make.
 												</p> -->
 												<p>
-													<pre>${vo.content }</pre>
+													<pre style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;background-color: #ffffff;">${vo.content }</pre>
 												</p>
 											</div>
 										</div>
