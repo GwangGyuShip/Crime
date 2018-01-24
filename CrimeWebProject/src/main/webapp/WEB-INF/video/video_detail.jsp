@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
@@ -38,7 +39,11 @@
 	height: 570px;
 }
 .tt-nav-tab .active, .tt-tabs-content .active {
-background-color: white !important;
+	background-color: white !important;
+}
+.tt-blog-user .tt-blog-user-content {
+	font-size: 18px !important;
+	color: rgb(140,140,140) !important;
 }
 </style>
 
@@ -50,7 +55,7 @@ background-color: white !important;
 		<div id="content-wrapper">
 
 			<!-- 동영상재생 -->
-			<div class="tt-video-post-wrapper" style="background-image: url(https://img.youtube.com/vi/nBIOtRoKbbo/mqdefault.jpg);">
+			<div class="tt-video-post-wrapper" style="background-image: url(https://img.youtube.com/vi/${vo.youtubekey}/mqdefault.jpg);">
 				<div class="fff">
 					<div class="container">
 						<div class="row">
@@ -59,7 +64,7 @@ background-color: white !important;
 									<div class="tt-fluid-inner">
 										<iframe class="tt-fluid-inner-iframe tt-iframe" width="960"
 											height="720"
-											data-lazy-src="https://www.youtube.com/embed/nBIOtRoKbbo"
+											data-lazy-src="https://www.youtube.com/embed/${vo.youtubekey}"
 											frameborder="0" allowfullscreen></iframe>
 									</div>
 								</div>
@@ -82,15 +87,15 @@ background-color: white !important;
 							<div class="empty-space marg-lg-b30"></div>
 							<div class="tt-blog-category post-single">
 								<a class="c-btn type-3 color-3"
-									href="http://themebubble.com/demo/videoly/category/fashion/">ETC</a>
+									href="http://themebubble.com/demo/videoly/category/fashion/">${vo.sortname }</a>
 							</div>
 							<div class="empty-space marg-lg-b10"></div>
-							<h1 class="c-h1">[MBC 뉴스데스크]CCTV 관제센터-범죄단속'효과만점'</h1>
+							<h1 class="c-h1">${vo.title }</h1>
 							<div class="empty-space marg-lg-b5"></div>
 
 							<div class="tt-blog-user clearfix">
 								<div class="tt-blog-user-content">
-									<span>2015.08.25</span>
+									<span><fmt:formatDate value="${vo.regdate }" pattern="yyyy.MM.dd (E)"/></span>
 								</div>
 							</div>
 							<div class="empty-space marg-lg-b10"></div>
@@ -100,7 +105,7 @@ background-color: white !important;
 									<div class="wpb_column vc_column_container vc_col-sm-12">
 										<div class="vc_column-inner ">
 											<div class="wpb_wrapper">
-												<div class="simple-text size-3 color-2">
+												<!-- <div class="simple-text size-3 color-2">
 													<p>
 														We look our best in <strong>subdued</strong> colors,
 														sophisticated cuts, and a general air of sleek
@@ -121,6 +126,9 @@ background-color: white !important;
 													our best in <a href="#">subdued</a> colors, sophisticated
 													cuts, and a general air sleek understatement. There is
 													always an emotional element to anything that you make.
+												</p> -->
+												<p>
+													<pre>${vo.content }</pre>
 												</p>
 											</div>
 										</div>
@@ -183,7 +191,7 @@ background-color: white !important;
 									id="comment-2">
 									<div class="tt-comment-container clearfix">
 										<a class="tt-comment-avatar" href="#"> <img alt=''
-											src='user_1.png'
+											src='images/user_1.png'
 											class='tt-comment-form-ava avatar-40 photo' height='40'
 											width='40' />
 										</a>
@@ -201,7 +209,7 @@ background-color: white !important;
 									id="comment-2">
 									<div class="tt-comment-container clearfix">
 										<a class="tt-comment-avatar" href="#"> <img alt=''
-											src='user_1.png'
+											src='images/user_1.png'
 											class='tt-comment-form-ava avatar-40 photo' height='40'
 											width='40' />
 										</a>

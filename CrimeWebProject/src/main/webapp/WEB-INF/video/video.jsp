@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
@@ -133,6 +136,7 @@ $(function () {
     });
 });
 </script>
+
 
 
 
@@ -657,7 +661,7 @@ $(function () {
 							<div class="movie_search">
 								<span>검색</span>
 								<input type="text" value="검색어를 입력하세요" id="ex_input" onFocus="clearText(this)" onBlur="clearText(this)">
-								<a href="#"><img src="search.png" width="35px" height="35px" style="margin-top: -5px;"></a>
+								<a href="#"><img src="images/search.png" width="35px" height="35px" style="margin-top: -5px;"></a>
 							</div>
 						</div>
 						<div class="empty-space marg-lg-b30"></div>
@@ -670,6 +674,7 @@ $(function () {
 										<h3 class="tt-title-text">동영상 목록</h3>
 									</div>
 									<div class="empty-space marg-lg-b25"></div>
+									
 									<c:forEach var="vo" items="${list }">
 									<div
 										class="tt-post type-6 clearfix post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
@@ -686,17 +691,23 @@ $(function () {
 											<div class="tt-post-cat">
 												<a href="#" rel="category tag">${vo.sortname }</a>
 											</div>
-											<a class="tt-post-title c-h5" href="#">${vo.title }</a>
+											<a class="tt-post-title c-h5" href="videocontent.do?no=${vo.no }&page=${curpage}">${vo.title }</a>
 											<div class="tt-post-label">
-												<span>${vo.regdate }</span>
+												<span>
+													<fmt:formatDate value="${vo.regdate }" pattern="yyyy.MM.dd"/>
+												</span>
 											</div>
 											<div class="simple-text">
-												<p>${vo.content }</p>
+												<c:if test="${fn:length(vo.content)>150}">
+													<p>${fn:substring(vo.content,0,150) }...</p>
+												</c:if>
+												<c:if test="${fn:length(vo.content)<=150}">
+													<p>${vo.content }</p>
+												</c:if>
 											</div>
 											<div class="tt-post-bottom">
-												<span><a href="#"><i class="fa fa-eye"
-														aria-hidden="true"></i>${vo.hit }</a></span> <span><a href="#"><i
-														class="fa fa-comment" aria-hidden="true"></i>01 Comment</a></span>
+												<span><a href="#"><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 
+												<span><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>01 Comment</a></span>
 											</div>
 										</div>
 									</div>
@@ -720,14 +731,12 @@ $(function () {
 											</li>
 										</ul> -->
 
-										<ul class="pagination">
-											<%-- <a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-primary">이전</a>&nbsp;
-					                <a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-info">다음</a>&nbsp;&nbsp; --%>
-											<c:choose>
-												<c:when test="${curpage>block }">
-													<li><a href="videolist.do?page=1">|◀</a></li>
-													<li><a href="videolist.do?page=${fromPage-1 }">◀</a></li>
-												</c:when>
+										<ul class="pagination page-numbers">
+											 <c:choose>
+                 							 	<c:when test="${curpage>block }">
+                   									<li><a href="videolist.do?page=1">|◀</a></li>
+                   									<li><a href="videolist.do?page=${fromPage-1 }">◀</a></li>
+                 								</c:when>
 												<c:otherwise>
 													<li><span style="color: gray">|◀</span></li>
 													<li><span style="color: gray">◀</span></li>
