@@ -26,16 +26,11 @@ public class CrimeRateController {
 	@RequestMapping("crimeContent.do")
 	public String crimeContent(String c_gu, Model model){
 		
-		Map map=dao.CrimeTotalData(c_gu);
-		System.out.println(map.size());
-		String total=(String)map.get("total");
-		String average=(String)map.get("average");
-		System.out.println();
+		CrimeRateVO tvo=dao.CrimeTotalData(c_gu);
 		List<CrimeRateVO> clist=dao.CrimeContentData(c_gu);
 		model.addAttribute("clist",clist);
-		model.addAttribute("total",total);
-		model.addAttribute("total",average);
+		model.addAttribute("tvo",tvo);
 		
-		return "crimerate/crimerate_content";
+		return "crimerate/crimerate";
 	}
 }

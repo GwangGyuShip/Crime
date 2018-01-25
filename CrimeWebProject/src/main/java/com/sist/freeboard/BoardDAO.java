@@ -53,20 +53,20 @@ public class BoardDAO {
 		  }
 	  }
 	  
-	 // °Ô½Ã±Û »õ±Û ¾²±â (Ãß°¡)
+	 // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ß°ï¿½)
 	  public void boardInsert(BoardVO vo){
 		  try{
 			  getConnection();
 			  String sql="{CALL boardInsert(?,?,?,?,?,?,?,?,?,?)}";
-			  /*System.out.println(vo.getBoard_name());
+			  System.out.println(vo.getBoard_name());
 			  System.out.println(vo.getBoard_subject());
 			  System.out.println(vo.getBoard_content());
 			  System.out.println(vo.getBoard_pwd());
 			  System.out.println(vo.getBoard_group());
 			  System.out.println(vo.getBoard_area());
-			  System.out.println(vo.getBoard_ip());	*/	  
+			  System.out.println(vo.getBoard_ip());	 
 			  cs=conn.prepareCall(sql);
-			  // JSP ¿¡¼­ Fom À¸·Î ³Ñ°Ü COntroller ¹Þ¾Æ¿Â °ªÀ» Controller ·Î ³Ñ°ÜÁØ´Ù.
+			  // JSP ï¿½ï¿½ï¿½ï¿½ Fom ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ COntroller ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Controller ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ø´ï¿½.
 			  cs.setString(1, vo.getBoard_name());
 			  cs.setString(2, vo.getBoard_subject());
 			  cs.setString(3, vo.getBoard_content());
@@ -85,7 +85,7 @@ public class BoardDAO {
 		  }
 	  }
 	  
-	  // ±Û ³»¿ë º¸±â
+	  // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	  public BoardVO boardContentData(int no){
 		  BoardVO vo =new BoardVO();
 		  try{
@@ -121,7 +121,7 @@ public class BoardDAO {
 		  return mapper.boardListData(map);
 	  }
 	  
-	  // »èÁ¦ºÎºÐÀÔ´Ï´Ù
+	  // ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½
 	  public boolean boardDelete(int no,String pwd){
 		  boolean bCheck=false;
 		  String db_pwd=mapper.freeBoardGetPwd(no);

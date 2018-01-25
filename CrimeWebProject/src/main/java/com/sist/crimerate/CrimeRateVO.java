@@ -7,7 +7,21 @@ public class CrimeRateVO {
 	private String c_type;
 	private int c_count;
 	private int c_cam;
+	private int total;
+	private int average;
 	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public int getAverage() {
+		return average;
+	}
+	public void setAverage(int average) {
+		this.average = average;
+	}
 	public int getC_year() {
 		return c_year;
 	}

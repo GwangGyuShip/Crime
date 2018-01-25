@@ -1,29 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
-<div class="col-sm-12" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
-                     <h3 style="padding-left:15px; margin-bottom:40px;"><b>º≠øÔ ¿∫∆Ú±∏</b></h3>
+
+                     <h3 style="padding-left:15px; margin-bottom:40px;"><b>ÏÑúÏö∏ ÏùÄÌèâÍµ¨</b></h3>
             					<div class="col-sm-6">
-                            	<table class="table table-hover"> <!--√ππ¯¬∞ ≈◊¿Ã∫Ì-->
+                            	<table class="table table-hover"> <!--Ï≤´Î≤àÏß∏ ÌÖåÏù¥Î∏î-->
                             		<tr>
-	                            		<th width=50% class="text-center" style="font-size:20px;  border-top:2px solid black; border-bottom:2px solid black">«◊∏Ò</th>
-	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">µ•¿Ã≈Õ</th>
+	                            		<th width=50% class="text-center" style="font-size:20px;  border-top:2px solid black; border-bottom:2px solid black">Ìï≠Î™©</th>
+	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">Îç∞Ïù¥ÌÑ∞</th>
                             		</tr>
                             		
 	                            		<tr height="60px">
-			                            	<td width=50% style="vertical-align: middle;" class="text-center">√—«’</td>
-			                            	<td width=50% style="vertical-align: middle;" class="text-center">${total }</td>
+			                            	<td width=50% style="vertical-align: middle;" class="text-center">Ï¥ùÌï©</td>
+			                            	<td width=50% style="vertical-align: middle;" class="text-center">${tvo.total }</td>
 		                            	</tr>
 		                            	<tr height="60px">
-			                            	<td width=50% style="vertical-align: middle;" class="text-center">∆Ú±’</td>
-			                            	<td width=50% style="vertical-align: middle;" class="text-center">${average }</td>
+			                            	<td width=50% style="vertical-align: middle;" class="text-center">ÌèâÍ∑†</td>
+			                            	<td width=50% style="vertical-align: middle;" class="text-center">${tvo.average }</td>
 		                            	</tr>
                             		
                             		<c:forEach var="vo" items="${clist}" varStatus="status">
@@ -38,10 +40,10 @@
                  				</div>
                             		 	
                             		<div class="col-sm-6"> 	
-                            		<table class="table table-hover"> <!--µŒπ¯¬∞ ≈◊¿Ã∫Ì-->
+                            		<table class="table table-hover"> <!--ÎëêÎ≤àÏß∏ ÌÖåÏù¥Î∏î-->
                             		<tr>
-	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">«◊∏Ò</th>
-	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">µ•¿Ã≈Õ</th>
+	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">Ìï≠Î™©</th>
+	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">Îç∞Ïù¥ÌÑ∞</th>
 	                            		
                             		</tr>
                             		<c:forEach var="vo" items="${clist }" varStatus="status">
@@ -53,11 +55,10 @@
                             			</c:if>	
                             		</c:forEach>
                             		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">CCTV ¥Îºˆ</td>
+	                            		<td width=50% style="vertical-align: middle;" class="text-center">CCTV ÎåÄÏàò</td>
 	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
                             		</tr>                            		
                             		</table> 
                             		</div>              
-                            </div> <!-- ªÛºº¡§∫∏ ≥°  -->
 </body>
 </html>
