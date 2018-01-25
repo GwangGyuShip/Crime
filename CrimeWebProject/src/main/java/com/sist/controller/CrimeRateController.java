@@ -28,13 +28,27 @@ public class CrimeRateController {
 		
 		CrimeRateVO tvo=dao.CrimeTotalData(c_gu);
 		List<CrimeRateVO> clist=dao.CrimeContentData(c_gu);
-		if(!(c_gu.equals("중구"))){
+		int c_count=dao.CrimeCctvData(c_gu);
+		if(c_gu.equals("중구")){
+			model.addAttribute("c_gu",c_gu);
+		}else{
 			model.addAttribute("c_gu",c_gu+"구");
 		}
-		model.addAttribute("c_gu",c_gu);
-		model.addAttribute("clist",clist);
-		model.addAttribute("tvo",tvo);
+		
+		model.addAttribute("c_count",c_count); //cctv 대수
+		model.addAttribute("clist",clist); //5대범죄 정보
+		model.addAttribute("tvo",tvo); //총합, 평균값
 		
 		return "crimerate/crimerate_content";
+	}
+	
+	@RequestMapping("chartContent.do")
+	public String chartContent(String c_gu,Model model){
+		
+		List<CrimeRateVO> chartList=dao.CrimeChartData(c_gu);
+		
+		model.addAttribute("c_gu",c_gu);
+		model.addAttribute("chartList",chartList);
+		return "crimerate/chart_content";
 	}
 }

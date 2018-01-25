@@ -56,7 +56,7 @@
                             		</c:forEach>
                             		<tr height="60px">
 	                            		<td width=50% style="vertical-align: middle;" class="text-center">CCTV 대수</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
+	                            		<td width=50% style="vertical-align: middle;" class="text-center">${c_count }</td>
                             		</tr>                            		
                             		</table> 
                             		</div>              
