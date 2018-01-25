@@ -163,7 +163,6 @@
 							<h4 class="tt-title-block-2 size-2 color-2">댓글(2)</h4>
 							<textarea rows="3" cols="110" style="margin-top: 10px;">댓글을 입력하세요</textarea>
 							<button class="btn btn-lg btn-primary" style="margin-bottom: 40px; margin-left: 10px;">확인</button>
-							<!-- <div class="empty-space marg-lg-b20"></div> -->
 							<ol class="tt-comment commentlist">
 							
 								<c:forEach var="vo" items="${relist }">
