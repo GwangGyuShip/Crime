@@ -28,6 +28,10 @@ public class CrimeRateController {
 		
 		CrimeRateVO tvo=dao.CrimeTotalData(c_gu);
 		List<CrimeRateVO> clist=dao.CrimeContentData(c_gu);
+		if(!(c_gu.equals("Áß±¸"))){
+			model.addAttribute("c_gu",c_gu+"±¸");
+		}
+		model.addAttribute("c_gu",c_gu);
 		model.addAttribute("clist",clist);
 		model.addAttribute("tvo",tvo);
 		
