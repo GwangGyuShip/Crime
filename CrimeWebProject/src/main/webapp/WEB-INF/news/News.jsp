@@ -18,7 +18,6 @@ $(function(){
 		$('.newsContainer').click(function(){
 			
 			$(this).animate({ height: "900px" }, 500);	
-
 		});	
 		i=1;
 	}else{
@@ -58,10 +57,11 @@ $(function(){
 	font-weight:bold; 
 	text-align: center; 
 	vertical-align: center;
-	margin: 15px 0 0 0;
+	margin: 30px 0 10px 0;
+	/* float: left; */
 	}
 .searchBtn1:hover{
-	opacity: 0.7;
+	opacity: 0.8;
 	cursor: pointer;
 }
 .searchBtn1:visited{
@@ -80,7 +80,7 @@ $(function(){
 	margin: 15px 0 0 0;
 	}
 .searchBtn2:hover{
-	opacity: 0.7;
+	opacity: 0.8;
 	cursor: pointer;
 }
 .searchBtn2:visited{
@@ -88,42 +88,23 @@ $(function(){
 }
 
 .floating-menu { 
-  position: fixed; 
-  left: 220px; 
-  top: 8%; 
+  /* position: fixed;  */
+  right: 0px; 
+  top: 7.2%; 
   z-index: 100;
-  width: 128px; 
+  width: 1050px;
+  height: 80px; 
   margin: 0 0 0 15px; 
+ /*  float: left; */
 }
 
-.Graph1 { 
-  position: fixed;
-  right: 20px; 
-  top: 25%; 
-  z-index: 100;
-  margin: 0 0 0 0; 
-  width: 22%; 
-  height: 270px; 
-  background-color: blue;
-}
-
-.Graph2 { 
-  position: fixed;
-  right: 20px; 
-  top: 56%; 
-  z-index: 100;
-  margin: 50px 0 0 0; 
-  width: 22%; 
-  height: 270px; 
-  background-color: red;
-}
 
 .newsContainer{
 	background-color: #FFF0F5; 
 	width: 98%;	
 	height: 270px; 
 	border-radius:10px; 
-	margin: 30px 0 0 10px;
+	margin: 10px 0 0 10px;
 	overflow:hidden; 
 	height:auto;"
 }
@@ -151,38 +132,58 @@ $(function(){
 	border: 1px solid black; 
 	margin-left:20px;"
 }
+
+.Graph1 { 
+  /* position: fixed; */
+  margin: 0 0 30px 0; 
+  width: 45%; 
+  height: 350px; 
+  background-color: blue;
+  float: left;
+}
+
+.Graph2 { 
+  /* position: fixed; */
+  margin: 0 0 30px 0; 
+  width: 45%; 
+  height: 350px; 
+  background-color: red;
+  float: left;
+}
 </style>
 </head>
 <body>
+	
 	<div class="header">
 		<div>
-			<img src="images/news_head.png" style="width: 4.5%; height: auto; margin: 30px 15px 0 15px; float: left;">
+			<img src="images/news_head.png" style="width: 50px; height: auto; margin: 30px 15px 0 15px; float: left;">
 		</div>
 		<div style="margin: 25px 0 0 0; float: left;"><strong style="font-size: 45px; font-weight: bold;">뉴스</strong></div>
-		<div style="height:100px;"></div>
+		
+		<div  style="height:100px;"></div>
 		
     
 	</div>
 	<div id="contents">
-			<div class="floating-menu">
-				<div style="height:100px;"></div>
-				<div class="searchBtn1" >전체</div>
-				<div class="searchBtn1" >살인</div>
-				<div class="searchBtn1" >폭행</div>
-				<div class="searchBtn1" >절도</div>
-				<div class="searchBtn1" >성범죄</div>
-				<div class="searchBtn1" >방화</div>
-				<div class="searchBtn1" style="font-size: 20px; padding-top: 5px;">경제사범</div>
-				<div class="searchBtn1" >사기</div>
-				<div class="searchBtn1" >협박</div>
+			<div >
+				
 				
 			</div>
 			
 			<table class="table" style="border: 3px solid red; ">
-				<tr>
-					<td width="8%" style="border: 3px solid red; margin: 0 0 0 50px;">	
-					</td>
-					<td width="61%" style="border: 3px solid red;">
+				<td width="5%">
+					<div style="height: 9px;"></div>
+					<div class="searchBtn1" " >전체</div>
+					<div class="searchBtn1" " >살인</div>
+					<div class="searchBtn1" " >폭행</div>
+					<div class="searchBtn1" " >절도</div>
+					<div class="searchBtn1" " >성범죄</div>
+					<div class="searchBtn1" " >방화</div>
+					<div class="searchBtn1" style="font-size: 22px; padding-top: 5px;">경제사범</div>
+					<div class="searchBtn1" " >사기</div>
+					<div class="searchBtn1" " >협박</div>
+				</td>
+					<td width="65%" style="border: 3px solid red;">
 						<c:forEach var="i" begin="1" end="8">
 						<div class="newsContainer"  >
 							
@@ -192,17 +193,18 @@ $(function(){
 							
 							<div class="newsContent" >
 							</div>
-							
 						</div>
+						<div style="height:10px"></div>
+						
 						
 						</c:forEach>
 					</td>
-					<td width="25%" style="border: 3px solid red;">
-						<div class="Graph1"></div>
-						<div class="Graph2"></div>
-					</td>
+					
 				</tr>
 			</table>
+			
+			<div class="Graph1" ></div>
+			<div class="Graph2" ></div>
 			
 		  		<div style="margin-left: 20%;">
 		   			 <ul class="pagination pagination-lg"> 

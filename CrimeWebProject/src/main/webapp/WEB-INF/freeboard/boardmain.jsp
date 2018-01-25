@@ -27,7 +27,7 @@
 <!-- 버튼클릭시 변화 -->
 <script>
 	$(function() {
-		$("input").checkboxradio();
+		$("input").radioradio();
 	});
 </script>
 
@@ -84,7 +84,21 @@ label {
 }
 </style>
 
-
+<script type="text/javascript">
+	/*  $(document).ready(function(){
+	 var limit =3;
+	 $("input[type='radio']").on("change", function(evt){
+	 if($("input[type='radio']:checked").length>limit){
+	 this.checked = false;
+	 }	
+	 }); 
+	 }); */
+	$(dcument).ready(function() {
+		$("input[type='radio']").on("change", function(evt) {
+			alert("a");
+		});
+	});
+</script>
 
 </head>
 
@@ -109,62 +123,64 @@ label {
 					<!-- 체크박스(구) 가 들어갈 공간 -->
 					<div class="container" id="goobox">
 						<!-- 1번째 Line -->
+						<div class="btn-group2" data-toggle="buttons">
 
-
-						<label class="goo btn btn-success"> <input type="checkbox"
-							autocomplete="off"> 종로구
+						<label class="goo btn btn-success"> 
+						<input type="radio" autocomplete="off"> 종로구
+						</label> 
+						
+						<label class="goo btn btn-success"> <input
+							type="radio" autocomplete="off"> 중구구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 중구구
+							type="radio" autocomplete="off"> 용산구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 용산구
+							type="radio" autocomplete="off"> 성동구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 성동구
+							type="radio" autocomplete="off"> 광진구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 광진구
+							type="radio" autocomplete="off"> 동대문구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 동대문구
+							type="radio" autocomplete="off"> 중랑구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 중랑구
-						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 성북구
+							type="radio" autocomplete="off"> 성북구
 						</label> <br> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 강북구
+							type="radio" autocomplete="off"> 강북구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 도봉구
+							type="radio" autocomplete="off"> 도봉구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 노원구
+							type="radio" autocomplete="off"> 노원구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 은평구
+							type="radio" autocomplete="off"> 은평구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 서대문구
+							type="radio" autocomplete="off"> 서대문구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 마포구
+							type="radio" autocomplete="off"> 마포구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 양천구
+							type="radio" autocomplete="off"> 양천구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 강서구
+							type="radio" autocomplete="off"> 강서구
 						</label> <br> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 구로구
+							type="radio" autocomplete="off"> 구로구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 금천구
+							type="radio" autocomplete="off"> 금천구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 영등포구
+							type="radio" autocomplete="off"> 영등포구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 동작구
+							type="radio" autocomplete="off"> 동작구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 관악구
+							type="radio" autocomplete="off"> 관악구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 서초구
+							type="radio" autocomplete="off"> 서초구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 강남구
+							type="radio" autocomplete="off"> 강남구
 						</label> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 송파구
+							type="radio" autocomplete="off"> 송파구
 						</label> <br> <label class="goo btn btn-success"> <input
-							type="checkbox" autocomplete="off"> 강동구
+							type="radio" autocomplete="off"> 강동구
 						</label>
 
-
-
+						</div>
+						
 					</div>
 
 
@@ -179,14 +195,14 @@ label {
 					<div class="container" id="goobox">
 						<div class="btn-group" data-toggle="buttons">
 
-							<label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> HELP!
-							</label> <label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> 자유
-							</label> <label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> 추천
-							</label> <label class="goo btn btn-success"> <input
-								type="checkbox" autocomplete="off"> 문의
+							<label class="goo btn btn-success"> <input type="radio"
+								autocomplete="off"> HELP!
+							</label> <label class="goo btn btn-success"> <input type="radio"
+								autocomplete="off"> 자유
+							</label> <label class="goo btn btn-success"> <input type="radio"
+								autocomplete="off"> 추천
+							</label> <label class="goo btn btn-success"> <input type="radio"
+								autocomplete="off"> 문의
 							</label>
 
 
@@ -266,21 +282,18 @@ label {
 								</c:otherwise>
 							</c:choose>
 						</ul>
-						
-						<td class="text-right">
-						<select>
-							<option>전체</option>
-							<option>내용</option>
-							<option>제목</option>
-							<option>글쓴이</option>
-						</select>
-						<input type="text" szie=10>
-						<button>검색</button>
-						<a href="insert.do" class="btn btn-sm btn-primary">새글</a>
-							</td>
+
+						<td class="text-right"><select>
+								<option>전체</option>
+								<option>내용</option>
+								<option>제목</option>
+								<option>글쓴이</option>
+						</select> <input type="text" szie=10>
+							<button>검색</button> <a href="insert.do"
+							class="btn btn-sm btn-primary">새글</a></td>
 					</table>
 
-W
+					W
 				</div>
 			</div>
 		</div>

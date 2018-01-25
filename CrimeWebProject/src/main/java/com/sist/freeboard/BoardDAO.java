@@ -4,16 +4,15 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import oracle.jdbc.driver.OracleTypes;
 
@@ -120,5 +119,29 @@ public class BoardDAO {
 	  }
 	  public List<BoardVO> boardListData(Map map){
 		  return mapper.boardListData(map);
+	  }
+	  
+	  // 삭제부분입니다
+	  public boolean boardDelete(int no,String pwd){
+		  boolean bCheck=false;
+		  String db_pwd=mapper.freeBoardGetPwd(no);
+		  if(db_pwd.equals(pwd)){
+			  bCheck=true;
+			  mapper.boardDelete(no);
+		  }else{
+			  
+		  }
+		  return bCheck;
+		 
+	  }
+	  
+	  public boolean boardUpdate(BoardVO vo){
+		  boolean bCheck=false;
+		  String pwd=mapper.freeBoardGetPwd(vo.getBoard_no());
+		  if(pwd.equals(vo.getBoard_pwd())){
+			  bCheck=true;
+			  mapper.boardUpdate(vo);
+		  }
+		  return bCheck;
 	  }
 }
