@@ -31,6 +31,6 @@ public class CrimeRateController {
 		model.addAttribute("clist",clist);
 		model.addAttribute("tvo",tvo);
 		
-		return "crimerate/crimerate";
+		return "crimerate/crimerate_content";
 	}
 }
