@@ -25,7 +25,7 @@
 			data:{"c_gu":guName},
 			success:function(res)
 			{
-				$('.jang').html(res);
+				$('.contentWrapper').html(res);
 			}
 		}); 
 	 }); 
@@ -194,8 +194,8 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	
                      <!--상세정보  -->
                     <div class="col-sm-6" style="height:469.61px;">
-                     <div class="col-sm-12 contentWrapper" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
-                     <div class="jang">
+                     <div class="col-sm-12" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
+                     <div class="contentWrapper">
                      <h3 style="padding-left:15px; margin-bottom:40px;"><b>서울 은평구</b></h3>
             					<div class="col-sm-6">
                             	<table class="table table-hover"> <!-- 첫번째 테이블 -->
