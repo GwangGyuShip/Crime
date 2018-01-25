@@ -111,7 +111,7 @@ label {
 				<div class="row">
 					<!-- 진실의 방 로고 -->
 					<center id="menu">
-						<img src="image/menu.png">
+						<img src="image/free_board.png" width=300px height=100px>
 					</center>
 
 					<!-- 구 선택 타이틀 -->

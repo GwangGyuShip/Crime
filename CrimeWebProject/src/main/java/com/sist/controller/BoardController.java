@@ -21,7 +21,7 @@ public class BoardController {
 	@Autowired
 	private BoardDAO dao;
 	
-//ÆäÀÌÁö ³ª´«±â , ÀÚÀ¯°Ô½ÃÆÇ ¸ŞÀÎ
+// ë©”ì¸ ë¦¬ìŠ¤íŠ¸ê²Œì‹œê¸€ ì„ ë³´ì—¬ì£¼ê¸° ìœ„í•œ ê³³
 	@RequestMapping("boardmain.do")
 		public String main_list(String page,Model model){
 		if(page==null){
@@ -38,8 +38,8 @@ public class BoardController {
 	    map.put("end",end);
 	      
 	    int block=10;
-	    int fromPage = ((curpage-1)/block*block)+1;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-	    int toPage = ((curpage-1)/block*block)+block; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	    int fromPage = ((curpage-1)/block*block)+1;  
+	    int toPage = ((curpage-1)/block*block)+block; 
 	      
 
 	    if(toPage>totalpage)
@@ -48,18 +48,18 @@ public class BoardController {
 		model.addAttribute("list",list);
 		return "freeboard/boardmain";
 	}
-	// Ãß°¡ºÎºĞ
+	// ìƒˆê¸€ ì…ë ¥
 	@RequestMapping("insert.do")
 	public String board_insert(){
 		return "freeboard/insert";
 	}
+	// ìƒˆê¸€ì…ë ¥ í™•ì¸ë¶€
 	@RequestMapping("insert_ok.do")
 	public String main_insert_ok(BoardVO uploadForm){
 		List<MultipartFile> list=uploadForm.getFiles();
 		File ff=new File("c:\\download");
 		if(!ff.exists())
 			ff.mkdir();
-		System.out.println("ï¿½Ì¸ï¿½:"+uploadForm.getBoard_name());
 		if(list!=null && list.size()>0 )
 		   {
 			   String fn="";
@@ -91,6 +91,7 @@ public class BoardController {
 		  dao.boardInsert(uploadForm);
 		return "redirect:/boardmain.do";
 	}
+	//ë‚´ìš©ë³´ì—¬ì£¼ê¸°
 	@RequestMapping("bcontent.do")
 	public String board_content(int no,Model model){
 		BoardVO vo=dao.boardContentData(no);
@@ -101,11 +102,13 @@ public class BoardController {
 		model.addAttribute("vo",vo);
 		return "freeboard/bcontent";
 	}
+	//ì‚­ì œí•˜ê¸° 
 	@RequestMapping("delete.do")
 	public String freeboard_delete(int no,Model model){
 		model.addAttribute("no",no);
 		return "freeboard/delete";
 	}
+	//ì‚­ì œí™•ì¸ ë¶€ë¶„
 	@RequestMapping("delete_ok.do")
 	public String board_delete_ok(int no,String pwd){
 		String data="";
@@ -117,7 +120,7 @@ public class BoardController {
 		   }
 		   else
 		   {
-			  data="<script>alert(\"ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù!!\");"
+			  data="<script>alert(\"ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.\");"
 				  +"history.back();</script>"; 
 		   }
 		   return data;
