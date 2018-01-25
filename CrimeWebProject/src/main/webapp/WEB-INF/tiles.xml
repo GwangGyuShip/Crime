@@ -15,10 +15,8 @@ EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 		<put-attribute name="content" value="/WEB-INF/{1}/{2}/{3}.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="crimerate" template="/WEB-INF/crimerate/crimerate.jsp">
+	<definition name="crimerate/crimerate_content" template="/WEB-INF/crimerate/crimerate_content.jsp">
 		 <put-attribute name="" value=""></put-attribute>
 	</definition>
-	<definition name="">
-		<put-attribute name=""></put-attribute>
-	</definition>
+
 </tiles-definitions>
