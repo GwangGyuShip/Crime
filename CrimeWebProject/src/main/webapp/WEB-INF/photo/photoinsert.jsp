@@ -11,25 +11,27 @@
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	var fileIndex = 0;
+	var c = 0;
 	$(function() {
 		$('#add').click(
 				function() {
 					if (fileIndex > 2)
 						alert('더이상 사진을 올릴수 없습니다.')
 					else {
+						
 						$('#fileView').append(
-								'<tr id=f' + (fileIndex) + '>'
-										+ '<td width=80% align=left>'
-										+ '<input type=file id=f_'
-										+ (fileIndex) + ' name=files['
-										+ fileIndex + '] size="15"'
-										+ '</td></tr>');
+								'<tr id=f' + (fileIndex) + '>'+ '<td width=80% align=left>'+ '<input type=file id=f_'+ (fileIndex) +
+								' name=files['	+ fileIndex + '] size="15"'+ '</td></tr>');
+						
+						
 						$('#f_' + (fileIndex)).on('change', function() {
-
+							if( $("#f_")+(fileIndex).val() != "" )
+							alert($('#f_'+(fileIndex)));
 							readURL(this);
 						});
 						fileIndex = fileIndex + 1;
-					}
+						}
+					
 				});
 		$('#cancel').click(function() {
 			$('#f' + (fileIndex - 1)).remove();
@@ -50,15 +52,8 @@
 			var reader = new FileReader();
 
 			reader.onload = function(e) {
-				$('#myimg')
-						.append(
-								'<div id="myimd"'
-										+ (fileIndex)
-										+ ' style="display:inline-block;">'
-										+ '<img id=ff'
-										+ (fileIndex)
-										+ ' style="border:1px solid black;" src="#" width="200px;"; height="280px";/>'
-										+ '</div>');
+				$('#myimg').append('<div id="myimd"'+ (fileIndex)+ ' style="display:inline-block;">'+ '<img id=ff'
+										+ (fileIndex)+ ' style="border:1px solid black;" src="#" width="200px;"; height="280px";/>'+ '</div>');
 				$('#ff' + (fileIndex)).attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
