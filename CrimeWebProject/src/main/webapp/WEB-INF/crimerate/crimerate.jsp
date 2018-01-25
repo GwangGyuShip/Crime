@@ -16,10 +16,8 @@
 
 <script type="text/javascript">
  $(function(){
-	 
 	 $('area').click(function(){
 		var guName=$(this).attr("title");
-		alert(guName);
 		
 		 $.ajax({
 			type:"POST",
@@ -27,7 +25,7 @@
 			data:{"c_gu":guName},
 			success:function(res)
 			{
-				$('.contentWrapper').html(res);
+				$('.jang').html(res);
 			}
 		}); 
 	 }); 
@@ -45,12 +43,6 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	img.src="image/seoulmap.jpg";
 }
 
-function select_Gu(str){ /*구 onclick 이벤트  */
-	
-	alert(str);
-	var uri="crimeContent.do?c_gu="+str;
-	location.href=encodeURI(uri);
-}
 </script>
     <script>
         $(function(){ /*map태그 반응형 스크립트*/
@@ -201,11 +193,12 @@ function select_Gu(str){ /*구 onclick 이벤트  */
 	  </div> <!--서울지도 끝  -->
 	
                      <!--상세정보  -->
-                    <div class="col-sm-6 contentWrapper" style="height:469.61px;">
-                    <div class="col-sm-12" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
+                    <div class="col-sm-6" style="height:469.61px;">
+                     <div class="col-sm-12 contentWrapper" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
+                     <div class="jang">
                      <h3 style="padding-left:15px; margin-bottom:40px;"><b>서울 은평구</b></h3>
             					<div class="col-sm-6">
-                            	<table class="table table-hover"> <!--첫번째 테이블-->
+                            	<table class="table table-hover"> <!-- 첫번째 테이블 -->
                             		<tr>
 	                            		<th width=50% class="text-center" style="font-size:20px;  border-top:2px solid black; border-bottom:2px solid black">항목</th>
 	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">데이터</th>
@@ -231,7 +224,7 @@ function select_Gu(str){ /*구 onclick 이벤트  */
                  					 </div>
                             		 	
                             		<div class="col-sm-6"> 	
-                            		<table class="table table-hover"> <!--두번째 테이블-->
+                            		<table class="table table-hover"> <!-- 두번째 테이블 -->
                             		<tr>
 	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">항목</th>
 	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">데이터</th>
@@ -254,8 +247,9 @@ function select_Gu(str){ /*구 onclick 이벤트  */
 	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
                             		</tr>                            		
                             		</table> 
-                            		</div>              
-                            </div> <!-- 상세정보 끝  -->
+                            		</div> 
+                            	</div>           
+                            </div>
                             </div>
                             
                             </div> <!-- 서울지도, 상세내용 끝  -->

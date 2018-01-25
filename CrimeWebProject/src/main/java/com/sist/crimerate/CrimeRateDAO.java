@@ -11,7 +11,7 @@ public class CrimeRateDAO {
 	public List<CrimeRateVO> CrimeContentData(String c_gu){
 		return cm.CrimeContentData(c_gu);
 	}
-	public Map CrimeTotalData(String c_gu){
+	public CrimeRateVO CrimeTotalData(String c_gu){
 		return cm.CrimeTotalData(c_gu);
 	}
 	
