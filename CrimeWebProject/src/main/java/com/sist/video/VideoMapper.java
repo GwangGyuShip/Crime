@@ -2,7 +2,10 @@ package com.sist.video;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.sist.video.*;
@@ -35,5 +38,52 @@ public interface VideoMapper {
 			+ "FROM bvideo ORDER BY hit DESC)) "
 			+ "WHERE num<=7")
 	public List<VideoVO> videoTop7ListData(Map map);
+	
+	//댓글추가
+	@SelectKey(keyProperty="no", resultType=int.class, before=true, statement="SELECT NVL(MAX(no)+1,1) as no FROM bvideoreply")
+	@Insert("INSERT INTO bvideoreply VALUES(#{no},#{bno},#{name},#{msg},SYSDATE,#{pwd})")
+	public void videoreplyInsert(VideoReplyVO vo);
+	
+	//댓글목록출력
+	@Select("SELECT no,bno,name,msg,regdate FROM bvideoreply WHERE bno=#{no} ORDER BY regdate DESC")
+	public List<VideoReplyVO> videoreplyListData(int no);
+	
+	//댓글 하나
+	@Select("SELECT no,bno,name,msg,regdate FROM bvideoreply WHERE no=#{no}")
+	public VideoReplyVO replyContentData(int no);
+	
+	//댓글수정,삭제할때 비번받기
+	@Select("SELECT pwd FROM bvideoreply WHERE no=#{no}")
+	public String videoGetPwd(int no);
+	
+	//댓글수정
+	@Update("UPDATE bvideoreply SET msg=#{msg} WHERE no=#{no}")
+	public void videoreplyUpdate(VideoReplyVO vo);
+	
+	//댓글삭제
+	@Delete("DELETE FROM bvideoreply WHERE no=#{no}")
+	public void videoreplyDelete(int no);
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

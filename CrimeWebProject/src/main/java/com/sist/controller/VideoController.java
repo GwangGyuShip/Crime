@@ -68,8 +68,30 @@ public class VideoController {
 	@RequestMapping("videocontent.do")
 	public String videocontent(int no, Model model) {
 		VideoVO vo = dao.videoContentData(no);
+		List<VideoReplyVO> relist = dao.videoreplyListData(no);
 		model.addAttribute("vo",vo);
+		model.addAttribute("relist", relist);
 		return "video/video_detail";
+	}
+	
+	@RequestMapping("videoreplyinsert.do")
+	public String videoreplyInsert(VideoReplyVO vo) {
+		dao.videoreplyInsert(vo);
+		int bno = vo.getBno();
+		return "redirect:/video/video_detail.do?no="+bno;
+	}
+	
+	@RequestMapping("videoreplyupdate.do")
+	public String videoreplyUpdate(int no, Model model) {
+		VideoReplyVO vo = dao.videoreplyUpdateData(no);
+		model.addAttribute("vo", vo);
+		return "update";
+	}
+	
+	@RequestMapping("videoreplydelete.do")
+	public String videoreplyDelete(int no, Model model) {
+		model.addAttribute("no", no);
+		return "delete";
 	}
 	
 

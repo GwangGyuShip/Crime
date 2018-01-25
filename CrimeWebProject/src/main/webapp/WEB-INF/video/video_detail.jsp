@@ -161,10 +161,12 @@
 						<section class="coment-item">
 
 							<h4 class="tt-title-block-2 size-2 color-2">댓글(2)</h4>
-							<textarea rows="3" cols="105" style="margin-top: 10px;">댓글을 입력하세요</textarea>
-							<input type="button" value="확인" width="80px" height="50px">
-							<div class="empty-space marg-lg-b20"></div>
+							<textarea rows="3" cols="110" style="margin-top: 10px;">댓글을 입력하세요</textarea>
+							<button class="btn btn-lg btn-primary" style="margin-bottom: 40px; margin-left: 10px;">확인</button>
+							<!-- <div class="empty-space marg-lg-b20"></div> -->
 							<ol class="tt-comment commentlist">
+							
+								<c:forEach var="vo" items="${relist }">
 								<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 comment-list"
 									id="comment-2">
 									<div class="tt-comment-container clearfix">
@@ -173,17 +175,20 @@
 											class='tt-comment-form-ava avatar-40 photo' height='40'
 											width='40' />
 										</a>
-										<div class="tt-comment-info">
+										<div class="tt-comment-info" style="padding-top: 0px !important;">
 											<div class="tt-comment-label">
-												<span><a href="#" class="tt-comment-name">문승재</a></span> <span>March 2, 2017</span>
+												<span><a href="#" class="tt-comment-name">${vo.name }</a></span>
+												<span><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></span>
 											</div>
 											<div class="simple-text font-poppins">
-												<p>지은누나 예뻐요</p>
+												<p>${vo.msg }</p>
 											</div>
 										</div>
 									</div>
 								</li>
-								<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 comment-list"
+								<div class="empty-space marg-lg-b20"></div>
+								</c:forEach>
+								<!-- <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 comment-list"
 									id="comment-2">
 									<div class="tt-comment-container clearfix">
 										<a class="tt-comment-avatar" href="#"> <img alt=''
@@ -200,7 +205,7 @@
 											</div>
 										</div>
 									</div>
-								</li>
+								</li> -->
 							</ol>
 							<div class="empty-space marg-lg-b60 marg-sm-b50 marg-xs-b30"></div>
 							<div class="tt-devider"></div>
