@@ -48,6 +48,10 @@ public class BoardController {
 		model.addAttribute("list",list);
 		return "freeboard/boardmain";
 	}
+	@RequestMapping("delete_ok2.do")
+	public String board_delete2(){
+		return "freeboard/delete_ok";
+	}
 	// 새글 입력
 	@RequestMapping("insert.do")
 	public String board_insert(){
@@ -111,18 +115,20 @@ public class BoardController {
 	//삭제확인 부분
 	@RequestMapping("delete_ok.do")
 	public String board_delete_ok(int no,String pwd){
-		String data="";
+		
 		   boolean bCheck=dao.boardDelete(no, pwd);
+		   
+		   String a= "";
 		   if(bCheck==true)
 		   {
-			   data="<script>location.href=\"boardmain.do\";"
-				   +"</script>";
+			   a= "redirect:/boardmain.do";
+			   
 		   }
 		   else
 		   {
-			  data="<script>alert(\"비밀번호가 틀립니다.\");"
-				  +"history.back();</script>"; 
+			  a= "redirect:/belete_ok2.do";
 		   }
-		   return data;
+		 
+		   return a;
 	}
 }
