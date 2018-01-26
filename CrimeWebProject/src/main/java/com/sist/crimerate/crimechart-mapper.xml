@@ -3,7 +3,24 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.crimerate.crimechart-mapper">
+  <!-- <select id="chartListData" resultType="crmVO">
+	SELECT c_year, c_gu, c_name, c_count
+	FROM crimerate
+	WHERE c_type = '발생'
+  </select> -->
+  
   <select id="chartListData" resultType="crmVO">
-
+  	SELECT  c_year, c_gu,c_name, c_count, c_type
+	FROM (SELECT  c_year, c_gu,c_name, c_count, c_type 
+	FROM crimerate 
+	<where>
+		<if test="seoulgu.size()!=0 and seoulgu!=null">
+         	c_gu IN
+         	<foreach collection="seoulgu" item="sg" open="(" close=")" separator=",">
+         		#{sg}
+         	</foreach>
+         </if>
+	</where>
+	)WHERE c_type='발생' order by c_year, c_gu;
   </select>
 </mapper>
