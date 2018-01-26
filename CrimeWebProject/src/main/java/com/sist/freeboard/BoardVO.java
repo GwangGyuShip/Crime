@@ -6,19 +6,19 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int board_no; // °Ô½Ã±Û ¹øÈ£
-	private String board_name; // ´Ğ³×ÀÓ
-	private String board_subject; // Á¦¸ñ
-	private String board_content; // ³»¿ë
-	private String board_pwd; // ºñ¹Ğ¹øÈ£
-	private Date board_regdate; // µî·Ï³¯Â¥
-	private int board_hit; // Á¶È¸¼ö
-	private String board_group; // ºĞ·ù(¸»¸Ó¸®)
-	private String board_area; // Áö¿ª ( OO ±¸ )
+	private int board_no; // ê²Œì‹œê¸€ ë²ˆí˜¸
+	private String board_name; // ê²Œì‹œê¸€ ë‹‰ë„¤ì„
+	private String board_subject; // ê²Œì‹œê¸€ ì œëª©
+	private String board_content; // ê²Œì‹œê¸€ ë‚´ìš©
+	private String board_pwd; // ê²Œì‹œê¸€ ë¹„ë°€ë²ˆí˜¸
+	private Date board_regdate; // ê²Œì‹œê¸€ ë‚ ì§œ
+	private int board_hit; // ê²Œì‹œê¸€ ì¡°íšŒìˆ˜
+	private String board_group; // ê²Œì‹œê¸€ ë™ë„¤
+	private String board_area; // ê²Œì‹œê¸€ ë¶„ë¥˜
 	private String board_ip; // ip
-	private String board_filename; //ÆÄÀÏ ÀÌ¸§
-	private String board_filesize; //ÆÄÀÏ Å©±â
-	private int board_filecount; // ÆÄÀÏ °¹¼ö
+	private String board_filename; // ê²Œì‹œê¸€ íŒŒì¼ ì´ë¦„
+	private String board_filesize; // ê²Œì‹œê¸€ íŒŒì¼ ì‚¬ì´ì¦ˆ
+	private int board_filecount; // ê²Œì‹œê¸€ íŒŒì¼ ê°¯ìˆ˜
 	private List<MultipartFile> files;
 	
 	

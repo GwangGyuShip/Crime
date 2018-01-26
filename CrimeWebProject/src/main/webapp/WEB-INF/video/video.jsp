@@ -208,7 +208,7 @@ $(function () {
 													</div>
 													<div class="tt-post-bottom">
 														<span><a><i class="fa fa-eye" aria-hidden="true"></i>${v1.hit } Views</a></span>
-														<span><a><i class="fa fa-comment" aria-hidden="true"></i>0 Comments</a></span>
+														<span><a><i class="fa fa-comment" aria-hidden="true"></i>${v1.count } Comments</a></span>
 													</div>
 												</div>
 											</div>
@@ -764,7 +764,7 @@ $(function () {
 											</div>
 											<div class="tt-post-bottom">
 												<span><a><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 
-												<span><a><i class="fa fa-comment" aria-hidden="true"></i>01 Comment</a></span>
+												<span><a><i class="fa fa-comment" aria-hidden="true"></i>${vo.count } Comment</a></span>
 											</div>
 										</div>
 									</div>

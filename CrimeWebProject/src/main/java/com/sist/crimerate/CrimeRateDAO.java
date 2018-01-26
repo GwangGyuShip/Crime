@@ -14,5 +14,10 @@ public class CrimeRateDAO {
 	public CrimeRateVO CrimeTotalData(String c_gu){
 		return cm.CrimeTotalData(c_gu);
 	}
-	
+	public int CrimeCctvData(String c_gu){
+		return cm.CrimeCctvData(c_gu);
+	}
+	public List<CrimeRateVO> CrimeChartData(String c_gu){
+		return cm.CrimeChartData(c_gu);
+	}
 }

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-                     <h3 style="padding-left:15px; margin-bottom:40px;"><b>서울 은평구</b></h3>
+                     <h3 style="padding-left:15px; margin-bottom:40px;"><b>서울 ${c_gu }</b></h3>
             					<div class="col-sm-6">
                             	<table class="table table-hover"> <!--첫번째 테이블-->
                             		<tr>
@@ -56,7 +56,7 @@
                             		</c:forEach>
                             		<tr height="60px">
 	                            		<td width=50% style="vertical-align: middle;" class="text-center">CCTV 대수</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
+	                            		<td width=50% style="vertical-align: middle;" class="text-center">${c_count }</td>
                             		</tr>                            		
                             		</table> 
                             		</div>              

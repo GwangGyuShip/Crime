@@ -25,10 +25,24 @@
 			data:{"c_gu":guName},
 			success:function(res)
 			{
-				$('.jang').html(res);
+				$('.contentWrapper').html(res);
 			}
-		}); 
-	 }); 
+		});
+		 
+		 $.ajax({
+				type:"POST",
+				url:"chartContent.do",
+				data:{"c_gu":guName},
+				success:function(res)
+				{
+					$('.chart_content').html(res);
+				}
+			});
+		 
+	 });
+	 
+	 /* $('.gangnam').trigger('click'); */
+	 
 });
 </script>
 
@@ -94,7 +108,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 			shape="poly" target="_blank" title="송파" 
 			onmouseover="fn_ShowSeoulGu(6);" onfocus="fn_ShowSeoulGu(6);"
 			onblur="fn_SeoulGuOut()" onmouseout="fn_SeoulGuOut()" />
-			<area alt="강남구. 생활지도로 이동. 원하시는 지역을 선택하세요."
+			<area alt="강남구. 생활지도로 이동. 원하시는 지역을 선택하세요." class="gangnam"
 			coords="275,252,279,248,280,245,296,238,304,246,317,252,323,257,334,258,332,262,332,280,357,294,370,298,378,308,379,313,391,333,386,345,376,341,372,344,365,344,365,341,357,336,357,331,346,320,327,330,314,329,315,327,309,320,307,313,300,307,295,307,286,280,287,271"
 			shape="poly" target="_blank" title="강남"  
 			onmouseover="fn_ShowSeoulGu(7);" onfocus="fn_ShowSeoulGu(7);"
@@ -194,60 +208,9 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	
                      <!--상세정보  -->
                     <div class="col-sm-6" style="height:469.61px;">
-                     <div class="col-sm-12 contentWrapper" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
-                     <div class="jang">
-                     <h3 style="padding-left:15px; margin-bottom:40px;"><b>서울 은평구</b></h3>
-            					<div class="col-sm-6">
-                            	<table class="table table-hover"> <!-- 첫번째 테이블 -->
-                            		<tr>
-	                            		<th width=50% class="text-center" style="font-size:20px;  border-top:2px solid black; border-bottom:2px solid black">항목</th>
-	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">데이터</th>
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50%  style="vertical-align: middle;" class="text-center">총합</td>
-	                            		<td width=50%  style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		
-                            		<tr height="60px">
-	                            		<td width=50%  style="vertical-align: middle;" class="text-center">평균</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">살인</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">강도</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		 </table>
-                 					 </div>
-                            		 	
-                            		<div class="col-sm-6"> 	
-                            		<table class="table table-hover"> <!-- 두번째 테이블 -->
-                            		<tr>
-	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">항목</th>
-	                            		<th width=50% class="text-center" style="font-size:20px; border-top:2px solid black; border-bottom:2px solid black">데이터</th>
-	                            		
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">강간</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">절도</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">폭력</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>
-                            		<tr height="60px">
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">CCTV 대수</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center"></td>
-                            		</tr>                            		
-                            		</table> 
-                            		</div> 
+                     <div class="col-sm-12" style="width: 100%; height: 100%; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
+                     <div class="contentWrapper">
+  
                             	</div>           
                             </div>
                             </div>
@@ -270,18 +233,15 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                                 <option value="절도">절도</option>
                                             </select>
                                             </h2>
-                               
-                                            
                                     </div>
                                 
-                                   
-                                   <div id="line_chart2" style="min-width: 310px; height: 400px; margin: 0 auto">
-                                       
-                                       
-                                   </div>
-    
+                                   <div class="chart_content">
+	                                   <div id="line_chart" style="min-width: 310px; height: 400px; margin: 0 auto">
+	                                       
+	                                   </div>
+    								</div>
                                 <script>
-                                   Highcharts.chart('line_chart2', {
+                                   Highcharts.chart('line_chart', {
                                      
                                     title: {
                                         text: '',

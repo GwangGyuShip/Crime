@@ -2,6 +2,8 @@ package com.sist.controller;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ public class VideoController {
 	
 	@RequestMapping("videolist.do")
 	public String videolist(String page, Model model) {
-		if(page==null)	//페이지가 null일때 1로 셋팅
+		if(page==null)	
 			page="1";
 		int curpage = Integer.parseInt(page);
 		
@@ -30,12 +32,18 @@ public class VideoController {
 		map.put("end", end);
 		
 		int block=10;
-		int fromPage = ((curpage-1)/block*block)+1;  //보여줄 페이지의 시작
-		int toPage = ((curpage-1)/block*block)+block; //보여줄 페이지의 끝
+		int fromPage = ((curpage-1)/block*block)+1;  
+		int toPage = ((curpage-1)/block*block)+block;
 		
 		
 		List<VideoVO> list = dao.videoListData(map);
+		for(VideoVO vo:list) {
+			vo.setCount(dao.videoreplyCount(vo.getNo()));
+		}
 		List<VideoVO> list_top7 = dao.videoTop7ListData(map);
+		for(VideoVO top7vo:list_top7) {
+			top7vo.setCount(dao.videoreplyCount(top7vo.getNo()));
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("list_top7", list_top7);
 		
@@ -68,8 +76,38 @@ public class VideoController {
 	@RequestMapping("videocontent.do")
 	public String videocontent(int no, Model model) {
 		VideoVO vo = dao.videoContentData(no);
+		List<VideoReplyVO> relist = dao.videoreplyListData(no);
+		vo.setCount(dao.videoreplyCount(no));
 		model.addAttribute("vo",vo);
+		model.addAttribute("relist", relist);
 		return "video/video_detail";
+	}
+	
+	@RequestMapping("videoreplyinsert.do")
+	public String videoreplyInsert(VideoReplyVO vo, HttpServletRequest req) {
+		String bno = req.getParameter("bno");
+		String name = req.getParameter("name");
+		String pwd = req.getParameter("pwd");
+		String msg = req.getParameter("msg");
+		vo.setBno(Integer.parseInt(bno));
+		vo.setName(name);
+		vo.setPwd(pwd);
+		vo.setMsg(msg);
+		dao.videoreplyInsert(vo);
+		return "redirect:videocontent.do?no="+bno;
+	}
+	
+	@RequestMapping("videoreplyupdate.do")
+	public String videoreplyUpdate(int no, Model model) {
+		VideoReplyVO vo = dao.videoreplyUpdateData(no);
+		model.addAttribute("vo", vo);
+		return "update";
+	}
+	
+	@RequestMapping("videoreplydelete.do")
+	public String videoreplyDelete(int no, Model model) {
+		model.addAttribute("no", no);
+		return "delete";
 	}
 	
 

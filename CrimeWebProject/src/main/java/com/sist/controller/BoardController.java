@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,30 +25,43 @@ public class BoardController {
 	
 // 메인 리스트게시글 을 보여주기 위한 곳
 	@RequestMapping("boardmain.do")
-		public String main_list(String page,Model model){
+	// 페이징 하기위해 page, 보내주는 값이 있어서 model	
+	public String main_list(String page,Model model){
+		//기본 첫 페이지 페이지는 null값이니 1로 설정 ( 스트링 값으로 )
 		if(page==null){
 			page="1";
 		}
+		//스트링으로 받은 값을 숫자로 변환
 		int curpage=Integer.parseInt(page);
-	    int rowSize=5;
+		// 게시글 갯수 나타내기
+	    int rowSize=10;
+	    // 시작페이지 구하기
 	    int start= (rowSize*curpage)-(rowSize-1);
+	    // 마지막 페이지 구하기
 	    int end= rowSize*curpage;
-	    int totalpage=0;
 	    
+	    // 맵에 저장 키와 값 전송
 	    Map map=new HashMap();
 	    map.put("start", start);
 	    map.put("end",end);
-	      
-	    int block=10;
-	    int fromPage = ((curpage-1)/block*block)+1;  
-	    int toPage = ((curpage-1)/block*block)+block; 
-	      
-
-	    if(toPage>totalpage)
-	    	toPage=totalpage;
+	    // list 형식으로 VO 를 담아 SQL에 대한 값을 가져옴
 		List<BoardVO> list = dao.boardListData(map);
+		// 그것을 보내주기 위해 model 에 담고 list를 보내준다.
 		model.addAttribute("list",list);
+		// 토탈페이지 구하기 위한 SQL구문
+		int totalpage=dao.freeBoardTotalPage();
+		//시작페이지 전송
+		model.addAttribute("curpage",curpage);
+		//토탈 페이지 
+		model.addAttribute("totalpage",totalpage);
+		//모든 값은 BoardMain 에전송하여 JSP에서 활용 하도록 하는것
+		
 		return "freeboard/boardmain";
+	}
+	
+	@RequestMapping("delete_ok2.do")
+	public String board_delete2(){
+		return "freeboard/delete_ok";
 	}
 	// 새글 입력
 	@RequestMapping("insert.do")
@@ -106,23 +121,26 @@ public class BoardController {
 	@RequestMapping("delete.do")
 	public String freeboard_delete(int no,Model model){
 		model.addAttribute("no",no);
-		return "freeboard/delete";
+		return "freeboard/bdelete";
 	}
-	//삭제확인 부분
+	//삭제확인 부분 bdelete 에서 넘어와 비밀번호를 확인한다.
 	@RequestMapping("delete_ok.do")
+	// no는 게시글 번호를 확인하고 pwd는 비밀번호를 확인한다.
 	public String board_delete_ok(int no,String pwd){
-		String data="";
+		// 비밀번호가맞는지위해 모델쪽으로보낸다.
 		   boolean bCheck=dao.boardDelete(no, pwd);
+		   //리턴값을 주기위해 하나 선언
+		   String a= "";
 		   if(bCheck==true)
 		   {
-			   data="<script>location.href=\"boardmain.do\";"
-				   +"</script>";
+			   a= "redirect:/boardmain.do";
+			   
 		   }
 		   else
 		   {
-			  data="<script>alert(\"비밀번호가 틀립니다.\");"
-				  +"history.back();</script>"; 
+			  a= "redirect:/delete_ok2.do";
 		   }
-		   return data;
+		 
+		   return a;
 	}
 }
