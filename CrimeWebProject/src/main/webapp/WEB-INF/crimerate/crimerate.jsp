@@ -44,15 +44,21 @@
 				 $("input:checkbox[name='gu']:checkbox[value="+guName+"]").prop('checked', true); 
 			 }
 		 
-			 
-		 	
+			 var guList=[];
+			 $("input[name='gu']:checked").each(function(i){
+				 guList.push($(this).val());
+			 });
+		 	 var c_gu="";
+		 	 for(var i=0; i<guList.length;i++){
+		 		 c_gu=c_gu+guList[i]+",";
+		 	 }
 		 $.ajax({
 				type:"POST",
 				url:"chartContent.do",
-				data:{"c_gu":guName},
+				data:{"c_gu":c_gu},
 				success:function(res)
 				{
-					$('.chart_content').html(res);
+					
 				}
 			});
 		 

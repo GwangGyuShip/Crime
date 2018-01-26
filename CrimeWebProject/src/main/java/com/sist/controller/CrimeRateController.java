@@ -52,9 +52,18 @@ public class CrimeRateController {
 	}
 	
 	@RequestMapping("chartContent.do")
-	public String chartContent(String c_gu,Model model){
+	public String chartContent(String c_gu, Model model){
 		
-		model.addAttribute("c_gu",c_gu);
+		System.out.println(c_gu);
+		String[] arr=c_gu.split(",");
+		
+		List<String> guList=new ArrayList<String>();
+		for(String s:arr){
+			guList.add(s);
+		}
+		Map map=new HashMap();
+		map.put("guList", guList);
+		
 		return "crimerate/chart_content";
 	}
 }

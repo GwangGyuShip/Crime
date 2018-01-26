@@ -9,14 +9,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE c_type = '발생'
   </select> -->
   
-  <select id="chartListData" resultType="crmVO">
+  <select id="chartListData" resultType="crmVO" parameterType="java.util.Map">
   	SELECT  c_year, c_gu,c_name, c_count, c_type
 	FROM (SELECT  c_year, c_gu,c_name, c_count, c_type 
 	FROM crimerate 
 	<where>
-		<if test="seoulgu.size()!=0 and seoulgu!=null">
+		<if test="guList.size()!=0 and seoulgu!=null">
          	c_gu IN
-         	<foreach collection="seoulgu" item="sg" open="(" close=")" separator=",">
+         	<foreach collection="guList" item="sg" open="(" close=")" separator=",">
          		#{sg}
          	</foreach>
          </if>
