@@ -126,7 +126,7 @@ public class BoardController {
 		   }
 		   else
 		   {
-			  a= "redirect:/belete_ok2.do";
+			  a= "redirect:/delete_ok2.do";
 		   }
 		 
 		   return a;

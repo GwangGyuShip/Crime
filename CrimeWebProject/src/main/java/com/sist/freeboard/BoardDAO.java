@@ -30,7 +30,7 @@ public class BoardDAO {
 		try {
 			Class.forName(ds.getDriverClassName());
 		} catch (Exception ex) {
-			System.out.println("BoardDAO"+ex.getMessage());
+//			System.out.println("BoardDAO"+ex.getMessage());
 		}
 	}
 	 public void getConnection()
