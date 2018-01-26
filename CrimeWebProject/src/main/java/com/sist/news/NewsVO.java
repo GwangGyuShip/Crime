@@ -2,15 +2,22 @@ package com.sist.news;
 import java.util.*;
 
 public class NewsVO {
+	private int no;
 	private String title;
 	private String link;
 	private String description;
-	private Date pubDate;
+	private String pubDate;
 	private String author;
-	private String picture;
 	private String thumbnail;
+	
 	public String getTitle() {
 		return title;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -27,10 +34,11 @@ public class NewsVO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getPubDate() {
+	
+	public String getPubDate() {
 		return pubDate;
 	}
-	public void setPubDate(Date pubDate) {
+	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
 	}
 	public String getAuthor() {
@@ -39,12 +47,7 @@ public class NewsVO {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
+
 	public String getThumbnail() {
 		return thumbnail;
 	}
