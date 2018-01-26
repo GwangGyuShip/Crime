@@ -54,10 +54,7 @@ public class CrimeRateController {
 	@RequestMapping("chartContent.do")
 	public String chartContent(String c_gu,Model model){
 		
-		List<CrimeRateVO> chartList=dao.CrimeChartData(c_gu);
-		
 		model.addAttribute("c_gu",c_gu);
-		model.addAttribute("chartList",chartList);
 		return "crimerate/chart_content";
 	}
 }
