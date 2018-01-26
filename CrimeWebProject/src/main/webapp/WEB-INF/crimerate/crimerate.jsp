@@ -15,6 +15,10 @@
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
 <script type="text/javascript">
+	var main=new Array();
+	var sub=new Object();
+	sub
+
  $(function(){
 
 	 $('area').click(function(){
@@ -58,7 +62,7 @@
 				data:{"c_gu":c_gu},
 				success:function(res)
 				{
-					
+					$('.chart_content').html(res);
 				}
 			});
 		 
