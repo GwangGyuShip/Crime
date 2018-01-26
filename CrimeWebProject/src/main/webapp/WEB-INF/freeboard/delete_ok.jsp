@@ -18,6 +18,8 @@
 </script>
 </head>
 <body>
+
+<!--비밀번호가 틀렸을때의 화면  비밀번호가 틀렸다는 것을 알려주고 다시 비밀번호입력하는 칸을 보여줌  -->
    <div class="container">
     <div class="row">
      <center>

@@ -10,18 +10,14 @@ import org.apache.ibatis.annotations.Update;
 
 
 public interface FreeBoardMapper {
-	//¸ñ·Ï°¡Á®¿À±â
+// í˜ì´ì§• ê³¼ ëª©ë¡ë„ìš°ëŠ” SQL êµ¬ë¶„
 @Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount,num "+
 "FROM(SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount,rownum as num "
 +"FROM(SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "
 +"FROM free_board ORDER BY board_no DESC)) "
 +"WHERE num BETWEEN #{start} AND #{end}")
 public List<BoardVO> boardListData(Map map);
- //³»¿ëº¸±â
-/*//@Update("UPDATE free_board SET board_hit=board_hit+1 WHERE no=#{no}")
-*/
-
-// »èÁ¦ÇÏ±â
+//ì‚­ì œí•˜ê¸°ìœ„í•¸ ë¶€ë¶„
 @Delete("DELETE FROM free_board WHERE board_no=#{board_no} ")
 public void boardDelete(int no);
 
@@ -34,6 +30,10 @@ public void boardDelete(int no);
 		+ ",board_content=#{board_content} "
 		+ "WHERE board_no=#{board_no}")
 public void boardUpdate(BoardVO vo);
+
+@Select("SELECT CEIL(COUNT(*)/10) FROM free_board")
+public int boardTotalPage();
+
 }
 
 
