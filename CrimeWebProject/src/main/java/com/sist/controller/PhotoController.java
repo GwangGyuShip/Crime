@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sist.photo.AddressVO;
 import com.sist.photo.PhotoDAO;
+import com.sist.photo.PhotoVO;
 
 @Controller
 public class PhotoController {
@@ -49,7 +50,11 @@ public class PhotoController {
 		model.addAttribute("list", list);
 
 		return "photo/photolist";
-		
 	}
+	@RequestMapping("p_board_insert.do")
+	public String photo_insert(Model model, PhotoVO vo) {
+		
 
+		return "photo/photolist";
+	}
 }
