@@ -19,7 +19,7 @@ public class VideoRestController {
 		if(bCheck==true) {
 			data = "<script>location.href=\"video/video_detail.do?no="+vo.getBno()+"\";</script>";
 		} else {
-			data = "<script>alert(\"ºñ¹Ð¹øÈ£°¡ Æ²¸³´Ï´Ù!!\");"
+			data = "<script>alert(\"ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤!!\");"
 					  +"history.back();</script>";
 		}
 		return data;
@@ -32,7 +32,7 @@ public class VideoRestController {
 		if(bCheck==true) {
 			data = "<script>location.href=\"video/video_detail.do?no="+vo.getBno()+"\";</script>";
 		} else {
-			data = "<script>alert(\"ºñ¹Ð¹øÈ£°¡ Æ²¸³´Ï´Ù!!\");"
+			data = "<script>alert(\"ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤!!\");"
 					  +"history.back();</script>";
 		}
 		return data;

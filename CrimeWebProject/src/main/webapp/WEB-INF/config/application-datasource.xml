@@ -46,7 +46,18 @@
 			p:sqlSessionFactory-ref="ssf"
 			p:mapperInterface="com.sist.news.NewsMapper"
 		/>	
-		
+		<bean id="mapper6" class="org.mybatis.spring.mapper.MapperFactoryBean"
+			p:sqlSessionFactory-ref="ssf"
+			p:mapperInterface="com.sist.photo.PhotoMapper"
+		/>	
+		<bean id="ssf2" class="org.mybatis.spring.SqlSessionFactoryBean"
+			p:configLocation="/WEB-INF/config/Config.xml"
+			p:dataSource-ref="ds"
+		/>
+		<bean id="dao"
+	       class="com.sist.crimerate.CrimeChartDAO"
+	       p:sqlSessionFactory-ref="ssf2"
+     	/>
 		<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		/>

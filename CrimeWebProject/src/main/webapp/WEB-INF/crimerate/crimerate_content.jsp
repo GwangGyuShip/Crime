@@ -21,18 +21,18 @@
                             		
 	                            		<tr height="60px">
 			                            	<td width=50% style="vertical-align: middle;" class="text-center">총합</td>
-			                            	<td width=50% style="vertical-align: middle;" class="text-center">${tvo.total }</td>
+			                            	<td width=50% style="vertical-align: middle;" class="text-center">${tvo.total }건</td>
 		                            	</tr>
 		                            	<tr height="60px">
 			                            	<td width=50% style="vertical-align: middle;" class="text-center">평균</td>
-			                            	<td width=50% style="vertical-align: middle;" class="text-center">${tvo.average }</td>
+			                            	<td width=50% style="vertical-align: middle;" class="text-center">${tvo.average }건</td>
 		                            	</tr>
                             		
                             		<c:forEach var="vo" items="${clist}" varStatus="status">
                             			<c:if test="${status.index < 2}">
 		                            		<tr height="60px">
 			                            		<td width=50% style="vertical-align: middle;" class="text-center">${vo.c_name }</td>
-			                            		<td width=50% style="vertical-align: middle;" class="text-center">${vo.c_count}</td>
+			                            		<td width=50% style="vertical-align: middle;" class="text-center">${vo.c_count}건</td>
 		                            		</tr>
 	                            		</c:if>
                             		</c:forEach>
@@ -50,13 +50,13 @@
                             			<c:if test="${status.index > 1 }">
 		                            		<tr height="60px">
 			                            		<td width=50% style="vertical-align: middle;" class="text-center">${vo.c_name }</td>
-			                            		<td width=50% style="vertical-align: middle;" class="text-center">${vo.c_count }</td>
+			                            		<td width=50% style="vertical-align: middle;" class="text-center">${vo.c_count }건</td>
 		                            		</tr>
                             			</c:if>	
                             		</c:forEach>
                             		<tr height="60px">
 	                            		<td width=50% style="vertical-align: middle;" class="text-center">CCTV 대수</td>
-	                            		<td width=50% style="vertical-align: middle;" class="text-center">${c_count }</td>
+	                            		<td width=50% style="vertical-align: middle;" class="text-center">${c_count }건</td>
                             		</tr>                            		
                             		</table> 
                             		</div>              

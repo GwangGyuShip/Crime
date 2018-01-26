@@ -17,7 +17,7 @@
 		</div>
   <script>
   
-  var getNumber = function(){ 
+  var getChart = function(){ 
   	  var totalList=[];
 	  <c:forEach var="vo" items='${chartList}' varStatus="status">
 	  	totalList.push(parseInt('${vo.total}'));
@@ -49,7 +49,7 @@
 
       series: [{	
           name: '${c_gu}',
-          data:getNumber()  
+          data:getChart()  
       }],
 
       responsive: {

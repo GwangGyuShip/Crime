@@ -112,7 +112,7 @@
 					<tr>
 						<td width="80%" >
 							<input type="hidden" name=bno value="${vo.no }">
-								<textarea rows="3" cols="100" name="msg"></textarea>
+								<textarea rows="3" cols="50" name="msg"></textarea>
 								<!-- <input type="submit" class="btn btn-sm btn-danger" value="´ñ±Û´Þ±â"> -->
 							</td>
 
@@ -120,6 +120,7 @@
 							value="´ñ±Û´Þ±â" style="vertical-align:middle; height: 40px"></td>
 					</tr>
 				</table>
+				
 			</form>
 		</div>
 
