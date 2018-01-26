@@ -45,7 +45,7 @@
 			 }
 		 
 			 
-		 
+		 	
 		 $.ajax({
 				type:"POST",
 				url:"chartContent.do",
