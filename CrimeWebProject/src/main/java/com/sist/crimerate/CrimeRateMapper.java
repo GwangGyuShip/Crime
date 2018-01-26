@@ -23,12 +23,6 @@ public CrimeRateVO CrimeTotalData(String c_gu);
 @Select("SELECT c_cam FROM cctv WHERE c_gu=#{c_gu}")
 public int CrimeCctvData(String c_gu);
 
-@Select("SELECT SUM(c_count) total ,ROUND(SUM(c_count)/3,2) average FROM crimerate "
-		+ "where c_gu=#{c_gu} and c_type='발생' "
-		+ "group by c_year "
-		+ "order by c_year")
-public List<CrimeRateVO> CrimeChartData(String c_gu);
-
 }
 
 

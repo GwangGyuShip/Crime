@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.net.URLDecoder;
 import java.util.*;
+
+import com.sist.crimerate.CrimeChartDAO;
 import com.sist.crimerate.CrimeRateDAO;
 import com.sist.crimerate.CrimeRateVO;
 
@@ -16,6 +18,9 @@ public class CrimeRateController {
 	
 	@Autowired
 	private CrimeRateDAO dao;
+	
+	@Autowired
+	private CrimeChartDAO mapper;
 	
 	@RequestMapping("crimerate.do")
 	public String crimerate(Model model){
@@ -52,12 +57,20 @@ public class CrimeRateController {
 	}
 	
 	@RequestMapping("chartContent.do")
-	public String chartContent(String c_gu,Model model){
+	public String chartContent(String c_gu, Model model){
 		
-		List<CrimeRateVO> chartList=dao.CrimeChartData(c_gu);
+		System.out.println(c_gu);
+		String[] arr=c_gu.split(",");
 		
-		model.addAttribute("c_gu",c_gu);
-		model.addAttribute("chartList",chartList);
+		List<String> guList=new ArrayList<String>();
+		for(String s:arr){
+			guList.add(s);
+		}
+		Map map=new HashMap();
+		map.put("guList", guList);
+		
+		List<CrimeRateVO> guchList = mapper.totalChartData(map);
+		model.addAttribute("guchList",guchList);
 		return "crimerate/chart_content";
 	}
 }

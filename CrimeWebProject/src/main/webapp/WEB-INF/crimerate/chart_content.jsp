@@ -17,10 +17,14 @@
 		</div>
   <script>
   
+  <c:forEach var="vo" items='${guchList}' varStatus="status">
+	alert('${vo.c_gu}'+" "+'${vo.c_year}'+" "+'${vo.total}'+" "+'${vo.average}');
+  </c:forEach>
+
   var getChart = function(){ 
   	  var totalList=[];
-	  <c:forEach var="vo" items='${chartList}' varStatus="status">
-	  	totalList.push(parseInt('${vo.total}'));
+	  <c:forEach var="vo" items='${guchList}' varStatus="status">
+	  	alert('${vo.c_gu}'+" "+'${vo.c_year}'+" "+'${vo.total}'+" "+'${vo.average}');
 	  </c:forEach>
 	  
 	  return totalList;
@@ -48,8 +52,8 @@
       },
 
       series: [{	
-          name: '${c_gu}',
-          data:getChart()  
+          name: 'aa',
+          data:[1,2,3]
       }],
 
       responsive: {
