@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.net.URLDecoder;
 import java.util.*;
+
+import com.sist.crimerate.CrimeChartDAO;
 import com.sist.crimerate.CrimeRateDAO;
 import com.sist.crimerate.CrimeRateVO;
 
@@ -16,6 +18,9 @@ public class CrimeRateController {
 	
 	@Autowired
 	private CrimeRateDAO dao;
+	
+	@Autowired
+	private CrimeChartDAO mapper;
 	
 	@RequestMapping("crimerate.do")
 	public String crimerate(Model model){
@@ -63,6 +68,8 @@ public class CrimeRateController {
 		}
 		Map map=new HashMap();
 		map.put("guList", guList);
+		
+		List<CrimeRateVO> gchlist = mapper.totalChartData(map);
 		
 		return "crimerate/chart_content";
 	}
