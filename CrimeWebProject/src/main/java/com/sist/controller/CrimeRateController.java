@@ -20,6 +20,15 @@ public class CrimeRateController {
 	@RequestMapping("crimerate.do")
 	public String crimerate(Model model){
 
+		String[] tempArr={"강남","강동","강북","강서","관악","광진","구로","금천","노원","도봉",
+				"동대문","동작","마포","서대문","서초","성동","성북","송파","양천","영등포",
+				"용산","은평","종로","중구","중랑"};
+		List<String> guList=new ArrayList<String>();
+		for(String s:tempArr){
+			guList.add(s);
+		}
+		
+		model.addAttribute("guList",guList);
 		return "crimerate/crimerate";
 	}
 	

@@ -3,5 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.crimerate.crimechart-mapper">
+  <select id="chartListData" resultType="crmVO">
 
+  </select>
 </mapper>
