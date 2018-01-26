@@ -63,6 +63,10 @@ public class BoardController {
 	public String board_delete2(){
 		return "freeboard/delete_ok";
 	}
+	@RequestMapping("update_ok.do")
+	public String board_update(){
+		return "freeboard/update_ok";
+	}
 	// 새글 입력
 	@RequestMapping("insert.do")
 	public String board_insert(){
@@ -123,6 +127,11 @@ public class BoardController {
 		model.addAttribute("no",no);
 		return "freeboard/bdelete";
 	}
+	@RequestMapping("update.do")
+	public String freeboard_update(int no,Model model){
+		model.addAttribute("no",no);
+		return "freeboard/update";
+	}
 	//삭제확인 부분 bdelete 에서 넘어와 비밀번호를 확인한다.
 	@RequestMapping("delete_ok.do")
 	// no는 게시글 번호를 확인하고 pwd는 비밀번호를 확인한다.
@@ -142,5 +151,24 @@ public class BoardController {
 		   }
 		 
 		   return a;
+	}
+	@RequestMapping("main/update.do")
+	public String board_update(int no,Model model)
+	{
+		BoardVO vo=dao.boardUpdateData(no);
+		model.addAttribute("vo", vo);
+		return "update";
+	}
+	@RequestMapping("main/update_ok.do")
+	public String update_ok(BoardVO vo){
+		String data="";
+		boolean bCheck=dao.boardUpdate(vo);
+		if(bCheck==true){
+			data="redirect:/boardmain.do";
+		}
+		else{
+			data="redirect:/update_ok.do";
+		}
+		return data;
 	}
 }
