@@ -67,10 +67,17 @@
 		<div class="content_list cl1 text-left">
 			<h3>뉴스</h3><br>
 			
-			<c:forEach var="i" begin="1" end="5">
-				<input value="제목${i}" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i}">
-				<div id="content_news_${i}" class="collapse content_news_c">
-					내용 ${i}
+			<c:forEach var="vo" items="${mNews}" varStatus="i">
+				<input value="${vo.title}" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
+				<div id="content_news_${i.count}" class="collapse content_news_c">
+					<table class="table">
+						<tr>
+							<td>${vo.author}</td>
+						</tr>
+						<tr>
+							<td>${vo.description}</td>
+						</tr>
+					</table>
 				</div><br><br>
 			</c:forEach>
 			
@@ -113,20 +120,20 @@
 			<table class="table">
 			
 				<tr style="background-color: #2961d3; color: white;">
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-					<th>조회수</th>
+					<th width="15%" class="text-center">번호</th>
+					<th width="15%" class="text-center">지역</th>
+					<th width="30%" class="text-center">제목</th>
+					<th width="15%" class="text-center">작성자</th>
+					<th width="25%" class="text-center">작성일</th>
 				</tr>
 				
-				<c:forEach var="i" begin="1" end="5">
+				<c:forEach var="vo" items="${mBoard}">
 					<tr>
-						<td>${i}</td>
-						<td>테스트</td>
-						<td>테스트</td>
-						<td>테스트</td>
-						<td>테스트</td>
+						<td width="15%">${vo.board_no}</td>
+						<td width="15%">${vo.board_area}</td>
+						<td width="30%">${vo.board_subject}</td>
+						<td width="15%">${vo.board_name}</td>
+						<td width="25%">${vo.board_regdate}</td>
 					</tr>
 				</c:forEach>
 				

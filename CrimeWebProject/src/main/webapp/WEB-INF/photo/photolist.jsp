@@ -131,8 +131,8 @@
 
 .photolow {
 	width: 100%;
-	height: 220px;
-	margin-top: 10px;
+	height: 180px;
+	margin-top: 50px;
 	margin-bottom: 10px;
 	border-bottom: 3px solid black;
 	text-align: left;
@@ -166,17 +166,24 @@
 				<h1>갤러리 게시판</h1>
 			</div>
 			<div class="photomiddle">
-				&nbsp; &nbsp; &nbsp; <a href="#">
+				&nbsp; &nbsp; &nbsp; 
+				
+				<a href="photokang.do?kang=강남">
 					<button class="btn btn-info">강남</button>
-				</a> &nbsp; &nbsp; &nbsp; <a href="#">
+				</a> &nbsp; &nbsp; &nbsp;
+				<a href="photokang.do?kang=강북">
 					<button class="btn btn-info">강북</button>
 				</a>
 			</div>
 			<div class="photolow">
-				<c:forEach var="i" begin="1" end="15">
-					<a href="#">
-						<button class="btn btn-info btn_1">강북${i }</button>
-					</a>
+			
+				<c:forEach var="vo" items="${list }">
+				
+					
+						<a href="#">
+							<button class="btn btn-info btn_1">${vo.gu }</button>
+						</a>
+					
 				</c:forEach>
 
 			</div>
@@ -189,9 +196,9 @@
 						style="display: block; margin-left: auto; margin-right: auto; height: 150px;"
 						src="gallery/skull.png" height="100%">
 				</div>
-				<div style="border-bottom: 2px solid black;">
-					<c:forEach var="i" begin="1" end="3">
-						<div style="height: 300px; width: 350px; display: inline-block;">
+				<div style="border-bottom: 2px solid black; margin: 0px auto;">
+					<c:forEach var="i" begin="1" end="4">
+						<div style="height: 300px; width: 320px; display: inline-block;">
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 imgList"
 								style="width: 255px; margin-bottom: 15px; margin-left: 35px;">
 								<div class="hovereffect">
@@ -217,7 +224,7 @@
 						<strong>서대문구 대신 전해드립니다.</strong>
 					</h1>
 					<c:forEach var="i" begin="1" end="6">
-						<div style="height: 300px; width: 370px; display: inline-block;">
+						<div style="height: 300px; width: 450px; display: inline-block;">
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 imgList"
 								style="width: 255px; margin-top: 15px; margin-bottom: 15px; margin-left: 45px;">
 								<div class="hovereffect">
@@ -237,12 +244,34 @@
 					</c:forEach>
 				</div>
 				<div style="height: 100px; text-align: center;">
-					<h3>
-						<strong> 이전 [1] [2] [3]다음</strong>
-					</h3>
-					<a href="photoinsert.do"><input type="button"  value="게시글 올리기" style="float: right;"></a>
+					
 
 				</div>
+				<table class="table ">
+				<tr>
+					<td class="text-left" style="width: 33%">
+					<form method="post" action="find.do" style="width: 100%">
+						검색:<select name="fs" style="height: 30px;">
+									<option value="name">주소</option>
+									<option value="subject">제목</option>
+									<option value="content">내용</option>
+								</select>
+								<input type="text" name="ss" size="10" style="height: 30px;">
+								<input type="submit" value="찾기" class="btn btn-sm btn-danger" style="width: 75px; height: 38px">
+					</form>
+					
+					</td>
+					<td class="text-center" style="width: 33%">
+						<a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-primary" style="width: 75px; height: 38px">이전</a>
+						[1] [2] [3]
+						<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-success" style="width: 75px; height: 38px">다음</a>
+					</td>
+					<td class="text-right" style="width: 33%">
+					<a href="photoinsert.do" style="width: 135px; height: 40px" type="button" class="btn btn-info">게시글 올리기</a>
+						
+					</td>
+				</tr>
+			</table>
 
 			</div>
 		</div>

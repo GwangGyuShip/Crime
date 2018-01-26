@@ -20,4 +20,5 @@ public class CrimeRateDAO {
 	public List<CrimeRateVO> CrimeChartData(String c_gu){
 		return cm.CrimeChartData(c_gu);
 	}
+
 }
