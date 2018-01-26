@@ -16,18 +16,35 @@
 
 <script type="text/javascript">
  $(function(){
+
 	 $('area').click(function(){
 		var guName=$(this).attr("title");
 		
 		 $.ajax({
-			type:"POST",
-			url:"crimeContent.do",
-			data:{"c_gu":guName},
-			success:function(res)
-			{
-				$('.contentWrapper').html(res);
-			}
-		});
+				type:"POST",
+				url:"crimeContent.do",
+				data:{"c_gu":guName},
+				success:function(res)
+				{
+					$('.contentWrapper').html(res);
+				}
+			});
+		 
+			 if($("input:checkbox[name='gu']:checkbox[value="+guName+"]").is(":checked")){
+				 $("input:checkbox[name='gu']:checkbox[value="+guName+"]").prop('checked', false);
+				 if($("input:checkbox[name='gu']:checked").length>=3){
+					 alert("구는 3개까지만 선택가능합니다!");
+					 return false;
+				 }   
+			 }else{
+				 if($("input:checkbox[name='gu']:checked").length>=3){
+					 alert("구는 3개까지만 선택가능합니다!");
+					 return false;
+				 }
+				 $("input:checkbox[name='gu']:checkbox[value="+guName+"]").prop('checked', true); 
+			 }
+		 
+			 
 		 
 		 $.ajax({
 				type:"POST",
@@ -218,14 +235,15 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                             </div> <!-- 서울지도, 상세내용 끝  -->
                                 </div>
                                 
-                                <div class="row">
+                               <div class="row">
                             <!--꺾은선 그래프 wrapper-->
                               <div class="chartWrapper col-sm-12" style="padding: 30px;">
                                 <div class="col-sm-12" style="margin:30px auto; height: 480px; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
                                    <div class="col-sm-12 text-center form-inline">       
                                             <h2 style="margin-bottom: 20px;">범죄율
                                             <select class="form-control" style="float:right; font-size:15px; vertical-align: middle;">
-                                                <option value="전체">전체</option>
+                                                <option value="총합">총합</option>
+                                                <option value="평균">평균</option>
                                                 <option value="강간">강간</option>
                                                 <option value="살인">살인</option>
                                                 <option value="폭력">폭력</option>
@@ -233,6 +251,12 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                                 <option value="절도">절도</option>
                                             </select>
                                             </h2>
+                                            
+                                            <c:forEach var="gu" items="${guList}">
+                                            	<input type="checkbox" name="gu"  value="${gu}"/>${gu}
+                                            </c:forEach>
+                                             
+    
                                     </div>
                                 
                                    <div class="chart_content">
