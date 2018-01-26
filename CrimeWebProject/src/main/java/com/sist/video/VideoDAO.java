@@ -61,6 +61,10 @@ public class VideoDAO {
 		return bCheck;
 	}
 	
+	public int videoreplyCount(int bno) {
+		return vm.videoreplyCount(bno);
+	}
+	
 	
 
 }
