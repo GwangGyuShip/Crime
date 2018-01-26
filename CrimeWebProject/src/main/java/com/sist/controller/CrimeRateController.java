@@ -18,7 +18,7 @@ public class CrimeRateController {
 	private CrimeRateDAO dao;
 	
 	@RequestMapping("crimerate.do")
-	public String crimerate(){
+	public String crimerate(Model model){
 
 		return "crimerate/crimerate";
 	}
@@ -29,15 +29,15 @@ public class CrimeRateController {
 		CrimeRateVO tvo=dao.CrimeTotalData(c_gu);
 		List<CrimeRateVO> clist=dao.CrimeContentData(c_gu);
 		int c_count=dao.CrimeCctvData(c_gu);
-		if(c_gu.equals("Áß±¸")){
+		if(c_gu.equals("ì¤‘êµ¬")){
 			model.addAttribute("c_gu",c_gu);
 		}else{
-			model.addAttribute("c_gu",c_gu+"±¸");
+			model.addAttribute("c_gu",c_gu+"êµ¬");
 		}
 		
-		model.addAttribute("c_count",c_count); //cctv ´ë¼ö
-		model.addAttribute("clist",clist); //5´ë¹üÁË Á¤º¸
-		model.addAttribute("tvo",tvo); //ÃÑÇÕ, Æò±Õ°ª
+		model.addAttribute("c_count",c_count); //cctv ëŒ€ìˆ˜
+		model.addAttribute("clist",clist); //
+		model.addAttribute("tvo",tvo); //
 		
 		return "crimerate/crimerate_content";
 	}
