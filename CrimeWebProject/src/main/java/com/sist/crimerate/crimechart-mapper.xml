@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	SELECT c_gu,c_year,sum(c_count) as total ,round(sum(c_count)/5,2) as average
 	FROM crimerate
 	<where>
-		<if test="guList.size()!=0 and seoulgu!=null">
+		<if test="guList.size()!=0 and guList!=null">
          	c_gu IN
          	<foreach collection="guList" item="sg" open="(" close=")" separator=",">
          		#{sg}
@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </if>
 	</where>
 	GROUP BY c_gu,c_year
-	ORDER BY c_gu,c_year;
+	ORDER BY c_gu,c_year
   </select>
   
 <!--   <select id="chartListData" resultType="crmVO" parameterType="java.util.Map">

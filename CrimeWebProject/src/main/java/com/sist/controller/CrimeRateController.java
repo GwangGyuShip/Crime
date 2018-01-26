@@ -69,8 +69,8 @@ public class CrimeRateController {
 		Map map=new HashMap();
 		map.put("guList", guList);
 		
-		List<CrimeRateVO> gchlist = mapper.totalChartData(map);
-		
+		List<CrimeRateVO> guchList = mapper.totalChartData(map);
+		model.addAttribute("guchList",guchList);
 		return "crimerate/chart_content";
 	}
 }
