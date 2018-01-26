@@ -18,20 +18,22 @@
 					if (fileIndex > 2)
 						alert('더이상 사진을 올릴수 없습니다.')
 					else {
-						
+
 						$('#fileView').append(
-								'<tr id=f' + (fileIndex) + '>'+ '<td width=80% align=left>'+ '<input type=file id=f_'+ (fileIndex) +
-								' name=files['	+ fileIndex + '] size="15"'+ '</td></tr>');
-						
-						
+								'<tr id=f' + (fileIndex) + '>'
+										+ '<td width=80% align=left>'
+										+ '<input type=file id=f_'
+										+ (fileIndex) + ' name=files['
+										+ fileIndex + '] size="15"'
+										+ '</td></tr>');
+
 						$('#f_' + (fileIndex)).on('change', function() {
-							if( $("#f_")+(fileIndex).val() != "" )
-							alert($('#f_'+(fileIndex)));
+
 							readURL(this);
 						});
 						fileIndex = fileIndex + 1;
-						}
-					
+					}
+
 				});
 		$('#cancel').click(function() {
 			$('#f' + (fileIndex - 1)).remove();
@@ -46,14 +48,24 @@
 		});
 
 	});
+	
+	
+
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 
 			var reader = new FileReader();
 
 			reader.onload = function(e) {
-				$('#myimg').append('<div id="myimd"'+ (fileIndex)+ ' style="display:inline-block;">'+ '<img id=ff'
-										+ (fileIndex)+ ' style="border:1px solid black;" src="#" width="200px;"; height="280px";/>'+ '</div>');
+				$('#myimg')
+						.append(
+								'<div id="myimd"'
+										+ (fileIndex)
+										+ ' style="display:inline-block;">'
+										+ '<img id=ff'
+										+ (fileIndex)
+										+ ' style="border:1px solid black;" src="#" width="200px;"; height="280px";/>'
+										+ '</div>');
 				$('#ff' + (fileIndex)).attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
@@ -101,11 +113,17 @@
 					<!-- 게시판 insert -->
 					<div>
 						<div class="s_box">
+						
 							<div style="width: 300px;">
-								주소 <select style="width: 150px; height: 35px;">
-									<option>강남</option>
-									<option>강북</option>
-								</select>
+								<a href="photoinsert.do?kang=강남" class="btn btn-primary" style="height: 40px; width: 70px; font-size: 16pt">
+									강남
+								</a> &nbsp;
+								<a href="photoinsert.do?kang=강북" class="btn btn-primary" style="height: 40px; width: 70px; font-size: 16pt">
+									강북
+								</a>
+										
+									
+
 							</div>
 						</div>
 					</div>
@@ -113,8 +131,8 @@
 						<div class="s_box">
 							<div style="width: 300px;">
 								위치 <select style="width: 150px; height: 35px;">
-									<c:forEach var="i" begin="1" end="10">
-										<option>강남${i }</option>
+									<c:forEach var="vo" items="${list }">
+										<option>${vo.gu }</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -168,9 +186,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" class="text-right" height=30px><input
-								class="btn btn-sm" style="background-color: #2961d3; color: white;" type="button"
-								value="등록"></td>
+							<td colspan="2" class="text-right" height=30px>
+								<input	class="btn btn-sm" style="background-color: #2961d3; color: white;  height: 40px; width: 70px; font-size: 16pt;" type="button"
+								value="등록" ></td>
 						</tr>
 
 					</table>
