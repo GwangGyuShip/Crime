@@ -33,8 +33,14 @@
 	$(function(){
 		$('.modifyBtn').click(function() {
 			var no = $(this).attr("value");
+			var no1 = $('#deleteBtn').attr("value");
 			var type = $(this).text();
+			var type1 = $('#deleteBtn').text();
 			if(type=='수정') {
+				if(type1=='취소') {
+					$('#delpas'+no1).hide();
+					$('#deleteBtn').text("삭제");
+				}
 				$('#up'+no).show();
 				$(this).text("취소");
 			} else {
@@ -43,7 +49,21 @@
 			}
 		});
 	});
+	$(function(){
+		$('.deleteBtn').click(function() {
+			var no = $(this).attr("value");
+			var type = $(this).text();
+			if(type=='삭제') {
+				$('#delpas'+no).show();
+				$(this).text("취소");
+			} else {
+				$('#delpas'+no).hide();
+				$(this).text("삭제");
+			}
+		});
+	});
 </script>
+
 
 <style type="text/css">
 .tt-video-post-wrapper {
@@ -60,6 +80,9 @@
 .tt-blog-user .tt-blog-user-content {
 	font-size: 18px !important;
 	color: rgb(140,140,140) !important;
+}
+.seung95 {
+	display: inline;
 }
 </style>
 
@@ -180,9 +203,9 @@
 							<div class="empty-space marg-lg-b20"></div>
 							<form method="post" action="videoreplyinsert.do">
 								<input type="hidden" name="bno" value="${vo.no }">
-								name : <input type="text" name="name" size="10" style="height: 25px; background-color: #e2e2e2;"> &nbsp;&nbsp; 
-								password : <input type="password" name="pwd" size="10" style="height: 25px; background-color: #e2e2e2;">
-								<textarea rows="3" name="msg" style="margin-top: 10px; width: 89%; font-size: 16px;"></textarea>
+								name : <input type="text" name="name" size="10" style="height: 25px; background-color: #edf3fc;"> &nbsp;&nbsp; 
+								password : <input type="password" name="pwd" size="10" style="height: 25px; background-color: #edf3fc;">
+								<textarea rows="3" name="msg" style="margin-top: 10px; width: 85%; font-size: 16px;"></textarea>
 								<input class="btn btn-md btn-primary" type="submit" style="margin-bottom: 48px; margin-left: 10px; 
 											padding: 15px 10px 15px 10px;" value="댓글달기">
 							</form>
@@ -199,21 +222,29 @@
 											<div class="tt-comment-label">
 												<span><a class="tt-comment-name">${vo.name }</a></span>
 												<span><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-												<button class="btn btn-warning btn-xs modifyBtn" value="${vo.no }">수정</button>
-												<form action="">
+												<button class="btn btn-xs btn-default modifyBtn" id="modifyBtn" value="${vo.no }">수정</button>
+												<button class="btn btn-xs btn-default deleteBtn" id="deleteBtn" value="${vo.no }">삭제</button>
+												<form method="post" action="videoreplydelete.do" class="seung95">
 													<input type="hidden" name="bno" value="${vo.bno }">
 													<input type="hidden" name="no" value="${vo.no }">
-													<button class="btn btn-warning btn-xs" id="deleteBtn">삭제</button>
+													<span id="delpas${vo.no }" style="display: none;">&nbsp;&nbsp;password : 
+														<input type="password" name="pwd" size="10" style="height: 20px; background-color: #ffe5eb; vertical-align: middle;">
+														<input type="submit" class="btn btn-xs btn-danger" value="삭제">
+													</span>
+													
 												</form>
+												
 											</div>
-											<div class="simple-text font-poppins">
+											<div class="simple-text font-poppins" style="margin-bottom: 15px;">
 												<p>${vo.msg }</p>
 											</div>
 											<div id="up${vo.no }" style="display: none;">
 												<form method="post" action="videoreplyupdate.do">
 													<input type="hidden" name="bno" value="${vo.bno }">
 													<input type="hidden" name="no" value="${vo.no }">
-													<textarea rows="2" cols="50" style="width: 70%; font-size: 15px;">${vo.msg }</textarea>
+													name : <input type="text" name="name" size="10" value="${vo.name }" readonly style="height: 25px; background-color: #e2e2e2;"> &nbsp;&nbsp; 
+													password : <input type="password" name="pwd" size="10" style="height: 25px; background-color: #edf3fc;">
+													<textarea rows="2" cols="50" name="msg" style="width: 70%; font-size: 15px;">${vo.msg }</textarea>
 													<input type="submit" class="btn btn-sm btn-info" style="margin-bottom: 30px;
 															 margin-left: 10px; padding: 9px 12px 9px 12px; font-size: 15px;" value="수정">
 												</form>
