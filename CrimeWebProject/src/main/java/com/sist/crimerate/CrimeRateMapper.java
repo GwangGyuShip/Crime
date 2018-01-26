@@ -11,11 +11,22 @@ import org.apache.ibatis.annotations.Select;
 import com.sist.freeboard.BoardVO;
 
 public interface CrimeRateMapper {
-@Select("select c_gu,c_name,c_type,c_count from crimerate "
-		+"where c_gu=#{c_gu} and c_type='惯积' and c_year=2016")
+@Select("SELECT c_gu,c_name,c_type,c_count FROM crimerate "
+		+"WHERE c_gu=#{c_gu} and c_type='惯积' and c_year=2016")
 public List<CrimeRateVO> CrimeContentData(String c_gu);
 
-@Select("select SUM(c_count) total ,ROUND(SUM(c_count)/3,2) average from crimerate "
-		+ "where c_gu=#{c_gu} and c_type='惯积' and c_year=2016")
+@Select("SELECT SUM(c_count) total ,ROUND(SUM(c_count)/3,2) average FROM crimerate "
+		+ "WHERE c_gu=#{c_gu} and c_type='惯积' and c_year=2016")
 public CrimeRateVO CrimeTotalData(String c_gu);
+
+@Select("SELECT c_cam FROM cctv WHERE c_gu=#{c_gu}")
+public int CrimeCctvData(String c_gu);
+
+@Select("SELECT SUM(c_count) total ,ROUND(SUM(c_count)/3,2) average FROM crimerate "
+		+ "where c_gu=#{c_gu} and c_type='惯积' "
+		+ "group by c_year "
+		+ "order by c_year")
+public List<CrimeRateVO> CrimeChartData(String c_gu);
 }
+
+

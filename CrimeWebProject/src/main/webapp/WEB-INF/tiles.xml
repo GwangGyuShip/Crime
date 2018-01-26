@@ -18,5 +18,10 @@ EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 	<definition name="crimerate/crimerate_content" template="/WEB-INF/crimerate/crimerate_content.jsp">
 		
 	</definition>
+	
+	<definition name="crimerate/chart_content" template="/WEB-INF/crimerate/chart_content.jsp">
+		
+	</definition>
+	
 
 </tiles-definitions>
