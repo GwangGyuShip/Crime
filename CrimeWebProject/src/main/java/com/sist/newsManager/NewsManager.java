@@ -1,51 +1,75 @@
 package com.sist.newsManager;
-
-import java.net.URLEncoder;
+import java.net.*;
 import java.util.*;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
-import com.sist.news.NewsVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+
+import com.sist.news.*;
+
+@Component
 public class NewsManager {
+	@Autowired
+	private NewsDAO dao;
+	
+	public void mainNewsSearch(){
+		
+		try {
+			String strUrl = "http://newssearch.naver.com/search.naver?where=rss&query="
+					+ URLEncoder.encode("범죄경찰", "UTF-8");
+			URL url = new URL(strUrl);
+			JAXBContext jc = JAXBContext.newInstance(Rss.class);
+			Unmarshaller un = jc.createUnmarshaller();
+			Rss rss = (Rss) un.unmarshal(url);
 
-	public static void main(String[] args) {
-		NewsManager nm=new NewsManager();
-		nm.newsList();
+			dao.newsDrop();
+
+			List<Item> list = rss.getChannel().getItem();
+			for (Item i : list) {
+				NewsVO vo = new NewsVO();
+				vo.setTitle(i.getTitle());
+				vo.setLink(i.getLink());
+				vo.setPubDate(i.getPubDate());
+				vo.setAuthor(i.getAuthor());
+				dao.newsInsert(vo);
+			}
+
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+
 	}
 	
-	public List<NewsVO> newsList() {
-		List<NewsVO> list= new ArrayList<NewsVO>();
+	public void newsCrimeSearch(String data){
 		try{
-			Document doc=Jsoup.connect("http://newssearch.naver.com/search.naver?where=rss&query="
-					+URLEncoder.encode("����", "UTF-8")).get();
+			String strUrl="http://newssearch.naver.com/search.naver?where=rss&query="
+								+URLEncoder.encode(data,"UTF-8");
+			URL url=new URL(strUrl);
+			//ctrl+space 했을 때 앞 아이콘위에 A는 Abstract, F는 final, S는 static
+			//Rss는 xml에서 테이블 이름, JAXB는 추상클래스 new를 사용하지 못함
+			JAXBContext jc=JAXBContext.newInstance(Rss.class);
+			Unmarshaller un=jc.createUnmarshaller();
+			Rss rss=(Rss)un.unmarshal(url);
 			
-			Elements title=doc.select("channel item title");
-			Elements link=doc.select("channel item link");
-			Elements description=doc.select("channel item description");
-			Elements pubDate=doc.select("channel item pubDate");
-			Elements author=doc.select("channel item author");
-			//Elements thumbnail=doc.select("channel item media:thumbnail");
+			dao.newsDrop();
 			
-			for(int i=0;i<100;i++){
-				Element t=title.get(i);
-				Element l=link.get(i);
-				Element d=description.get(i);
-				Element pd=pubDate.get(i);
-				Element a=author.get(i);
-				//Element th=thumbnail.get(i);
-				
-				System.out.println(i+" "+t.text()+" "+l.text()+" "+d.text()+" "+pd.text()
-								+" "+a.text()+" ");
+			List<Item> list=rss.getChannel().getItem();
+			for(Item i:list){
+				NewsVO vo=new NewsVO();
+				vo.setTitle(i.getTitle());
+				vo.setDescription(i.getDescription());
+				vo.setLink(i.getLink());
+				vo.setPubDate(i.getPubDate());
+				vo.setAuthor(i.getAuthor());
+				vo.setThumbnail(i.getThumbnail());
+				dao.newsInsert(vo);
 			}
-									
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		return list;
 	}
-	
 }

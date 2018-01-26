@@ -19,17 +19,7 @@
 <script type="text/javascript">
 	var fileIndex = 0;
 	$(function() {
-		/*
-		    click(function(){}) = onclick
-		    change(function(){}) = select onchange
-		    hover(function(){}) = onmouseover
-		    
-		    text() 
-		    html()
-		    attr()
-		    append
-		    remove()
-		 */
+	
 		$('#add')
 				.click(
 						function() {
@@ -70,6 +60,7 @@ select {
 			<center>
 				<h3>글쓰기</h3>
 			</center>
+			<!-- 모든데이터를 컨트롤러에게 전송 -->
 			<form:form method="post" action="insert_ok.do"
 				enctype="multipart/form-data" modelAttribute="uploadForm">
 				<table class="table table-hover">

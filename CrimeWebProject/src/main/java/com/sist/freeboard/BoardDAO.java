@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.annotations.Select;
@@ -30,7 +31,7 @@ public class BoardDAO {
 		try {
 			Class.forName(ds.getDriverClassName());
 		} catch (Exception ex) {
-			System.out.println("BoardDAO"+ex.getMessage());
+//			System.out.println("BoardDAO"+ex.getMessage());
 		}
 	}
 	 public void getConnection()
@@ -53,20 +54,20 @@ public class BoardDAO {
 		  }
 	  }
 	  
-	 // �Խñ� ���� ���� (�߰�)
+	 // 새글 입력하는 부분 입니다/
 	  public void boardInsert(BoardVO vo){
 		  try{
 			  getConnection();
 			  String sql="{CALL boardInsert(?,?,?,?,?,?,?,?,?,?)}";
-			  System.out.println(vo.getBoard_name());
+		/*	  System.out.println(vo.getBoard_name());
 			  System.out.println(vo.getBoard_subject());
 			  System.out.println(vo.getBoard_content());
 			  System.out.println(vo.getBoard_pwd());
 			  System.out.println(vo.getBoard_group());
 			  System.out.println(vo.getBoard_area());
-			  System.out.println(vo.getBoard_ip());	 
+			  System.out.println(vo.getBoard_ip());	 */
 			  cs=conn.prepareCall(sql);
-			  // JSP ���� Fom ���� �Ѱ� COntroller �޾ƿ� ���� Controller �� �Ѱ��ش�.
+			  
 			  cs.setString(1, vo.getBoard_name());
 			  cs.setString(2, vo.getBoard_subject());
 			  cs.setString(3, vo.getBoard_content());
@@ -85,7 +86,7 @@ public class BoardDAO {
 		  }
 	  }
 	  
-	  // �� ���� ����
+	  // 내용보여주기 부분입니다.
 	  public BoardVO boardContentData(int no){
 		  BoardVO vo =new BoardVO();
 		  try{
@@ -121,11 +122,13 @@ public class BoardDAO {
 		  return mapper.boardListData(map);
 	  }
 	  
-	  // �����κ��Դϴ�
+	  //삭제하는 부분입니다
 	  public boolean boardDelete(int no,String pwd){
+		  //기본적인 체크 하는부분은 false 로 지정한다
 		  boolean bCheck=false;
 		  String db_pwd=mapper.freeBoardGetPwd(no);
 		  if(db_pwd.equals(pwd)){
+			  //비밀번호가 맞다면 체크는 true 로바꿔주고 메퍼 Sql 쪽으로 no 를 넘겨준다.
 			  bCheck=true;
 			  mapper.boardDelete(no);
 		  }else{
@@ -143,5 +146,8 @@ public class BoardDAO {
 			  mapper.boardUpdate(vo);
 		  }
 		  return bCheck;
+	  }
+	  public int freeBoardTotalPage(){
+		  return mapper.boardTotalPage();
 	  }
 }
