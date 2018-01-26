@@ -29,6 +29,22 @@
 	})(window, document);
 </script>
 
+<script type="text/javascript">
+	$(function(){
+		$('.modifyBtn').click(function() {
+			var no = $(this).attr("value");
+			var type = $(this).text();
+			if(type=='수정') {
+				$('#up'+no).show();
+				$(this).text("취소");
+			} else {
+				$('#up'+no).hide();
+				$(this).text("수정");
+			}
+		});
+	});
+</script>
+
 <style type="text/css">
 .tt-video-post-wrapper {
 	background-size: 100% 100%;
@@ -183,10 +199,24 @@
 											<div class="tt-comment-label">
 												<span><a class="tt-comment-name">${vo.name }</a></span>
 												<span><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-												
+												<button class="btn btn-warning btn-xs modifyBtn" value="${vo.no }">수정</button>
+												<form action="">
+													<input type="hidden" name="bno" value="${vo.bno }">
+													<input type="hidden" name="no" value="${vo.no }">
+													<button class="btn btn-warning btn-xs" id="deleteBtn">삭제</button>
+												</form>
 											</div>
 											<div class="simple-text font-poppins">
 												<p>${vo.msg }</p>
+											</div>
+											<div id="up${vo.no }" style="display: none;">
+												<form method="post" action="videoreplyupdate.do">
+													<input type="hidden" name="bno" value="${vo.bno }">
+													<input type="hidden" name="no" value="${vo.no }">
+													<textarea rows="2" cols="50" style="width: 70%; font-size: 15px;">${vo.msg }</textarea>
+													<input type="submit" class="btn btn-sm btn-info" style="margin-bottom: 30px;
+															 margin-left: 10px; padding: 9px 12px 9px 12px; font-size: 15px;" value="수정">
+												</form>
 											</div>
 										</div>
 									</div>

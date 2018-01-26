@@ -98,16 +98,19 @@ public class VideoController {
 	}
 	
 	@RequestMapping("videoreplyupdate.do")
-	public String videoreplyUpdate(int no, Model model) {
-		VideoReplyVO vo = dao.videoreplyUpdateData(no);
-		model.addAttribute("vo", vo);
-		return "update";
+	public String videoreplyUpdate(VideoReplyVO vo, Model model) {
+		boolean bCheck = dao.videoreplyUpdate(vo);
+		model.addAttribute("bCheck", bCheck);
+		model.addAttribute("no", vo.getNo());
+		return "redirect:videocontent.do?no="+vo.getBno();
 	}
 	
 	@RequestMapping("videoreplydelete.do")
-	public String videoreplyDelete(int no, Model model) {
-		model.addAttribute("no", no);
-		return "delete";
+	public String videoreplyDelete(int no, String pwd, Model model) {
+		boolean bCheck = dao.videoreplyDelete(no, pwd);
+		model.addAttribute("bCheck", bCheck);
+		VideoReplyVO vo = new VideoReplyVO();
+		return "redirect:videocontent.do?no="+vo.getBno();
 	}
 	
 
