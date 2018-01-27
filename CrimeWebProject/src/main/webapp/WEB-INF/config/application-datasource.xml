@@ -26,6 +26,10 @@
 		<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
 			p:dataSource-ref="ds"
 		/>
+		<bean id="ssf2" class="org.mybatis.spring.SqlSessionFactoryBean"
+			p:configLocation="/WEB-INF/config/Config.xml"
+			p:dataSource-ref="ds"
+		/>
 		<bean id="mapper1" class="org.mybatis.spring.mapper.MapperFactoryBean"
 			p:sqlSessionFactory-ref="ssf"
 			p:mapperInterface="com.sist.crimerate.CrimeRateMapper"
@@ -50,11 +54,8 @@
 			p:sqlSessionFactory-ref="ssf"
 			p:mapperInterface="com.sist.photo.PhotoMapper"
 		/>	
-		<bean id="ssf2" class="org.mybatis.spring.SqlSessionFactoryBean"
-			p:configLocation="/WEB-INF/config/Config.xml"
-			p:dataSource-ref="ds"
-		/>
-		<bean id="dao"
+
+		<bean id="chartdao"
 	       class="com.sist.crimerate.CrimeChartDAO"
 	       p:sqlSessionFactory-ref="ssf2"
      	/>

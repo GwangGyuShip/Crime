@@ -20,7 +20,7 @@ public class CrimeRateController {
 	private CrimeRateDAO dao;
 	
 	@Autowired
-	private CrimeChartDAO mapper;
+	private CrimeChartDAO chartdao;
 	
 	@RequestMapping("crimerate.do")
 	public String crimerate(Model model){
@@ -59,17 +59,17 @@ public class CrimeRateController {
 	@RequestMapping("chartContent.do")
 	public String chartContent(String c_gu, Model model){
 		
-		System.out.println(c_gu);
-		String[] arr=c_gu.split(",");
+		String[] arr=c_gu.split(","); //체크박스에 체크된 내용을 받아와서 ,를 기준으로 자른다음 배열에 주입
 		
 		List<String> guList=new ArrayList<String>();
+		//mybatis에서 parameterType은 List만 인식하므로 배열에 담은 값을 List에 옮긴 후 map에 주입 
 		for(String s:arr){
 			guList.add(s);
 		}
 		Map map=new HashMap();
 		map.put("guList", guList);
 		
-		List<CrimeRateVO> guchList = mapper.totalChartData(map);
+		List<CrimeRateVO> guchList = chartdao.totalChartData(map); //체크된 구에 해당하는 데이터를 List에 주입
 		model.addAttribute("guchList",guchList);
 		return "crimerate/chart_content";
 	}

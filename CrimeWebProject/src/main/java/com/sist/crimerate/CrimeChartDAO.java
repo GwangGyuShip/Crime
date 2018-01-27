@@ -6,6 +6,6 @@ import java.util.*;
 
 public class CrimeChartDAO extends SqlSessionDaoSupport{
 	public List<CrimeRateVO> totalChartData(Map map){
-		return getSqlSession().selectList("totalChartData");
+		return getSqlSession().selectList("totalChartData",map);
 	}
 }
