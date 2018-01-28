@@ -62,6 +62,9 @@ public class VideoController {
 		model.addAttribute("v6", v6);
 		model.addAttribute("v7", v7);
 		
+		List<VideoVO> list_replybest = dao.videoreplybest(map);
+		model.addAttribute("list_replybest", list_replybest);
+		
 		int totalpage = dao.videoTotalPage();
 		if(toPage>totalpage)
 			   toPage=totalpage;
