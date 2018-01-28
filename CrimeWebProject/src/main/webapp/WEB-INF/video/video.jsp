@@ -12,9 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>범죄 관련 동영상</title>
 <link rel='stylesheet' id='font-awesome-theme-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/font-awesome.min.css?ver=1.0' type='text/css' media='all' />
-<link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' />
+<!-- <link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' /> -->
 <link rel='stylesheet' id='js_composer_front-css' href='http://themebubble.com/demo/videoly/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.0.1' type='text/css' media='all' />
-
+<link rel="stylesheet" type="text/css" href="css/style_video.css" />
 
 <style type="text/css">
 .page-wrapper {
@@ -776,17 +776,6 @@ $(function () {
 									
 									<!-- 페이지 나누기 -->
 									<div style="text-align: center;">
-										<!-- <ul class='page-numbers'>
-											<li><a class="page-numbers"
-												href="http://themebubble.com/demo/videoly/home/page/2/">&laquo;&nbsp;Prev</a>
-											</li>
-											<li><span class='page-numbers current'>1</span></li>
-											<li><a class='page-numbers'
-												href='http://themebubble.com/demo/videoly/home/page/2/'>2</a></li>
-											<li><a class="next page-numbers"
-												href="http://themebubble.com/demo/videoly/home/page/2/">Next&nbsp;&raquo;</a>
-											</li>
-										</ul> -->
 
 										<ul class="pagination page-numbers">
 											 <c:choose>

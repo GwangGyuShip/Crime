@@ -10,8 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>동영상</title>
 <link rel='stylesheet' id='font-awesome-theme-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/font-awesome.min.css?ver=1.0' type='text/css' media='all' />
-<link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' />
-	<link rel="stylesheet" type="text/css" href="style_video.css" />
+<!-- <link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="css/style_video.css" />
 <link rel='stylesheet' id='js_composer_front-css' href='http://themebubble.com/demo/videoly/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.0.1' type='text/css' media='all' />
 
 
@@ -198,7 +198,7 @@
 						
 						<!-- 댓글 -->
 						<section class="coment-item">
-
+						
 							<h4 class="tt-title-block-2 size-2 color-2">댓글(${vo.count })</h4>
 							<div class="empty-space marg-lg-b20"></div>
 							<form method="post" action="videoreplyinsert.do">
@@ -276,10 +276,10 @@
 							<div class="empty-space marg-lg-b60 marg-sm-b50 marg-xs-b30"></div>
 							<div class="tt-devider"></div>
 							<div class="empty-space marg-lg-b55 marg-sm-b50 marg-xs-b30"></div>
-
-
+						
+						
 							<div class="tt-comment-form tt-comment-form clearfix"></div>
-
+						
 						</section>
 						<!-- /댓글 -->
 					</div>
