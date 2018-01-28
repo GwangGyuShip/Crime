@@ -66,6 +66,13 @@
 
 
 <style type="text/css">
+@font-face {
+   font-family: 'NanumBarunGothic';
+   src: url(font/NanumBarunGothic.ttf) format('truetype');
+}
+body {
+	font-family: NanumBarunGothic !important;
+}
 .tt-video-post-wrapper {
 	background-size: 100% 100%;
 	padding: 0 !important;
@@ -144,9 +151,8 @@
 									<div class="wpb_column vc_column_container vc_col-sm-12">
 										<div class="vc_column-inner ">
 											<div class="wpb_wrapper">
-												<p>
-													<pre style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;background-color: #ffffff;">${vo.content }</pre>
-												</p>
+												<pre style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;
+													white-space: -o-pre-wrap;word-break:break-all;background-color: #ffffff; font-family: NanumBarunGothic !important;">${vo.content }</pre>
 											</div>
 										</div>
 									</div>

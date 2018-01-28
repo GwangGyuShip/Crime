@@ -13,7 +13,7 @@
 <style type="text/css">
 @font-face {
    font-family: 'NanumBarunGothic';
-   src: url(../main/font/NanumBarunGothic.ttf) format('truetype');
+   src: url(font/NanumBarunGothic.ttf) format('truetype');
 }
 
 html, body {
