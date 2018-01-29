@@ -138,57 +138,20 @@ public class BoardDAO {
 		 
 	  }
 	  
-	  public boolean boardUpdate(BoardVO vo){
-		  boolean bCheck=false;
-		  String pwd=mapper.freeBoardGetPwd(vo.getBoard_no());
-		  if(pwd.equals(vo.getBoard_pwd())){
-			  bCheck=true;
-			  mapper.boardUpdate(vo);
-		  }
-		  return bCheck;
-	  }
+	 
 	  public int freeBoardTotalPage(){
 		  return mapper.boardTotalPage();
 	  }
 	  
-	  public boolean freeBoardUpDate(BoardVO vo){
+	 public boolean freeBoardUpDate(BoardVO vo){
 		  boolean bCheck=false;
 		  String pwd=mapper.freeBoardGetPwd(vo.getBoard_no());
+		  
 		  if(pwd.equals(vo.getBoard_pwd())){
 			  bCheck=true;
-			  mapper.boardUpdate(vo);
+			  mapper.freeBoardUpdate(vo);
 		  }
 		  return bCheck;
 	  }
-	  public BoardVO boardUpdateData(int no){
-		  BoardVO vo =new BoardVO();
-		  try{
-			  getConnection();
-			  String sql="{CALL boardContentData(?,?)}";
-			  cs=conn.prepareCall(sql);
-			  cs.setInt(1, no);
-			  cs.registerOutParameter(2, OracleTypes.CURSOR);
-			  cs.executeQuery();
-			  ResultSet rs=(ResultSet)cs.getObject(2);
-			  rs.next();
-			  vo.setBoard_no(rs.getInt(1));
-			  vo.setBoard_name(rs.getString(2));
-			  vo.setBoard_subject(rs.getString(3));
-			  vo.setBoard_content(rs.getString(4));
-			  vo.setBoard_hit(rs.getInt(5));
-			  vo.setBoard_group(rs.getString(6));
-			  vo.setBoard_area(rs.getString(7));
-			  vo.setBoard_ip(rs.getString(8));
-			  vo.setFilename(rs.getString(9));
-			  vo.setFilesize(rs.getString(10));
-			  vo.setFilecount(rs.getInt(11));
-			  vo.setBoard_regdate(rs.getDate(12));
-			  rs.close();
-		  }catch(Exception ex){
-			  System.out.println("boardContentData"+ex.getMessage());
-		  }finally{
-			  disConnection();
-		  }
-		  return vo;
-	  }
+	  
 }

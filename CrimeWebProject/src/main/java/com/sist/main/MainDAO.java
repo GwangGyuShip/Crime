@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sist.freeboard.BoardVO;
+import com.sist.news.NewsVO;
 
 @Repository
 public class MainDAO {
@@ -31,7 +32,8 @@ public class MainDAO {
 		try {
 			Class.forName(ds.getDriverClassName());
 		} catch (Exception ex) {
-			System.out.println("MainDAO : " + ex.getMessage());
+//			ex.printStackTrace();
+//			System.out.println("MainDAO : " + ex.getMessage());
 		}
 	}
 
@@ -58,8 +60,8 @@ public class MainDAO {
 		return mapper.mainBoardList();
 	}
 
-	public List<Item> newsSearch() {
-		List<Item> list = new ArrayList<Item>();
+	public List<NewsVO> newsSearch() {
+		List<NewsVO> list = new ArrayList<NewsVO>();
 
 		try {
 			String strUrl = "http://newssearch.naver.com/search.naver?where=rss&query="
@@ -68,8 +70,25 @@ public class MainDAO {
 			JAXBContext jc = JAXBContext.newInstance(Rss.class);
 			Unmarshaller un = jc.createUnmarshaller();
 			Rss rss = (Rss) un.unmarshal(url);
-			list = rss.getChannel().getItem();
+			List<Item> iList = rss.getChannel().getItem();
 
+			int count = 0;
+			for(Item i : iList) {
+				NewsVO vo = new NewsVO();
+				System.out.println("a");
+				String strTitle= i.getTitle();
+				if (strTitle.length() >= 45)
+					strTitle = strTitle.substring(0, 45) + "...";
+				vo.setTitle(strTitle);
+				vo.setLink(i.getLink());
+				vo.setAuthor(i.getAuthor());
+				vo.setDescription(i.getDescription());
+				list.add(vo);
+				
+				count++;
+				if (count >= 5)
+					break;
+			}
 		} catch (Exception ex) {
 			System.out.println("NewsMgr : " + ex.getMessage());
 		}
