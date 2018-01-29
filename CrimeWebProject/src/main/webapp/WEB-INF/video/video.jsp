@@ -171,7 +171,7 @@ $(function () {
 					<div class="simple-tesxt">
 						<div class="row">
 						
-							<!-- 위클리 베스트 -->
+							<!-- 위클리 TOP 7 -->
 							<div class="col-md-9">
 								
 							<div class="vc_column-inner">
@@ -403,7 +403,7 @@ $(function () {
 								
 								
 							</div>
-							<!-- /위클리 베스트 -->
+							<!-- /위클리 TOP 7 -->
 							
 							
 							<!-- 최신동영상 -->

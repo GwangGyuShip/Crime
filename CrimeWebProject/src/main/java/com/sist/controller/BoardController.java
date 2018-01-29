@@ -142,7 +142,9 @@ public class BoardController {
 	@RequestMapping("bcontent.do")
 	public String board_content(int no,Model model){
 		BoardVO vo=dao.boardContentData(no);
+//		System.out.println(vo.getFilecount());
 		if(vo.getFilecount()>0){
+//			System.out.println(vo.getFilename());
 			String[] files=vo.getFilename().split(",");
 			model.addAttribute("files", files);
 		}
