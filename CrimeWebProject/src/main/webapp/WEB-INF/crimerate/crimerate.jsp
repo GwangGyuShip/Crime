@@ -22,7 +22,9 @@
 
  $(function(){
 
-	 $('area').click(function(){
+	 $("input:checkbox[name='gu']").prop('checked', false); /*최초 실행시 체크되있던것들 해제시키기*/
+	 
+	 $('area').click(function(){ /*지도에서 구 클릭했을때  */
 		var guName=$(this).attr("title");
 		
 		 $.ajax({
@@ -68,9 +70,6 @@
 			});
 		 
 	 });
-	 
-	 /* $('.gangnam').trigger('click'); */
-	 
 });
 </script>
 
@@ -264,7 +263,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             </h2>
                                             
                                             <c:forEach var="gu" items="${guList}">
-                                            	<input type="checkbox" style="display:none;" name="gu"  value="${gu}"/>
+                                            	<input type="checkbox" name="gu" style="display:none" value="${gu}"/>
                                             </c:forEach>
                                              
     
@@ -299,16 +298,8 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 
                                     series: [{
                                         name: '전체',
-                                        data: [55,55,55,55,55,55,55]
-                                    },{
-                                        name: '강서구',
-                                        data: [20,30,40,50,10,40,99]
-                                    }, {
-                                        name: '관악구',
-                                        data: [40,22,99,44,33,22,77]
-                                    }, {
-                                        name: '광진구',
-                                        data: [43,54,87,32,64,4,74]
+                                        data: [55,55,55,55,55,55,55],
+                                        color:'#FF0000'
                                     }],
 
                                     responsive: {
