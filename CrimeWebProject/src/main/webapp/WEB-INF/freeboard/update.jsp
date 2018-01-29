@@ -111,6 +111,7 @@ select {
 						<td width=20% class="text-right">닉네임</td>
 						<td width=80% class="text-left">
 						<input type=text name=board_name size=15 value=${vo.board_name }></td>
+						<input type=hidden name=board_no value=${vo.board_no }>
 					</tr>
 
 

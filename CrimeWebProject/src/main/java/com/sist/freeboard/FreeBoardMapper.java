@@ -34,9 +34,9 @@ public void boardUpdate(BoardVO vo);
 @Select("SELECT CEIL(COUNT(*)/10) FROM free_board")
 public int boardTotalPage();
 
-@Update("UPDATE free_board SET board_group=#{board_group},board_area=#{board_area},board_name=#{board_name},board_subject=#{board_subject,board_content=#{board_content} WHERE board_no=#{board_no}")
-public void freeBoardUpdate(BoardVO vo);
-		
+@Update("UPDATE free_board SET board_group=#{board_group},board_area=#{board_area},board_name=#{board_name},"
+		+ "board_subject=#{board_subject},board_content=#{board_content} WHERE board_no=#{board_no}")
+public void freeBoardUpdate(BoardVO vo);		
 }
 
 

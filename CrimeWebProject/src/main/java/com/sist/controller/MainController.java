@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sist.freeboard.BoardVO;
 import com.sist.main.Item;
 import com.sist.main.MainDAO;
+import com.sist.news.NewsVO;
 
 
 @Controller
@@ -21,7 +22,7 @@ public class MainController {
 	@RequestMapping("main.do")
 	public String crimerate(Model model){
 		List<BoardVO> mBoard = new ArrayList<BoardVO>();
-		List<Item> mNews = new ArrayList<Item>();
+		List<NewsVO> mNews = new ArrayList<NewsVO>();
 		
 		mBoard = dao.mainBoardList();
 		mNews = dao.newsSearch();

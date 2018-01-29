@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.rwdImageMaps.min.js"></script> <!--반응형 map, area태그-->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <!--hichart-->
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -16,18 +17,78 @@
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
 <script type="text/javascript">
-	var main=new Array();
-	var sub=new Object();
-	sub
 
  $(function(){
-
 	 $("input:checkbox[name='gu']").prop('checked', false); /*최초 실행시 체크되있던것들 해제시키기*/
+	 
+	 $('.button-checkbox').each(function () {
+	        // Settings
+	        var $widget = $(this),
+	            $button = $widget.find('button'),
+	            $checkbox = $widget.find('input:checkbox'),
+	            color = $button.data('color'),
+	            settings = {
+	                on: {
+	                    icon: 'glyphicon glyphicon-check'
+	                },
+	                off: {
+	                    icon: 'glyphicon glyphicon-unchecked'
+	                }
+	            };
+
+	        // Event Handlers
+	        $button.on('click', function () {
+	            $checkbox.prop('checked', !$checkbox.is(':checked'));
+	            $checkbox.triggerHandler('change');
+	            updateDisplay();
+	        });
+	        $checkbox.on('change', function () {
+	            updateDisplay();
+	        });
+
+	        // Actions
+	        function updateDisplay() {
+	            var isChecked = $checkbox.is(':checked');
+
+	            // Set the button's state
+	            $button.data('state', (isChecked) ? "on" : "off");
+
+	            // Set the button's icon
+	            $button.find('.state-icon')
+	                .removeClass()
+	                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+	            // Update the button's color
+	            if (isChecked) {
+	                $button
+	                    .removeClass('btn-default')
+	                    .addClass('btn-' + color + ' active');
+	            }
+	            else {
+	                $button
+	                    .removeClass('btn-' + color + ' active')
+	                    .addClass('btn-default');
+	            }
+	        }
+
+	        // Initialization
+	        function init() {
+	            updateDisplay();
+
+	            // Inject the icon if applicable
+	            /* if ($button.find('.state-icon').length == 0) {
+	                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+	            } */
+	        }
+	        init();
+	    });
+	 
+	 
 	 
 	 $('area').click(function(){ /*지도에서 구 클릭했을때  */
 		var guName=$(this).attr("title");
 		
-		 $.ajax({
+		 $.ajax({ /* 오른쪽 테이블에 상세내용 보여주기*/
 				type:"POST",
 				url:"crimeContent.do",
 				data:{"c_gu":guName},
@@ -37,39 +98,42 @@
 				}
 			});
 		 
-			 if($("input:checkbox[name='gu']:checkbox[value="+guName+"]").is(":checked")){
-				 $("input:checkbox[name='gu']:checkbox[value="+guName+"]").prop('checked', false);
-				 if($("input:checkbox[name='gu']:checked").length>=3){
-					 alert("구는 3개까지만 선택가능합니다!");
-					 return false;
-				 }   
-			 }else{
-				 if($("input:checkbox[name='gu']:checked").length>=3){
-					 alert("구는 3개까지만 선택가능합니다!");
-					 return false;
-				 }
-				 $("input:checkbox[name='gu']:checkbox[value="+guName+"]").prop('checked', true); 
-			 }
-		 
-			 var guList=[];
-			 $("input[name='gu']:checked").each(function(i){
-				 guList.push($(this).val());
-			 });
-		 	 var c_gu="";
-		 	 for(var i=0; i<guList.length;i++){
-		 		 c_gu=c_gu+guList[i]+",";
-		 	 }
-		 $.ajax({
-				type:"POST",
-				url:"chartContent.do",
-				data:{"c_gu":c_gu},
-				success:function(res)
-				{
-					$('.chart_content').html(res);
-				}
-			});
-		 
+			$("button."+guName).trigger('click'); /*버튼형 체크박스 자동클릭되게 만들기*/
+			
 	 });
+	 
+	 $('.line_reset').click(function(){ /*초기화 버튼 클릭시  */
+		 var guList=[];
+	 
+			 $("input:checkbox[name='gu']").each(function(i){
+					if($(this).is(':checked')){
+						$("button."+$(this).val()).trigger('click');
+					}
+				 });
+	 });
+	 
+	 $("input:checkbox[name='gu']").change(function(){
+		 
+		 var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
+		 $("input[name='gu']:checked").each(function(i){
+			 guList.push($(this).val());
+		 });
+	 	 var c_gu="";
+	 	 for(var i=0; i<guList.length;i++){
+	 		 c_gu=c_gu+guList[i]+",";
+	 	 }
+	 	 	
+	 $.ajax({
+			type:"POST",
+			url:"chartContent.do",
+			data:{"c_gu":c_gu},
+			success:function(res)
+			{
+				$('.chart_content').html(res);
+			}
+		});
+	 });
+
 });
 </script>
 
@@ -248,9 +312,15 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                <div class="row">
                             <!--꺾은선 그래프 wrapper-->
                               <div class="chartWrapper col-sm-12" style="padding: 30px;">
-                                <div class="col-sm-12" style="margin:30px auto; height: 480px; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
-                                   <div class="col-sm-12 text-center form-inline">       
-                                            <h2 style="margin-bottom: 20px;">범죄율
+                                <div class="col-sm-12" style="margin:30px auto; height: 580px; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
+                                   <div class="col-sm-12 text-center form-inline">
+                                		
+                                		
+                                            <h2 style="margin-bottom: 20px;">
+                                            <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary line_reset">
+                                            			<i class="fa fa-refresh"></i></button>
+                                            		
+                                                   범죄율
                                             <select class="form-control" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="총합">총합</option>
                                                 <option value="평균">평균</option>
@@ -262,11 +332,23 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             </select>
                                             </h2>
                                             
-                                            <c:forEach var="gu" items="${guList}">
-                                            	<input type="checkbox" name="gu" style="display:none" value="${gu}"/>
+                                            
+                                            	
+                                            <span class="button-checkbox">
+												        <button type="button" style="width:60px;" class="btn-sm" data-color="primary"><b>전체</b></button>
+												        <input type="checkbox" class="hidden" name="" value="전체"/>
+											    	</span>	
+                                            	
+                                            <c:forEach var="gu" items="${guList}" varStatus="status">
+                                             <span class="button-checkbox">
+												        <button type="button" style="width:60px;" class="btn-sm ${gu}" data-color="primary">${gu}</button>
+												        <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+											    	</span>
+											    
+											    	<c:if test="${status.count == 12}">
+											    		<br>
+											    	</c:if>	
                                             </c:forEach>
-                                             
-    
                                     </div>
                                 
                                    <div class="chart_content">

@@ -58,15 +58,41 @@ public class BoardController {
 		
 		return "freeboard/boardmain";
 	}
-	
+	//============================================================================================================================
 	@RequestMapping("delete_ok2.do")
 	public String board_delete2(){
 		return "freeboard/delete_ok";
 	}
-	@RequestMapping("update_ok.do")
-	public String board_update(){
-		return "freeboard/update_ok";
-	}
+
+	//삭제하기 
+	@RequestMapping("delete.do")
+		public String freeboard_delete(int no,Model model){
+			model.addAttribute("no",no);
+			return "freeboard/bdelete";
+		}
+	
+		//삭제확인 부분 bdelete 에서 넘어와 비밀번호를 확인한다.
+	@RequestMapping("delete_ok.do")
+		// no는 게시글 번호를 확인하고 pwd는 비밀번호를 확인한다.
+		public String board_delete_ok(int no,String pwd){
+			// 비밀번호가맞는지위해 모델쪽으로보낸다.
+			   boolean bCheck=dao.boardDelete(no, pwd);
+			   //리턴값을 주기위해 하나 선언
+			   String a= "";
+			   if(bCheck==true)
+			   {
+				   a= "redirect:/boardmain.do";
+				   
+			   }
+			   else
+			   {
+				  a= "redirect:/delete_ok2.do";
+			   }
+			 
+			   return a;
+		}
+	//============================================================================================================================
+	
 	// 새글 입력
 	@RequestMapping("insert.do")
 	public String board_insert(){
@@ -110,65 +136,37 @@ public class BoardController {
 		  dao.boardInsert(uploadForm);
 		return "redirect:/boardmain.do";
 	}
+	//============================================================================================================================
+	
 	//내용보여주기
 	@RequestMapping("bcontent.do")
 	public String board_content(int no,Model model){
 		BoardVO vo=dao.boardContentData(no);
+//		System.out.println(vo.getFilecount());
 		if(vo.getFilecount()>0){
+//			System.out.println(vo.getFilename());
 			String[] files=vo.getFilename().split(",");
 			model.addAttribute("files", files);
 		}
 		model.addAttribute("vo",vo);
 		return "freeboard/bcontent";
 	}
-	//삭제하기 
-	@RequestMapping("delete.do")
-	public String freeboard_delete(int no,Model model){
-		model.addAttribute("no",no);
-		return "freeboard/bdelete";
-	}
+	//============================================================================================================================
+	// 수정하기 내용 보여주기
 	@RequestMapping("update.do")
 	public String freeboard_update(int no,Model model){
+		BoardVO vo=dao.boardContentData(no);
 		model.addAttribute("no",no);
+		model.addAttribute("vo",vo);
 		return "freeboard/update";
 	}
-	//삭제확인 부분 bdelete 에서 넘어와 비밀번호를 확인한다.
-	@RequestMapping("delete_ok.do")
-	// no는 게시글 번호를 확인하고 pwd는 비밀번호를 확인한다.
-	public String board_delete_ok(int no,String pwd){
-		// 비밀번호가맞는지위해 모델쪽으로보낸다.
-		   boolean bCheck=dao.boardDelete(no, pwd);
-		   //리턴값을 주기위해 하나 선언
-		   String a= "";
-		   if(bCheck==true)
-		   {
-			   a= "redirect:/boardmain.do";
-			   
-		   }
-		   else
-		   {
-			  a= "redirect:/delete_ok2.do";
-		   }
-		 
-		   return a;
+	
+	@RequestMapping("update_ok.do")
+	public String update_ok(BoardVO vo,Model model){
+		boolean bCheck=dao.freeBoardUpDate(vo);
+		model.addAttribute("bCheck",bCheck);
+		model.addAttribute("no",vo.getBoard_no());
+		return "freeboard/update_ok";
 	}
-	@RequestMapping("main/update.do")
-	public String board_update(int no,Model model)
-	{
-		BoardVO vo=dao.boardUpdateData(no);
-		model.addAttribute("vo", vo);
-		return "update";
-	}
-	@RequestMapping("main/update_ok.do")
-	public String update_ok(BoardVO vo){
-		String data="";
-		boolean bCheck=dao.boardUpdate(vo);
-		if(bCheck==true){
-			data="redirect:/boardmain.do";
-		}
-		else{
-			data="redirect:/update_ok.do";
-		}
-		return data;
-	}
+	//============================================================================================================================
 }
