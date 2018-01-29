@@ -59,6 +59,7 @@
 	                            		<td width=50% style="vertical-align: middle;" class="text-center">${c_count }건</td>
                             		</tr>                            		
                             		</table> 
-                            		</div>              
+                            		</div>   
+                            		<div class="col-sm-12"><h5><b>※2016년 기준 자료입니다.</b></h5></div>           
 </body>
 </html>
