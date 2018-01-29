@@ -17,6 +17,13 @@
 <link rel="stylesheet" type="text/css" href="css/style_video.css" />
 
 <style type="text/css">
+@font-face {
+   font-family: 'NanumBarunGothic';
+   src: url(font/NanumBarunGothic.ttf) format('truetype');
+}
+body {
+	font-family: NanumBarunGothic !important;
+}
 .page-wrapper {
 	padding-bottom: 0 !important;
 }
@@ -170,7 +177,7 @@ $(function () {
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
 									<div class="tt-title-block">
-										<h3 class="tt-title-text">Weekly Top 7</h3>
+										<h3 class="tt-title-text" style="font-family: NanumBarunGothic !important;">Weekly Top 7</h3>
 									</div>
 									<div class="empty-space  marg-lg-b25"></div>
 									<div class="row">
@@ -188,13 +195,13 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v1.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v1.sortname }</a>
 													</div>
 													
-													<a class="tt-post-title c-h2"
+													<a class="tt-post-title c-h2" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v1.no }&page=${curpage}">${v1.title }</a>
 													<div class="tt-post-label">
-														<span><fmt:formatDate value="${v1.regdate }" pattern="yyyy.MM.dd"/></span>
+														<span style="font-family: NanumBarunGothic !important;"><fmt:formatDate value="${v1.regdate }" pattern="yyyy.MM.dd"/></span>
 													</div>
 													<div class="simple-text">
 														<c:choose>
@@ -207,8 +214,8 @@ $(function () {
 														</c:choose>
 													</div>
 													<div class="tt-post-bottom">
-														<span><a><i class="fa fa-eye" aria-hidden="true"></i>${v1.hit } Views</a></span>
-														<span><a><i class="fa fa-comment" aria-hidden="true"></i>${v1.count } Comments</a></span>
+														<span style="font-family: NanumBarunGothic !important;"><a><i class="fa fa-eye" aria-hidden="true"></i>${v1.hit } Views</a></span>
+														<span style="font-family: NanumBarunGothic !important;"><a><i class="fa fa-comment" aria-hidden="true"></i>${v1.count } Comments</a></span>
 													</div>
 												</div>
 											</div>
@@ -229,9 +236,9 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v2.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v2.sortname }</a>
 													</div>
-													<a class="tt-post-title c-h5"
+													<a class="tt-post-title c-h5" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v2.no }&page=${curpage}"><small>
 														<c:choose>
 															<c:when test="${fn:length(v2.title)>38}">
@@ -257,9 +264,9 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v3.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v3.sortname }</a>
 													</div>
-													<a class="tt-post-title c-h5"
+													<a class="tt-post-title c-h5" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v3.no }&page=${curpage}"><small>
 														<c:choose>
 															<c:when test="${fn:length(v3.title)>38}">
@@ -285,9 +292,9 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v4.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v4.sortname }</a>
 													</div>
-													<a class="tt-post-title c-h5"
+													<a class="tt-post-title c-h5" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v4.no }&page=${curpage}"><small>
 														<c:choose>
 															<c:when test="${fn:length(v4.title)>38}">
@@ -316,9 +323,9 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v5.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v5.sortname }</a>
 													</div>
-													<a class="tt-post-title c-h5"
+													<a class="tt-post-title c-h5" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v5.no }&page=${curpage}"><small>
 														<c:choose>
 															<c:when test="${fn:length(v5.title)>38}">
@@ -344,9 +351,9 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v6.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v6.sortname }</a>
 													</div>
-													<a class="tt-post-title c-h5"
+													<a class="tt-post-title c-h5" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v6.no }&page=${curpage}"><small>
 														<c:choose>
 															<c:when test="${fn:length(v6.title)>38}">
@@ -372,9 +379,9 @@ $(function () {
 												</a>
 												<div class="tt-post-info">
 													<div class="tt-post-cat">
-														<a rel="category tag">${v7.sortname }</a>
+														<a rel="category tag" style="font-family: NanumBarunGothic !important;">${v7.sortname }</a>
 													</div>
-													<a class="tt-post-title c-h5"
+													<a class="tt-post-title c-h5" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 														href="videocontent.do?no=${v7.no }&page=${curpage}"><small>
 														<c:choose>
 															<c:when test="${fn:length(v7.title)>38}">
@@ -408,10 +415,10 @@ $(function () {
 										<div class="tt-tab-wrapper type-1 clearfix">
 											<div class="tt-tab-nav-wrapper">
 												<div class="tt-nav-tab">
-													<div class="tt-nav-tab-item active">
+													<div class="tt-nav-tab-item active" style="font-family: NanumBarunGothic !important;">
 														<i class="fa fa-bolt" aria-hidden="true"></i>댓글 BEST 7
 													</div>
-													<div class="tt-nav-tab-item">
+													<div class="tt-nav-tab-item" style="font-family: NanumBarunGothic !important;">
 														<i class="fa fa-heart" aria-hidden="true"></i>최근 시청한 동영상
 													</div>
 												</div>
@@ -436,7 +443,8 @@ $(function () {
 																		class="img-responsive wp-post-image" alt="" />
 																	</a>
 																	<div class="tt-post-info" style="padding-right: 3px !important">
-																		<a class="tt-post-title c-h6" href="videocontent.do?no=${rbvo.no }&page=${curpage}">
+																		<a class="tt-post-title c-h6" href="videocontent.do?no=${rbvo.no }&page=${curpage}"
+																			style="font-family: NanumBarunGothic !important;">
 																			<c:choose>
 																				<c:when test="${fn:length(rbvo.title)>29}">
 																					${fn:substring(rbvo.title,0,29) }...
@@ -447,7 +455,7 @@ $(function () {
 																			</c:choose>
 																		</a>
 																		<div class="tt-post-cat">
-																			<a rel="category tag">${rbvo.sortname }</a>
+																			<a rel="category tag" style="font-family: NanumBarunGothic !important;">${rbvo.sortname }</a>
 																		</div>
 																	</div>
 																</div>
@@ -467,8 +475,7 @@ $(function () {
 														<li>
 															<div
 																class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img  custom-hover "
-																	href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">
+																<a class="tt-post-img custom-hover" href="">
 																	<div class="tt-video-attributes">
 																		<span class="tt-post-length">41:27</span>
 																	</div> <img width="104" height="63"
@@ -476,13 +483,10 @@ $(function () {
 																	class="img-responsive wp-post-image" alt="" />
 																</a>
 																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">The
-																		Legends of Abra Kedabra</a>
+																	<a class="tt-post-title c-h6" href="" style="font-family: NanumBarunGothic !important;">
+																		The Legends of Abra Kedabra</a>
 																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
+																		<a rel="category tag" style="font-family: NanumBarunGothic !important;">Movies</a>
 																	</div>
 																</div>
 															</div>
@@ -548,15 +552,18 @@ $(function () {
 										</a>
 										<div class="tt-post-info">
 											<div class="tt-post-cat">
-												<a rel="category tag">${vo.sortname }</a>
+												<a rel="category tag" style="font-family: NanumBarunGothic !important;">${vo.sortname }</a>
 											</div>
-											<a class="tt-post-title c-h5" href="videocontent.do?no=${vo.no }&page=${curpage}">${vo.title }</a>
+											<a class="tt-post-title c-h5" href="videocontent.do?no=${vo.no }&page=${curpage}"
+												 style="font-family: NanumBarunGothic !important;">
+												 ${vo.title }
+											</a>
 											<div class="tt-post-label">
 												<span>
 													<fmt:formatDate value="${vo.regdate }" pattern="yyyy.MM.dd"/>
 												</span>
 											</div>
-											<div class="simple-text">
+											<div class="simple-text" style="font-family: NanumBarunGothic !important;">
 												<c:choose>
 													<c:when test="${fn:length(vo.content)>150}">
 														<p>${fn:substring(vo.content,0,150) }...</p>
@@ -567,8 +574,8 @@ $(function () {
 												</c:choose>
 											</div>
 											<div class="tt-post-bottom">
-												<span><a><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 
-												<span><a><i class="fa fa-comment" aria-hidden="true"></i>${vo.count } Comment</a></span>
+												<span style="font-family: NanumBarunGothic !important;"><a><i class="fa fa-eye" aria-hidden="true"></i>${vo.hit } View</a></span> 
+												<span style="font-family: NanumBarunGothic !important;"><a><i class="fa fa-comment" aria-hidden="true"></i>${vo.count } Comment</a></span>
 											</div>
 										</div>
 									</div>

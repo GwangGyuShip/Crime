@@ -473,7 +473,7 @@ a:focus {
 	font-family: 'Roboto';
 	font-size: 16px;
 	line-height: 20px;
-	font-weight: 700;
+	/* font-weight: 700; */
 	color: #111;
 }
 
@@ -488,7 +488,7 @@ a:focus {
 	font-family: 'Roboto';
 	font-size: 13px;
 	line-height: 17px;
-	font-weight: 700;
+	/* font-weight: 700; */
 	color: #111;
 }
 
