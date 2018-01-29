@@ -40,10 +40,18 @@
 	width: 47.5%;
 }
 
+input {
+	width: 100%;
+}
 
 .content_news_c {
-	padding: 20px;
+	/* padding: 5px; */
 	border: 1px solid #dcdce6;
+	cursor: pointer;
+}
+
+.content_news_c:hover {
+	text-decoration: underline;
 }
 
 @media screen and (max-width: 1050px) {
@@ -69,7 +77,7 @@
 			
 			<c:forEach var="vo" items="${mNews}" varStatus="i">
 				<input value="${vo.title}" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
-				<div id="content_news_${i.count}" class="collapse content_news_c">
+				<div id="content_news_${i.count}" class="collapse content_news_c" onclick="location.href='${vo.link}'">
 					<table class="table">
 						<tr>
 							<td>${vo.author}</td>
@@ -84,36 +92,7 @@
 		</div>
 		<div class="content_list cl2 text-left">
 			<h3>동영상</h3><br>
-			<div class="main_video" style="padding: 0 10px 0 10px;">
-				<div class="row">
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-					<div class="col-md-3" style="border: 1px solid black;">
-						동영상
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		<br>
 
@@ -140,7 +119,7 @@
 				
 				<tr>
 					<td colspan="5" class="text-right">
-						<a href="#" class="btn btn-sm">더보기</a>
+						<a href="photolist.do" class="btn btn-sm">더보기</a>
 					</td>
 				</tr>
 			</table>
@@ -169,7 +148,7 @@
 				
 				<tr>
 					<td colspan="5" class="text-right">
-						<a href="#" class="btn btn-sm">더보기</a>
+						<a href="boardmain.do" class="btn btn-sm">더보기</a>
 					</td>
 				</tr>
 			</table>
