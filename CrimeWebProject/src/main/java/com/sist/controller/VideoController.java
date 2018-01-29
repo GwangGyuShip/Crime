@@ -62,6 +62,9 @@ public class VideoController {
 		model.addAttribute("v6", v6);
 		model.addAttribute("v7", v7);
 		
+		List<VideoVO> list_replybest = dao.videoreplybest(map);
+		model.addAttribute("list_replybest", list_replybest);
+		
 		int totalpage = dao.videoTotalPage();
 		if(toPage>totalpage)
 			   toPage=totalpage;
@@ -97,18 +100,14 @@ public class VideoController {
 		return "redirect:videocontent.do?no="+bno;
 	}
 	
-	@RequestMapping("videoreplyupdate.do")
-	public String videoreplyUpdate(int no, Model model) {
-		VideoReplyVO vo = dao.videoreplyUpdateData(no);
-		model.addAttribute("vo", vo);
-		return "update";
-	}
 	
-	@RequestMapping("videoreplydelete.do")
-	public String videoreplyDelete(int no, Model model) {
-		model.addAttribute("no", no);
-		return "delete";
-	}
+	/*@RequestMapping("videoreplydelete.do")
+	public String videoreplyDelete(int no, String pwd, Model model) {
+		boolean bCheck = dao.videoreplyDelete(no, pwd);
+		model.addAttribute("bCheck", bCheck);
+		VideoReplyVO vo = new VideoReplyVO();
+		return "redirect:videocontent.do?no="+vo.getBno();
+	}*/
 	
 
 }

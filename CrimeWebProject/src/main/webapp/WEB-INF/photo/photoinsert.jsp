@@ -107,7 +107,7 @@
 		<div style="height: 20px"></div>
 		<!-- 게시판 프로필 -->
 		<div class="container">
-			<form action="board_insert_ok.do" method="POST" id=frm
+			<form action="p_board_insert.do" method="POST" id=frm
 				enctype="multipart/form-data">
 				<div class="row">
 					<!-- 게시판 insert -->
@@ -132,7 +132,7 @@
 							<div style="width: 300px;">
 								위치 <select style="width: 150px; height: 35px;">
 									<c:forEach var="vo" items="${list }">
-										<option>${vo.gu }</option>
+										<option name="gu" value="${vo.gu  }">${vo.gu }</option>
 									</c:forEach>
 								</select>
 							</div>

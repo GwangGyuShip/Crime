@@ -9,6 +9,9 @@
 .header_logo{
 	font-size: 21pt;
 }
+body {
+	color: #333 !important;
+}
 </style>
 </head>
 <body>

@@ -10,8 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>동영상</title>
 <link rel='stylesheet' id='font-awesome-theme-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/font-awesome.min.css?ver=1.0' type='text/css' media='all' />
-<link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' />
-	<link rel="stylesheet" type="text/css" href="style_video.css" />
+<!-- <link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="css/style_video.css" />
 <link rel='stylesheet' id='js_composer_front-css' href='http://themebubble.com/demo/videoly/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.0.1' type='text/css' media='all' />
 
 
@@ -29,7 +29,54 @@
 	})(window, document);
 </script>
 
+<script type="text/javascript">
+	$(function(){
+		$('.modifyBtn').click(function() {
+			var no = $(this).attr("value");
+			var type = $(this).text();
+			var type1 = $('#deleteBtn'+no).text();
+			if(type=='수정') {
+				if(type1=='취소') {
+					$('#delpas'+no).hide();
+					$('#deleteBtn'+no).text("삭제");
+				}
+				$('#up'+no).show();
+				$(this).text("취소");
+			} else {
+				$('#up'+no).hide();
+				$(this).text("수정");
+			}
+		});
+	});
+	$(function(){
+		$('.deleteBtn').click(function() {
+			var no = $(this).attr("value");
+			var type = $(this).text();
+			var type1 = $('#modifyBtn'+no).text();
+			if(type=='삭제') {
+				if(type1=='취소') {
+					$('#up'+no).hide();
+					$('#modifyBtn'+no).text("수정");
+				}
+				$('#delpas'+no).show();
+				$(this).text("취소");
+			} else {
+				$('#delpas'+no).hide();
+				$(this).text("삭제");
+			}
+		});
+	});
+</script>
+
+
 <style type="text/css">
+@font-face {
+   font-family: 'NanumBarunGothic';
+   src: url(font/NanumBarunGothic.ttf) format('truetype');
+}
+body {
+	font-family: NanumBarunGothic !important;
+}
 .tt-video-post-wrapper {
 	background-size: 100% 100%;
 	padding: 0 !important;
@@ -44,6 +91,13 @@
 .tt-blog-user .tt-blog-user-content {
 	font-size: 18px !important;
 	color: rgb(140,140,140) !important;
+}
+.seung95 {
+	display: inline;
+}
+.videolistBtn:hover {
+	background-color: rgb(186,31,31) !important;
+	color: rgb(240,240,240) !important;
 }
 </style>
 
@@ -84,18 +138,24 @@
 						<!-- 동영상 설명 -->
 						<article
 							class="post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
-							<div class="empty-space marg-lg-b30"></div>
+							<!-- <div class="empty-space marg-lg-b30"></div> -->
 							<div class="tt-blog-category post-single">
-								<a class="c-btn type-3 color-3"
-									href="http://themebubble.com/demo/videoly/category/fashion/">${vo.sortname }</a>
+								<a class="c-btn type-3 color-3">${vo.sortname }</a>
+								<a class="c-btn type-3 color-3 videolistBtn" href="videolist.do"
+									style="float: right; margin-right: 10px; background-color: rgb(240,240,240); color: rgb(186,31,31); 
+											width: 130px; height: 30px; margin-bottom: 0 !important; text-align: center; font-size: 13px;
+											line-height: 20px; border: 1px rgb(186,31,31) solid; font-weight: bold;">
+									목록으로 돌아가기
+								</a>
 							</div>
-							<div class="empty-space marg-lg-b10"></div>
+							<div class="empty-space marg-lg-b20"></div>
 							<h1 class="c-h1">${vo.title }</h1>
 							<div class="empty-space marg-lg-b5"></div>
 
 							<div class="tt-blog-user clearfix">
 								<div class="tt-blog-user-content">
 									<span><fmt:formatDate value="${vo.regdate }" pattern="yyyy.MM.dd (E)"/></span>
+									<span style="color: rgb(186,31,31)">&nbsp;&nbsp;${vo.hit } views</span>
 								</div>
 							</div>
 							<div class="empty-space marg-lg-b10"></div>
@@ -105,16 +165,15 @@
 									<div class="wpb_column vc_column_container vc_col-sm-12">
 										<div class="vc_column-inner ">
 											<div class="wpb_wrapper">
-												<p>
-													<pre style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;background-color: #ffffff;">${vo.content }</pre>
-												</p>
+												<pre style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;
+													white-space: -o-pre-wrap;word-break:break-all;background-color: #ffffff; font-family: NanumBarunGothic !important;">${vo.content }</pre>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="empty-space marg-lg-b40 marg-sm-b30"></div>
-							<span class="tt-tag-title">Tags:</span>
+							<!-- <span class="tt-tag-title">Tags:</span>
 							<ul class="tt-tags">
 								<li><a
 									href="http://themebubble.com/demo/videoly/tag/classic/"
@@ -122,7 +181,7 @@
 								<li><a
 									href="http://themebubble.com/demo/videoly/tag/fashion/"
 									rel="tag">Fashion</a></li>
-							</ul>
+							</ul> -->
 						</article>
 						<div class="empty-space marg-lg-b50 marg-sm-b30"></div>
 						<div class="tt-devider"></div>
@@ -159,14 +218,14 @@
 						
 						<!-- 댓글 -->
 						<section class="coment-item">
-
+						
 							<h4 class="tt-title-block-2 size-2 color-2">댓글(${vo.count })</h4>
 							<div class="empty-space marg-lg-b20"></div>
 							<form method="post" action="videoreplyinsert.do">
 								<input type="hidden" name="bno" value="${vo.no }">
-								name : <input type="text" name="name" size="10" style="height: 25px; background-color: #e2e2e2;"> &nbsp;&nbsp; 
-								password : <input type="password" name="pwd" size="10" style="height: 25px; background-color: #e2e2e2;">
-								<textarea rows="3" name="msg" style="margin-top: 10px; width: 89%; font-size: 16px;"></textarea>
+								name : <input type="text" name="name" size="10" style="height: 25px; background-color: #edf3fc;"> &nbsp;&nbsp; 
+								password : <input type="password" name="pwd" size="10" style="height: 25px; background-color: #edf3fc;">
+								<textarea rows="3" name="msg" style="margin-top: 10px; width: 85%; font-size: 16px;"></textarea>
 								<input class="btn btn-md btn-primary" type="submit" style="margin-bottom: 48px; margin-left: 10px; 
 											padding: 15px 10px 15px 10px;" value="댓글달기">
 							</form>
@@ -183,42 +242,41 @@
 											<div class="tt-comment-label">
 												<span><a class="tt-comment-name">${vo.name }</a></span>
 												<span><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+												<button class="btn btn-xs btn-default modifyBtn" id="modifyBtn${vo.no }" value="${vo.no }">수정</button>
+												<button class="btn btn-xs btn-default deleteBtn" id="deleteBtn${vo.no }" value="${vo.no }">삭제</button>
+												<form method="post" action="videoreplydelete.do" class="seung95">
+													<input type="hidden" name="bno" value="${vo.bno }">
+													<input type="hidden" name="no" value="${vo.no }">
+													<span id="delpas${vo.no }" style="display: none;">&nbsp;&nbsp;password : 
+														<input type="password" name="pwd" size="10" style="height: 20px; background-color: #ffe5eb; vertical-align: middle;">
+														<input type="submit" class="btn btn-xs btn-danger" value="삭제">
+													</span>
+													
+												</form>
 												
 											</div>
-											<div class="simple-text font-poppins">
+											<div class="simple-text font-poppins" style="margin-bottom: 15px;">
 												<p>${vo.msg }</p>
+											</div>
+											<div id="up${vo.no }" style="display: none;">
+												<form method="post" action="videoreplyupdate.do">
+													<input type="hidden" name="bno" value="${vo.bno }">
+													<input type="hidden" name="no" value="${vo.no }">
+													name : <input type="text" name="name" size="10" value="${vo.name }" readonly style="height: 25px; background-color: #e2e2e2;"> &nbsp;&nbsp; 
+													password : <input type="password" name="pwd" size="10" style="height: 25px; background-color: #edf3fc;">
+													<textarea rows="2" cols="50" name="msg" style="width: 70%; font-size: 15px;">${vo.msg }</textarea>
+													<input type="submit" class="btn btn-sm btn-info" style="margin-bottom: 30px;
+															 margin-left: 10px; padding: 9px 12px 9px 12px; font-size: 15px;" value="수정">
+												</form>
 											</div>
 										</div>
 									</div>
 								</li>
 								<div class="empty-space marg-lg-b20"></div>
 								</c:forEach>
-								<!-- <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 comment-list"
-									id="comment-2">
-									<div class="tt-comment-container clearfix">
-										<a class="tt-comment-avatar" href="#"> <img alt=''
-											src='images/user_1.png'
-											class='tt-comment-form-ava avatar-40 photo' height='40'
-											width='40' />
-										</a>
-										<div class="tt-comment-info">
-											<div class="tt-comment-label">
-												<span><a href="#" class="tt-comment-name">장연식</a></span> <span>March 2, 2017</span>
-											</div>
-											<div class="simple-text font-poppins">
-												<p>지은누나 여신이에요</p>
-											</div>
-										</div>
-									</div>
-								</li> -->
 							</ol>
 							<div class="empty-space marg-lg-b60 marg-sm-b50 marg-xs-b30"></div>
-							<div class="tt-devider"></div>
-							<div class="empty-space marg-lg-b55 marg-sm-b50 marg-xs-b30"></div>
-
-
-							<div class="tt-comment-form tt-comment-form clearfix"></div>
-
+						
 						</section>
 						<!-- /댓글 -->
 					</div>
@@ -236,11 +294,13 @@
 												<i class="fa fa-bolt" aria-hidden="true"></i>관련 동영상
 											</div>
 											<div class="tt-nav-tab-item">
-												<i class="fa fa-heart" aria-hidden="true"></i>인기 동영상
+												<i class="fa fa-heart" aria-hidden="true"></i>최근 시청한 동영상
 											</div>
 										</div>
 									</div>
 									<div class="tt-tabs-content clearfix">
+									
+										<!-- 관련동영상 -->
 										<div class="tt-tab-info active">
 											<ul class="tt-post-list">
 												<li>
@@ -411,6 +471,10 @@
 											<a class="c-btn type-2"
 												href="http://themebubble.com/demo/videoly/">Show More</a>
 										</div>
+										<!-- /관련동영상 -->
+										
+										
+										<!-- 최근 시청한 동영상 -->
 										<div class="tt-tab-info">
 											<ul class="tt-post-list">
 												<li>
@@ -512,6 +576,8 @@
 											<a class="c-btn type-2"
 												href="http://themebubble.com/demo/videoly/">Show More</a>
 										</div>
+										<!-- /최근 시청한 동영상 -->
+										
 									</div>
 								</div>
 							</div>
@@ -525,38 +591,11 @@
 			</div>
 		</div>
 	</div>
-	<!-- <script type='text/javascript'>
-/* <![CDATA[ */
-var wpcf7 = {"apiSettings":{"root":"http:\/\/themebubble.com\/demo\/videoly\/wp-json\/","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"cached":"1"};
-/* ]]> */
-</script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-includes/js/comment-reply.min.js?ver=4.8.4'></script> -->
+	
 	<script type='text/javascript'
 		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/global.js?ver=1.0'></script>
-	<!-- <script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/match.height.min.js?ver=1.0'></script> -->
 	<script type='text/javascript'
 		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/image.loaded.min.js?ver=1.0'></script>
-	<!-- <script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/jquery.appear.js?ver=1.0'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=5.0.1'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/idangerous.swiper.min.js?ver=1.0'></script>
-	<script type='text/javascript'>
-/* <![CDATA[ */
-var newsletter = {"messages":{"email_error":"The email is not correct","name_error":"The name is not correct","surname_error":"The last name is not correct","privacy_error":"You must accept the privacy statement"},"profile_max":"20"};
-/* ]]> */
-</script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/newsletter/subscription/validate.js?ver=4.9.8'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/demo-switcher/assets/js/switcher.js?ver=1.0.0'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script> -->
 	
 </body>
 </html>

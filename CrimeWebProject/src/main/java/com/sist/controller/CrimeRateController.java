@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.net.URLDecoder;
 import java.util.*;
+
+import com.sist.crimerate.CrimeChartDAO;
 import com.sist.crimerate.CrimeRateDAO;
 import com.sist.crimerate.CrimeRateVO;
 
@@ -17,9 +19,21 @@ public class CrimeRateController {
 	@Autowired
 	private CrimeRateDAO dao;
 	
+	@Autowired
+	private CrimeChartDAO chartdao;
+	
 	@RequestMapping("crimerate.do")
 	public String crimerate(Model model){
 
+		String[] tempArr={"강남","강동","강북","강서","관악","광진","구로","금천","노원","도봉",
+				"동대문","동작","마포","서대문","서초","성동","성북","송파","양천","영등포",
+				"용산","은평","종로","중구","중랑"};
+		List<String> guList=new ArrayList<String>();
+		for(String s:tempArr){
+			guList.add(s);
+		}
+		
+		model.addAttribute("guList",guList);
 		return "crimerate/crimerate";
 	}
 	
@@ -43,12 +57,20 @@ public class CrimeRateController {
 	}
 	
 	@RequestMapping("chartContent.do")
-	public String chartContent(String c_gu,Model model){
+	public String chartContent(String c_gu, Model model){
 		
-		List<CrimeRateVO> chartList=dao.CrimeChartData(c_gu);
+		String[] arr=c_gu.split(","); //체크박스에 체크된 내용을 받아와서 ,를 기준으로 자른다음 배열에 주입
 		
-		model.addAttribute("c_gu",c_gu);
-		model.addAttribute("chartList",chartList);
+		List<String> guList=new ArrayList<String>();
+		//mybatis에서 parameterType은 List만 인식하므로 배열에 담은 값을 List에 옮긴 후 map에 주입 
+		for(String s:arr){
+			guList.add(s);
+		}
+		Map map=new HashMap();
+		map.put("guList", guList);
+		
+		List<CrimeRateVO> guchList = chartdao.totalChartData(map); //체크된 구에 해당하는 데이터를 List에 주입
+		model.addAttribute("guchList",guchList);
 		return "crimerate/chart_content";
 	}
 }

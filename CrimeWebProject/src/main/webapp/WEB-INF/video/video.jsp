@@ -12,9 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>범죄 관련 동영상</title>
 <link rel='stylesheet' id='font-awesome-theme-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/font-awesome.min.css?ver=1.0' type='text/css' media='all' />
-<link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' />
+<!-- <link rel='stylesheet' id='videoly-main-style-css' href='http://themebubble.com/demo/videoly/wp-content/themes/videoly/css/style.css?ver=1.0' type='text/css' media='all' /> -->
 <link rel='stylesheet' id='js_composer_front-css' href='http://themebubble.com/demo/videoly/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.0.1' type='text/css' media='all' />
-
+<link rel="stylesheet" type="text/css" href="css/style_video.css" />
 
 <style type="text/css">
 .page-wrapper {
@@ -234,8 +234,8 @@ $(function () {
 													<a class="tt-post-title c-h5"
 														href="videocontent.do?no=${v2.no }&page=${curpage}"><small>
 														<c:choose>
-															<c:when test="${fn:length(v2.title)>45}">
-																${fn:substring(v2.title,0,45) }...
+															<c:when test="${fn:length(v2.title)>38}">
+																${fn:substring(v2.title,0,38) }...
 															</c:when>
 															<c:otherwise>
 																${v2.title }
@@ -262,8 +262,8 @@ $(function () {
 													<a class="tt-post-title c-h5"
 														href="videocontent.do?no=${v3.no }&page=${curpage}"><small>
 														<c:choose>
-															<c:when test="${fn:length(v3.title)>45}">
-																${fn:substring(v3.title,0,45) }...
+															<c:when test="${fn:length(v3.title)>38}">
+																${fn:substring(v3.title,0,38) }...
 															</c:when>
 															<c:otherwise>
 																${v3.title }
@@ -290,8 +290,8 @@ $(function () {
 													<a class="tt-post-title c-h5"
 														href="videocontent.do?no=${v4.no }&page=${curpage}"><small>
 														<c:choose>
-															<c:when test="${fn:length(v4.title)>45}">
-																${fn:substring(v4.title,0,45) }...
+															<c:when test="${fn:length(v4.title)>38}">
+																${fn:substring(v4.title,0,38) }...
 															</c:when>
 															<c:otherwise>
 																${v4.title }
@@ -321,8 +321,8 @@ $(function () {
 													<a class="tt-post-title c-h5"
 														href="videocontent.do?no=${v5.no }&page=${curpage}"><small>
 														<c:choose>
-															<c:when test="${fn:length(v5.title)>45}">
-																${fn:substring(v5.title,0,45) }...
+															<c:when test="${fn:length(v5.title)>38}">
+																${fn:substring(v5.title,0,38) }...
 															</c:when>
 															<c:otherwise>
 																${v5.title }
@@ -349,8 +349,8 @@ $(function () {
 													<a class="tt-post-title c-h5"
 														href="videocontent.do?no=${v6.no }&page=${curpage}"><small>
 														<c:choose>
-															<c:when test="${fn:length(v6.title)>45}">
-																${fn:substring(v6.title,0,45) }...
+															<c:when test="${fn:length(v6.title)>38}">
+																${fn:substring(v6.title,0,38) }...
 															</c:when>
 															<c:otherwise>
 																${v6.title }
@@ -377,8 +377,8 @@ $(function () {
 													<a class="tt-post-title c-h5"
 														href="videocontent.do?no=${v7.no }&page=${curpage}"><small>
 														<c:choose>
-															<c:when test="${fn:length(v7.title)>45}">
-																${fn:substring(v7.title,0,45) }...
+															<c:when test="${fn:length(v7.title)>38}">
+																${fn:substring(v7.title,0,38) }...
 															</c:when>
 															<c:otherwise>
 																${v7.title }
@@ -409,185 +409,59 @@ $(function () {
 											<div class="tt-tab-nav-wrapper">
 												<div class="tt-nav-tab">
 													<div class="tt-nav-tab-item active">
-														<i class="fa fa-bolt" aria-hidden="true"></i>최신동영상
+														<i class="fa fa-bolt" aria-hidden="true"></i>댓글 BEST 7
 													</div>
 													<div class="tt-nav-tab-item">
-														<i class="fa fa-heart" aria-hidden="true"></i>뉴스동영상
+														<i class="fa fa-heart" aria-hidden="true"></i>최근 시청한 동영상
 													</div>
 												</div>
 											</div>
 											<div class="tt-tabs-content clearfix">
+											
+												<!-- 댓글 BEST 7 -->
 												<div class="tt-tab-info active">
 													<ul class="tt-post-list">
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img  custom-hover "
-																	href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-length">41:27</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">The
-																		Legends of Abra Kedabra</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
+													
+														<c:forEach var="rbvo" items="${list_replybest }" varStatus="status">
+														<c:if test="${not doneLoop}">
+															<li>
+																<div
+																	class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
+																	<a class="tt-post-img custom-hover"
+																		href="videocontent.do?no=${rbvo.no }&page=${curpage}">
+																		<div class="tt-video-attributes">
+																			<span class="tt-post-length">${rbvo.length }</span>
+																		</div> <img width="104" height="63"
+																		src="https://img.youtube.com/vi/${rbvo.youtubekey }/mqdefault.jpg"
+																		class="img-responsive wp-post-image" alt="" />
+																	</a>
+																	<div class="tt-post-info" style="padding-right: 3px !important">
+																		<a class="tt-post-title c-h6" href="videocontent.do?no=${rbvo.no }&page=${curpage}">
+																			<c:choose>
+																				<c:when test="${fn:length(rbvo.title)>29}">
+																					${fn:substring(rbvo.title,0,29) }...
+																				</c:when>
+																				<c:otherwise>
+																					${rbvo.title }
+																				</c:otherwise>
+																			</c:choose>
+																		</a>
+																		<div class="tt-post-cat">
+																			<a rel="category tag">${rbvo.sortname }</a>
+																		</div>
 																	</div>
 																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-316 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img tt-video-open custom-hover "
-																	href="https://www.youtube.com/embed/gSYJDcRt_Kw?autoplay=1">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-quality">DVD</span> <span
-																			class="tt-post-length">1:51:29</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-1-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-more/">Animated
-																		Movie Trailer for Kickass Movie &#038; More</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-230 post type-post status-publish format-video has-post-thumbnail hentry category-food post_format-post-format-video">
-																<a class="tt-post-img tt-video-open custom-hover "
-																	href="//fast.wistia.net/embed/iframe/g5pnf59ala?videoFoam=true?autoplay=1">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-quality">HD</span> <span
-																			class="tt-post-length">18:13</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-1-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/9-best-dessert-recipes/">Mozzarella
-																		Chicken Roll Recipe</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/food/"
-																			rel="category tag">Food</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
-																<a class="tt-post-img tt-video-open custom-hover "
-																	href="https://player.vimeo.com/video/217499569?autoplay=1">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-quality">HD</span> <span
-																			class="tt-post-length">16:47</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/hair-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/">How
-																		Does an Editor Think And Feel?</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/fashion/"
-																			rel="category tag">Fashion</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img  custom-hover "
-																	href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-length">41:27</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">The
-																		Legends of Abra Kedabra</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img  custom-hover "
-																	href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-length">41:27</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">The
-																		Legends of Abra Kedabra</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img  custom-hover "
-																	href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-length">41:27</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-for-new-kickass-movie-more/">The
-																		Legends of Abra Kedabra</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
-																	</div>
-																</div>
-															</div>
-														</li>
+															</li>
+															<c:if test="${status.count == 7}">
+																<c:set var="doneLoop" value="true" />
+															</c:if>
+														</c:if>
+														</c:forEach>
 													</ul>
-													<a class="c-btn type-2"
-														href="http://themebubble.com/demo/videoly/">Show More</a>
 												</div>
+												<!-- /댓글 BEST 7 -->
 												
+												<!-- 최근 시청한 동영상 -->
 												<div class="tt-tab-info">
 													<ul class="tt-post-list">
 														<li>
@@ -613,82 +487,12 @@ $(function () {
 																</div>
 															</div>
 														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-316 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img tt-video-open custom-hover "
-																	href="https://www.youtube.com/embed/gSYJDcRt_Kw?autoplay=1">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-quality">DVD</span> <span
-																			class="tt-post-length">1:51:29</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-1-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/animated-movie-trailer-more/">Animated
-																		Movie Trailer for Kickass Movie &#038; More</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/movies/"
-																			rel="category tag">Movies</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-230 post type-post status-publish format-video has-post-thumbnail hentry category-food post_format-post-format-video">
-																<a class="tt-post-img tt-video-open custom-hover "
-																	href="//fast.wistia.net/embed/iframe/g5pnf59ala?videoFoam=true?autoplay=1">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-quality">HD</span> <span
-																			class="tt-post-length">18:13</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-1-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/9-best-dessert-recipes/">Mozzarella
-																		Chicken Roll Recipe</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/food/"
-																			rel="category tag">Food</a>
-																	</div>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div
-																class="tt-post type-7 clearfix post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
-																<a class="tt-post-img tt-video-open custom-hover "
-																	href="https://player.vimeo.com/video/217499569?autoplay=1">
-																	<div class="tt-video-attributes">
-																		<span class="tt-post-quality">HD</span> <span
-																			class="tt-post-length">16:47</span>
-																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/02/hair-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
-																</a>
-																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6"
-																		href="http://themebubble.com/demo/videoly/a-classic-example-of-video-type-post-on-wordpress-theme-2/">How
-																		Does an Editor Think And Feel?</a>
-																	<div class="tt-post-cat">
-																		<a
-																			href="http://themebubble.com/demo/videoly/category/fashion/"
-																			rel="category tag">Fashion</a>
-																	</div>
-																</div>
-															</div>
-														</li>
+														
 													</ul>
-													<a class="c-btn type-2"
-														href="http://themebubble.com/demo/videoly/">Show More</a>
+													
 												</div>
+												<!-- /최근 시청한 동영상 -->
+												
 											</div>
 										</div>
 									</div>
@@ -721,7 +525,7 @@ $(function () {
 						</div>
 						<div class="empty-space marg-lg-b30"></div>
 					
-						<!-- 동영상목록 왼쪽영역 -->
+						
 						<div class="wpb_column vc_column_container vc_col-sm-9">
 							<div class="vc_column-inner ">
 								<div class="wpb_wrapper">
@@ -733,7 +537,7 @@ $(function () {
 									<c:forEach var="vo" items="${list }">
 									<div
 										class="tt-post type-6 clearfix post-100 post type-post status-publish format-video has-post-thumbnail hentry category-fashion tag-classic tag-fashion post_format-post-format-video">
-										<a class="tt-post-img tt-video-open custom-hover"
+										<a class="tt-post-img custom-hover"
 											href="videocontent.do?no=${vo.no }&page=${curpage}">
 											<div class="tt-video-attributes">
 												<span class="tt-post-quality">HD</span> <span
@@ -776,17 +580,6 @@ $(function () {
 									
 									<!-- 페이지 나누기 -->
 									<div style="text-align: center;">
-										<!-- <ul class='page-numbers'>
-											<li><a class="page-numbers"
-												href="http://themebubble.com/demo/videoly/home/page/2/">&laquo;&nbsp;Prev</a>
-											</li>
-											<li><span class='page-numbers current'>1</span></li>
-											<li><a class='page-numbers'
-												href='http://themebubble.com/demo/videoly/home/page/2/'>2</a></li>
-											<li><a class="next page-numbers"
-												href="http://themebubble.com/demo/videoly/home/page/2/">Next&nbsp;&raquo;</a>
-											</li>
-										</ul> -->
 
 										<ul class="pagination page-numbers">
 											 <c:choose>
@@ -826,11 +619,7 @@ $(function () {
 								</div>
 							</div>
 						</div>
-						<!-- /동영상목록 왼쪽영역 -->
 						
-						
-						
-
 						
 					</div>
 					<!-- /동영상목록 -->
@@ -844,38 +633,10 @@ $(function () {
 	</div>
 	</div>
 	</div>
-	<!-- <script type='text/javascript'>
-/* <![CDATA[ */
-var wpcf7 = {"apiSettings":{"root":"http:\/\/themebubble.com\/demo\/videoly\/wp-json\/","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"cached":"1"};
-/* ]]> */
-</script> -->
-	<!-- <script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-includes/js/comment-reply.min.js?ver=4.8.4'></script> -->
+	
 <script type='text/javascript'
 		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/global.js?ver=1.0'></script>
-<!-- <script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/match.height.min.js?ver=1.0'></script>
-		<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/image.loaded.min.js?ver=1.0'></script>
-<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/jquery.appear.js?ver=1.0'></script>
-<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=5.0.1'></script>
-<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/themes/videoly/js/idangerous.swiper.min.js?ver=1.0'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var newsletter = {"messages":{"email_error":"The email is not correct","name_error":"The name is not correct","surname_error":"The last name is not correct","privacy_error":"You must accept the privacy statement"},"profile_max":"20"};
-/* ]]> */
-</script> -->
-	<!-- <script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/newsletter/subscription/validate.js?ver=4.9.8'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-content/plugins/demo-switcher/assets/js/switcher.js?ver=1.0.0'></script>
-	<script type='text/javascript'
-		src='http://themebubble.com/demo/videoly/wp-includes/js/wp-embed.min.js?ver=4.8.4'></script> -->
+
 
 </body>
 </html>

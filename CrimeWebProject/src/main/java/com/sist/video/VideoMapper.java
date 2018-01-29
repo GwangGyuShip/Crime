@@ -39,6 +39,13 @@ public interface VideoMapper {
 			+ "WHERE num<=7")
 	public List<VideoVO> videoTop7ListData(Map map);
 	
+	//댓글 BEST 7
+	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,tc "
+			+ "FROM bvideo b,(SELECT bno,COUNT(*) AS tc FROM BVIDEOREPLY GROUP BY bno ORDER BY tc DESC) br "
+			+ "WHERE b.no=br.bno "
+			+ "ORDER BY br.tc DESC")
+	public List<VideoVO> videoreplybest(Map map);
+	
 	//댓글 추가
 	@SelectKey(keyProperty="no", resultType=int.class, before=true, statement="SELECT NVL(MAX(no)+1,1) as no FROM bvideoreply")
 	@Insert("INSERT INTO bvideoreply VALUES(#{no},#{bno},#{name},#{msg},SYSDATE,#{pwd})")

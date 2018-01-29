@@ -13,6 +13,7 @@ public class VideoVO {
 	private String length;
 	private int hit;
 	private int count;
+	private int tc;
 	
 	public int getNo() {
 		return no;
@@ -74,6 +75,13 @@ public class VideoVO {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public int getTc() {
+		return tc;
+	}
+	public void setTc(int tc) {
+		this.tc = tc;
+	}
+	
 	
 	
 

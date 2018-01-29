@@ -13,7 +13,7 @@
 <style type="text/css">
 @font-face {
    font-family: 'NanumBarunGothic';
-   src: url(../main/font/NanumBarunGothic.ttf) format('truetype');
+   src: url(font/NanumBarunGothic.ttf) format('truetype');
 }
 
 html, body {
@@ -36,7 +36,7 @@ html, body {
 	left: 0px;
 	padding: 10px 20px;
 	box-shadow: 0px 2px 5px #333;
-	z-index: 3;
+	z-index: 200;
 	border: none !important;
 }
 .main_menu {

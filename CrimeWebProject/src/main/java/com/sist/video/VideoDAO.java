@@ -29,6 +29,10 @@ public class VideoDAO {
 		return vm.videoTop7ListData(map);
 	}
 	
+	public List<VideoVO> videoreplybest(Map map) {
+		return vm.videoreplybest(map);
+	}
+	
 	public void videoreplyInsert(VideoReplyVO vo) {
 		vm.videoreplyInsert(vo);
 	}

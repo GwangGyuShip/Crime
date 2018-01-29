@@ -84,6 +84,36 @@
 		</div>
 		<div class="content_list cl2 text-left">
 			<h3>동영상</h3><br>
+			<div class="main_video" style="padding: 0 10px 0 10px;">
+				<div class="row">
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+					<div class="col-md-3" style="border: 1px solid black;">
+						동영상
+					</div>
+				</div>
+			</div>
 		</div>
 		<br>
 

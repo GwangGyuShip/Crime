@@ -12,12 +12,12 @@ public class VideoRestController {
 	@Autowired
 	private VideoDAO dao;
 	
-	@RequestMapping("videoreplyupdate_ok.do")
+	@RequestMapping("videoreplyupdate.do")
 	public String replyupdate_ok(VideoReplyVO vo) {
 		String data = "";
 		boolean bCheck = dao.videoreplyUpdate(vo);
 		if(bCheck==true) {
-			data = "<script>location.href=\"video/video_detail.do?no="+vo.getBno()+"\";</script>";
+			data = "<script>location.href=\"videocontent.do?no="+vo.getBno()+"\";</script>";
 		} else {
 			data = "<script>alert(\"비밀번호가 틀립니다!!\");"
 					  +"history.back();</script>";
@@ -25,12 +25,12 @@ public class VideoRestController {
 		return data;
 	}
 	
-	@RequestMapping("videoreplydelete_ok.do")
+	@RequestMapping("videoreplydelete.do")
 	public String replydelete_ok(VideoReplyVO vo, int no, String pwd) {
 		String data = "";
 		boolean bCheck = dao.videoreplyDelete(no, pwd);
 		if(bCheck==true) {
-			data = "<script>location.href=\"video/video_detail.do?no="+vo.getBno()+"\";</script>";
+			data = "<script>location.href=\"videocontent.do?no="+vo.getBno()+"\";</script>";
 		} else {
 			data = "<script>alert(\"비밀번호가 틀립니다!!\");"
 					  +"history.back();</script>";
