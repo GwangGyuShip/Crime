@@ -7,14 +7,25 @@
 <title>Insert title here</title>
 <style type="text/css">
 .header_logo{
+	color: white;
 	font-size: 21pt;
 }
-body {
+/* body {
 	color: #333 !important;
-}
+} */
+
+ a:link { 
+ 	color: white; text-decoration: none;
+ }
+ a:visited { 
+ 	color: white; text-decoration: none;
+ }
+ a:hover {
+  color: white; text-decoration: none;
+  }
 </style>
 </head>
 <body>
-	<b class="header_logo">범죄도시</b>
+	<a href="main.do"><b class="header_logo">범죄도시</b></a>
 </body>
 </html>
