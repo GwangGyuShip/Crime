@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.rwdImageMaps.min.js"></script> <!--반응형 map, area태그-->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <!--hichart-->
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -302,8 +303,14 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                             <!--꺾은선 그래프 wrapper-->
                               <div class="chartWrapper col-sm-12" style="padding: 30px;">
                                 <div class="col-sm-12" style="margin:30px auto; height: 580px; background-color:white; box-shadow:0 2px 10px rgba(0, 0, 0, 0.8);">
-                                   <div class="col-sm-12 text-center form-inline">       
-                                            <h2 style="margin-bottom: 20px;">범죄율
+                                   <div class="col-sm-12 text-center form-inline">
+                                		
+                                		
+                                            <h2 style="margin-bottom: 20px;">
+                                            <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary">
+                                            			<i class="fa fa-refresh"></i></button>
+                                            		
+                                                   범죄율
                                             <select class="form-control" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="총합">총합</option>
                                                 <option value="평균">평균</option>
@@ -315,16 +322,23 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             </select>
                                             </h2>
                                             
-                                            	
-                                            <c:forEach var="gu" items="${guList}">
                                             
+                                            	
+                                            <span class="button-checkbox">
+												        <button type="button" style="width:60px;" class="btn-sm" data-color="primary"><b>전체</b></button>
+												        <input type="checkbox" class="hidden" name="" value="전체"/>
+											    	</span>	
+                                            	
+                                            <c:forEach var="gu" items="${guList}" varStatus="status">
                                              <span class="button-checkbox">
-												        <button type="button" class="btn-sm ${gu}" data-color="primary" >${gu}</button>
+												        <button type="button" style="width:60px;" class="btn-sm ${gu}" data-color="primary">${gu}</button>
 												        <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
 											    	</span>
+											    
+											    	<c:if test="${status.count == 12}">
+											    		<br>
+											    	</c:if>	
                                             </c:forEach>
-                                             
-    
                                     </div>
                                 
                                    <div class="chart_content">

@@ -59,7 +59,8 @@
               };
                 
                 var g_name="";
-                var c_count=[]
+                var g_animation="";
+                var c_count=[];
                 var guList=[];
                 
                   <c:forEach var="vo" items='${guchList}' varStatus="status">
@@ -68,19 +69,27 @@
 		               
 	                  if(parseInt('${status.count}')%7==0 && parseInt('${status.count}')!=1 
 	                		  && parseInt('${fn:length(guchList)}') != 7){
-	                	  guList.push({"name":g_name,"data":c_count});
+	                	  
+	                	  if(parseInt('${fn:length(guchList)}') == parseInt('${status.count}')){
+	                		  guList.push({"name":g_name,"data":c_count,"animation":true});  
+	                	  }else{
+	                		  guList.push({"name":g_name,"data":c_count,"animation":false});
+	                	  }
+	                	  
 	                	  c_count=[];
 	                  }
                    
                       if(parseInt('${fn:length(guchList)}')==7 && parseInt('${status.count}')==7){
-                        	guList.push({"name":g_name,"data":c_count});	
+                        	guList.push({"name":g_name,"data":c_count,"animation":true});	
                        }
                   </c:forEach>
-
+                  
             for(var i=0; i<guList.length ; i++){
                 options.series.push({
                  name:guList[i].name,    
-                 data:guList[i].data
+                 data:guList[i].data,
+                 animation:guList[i].animation
+	                 
              }
              );
             }
