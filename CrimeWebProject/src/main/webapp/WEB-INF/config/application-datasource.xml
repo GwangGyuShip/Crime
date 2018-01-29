@@ -53,6 +53,10 @@
 		<bean id="mapper6" class="org.mybatis.spring.mapper.MapperFactoryBean"
 			p:sqlSessionFactory-ref="ssf"
 			p:mapperInterface="com.sist.photo.PhotoMapper"
+		/>
+		<bean id="mapper7" class="org.mybatis.spring.mapper.MapperFactoryBean"
+			p:sqlSessionFactory-ref="ssf"
+			p:mapperInterface="com.sist.datatable.DataTableMapper"
 		/>	
 
 		<bean id="chartdao"
