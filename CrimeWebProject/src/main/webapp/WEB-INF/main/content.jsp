@@ -47,6 +47,11 @@ input {
 .content_news_c {
 	/* padding: 5px; */
 	border: 1px solid #dcdce6;
+	cursor: pointer;
+}
+
+.content_news_c:hover {
+	text-decoration: underline;
 }
 
 @media screen and (max-width: 1050px) {
@@ -71,9 +76,8 @@ input {
 			<h3>뉴스</h3><br>
 			
 			<c:forEach var="vo" items="${mNews}" varStatus="i">
-				<c:if test="${i.count <= 10}">
 				<input value="${vo.title}" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
-				<div id="content_news_${i.count}" class="collapse content_news_c">
+				<div id="content_news_${i.count}" class="collapse content_news_c" onclick="location.href='${vo.link}'">
 					<table class="table">
 						<tr>
 							<td>${vo.author}</td>
@@ -83,7 +87,6 @@ input {
 						</tr>
 					</table>
 				</div><br><br>
-				</c:if>
 			</c:forEach>
 			
 		</div>

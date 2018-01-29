@@ -75,16 +75,17 @@ public class MainDAO {
 			int count = 0;
 			for(Item i : iList) {
 				NewsVO vo = new NewsVO();
-				
+				System.out.println("a");
 				String strTitle= i.getTitle();
 				if (strTitle.length() >= 45)
 					strTitle = strTitle.substring(0, 45) + "...";
 				vo.setTitle(strTitle);
-				
+				vo.setLink(i.getLink());
 				vo.setAuthor(i.getAuthor());
 				vo.setDescription(i.getDescription());
 				list.add(vo);
 				
+				count++;
 				if (count >= 5)
 					break;
 			}
