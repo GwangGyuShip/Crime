@@ -102,6 +102,15 @@
 			
 	 });
 	 
+	 $('.line_reset').click(function(){ /*초기화 버튼 클릭시  */ 
+		  $("input:checkbox[name='gu']").change(function(){
+			 $("input[name='gu']:checked").each(function(i){
+				 
+				 $(this).prop('checked', false);
+				 });	 
+		 });
+	 });
+	 
 	 $("input:checkbox[name='gu']").change(function(){
 		 
 		 var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
@@ -123,7 +132,7 @@
 			}
 		});
 	 });
-	 
+
 });
 </script>
 
@@ -307,7 +316,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                 		
                                 		
                                             <h2 style="margin-bottom: 20px;">
-                                            <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary">
+                                            <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary line_reset">
                                             			<i class="fa fa-refresh"></i></button>
                                             		
                                                    범죄율
