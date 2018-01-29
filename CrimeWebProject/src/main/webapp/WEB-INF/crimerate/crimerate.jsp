@@ -102,13 +102,14 @@
 			
 	 });
 	 
-	 $('.line_reset').click(function(){ /*초기화 버튼 클릭시  */ 
-		  $("input:checkbox[name='gu']").change(function(){
-			 $("input[name='gu']:checked").each(function(i){
-				 
-				 $(this).prop('checked', false);
-				 });	 
-		 });
+	 $('.line_reset').click(function(){ /*초기화 버튼 클릭시  */
+		 var guList=[];
+	 
+			 $("input:checkbox[name='gu']").each(function(i){
+					if($(this).is(':checked')){
+						$("button."+$(this).val()).trigger('click');
+					}
+				 });
 	 });
 	 
 	 $("input:checkbox[name='gu']").change(function(){
