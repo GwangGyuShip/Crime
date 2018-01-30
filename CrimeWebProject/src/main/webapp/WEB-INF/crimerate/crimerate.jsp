@@ -74,11 +74,6 @@
 	        // Initialization
 	        function init() {
 	            updateDisplay();
-
-	            // Inject the icon if applicable
-	            /* if ($button.find('.state-icon').length == 0) {
-	                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-	            } */
 	        }
 	        init();
 	    });
@@ -105,11 +100,12 @@
 	 $('.line_reset').click(function(){ /*초기화 버튼 클릭시  */
 		 var guList=[];
 	 
-			 $("input:checkbox[name='gu']").each(function(i){
+	 	
+			 /* $("input:checkbox[name='gu']").each(function(i){
 					if($(this).is(':checked')){
 						$("button."+$(this).val()).trigger('click');
 					}
-				 });
+				 }); */
 	 });
 	 
 	 $("input:checkbox[name='gu']").change(function(){
