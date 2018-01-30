@@ -52,6 +52,18 @@
        <tr>
         <td width=20% class="text-center success">제목</td>
         <td colspan="3" class="text-left">${vo.board_subject }</td>
+        <c:if test="${vo.filecount>0 }">
+        <tr>
+         <td class="text-center info" width=20%>첨부파일</td>
+         <td class="text-left" colspan="3">
+          <ul>
+           <c:forEach var="f" items="${files }">
+             <li><a href="#">${f }</a></li>
+           </c:forEach>
+          </ul>
+         </td>
+        </tr>
+       </c:if>
        </tr>
        <tr>
          <td colspan="4" height="150" class="text-left" valign="top" width="600">${vo.board_content }</td>
