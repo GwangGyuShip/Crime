@@ -30,10 +30,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          		#{sg}
          	</foreach>
          	AND c_type='발생'
-         	AND c_name=#{c_type}
+         	AND c_name=#{c_name}
          	ORDER BY c_gu,c_year 
-         	 
+         	
          </if>
+	</where>
+  </select>
+  
+  <select id="chartTotalData" resultType="crmVO" parameterType="java.util.Map">
+  	SELECT c_year,'전체' as c_gu,
+  	<if test='!(c_name.equals("평균"))'>
+  	ROUND(AVG(c_count),2) as c_count
+  	</if>
+  	<if test='c_name.equals("평균")'>
+  	ROUND(AVG(c_count),2) as average
+  	</if>
+	FROM crimerate
+	<where>
+		c_type='발생'
+		<if test='!(c_name.equals("평균"))'>
+         	AND c_name=#{c_name}  
+       </if>
+       	GROUP BY c_year
+         	ORDER BY c_year
 	</where>
   </select>
 </mapper>

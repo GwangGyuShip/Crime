@@ -17,73 +17,70 @@
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
 <script type="text/javascript">
-
  $(function(){
-	 $("input:checkbox[name='gu']").prop('checked', false); /*최초 실행시 체크되있던것들 해제시키기*/
-	 
-	 $('.button-checkbox').each(function () {
-	        // Settings
-	        var $widget = $(this),
-	            $button = $widget.find('button'),
-	            $checkbox = $widget.find('input:checkbox'),
-	            color = $button.data('color'),
-	            settings = {
-	                on: {
-	                    icon: 'glyphicon glyphicon-check'
-	                },
-	                off: {
-	                    icon: 'glyphicon glyphicon-unchecked'
-	                }
-	            };
+	$('.button-checkbox').each(function () { //버튼형 체크박스 제이쿼리
+	       // Settings
+	       var $widget = $(this),
+	           $button = $widget.find('button'),
+	           $checkbox = $widget.find('input:checkbox'),
+	           color = $button.data('color'),
+	           settings = {
+	               on: {
+	                   icon: 'glyphicon glyphicon-check'
+	               },
+	               off: {
+	                   icon: 'glyphicon glyphicon-unchecked'
+	               }
+	           };
 
-	        // Event Handlers
-	        $button.on('click', function () {
-	            $checkbox.prop('checked', !$checkbox.is(':checked'));
-	            $checkbox.triggerHandler('change');
-	            updateDisplay();
-	        });
-	        $checkbox.on('change', function () {
-	            updateDisplay();
-	        });
+	       // Event Handlers
+	       $button.on('click', function () {
+	           $checkbox.prop('checked', !$checkbox.is(':checked'));
+	           $checkbox.triggerHandler('change');
+	           updateDisplay();
+	       });
+	       $checkbox.on('change', function () {
+	           updateDisplay();
+	       });
 
-	        // Actions
-	        function updateDisplay() {
-	            var isChecked = $checkbox.is(':checked');
+	       // Actions
+	       function updateDisplay() {
+	           var isChecked = $checkbox.is(':checked');
 
-	            // Set the button's state
-	            $button.data('state', (isChecked) ? "on" : "off");
+	           // Set the button's state
+	           $button.data('state', (isChecked) ? "on" : "off");
 
-	            // Set the button's icon
-	            $button.find('.state-icon')
-	                .removeClass()
-	                .addClass('state-icon ' + settings[$button.data('state')].icon);
+	           // Set the button's icon
+	           $button.find('.state-icon')
+	               .removeClass()
+	               .addClass('state-icon ' + settings[$button.data('state')].icon);
 
-	            // Update the button's color
-	            if (isChecked) {
-	                $button
-	                    .removeClass('btn-default')
-	                    .addClass('btn-' + color + ' active');
-	            }
-	            else {
-	                $button
-	                    .removeClass('btn-' + color + ' active')
-	                    .addClass('btn-default');
-	            }
-	        }
+	           // Update the button's color
+	           if (isChecked) {
+	               $button
+	                   .removeClass('btn-default')
+	                   .addClass('btn-' + color + ' active');
+	           }
+	           else {
+	               $button
+	                   .removeClass('btn-' + color + ' active')
+	                   .addClass('btn-default');
+	           }
+	       }
 
-	        // Initialization
-	        function init() {
-	            updateDisplay();
-	        }
-	        init();
-	    });
-	 
-	 
-	 
-	 $('area').click(function(){ /*지도에서 구 클릭했을때  */
+	       // Initialization
+	       function init() {
+	           updateDisplay();
+	       }
+	       init();
+	   });
+	
+	
+	
+	$('area').click(function(){ /*지도에서 구 클릭했을때  */
 		var guName=$(this).attr("title");
 		
-		 $.ajax({ /* 오른쪽 테이블에 상세내용 보여주기*/
+		$.ajax({ /* 오른쪽 테이블에 상세내용 보여주기*/
 				type:"POST",
 				url:"crimeContent.do",
 				data:{"c_gu":guName},
@@ -92,44 +89,47 @@
 					$('.contentWrapper').html(res);
 				}
 			});
-		 
+		
 			$("button."+guName).trigger('click'); /*버튼형 체크박스 자동클릭되게 만들기*/
 			
-	 });
-	 
-	 $('.line_reset').click(function(){ /*초기화 버튼 클릭시  */
-		 var guList=[];
-	 
-	 	
-			 /* $("input:checkbox[name='gu']").each(function(i){
-					if($(this).is(':checked')){
-						$("button."+$(this).val()).trigger('click');
-					}
-				 }); */
-	 });
-	 
-	 $("input:checkbox[name='gu']").change(function(){
+	});
+	
+	$('.line_reset').click(function(){ /*초기화 버튼 클릭시  */
+	
+		$("input:checkbox[name='gu']").prop('checked', false); //최초 실행시 체크되있던것들 해제시키기
+		$('.btn-gu').removeClass('btn-primary active'); //체크되있는 버튼 active 해제하고
+		$('.btn-gu').addClass('btn-default'); // default 상태로 바꾸기
+		
+		 var c_name=$("#select_type option:selected").val();
+		 $('.totalBtn').trigger('click');
+	});
+	
+	$("input:checkbox[name='gu']").change(function(){
+		
+		var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
+		$("input[name='gu']:checked").each(function(i){
+			guList.push($(this).val());
+		});
+		 var c_gu="";
+		 for(var i=0; i<guList.length;i++){
+			 c_gu=c_gu+guList[i]+",";
+		 }
+		 var c_name=$("#select_type option:selected").val();
 		 
-		 var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
-		 $("input[name='gu']:checked").each(function(i){
-			 guList.push($(this).val());
-		 });
-	 	 var c_gu="";
-	 	 for(var i=0; i<guList.length;i++){
-	 		 c_gu=c_gu+guList[i]+",";
-	 	 }
-	 	 var c_type=$("#select_type option:selected").val();
-	 	 
-	 $.ajax({
+	$.ajax({
 			type:"POST",
 			url:"chartContent.do",
-			data:{"c_gu":c_gu,"c_type":c_type},
+			data:{"c_gu":c_gu,"c_name":c_name},
 			success:function(res)
 			{
 				$('.chart_content').html(res);
 			}
 		});
-	 });
+	});
+	
+	$("input:checkbox[name='gu']").prop('checked', false); //최초 실행시 체크되있던것들 해제시키기
+	 
+	$('.totalBtn').trigger('click'); //최초 실행시 전체 값을 보여주기 위해서 자동클릭 실행
 
 });
 </script>
@@ -292,7 +292,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 			onmouseover="fn_ShowSeoulGu(25);" onfocus="fn_ShowSeoulGu(25);"
 			onblur="fn_SeoulGuOut()" onmouseout="fn_SeoulGuOut()"/>
 		</map>
-	  </div> <!--서울지도 끝  -->
+	 </div> <!--서울지도 끝  -->
 	
                      <!--상세정보  -->
                     <div class="col-sm-6" style="height:469.61px;">
@@ -315,9 +315,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                 		
                                             <h2 style="margin-bottom: 20px;">
                                             <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary line_reset">
-                                            			<i class="fa fa-refresh"></i></button>
-                                            		
-                                                   범죄율
+                                            			<i class="fa fa-refresh"></i></button>범죄율
                                             <select class="form-control" id="select_type" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="평균">평균</option>
                                                 <option value="강간">강간</option>
@@ -331,55 +329,55 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             	<script type="text/javascript">
                                             			$(function(){
                                             				$('#select_type').change(function(){
-                                            					 var c_type=$(this).children("option:selected").attr("value"); //선택된 옵션 값
+                                            					var c_name=$(this).children("option:selected").attr("value"); //선택된 옵션 값
+                                            					
+                                            					var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
+                                            					$("input[name='gu']:checked").each(function(i){
+                                            						guList.push($(this).val());
+                                            						});
+                                            					 var c_gu="";
+                                            					 for(var i=0; i<guList.length;i++){
+                                            						 c_gu=c_gu+guList[i]+",";
+                                            					 	}
                                             					 
-                                            					 var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
-                                            					 $("input[name='gu']:checked").each(function(i){
-                                            						 guList.push($(this).val());
-                                            					 	});
-                                            				 	 var c_gu="";
-                                            				 	 for(var i=0; i<guList.length;i++){
-                                            				 		 c_gu=c_gu+guList[i]+",";
-                                            				 	 	}
-                                            				 	 
-                                            					 $.ajax({
+                                            					$.ajax({
                                             							type:"POST",
                                             							url:"chartContent.do",
-                                            							data:{"c_type":c_type,"c_gu":c_gu},
+                                            							data:{"c_name":c_name,"c_gu":c_gu},
                                             							success:function(res)
                                             							{
                                             								$('.chart_content').html(res);
                                             							}
                                             						});
-                                            					 	
+                                            						
                                             				});
                                             			});
                                             	</script>
                                             
                                             	
                                             <span class="button-checkbox">
-												        <button type="button" style="width:60px;" class="btn-sm" data-color="primary"><b>전체</b></button>
-												        <input type="checkbox" class="hidden" name="" value="전체"/>
-											    	</span>	
+												       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
+												       <input type="checkbox" class="hidden" name="gu" value="전체"/>
+											   	</span>	
                                             	
                                             <c:forEach var="gu" items="${guList}" varStatus="status">
                                              <span class="button-checkbox">
-												        <button type="button" style="width:60px;" class="btn-sm ${gu}" data-color="primary">${gu}</button>
-												        <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
-											    	</span>
-											    
-											    	<c:if test="${status.count == 12}">
-											    		<br>
-											    	</c:if>	
+												       <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+												       <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+											   	</span>
+											   
+											   	<c:if test="${status.count == 12}">
+											   		<br>
+											   	</c:if>	
                                             </c:forEach>
                                     </div>
                                 
                                    <div class="chart_content">
-	                                   <div id="line_chart" style="min-width: 310px; height: 400px; margin: 0 auto">
-	                                       
-	                                   </div>
+	                                  <div id="line_chart" style="min-width: 310px; height: 400px; margin: 0 auto">
+	                                      
+	                                  </div>
     								</div>
-                                <script>
+                               <!--  <script>
                                    Highcharts.chart('line_chart', {
                                      
                                     title: {
@@ -423,7 +421,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                     },
 
                                 });
-                                </script>
+                                </script> -->
                                 </div>
                                 </div>
                                 </div>
