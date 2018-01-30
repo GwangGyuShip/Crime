@@ -38,7 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   
   <select id="chartTotalData" resultType="crmVO" parameterType="java.util.Map">
-  	SELECT c_year,'전체' as c_gu,ROUND(AVG(c_count),2) as c_count
+  	SELECT c_year,'전체' as c_gu,
+  	<if test='!(c_name.equals("평균"))'>
+  	ROUND(AVG(c_count),2) as c_count
+  	</if>
+  	<if test='c_name.equals("평균")'>
+  	ROUND(AVG(c_count),2) as average
+  	</if>
 	FROM crimerate
 	<where>
 		c_type='발생'

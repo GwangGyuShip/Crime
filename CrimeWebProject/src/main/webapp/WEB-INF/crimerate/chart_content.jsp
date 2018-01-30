@@ -88,14 +88,24 @@
                        }
                   </c:forEach>
                   
-            for(var i=0; i<guList.length ; i++){
-                options.series.push({
-                 name:guList[i].name,    
-                 data:guList[i].data,
-                 animation:guList[i].animation
-	                
-             }
-             );
+            for(var i=0; i<guList.length ; i++){ //list에 push해줄때 전체값은 꺾은선 색깔을 빨간색으로!
+            	if(guList[i].name == '전체'){
+            		options.series.push({
+                        name:guList[i].name,    
+                        data:guList[i].data,
+                        animation:guList[i].animation,
+                        color:'#FF0000'
+                    }
+                    );		
+            	}else{ //'전체' 이외의 값은 색깔은 랜덤으로!
+            	    options.series.push({
+                        name:guList[i].name,    
+                        data:guList[i].data,
+                        animation:guList[i].animation
+                    }
+                    );
+            	}
+            
             }
                 
                var chart=new Highcharts.chart('line_chart',options); 

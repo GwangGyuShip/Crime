@@ -17,11 +17,8 @@
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
 <script type="text/javascript">
-
  $(function(){
-	$("input:checkbox[name='gu']").prop('checked', false); /*최초 실행시 체크되있던것들 해제시키기*/
-	
-	$('.button-checkbox').each(function () {
+	$('.button-checkbox').each(function () { //버튼형 체크박스 제이쿼리
 	       // Settings
 	       var $widget = $(this),
 	           $button = $widget.find('button'),
@@ -98,14 +95,13 @@
 	});
 	
 	$('.line_reset').click(function(){ /*초기화 버튼 클릭시  */
-		var guList=[];
 	
+		$("input:checkbox[name='gu']").prop('checked', false); //최초 실행시 체크되있던것들 해제시키기
+		$('.btn-gu').removeClass('btn-primary active'); //체크되있는 버튼 active 해제하고
+		$('.btn-gu').addClass('btn-default'); // default 상태로 바꾸기
 		
-			/* $("input:checkbox[name='gu']").each(function(i){
-					if($(this).is(':checked')){
-						$("button."+$(this).val()).trigger('click');
-					}
-				}); */
+		 var c_name=$("#select_type option:selected").val();
+		 $('.totalBtn').trigger('click');
 	});
 	
 	$("input:checkbox[name='gu']").change(function(){
@@ -130,6 +126,10 @@
 			}
 		});
 	});
+	
+	$("input:checkbox[name='gu']").prop('checked', false); //최초 실행시 체크되있던것들 해제시키기
+	 
+	$('.totalBtn').trigger('click'); //최초 실행시 전체 값을 보여주기 위해서 자동클릭 실행
 
 });
 </script>
@@ -356,13 +356,13 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             
                                             	
                                             <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm" data-color="primary"><b>전체</b></button>
+												       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
 												       <input type="checkbox" class="hidden" name="gu" value="전체"/>
 											   	</span>	
                                             	
                                             <c:forEach var="gu" items="${guList}" varStatus="status">
                                              <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm ${gu}" data-color="primary">${gu}</button>
+												       <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
 												       <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
 											   	</span>
 											   
@@ -377,7 +377,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	                                      
 	                                  </div>
     								</div>
-                                <script>
+                               <!--  <script>
                                    Highcharts.chart('line_chart', {
                                      
                                     title: {
@@ -421,7 +421,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                     },
 
                                 });
-                                </script>
+                                </script> -->
                                 </div>
                                 </div>
                                 </div>
