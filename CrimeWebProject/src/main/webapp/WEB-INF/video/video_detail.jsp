@@ -319,7 +319,7 @@ body {
 															<a class="tt-post-title c-h6" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
 																href="">${relatedvo.title }</a>
 															<div class="tt-post-cat">
-																<a rel="category tag" style="font-family: NanumBarunGothic !important;">Movies</a>
+																<a rel="category tag" style="font-family: NanumBarunGothic !important;">${relatedvo.sortname }</a>
 															</div>
 														</div>
 													</div>
