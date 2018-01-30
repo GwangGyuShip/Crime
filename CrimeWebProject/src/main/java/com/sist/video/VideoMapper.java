@@ -14,17 +14,29 @@ import org.springframework.data.repository.query.Param;
 import com.sist.video.*;
 
 public interface VideoMapper {
-	//페이지별 목록출력
+	//전체 목록
 	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,num "
 			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,rownum as num "
 			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit "
 			+ "FROM bvideo ORDER BY regdate DESC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<VideoVO> videoListAllData(Map map);
+	
+	//페이지별 목록출력
+	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,num "
+			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,rownum as num "
+			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit "
+			+ "FROM bvideo WHERE sortname=#{sortname} ORDER BY regdate DESC)) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<VideoVO> videoListData(Map map);
 	
-	//총 페이지 구하기
+	//전체목록에서 총페이지 구하기
 	@Select("SELECT CEIL(COUNT(*)/10) FROM bvideo")
-	public int videoTotalPage();
+	public int videoAllTotalPage();
+	
+	//목록별 총 페이지 구하기
+	@Select("SELECT CEIL(COUNT(*)/10) FROM bvideo WHERE sortname=#{sortname}")
+	public int videoTotalPage(String sortname);
 	
 	//조회수 증가
 	@Update("UPDATE bvideo SET hit=hit+1 WHERE no=#{no}")

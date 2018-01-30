@@ -27,5 +27,9 @@ EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 		
 	</definition>
 	
+	<definition name="video/video_list" template="/WEB-INF/video/video_list.jsp">
+		
+	</definition>
+	
 
 </tiles-definitions>

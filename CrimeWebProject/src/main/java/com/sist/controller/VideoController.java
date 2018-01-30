@@ -16,16 +16,58 @@ public class VideoController {
 	@Autowired
 	private VideoDAO dao;
 	
+	@RequestMapping("video_list.do")
+	public String video_list(String page, String sortname, Model model) {
+		if(page==null)	
+			page="1";
+		int curpage = Integer.parseInt(page);
+		
+		int rowSize = 10;
+		int start = (rowSize*curpage)-(rowSize-1);
+		int end = rowSize*curpage;
+		
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("sortname", sortname);
+		
+		int block=10;
+		int fromPage = ((curpage-1)/block*block)+1;  
+		int toPage = ((curpage-1)/block*block)+block;
+		
+		List<VideoVO> list = dao.videoListData(map);
+		for(VideoVO vo:list) {
+			vo.setCount(dao.videoreplyCount(vo.getNo()));
+		}
+		
+		
+		model.addAttribute("list", list);
+		
+		int totalpage = dao.videoTotalPage(sortname);
+		if(toPage>totalpage)
+			   toPage=totalpage;
+		model.addAttribute("curpage",curpage);
+		model.addAttribute("totalpage",totalpage);
+		model.addAttribute("fromPage",fromPage);
+		model.addAttribute("toPage",toPage);
+		model.addAttribute("block",block);
+		model.addAttribute("sortname",sortname);
+		
+		return "video/video_list";
+	}
+	
+	
 	@RequestMapping("video.do")
 	public String videolist(String page, Model model) {
 		if(page==null)	
 			page="1";
 		int curpage = Integer.parseInt(page);
 		
-		
 		int rowSize = 10;
 		int start = (rowSize*curpage)-(rowSize-1);
 		int end = rowSize*curpage;
+		
 		
 		Map map = new HashMap();
 		map.put("start", start);
@@ -35,16 +77,28 @@ public class VideoController {
 		int fromPage = ((curpage-1)/block*block)+1;  
 		int toPage = ((curpage-1)/block*block)+block;
 		
-		
-		List<VideoVO> list = dao.videoListData(map);
+		List<VideoVO> list = dao.videoListAllData(map);
 		for(VideoVO vo:list) {
 			vo.setCount(dao.videoreplyCount(vo.getNo()));
 		}
+		
+		
+		model.addAttribute("list", list);
+		
+		int totalpage = dao.videoAllTotalPage();
+		if(toPage>totalpage)
+			   toPage=totalpage;
+		model.addAttribute("curpage",curpage);
+		model.addAttribute("totalpage",totalpage);
+		model.addAttribute("fromPage",fromPage);
+		model.addAttribute("toPage",toPage);
+		model.addAttribute("block",block);
+		
 		List<VideoVO> list_top7 = dao.videoTop7ListData(map);
 		for(VideoVO top7vo:list_top7) {
 			top7vo.setCount(dao.videoreplyCount(top7vo.getNo()));
 		}
-		model.addAttribute("list", list);
+		
 		model.addAttribute("list_top7", list_top7);
 		
 		VideoVO v1 = list_top7.get(0);
@@ -65,14 +119,7 @@ public class VideoController {
 		List<VideoVO> list_replybest = dao.videoreplybest(map);
 		model.addAttribute("list_replybest", list_replybest);
 		
-		int totalpage = dao.videoTotalPage();
-		if(toPage>totalpage)
-			   toPage=totalpage;
-		model.addAttribute("curpage",curpage);
-		model.addAttribute("totalpage",totalpage);
-		model.addAttribute("fromPage",fromPage);
-		model.addAttribute("toPage",toPage);
-		model.addAttribute("block",block);
+		
 		return "video/video";
 	}
 	

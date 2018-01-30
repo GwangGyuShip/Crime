@@ -152,6 +152,35 @@ $(function () {
 </script>
 
 
+<script type="text/javascript">
+$(function(){
+	
+	$('.sortnamelist').hide();
+	
+	
+	$('.cateselect').click(function(){
+		var sortname = $(this).attr("value");
+		
+		$('.allvideolist').hide();
+		$('.sortnamelist').show();
+		
+		$.ajax({
+			type:'POST',
+			url:'video_list.do',
+			data:{"sortname":sortname},
+			success:function(res){
+				$('.sortnamelist').html(res);
+			}
+		});
+	});
+	
+	$('#selectall').click(function(){
+		$('.sortnamelist').hide();
+		$('.allvideolist').show();
+	});
+});
+
+</script>
 
 
 </head>
@@ -514,12 +543,12 @@ $(function () {
 						<div class="moviechoice">
 							<div class="movie_category">
 								<span>카테고리</span>
-								<button class="snip1535 hover">전체</button>
-								<button class="snip1535">뉴스</button>
-								<button class="snip1535">유튜브</button>
-								<button class="snip1535">다큐멘터리</button>
-								<button class="snip1535">UCC</button>
-								<button class="snip1535">기타</button>
+								<button class="snip1535 hover" id="selectall" value="all">전체</button>
+								<button class="snip1535 cateselect" value="News">뉴스</button>
+								<button class="snip1535 cateselect" value="Youtube">유튜브</button>
+								<button class="snip1535 cateselect" value="다큐멘터리">다큐멘터리</button>
+								<button class="snip1535 cateselect" value="UCC">UCC</button>
+								<button class="snip1535 cateselect" value="ETC">기타</button>
 							</div>
 							<div class="movie_search">
 								<span>검색</span>
@@ -530,7 +559,7 @@ $(function () {
 						<div class="empty-space marg-lg-b30"></div>
 					
 						
-						<div class="wpb_column vc_column_container vc_col-sm-9">
+						<div class="wpb_column vc_column_container vc_col-sm-9 allvideolist">
 							<div class="vc_column-inner ">
 								<div class="wpb_wrapper">
 									<div class="tt-title-block">
@@ -587,13 +616,13 @@ $(function () {
 									
 									<!-- 페이지 나누기 -->
 									<div style="text-align: center;">
-
+					
 										<ul class="pagination page-numbers">
 											 <c:choose>
-                 							 	<c:when test="${curpage>block }">
-                   									<li><a href="videolist.do?page=1">|◀</a></li>
-                   									<li><a href="videolist.do?page=${fromPage-1 }">◀</a></li>
-                 								</c:when>
+									 			<c:when test="${curpage>block }">
+													<li><input type="button" class="preBtn" value="|◀"></li>
+													<li><a href="video.do?page=${fromPage-1 }">◀</a></li>
+												</c:when>
 												<c:otherwise>
 													<li><span style="color: gray">|◀</span></li>
 													<li><span style="color: gray">◀</span></li>
@@ -604,13 +633,14 @@ $(function () {
 													<li class="active"><a>${i}</a></li>
 												</c:if>
 												<c:if test="${i!=curpage }">
-													<li><a href="videolist.do?page=${i}">${i}</a></li>
+													<li><a href="video.do?page=${i}">${i}</a></li>
 												</c:if>
 											</c:forEach>
+											
 											<c:choose>
 												<c:when test="${toPage<totalpage }">
-													<li><a href="videolist.do?page=${toPage+1 }">▶</a></li>
-													<li><a href="videolist.do?page=${totalpage }">▶|</a></li>
+													<li><a href="video.do?page=${toPage+1 }">▶</a></li>
+													<li><a href="video.do?page=${totalpage }">▶|</a></li>
 												</c:when>
 												<c:otherwise>
 													<li><span style="color: gray">▶</span></li>
@@ -618,14 +648,26 @@ $(function () {
 												</c:otherwise>
 											</c:choose>
 										</ul>
-
-
+					
+					
 									</div>
 									<!-- /페이지 나누기 -->
 									
 								</div>
 							</div>
 						</div>
+						
+						
+						
+						<div class="sortnamelist">
+							<!-- 목록뿌려주는거어어!! -->
+						</div>
+						<script>
+							$(function(){
+								$('#selectall').trigger('click');
+								/* $('.snip1535').click(); */
+							});
+						</script>
 						
 						
 					</div>

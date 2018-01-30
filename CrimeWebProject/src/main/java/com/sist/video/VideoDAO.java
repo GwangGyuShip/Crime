@@ -13,12 +13,20 @@ public class VideoDAO {
 	@Autowired
 	private VideoMapper vm;
 	
+	public List<VideoVO> videoListAllData(Map map) {
+		return vm.videoListAllData(map);
+	}
+	
 	public List<VideoVO> videoListData(Map map) {
 		return vm.videoListData(map);
 	}
 	
-	public int videoTotalPage() {
-		return vm.videoTotalPage();
+	public int videoAllTotalPage() {
+		return vm.videoAllTotalPage();
+	}
+	
+	public int videoTotalPage(String sortname) {
+		return vm.videoTotalPage(sortname);
 	}
 	
 	public VideoVO videoContentData(int no) {
