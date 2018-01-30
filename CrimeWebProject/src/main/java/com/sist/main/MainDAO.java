@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,9 @@ import org.springframework.stereotype.Repository;
 
 import com.sist.freeboard.BoardVO;
 import com.sist.news.NewsVO;
+import com.sist.newsManager.Item;
+import com.sist.newsManager.Rss;
+import com.sist.video.VideoVO;
 
 @Repository
 public class MainDAO {
@@ -76,16 +80,17 @@ public class MainDAO {
 			for(Item i : iList) {
 				NewsVO vo = new NewsVO();
 				String strTitle= i.getTitle();
-				if (strTitle.length() >= 45)
-					strTitle = strTitle.substring(0, 45) + "...";
+				if (strTitle.length() >= 30)
+					strTitle = strTitle.substring(0, 30) + "...";
 				vo.setTitle(strTitle);
 				vo.setLink(i.getLink());
 				vo.setAuthor(i.getAuthor());
 				vo.setDescription(i.getDescription());
+				
 				list.add(vo);
 				
 				count++;
-				if (count >= 5)
+				if (count >= 10)
 					break;
 			}
 		} catch (Exception ex) {
@@ -94,4 +99,14 @@ public class MainDAO {
 
 		return list;
 	}
+	
+	public List<String> mainVideoSort() {
+		return mapper.mainVideoSort();
+	}
+	
+	public VideoVO mainVideoList(String sortname) {
+		VideoVO vo = mapper.mainVideoList(sortname);
+		
+		return vo; 
+	};
 }

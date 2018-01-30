@@ -28,6 +28,17 @@
 	margin-bottom: 10px;
 }
 
+.content_news {
+	background-color: #2961d3;
+	color: white;
+	cursor: pointer;
+}
+
+.content_news:hover {
+	background-color: white;
+	color: #4f525b;
+}
+
 .cl1 {
 	width: 32.5%;
 }
@@ -38,10 +49,6 @@
 
 .cl3 {
 	width: 47.5%;
-}
-
-input {
-	width: 100%;
 }
 
 .content_news_c {
@@ -89,47 +96,44 @@ input {
 				</div><br><br>
 			</c:forEach> --%>
 			<table class="table">
-				<tr style="background-color: #2961d3; color: white;">
-					<th>분류</th>
-					<th>제목</th>
-					<th>작성자</th>
-				</tr>
-				
-				<c:forEach var="i" begin="1" end="5">
-					<tr>
-						<td>${i}</td>
-						<td>테스트</td>
-						<td>테스트</td>
+				<c:forEach var="vo" items="${mNews}" varStatus="i">
+					<tr class="content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
+						<th class="text-left">${vo.title}</th>
+						<th class="text-right">${vo.author}</th>
+					</tr>
+					
+					<tr id="content_news_${i.count}" class="collapse content_news_c" onclick="location.href='${vo.link}'">
+						<td colspan="2" style="padding: 15px;">${vo.description}</td>
 					</tr>
 				</c:forEach>
-				
-				<tr>
-					<td colspan="5" class="text-right">
-						<a href="photolist.do" class="btn btn-sm">더보기</a>
-					</td>
-				</tr>
 			</table>
 		</div>
 		<div class="content_list cl2 text-left">
 			<h3>동영상</h3><br>
-			<table class="table">
+			<table width="50%" class="table">
 				<tr style="background-color: #2961d3; color: white;">
-					<th>분류</th>
-					<th>제목</th>
-					<th>작성자</th>
+				<c:forEach var="vo" items="${mVideo}" varStatus="i">
+						<td width="20%">${vo.sortname}</td>
+				</c:forEach>
 				</tr>
 				
-				<c:forEach var="i" begin="1" end="5">
-					<tr>
-						<td>${i}</td>
-						<td>테스트</td>
-						<td>테스트</td>
-					</tr>
+				<tr>
+				<c:forEach var="vo" items="${mVideo}" varStatus="i">
+						<td width="20%">${vo.title}</td>
 				</c:forEach>
+				</tr>
+				
+				<tr>
+				<c:forEach var="vo" items="${mVideo}" varStatus="i">
+						<td width="20%"><iframe width="100%" src="https://www.youtube.com/embed/${vo.youtubekey}?rel=0&amp;controls=0&amp;showinfo=0" 
+							frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</td>
+				</c:forEach>
+				</tr>
 				
 				<tr>
 					<td colspan="5" class="text-right">
-						<a href="photolist.do" class="btn btn-sm">더보기</a>
+						<a href="videolist.do" class="btn btn-sm">더보기</a>
 					</td>
 				</tr>
 			</table>
