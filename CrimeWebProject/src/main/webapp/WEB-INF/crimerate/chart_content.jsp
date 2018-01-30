@@ -64,24 +64,24 @@
                 var guList=[];
                 
                   <c:forEach var="vo" items='${guchList}' varStatus="status">
-		                 g_name='${vo.c_gu}';
-		                if('${c_type}' == '평균'){
-		                	c_count.push(parseFloat('${vo.average}'));
-		                }else{
-		                	c_count.push(parseInt('${vo.c_count}'));
-		                   }
-		               
-	                  if(parseInt('${status.count}')%7==0 && parseInt('${status.count}')!=1 
-	                		  && parseInt('${fn:length(guchList)}') != 7){
-	                	  
-	                	  if(parseInt('${fn:length(guchList)}') == parseInt('${status.count}')){
-	                		  guList.push({"name":g_name,"data":c_count,"animation":true});  
-	                	  }else{
-	                		  guList.push({"name":g_name,"data":c_count,"animation":false});
-	                	  }
-	                	  
-	                	  c_count=[];
-	                  }
+		                g_name='${vo.c_gu}';
+		               if('${c_name}' == '평균'){
+		               	c_count.push(parseFloat('${vo.average}'));
+		               }else{
+		               	c_count.push(parseInt('${vo.c_count}'));
+		                  }
+		              
+	                 if(parseInt('${status.count}')%7==0 && parseInt('${status.count}')!=1 
+	               		 && parseInt('${fn:length(guchList)}') != 7){
+	               	 
+	               	 if(parseInt('${fn:length(guchList)}') == parseInt('${status.count}')){
+	               		 guList.push({"name":g_name,"data":c_count,"animation":true});  
+	               	 }else{
+	               		 guList.push({"name":g_name,"data":c_count,"animation":false});
+	               	 }
+	               	 
+	               	 c_count=[];
+	                 }
                    
                       if(parseInt('${fn:length(guchList)}')==7 && parseInt('${status.count}')==7){
                         	guList.push({"name":g_name,"data":c_count,"animation":true});	
@@ -93,7 +93,7 @@
                  name:guList[i].name,    
                  data:guList[i].data,
                  animation:guList[i].animation
-	                 
+	                
              }
              );
             }

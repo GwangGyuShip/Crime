@@ -11,4 +11,7 @@ public class CrimeChartDAO extends SqlSessionDaoSupport{
 	public List<CrimeRateVO> chartUpdateData(Map map){
 		return getSqlSession().selectList("chartUpdateData",map);
 	}
+	public List<CrimeRateVO> chartTotalData(Map map){
+		return getSqlSession().selectList("chartTotalData",map);
+	}
 }
