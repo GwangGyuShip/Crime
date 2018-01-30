@@ -85,42 +85,35 @@ public class VideoController {
 		String[] temp = dao.videoContentData(no).getTitle().split(" ");
 		
 		int lsize = 0;
-		if(temp.length>4) {
+		if(temp.length>=4) {
 			lsize = 4;
 		} else {
 			lsize = temp.length;
 		}
 		for(int i=0;i<lsize;i++) {
-			temp[i].replace("[", "");
-			temp[i].replace("]", "");
-			temp[i].replace("'", "");
-			temp[i].replace("\"", "");
-			temp[i].replace(",", "");
-			temp[i].replace(".", "");
-			temp[i].replace("(", "");
-			temp[i].replace(")", "");
+			temp[i]=temp[i].replace("[", "");
+			temp[i]=temp[i].replace("]", "");
+			temp[i]=temp[i].replace("\'", "");
+			temp[i]=temp[i].replace("\"", "");
+			temp[i]=temp[i].replace(",", "");
+			temp[i]=temp[i].replace(".", "");
+			temp[i]=temp[i].replace("(", "");
+			temp[i]=temp[i].replace(")", "");
 		}
 		
-		vo.setKeyword1(temp[0]);
-		vo.setKeyword2(temp[1]);
-		vo.setKeyword3(temp[2]);
-		vo.setKeyword4(temp[3]);
+		vo.setKeyword1("%"+temp[0]+"%");
+		vo.setKeyword2("%"+temp[1]+"%");
+		vo.setKeyword3("%"+temp[2]+"%");
+		vo.setKeyword4("%"+temp[3]+"%");
 		
-		/*Map map = new HashMap();
+		Map map = new HashMap();
 		map.put("keyword1", vo.getKeyword1());
 		map.put("keyword2", vo.getKeyword2());
 		map.put("keyword3", vo.getKeyword3());
 		map.put("keyword4", vo.getKeyword4());
-		*/
-		String keyword1 = vo.getKeyword1();
-		String keyword2 = vo.getKeyword2();
-		String keyword3 = vo.getKeyword3();
-		String keyword4 = vo.getKeyword4();
 		
-		System.out.println(vo.getKeyword1());
+		List<VideoVO> relatedlist = dao.relatedvlist(map);
 		
-		/*List<VideoVO> relatedlist = dao.relatedvlist(map);*/
-		List<VideoVO> relatedlist = dao.relatedvlist(keyword1, keyword2, keyword3, keyword4);
 		model.addAttribute("vo",vo);
 		model.addAttribute("relist", relist);
 		model.addAttribute("relatedlist", relatedlist);
@@ -142,13 +135,6 @@ public class VideoController {
 	}
 	
 	
-	/*@RequestMapping("videoreplydelete.do")
-	public String videoreplyDelete(int no, String pwd, Model model) {
-		boolean bCheck = dao.videoreplyDelete(no, pwd);
-		model.addAttribute("bCheck", bCheck);
-		VideoReplyVO vo = new VideoReplyVO();
-		return "redirect:videocontent.do?no="+vo.getBno();
-	}*/
 	
 
 }

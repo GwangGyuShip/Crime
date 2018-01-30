@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Insert;
 
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.data.repository.query.Param;
 
 import com.sist.video.*;
 
@@ -77,23 +79,8 @@ public interface VideoMapper {
 	public int videoreplyCount(int bno);
 	
 	//관련동영상 조회
-	/*@Select("SELECT no,sortname,title,regdate,youtubekey,length,hit "
-			+ "FROM (SELECT no,sortname,title,regdate,youtubekey,length,hit "
-			+ "FROM bvideo ORDER BY regdate DESC) "
-			+ "WHERE (title LIKE '%#{keyword1}%' OR title LIKE '%#{keyword2}%' OR title LIKE '%#{keyword3}%' OR title LIKE '%#{keyword4}%') AND rownum<=7")*/
-	
-	@Select("<script>SELECT no,sortname,title,regdate,youtubekey,length,hit "
-			+ "FROM (SELECT no,sortname,title,regdate,youtubekey,length,hit "
-			+ "FROM bvideo ORDER BY regdate DESC) "
-			+ "WHERE (title LIKE '%#{keyword1}%' "
-			+ "<choose>"
-			+ "<when test=\"keyword2!=null\"> OR title LIKE '%#{keyword2}%' </when> "
-			+ "<when test=\"keyword3!=null\"> OR title LIKE '%#{keyword3}%' </when> "
-			+ "<when test=\"keyword4!=null\"> OR title LIKE '%#{keyword4}%' </when> "
-			+ "</choose> "
-			+ ") AND rownum<=7</script>")
-	public List<VideoVO> relatedvlist(String keyword1, String keyword2, String keyword3, String keyword4 );
-	
+	@SelectProvider(type = VideoDynamicMapper.class, method="relatedvlistQuery")
+	public List<VideoVO> relatedvlist(Map map);
 
 }
 

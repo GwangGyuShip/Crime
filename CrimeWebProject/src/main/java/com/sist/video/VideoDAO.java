@@ -70,13 +70,10 @@ public class VideoDAO {
 		return vm.videoreplyCount(bno);
 	}
 	
-	/*public List<VideoVO> relatedvlist(Map map) {
+	public List<VideoVO> relatedvlist(Map map) {
 		return vm.relatedvlist(map);
-	}*/
-	
-	public List<VideoVO> relatedvlist(String keyword1, String keyword2, String keyword3, String keyword4 ) {
-		return vm.relatedvlist(keyword1, keyword2, keyword3, keyword4);
 	}
+	
 	
 	
 

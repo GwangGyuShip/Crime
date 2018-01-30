@@ -16,7 +16,7 @@ public interface CrimeRateMapper {
 		+"WHERE c_gu=#{c_gu} and c_type='발생' and c_year=2016")
 public List<CrimeRateVO> CrimeContentData(String c_gu);
 
-@Select("SELECT SUM(c_count) total ,ROUND(SUM(c_count)/3,2) average FROM crimerate "
+@Select("SELECT SUM(c_count) total ,ROUND(SUM(c_count)/5,2) average FROM crimerate "
 		+ "WHERE c_gu=#{c_gu} and c_type='발생' and c_year=2016")
 public CrimeRateVO CrimeTotalData(String c_gu);
 
