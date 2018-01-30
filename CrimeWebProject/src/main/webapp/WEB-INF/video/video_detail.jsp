@@ -141,7 +141,7 @@ body {
 							<!-- <div class="empty-space marg-lg-b30"></div> -->
 							<div class="tt-blog-category post-single">
 								<a class="c-btn type-3 color-3" style="font-family: NanumBarunGothic !important;">${vo.sortname }</a>
-								<a class="c-btn type-3 color-3 videolistBtn" href="videolist.do"
+								<a class="c-btn type-3 color-3 videolistBtn" href="video.do"
 									style="float: right; margin-right: 10px; background-color: rgb(240,240,240); color: rgb(186,31,31); 
 											width: 130px; height: 30px; margin-bottom: 0 !important; text-align: center; font-size: 13px;
 											line-height: 23px; border: 1px rgb(186,31,31) solid; font-weight: bold;font-family: NanumBarunGothic !important;">

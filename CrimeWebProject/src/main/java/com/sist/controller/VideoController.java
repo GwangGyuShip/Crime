@@ -16,7 +16,7 @@ public class VideoController {
 	@Autowired
 	private VideoDAO dao;
 	
-	@RequestMapping("videolist.do")
+	@RequestMapping("video.do")
 	public String videolist(String page, Model model) {
 		if(page==null)	
 			page="1";
