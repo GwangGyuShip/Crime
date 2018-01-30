@@ -321,8 +321,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             			<i class="fa fa-refresh"></i></button>
                                             		
                                                    범죄율
-                                            <select class="form-control" style="float:right; font-size:15px; vertical-align: middle;">
-                                                <option value="총합">총합</option>
+                                            <select class="form-control" id="select_type" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="평균">평균</option>
                                                 <option value="강간">강간</option>
                                                 <option value="살인">살인</option>
@@ -332,6 +331,9 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             </select>
                                             </h2>
                                             
+                                            	<script>
+                                            	
+                                            	</script>
                                             
                                             	
                                             <span class="button-checkbox">

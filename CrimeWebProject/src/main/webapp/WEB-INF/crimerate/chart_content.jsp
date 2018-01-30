@@ -65,7 +65,7 @@
                 
                   <c:forEach var="vo" items='${guchList}' varStatus="status">
 		               g_name='${vo.c_gu}';	
-		               c_count.push(parseInt('${vo.total}'));
+		               c_count.push(parseFloat('${vo.average}'));
 		               
 	                  if(parseInt('${status.count}')%7==0 && parseInt('${status.count}')!=1 
 	                		  && parseInt('${fn:length(guchList)}') != 7){
