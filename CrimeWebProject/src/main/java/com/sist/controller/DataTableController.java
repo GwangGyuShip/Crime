@@ -17,12 +17,18 @@ public class DataTableController {
 	DataTableDAO dao;
 	
 	@RequestMapping("datatable.do")
-	public String datatable(Model model){
-		
-		List<DataTableVO> list = dao.databoardlist(2016);
-		
-		model.addAttribute("list", list);
-		
+	public String datatable(){
 		return "datatable/datatable";
 	}
+	@RequestMapping("datatable_content.do")
+	public String datatable_content(Model model, int c_year){
+		
+		List<DataTableVO> list = dao.databoardlist(c_year);
+		
+		model.addAttribute("c_year", c_year);
+		model.addAttribute("list", list);
+		
+		return "datatable/datatable_content";
+	}
+	
 }

@@ -1,80 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <title>Insert title here</title>
-<style type="text/css">
-.tab-pane { color:black;}
-
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-  color: white;
-  font-weight: bolder;
-  cursor: default;
-  background-color: #1c81d9;
-  opacity:0.8;
-  border: 1px solid #ddd;
-  border-bottom-color: transparent;
-}
-.nav-tabs a{
-   color:black;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#selBox").change(function() {
+			var c_year=$(this).children("option:selected").attr("value");
+			$.ajax({
+				type:"POST",
+				url:"datatable_content.do?c_year="+c_year,
+				data:{"c_year":c_year},
+				success:function(res)
+				{
+					$('.d_table').html(res);
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container">
 	    <div class="row">
-	    	<div class="data-content" style="width: 95%; margin: 0px auto; background-color: white; padding: 20px;">
-			 <ul class="nav nav-tabs" ><br>
-				<li class="active"><a href="#tab1" id="1" data-toggle="tab" >2016</a></li>
-				<li><a href="#tab2" id="2" data-toggle="tab">2015</a></li>
-				<li><a href="#tab3" id="3" data-toggle="tab">2014</a></li>
-				<li><a href="#tab3" id="4" data-toggle="tab">2013</a></li>
-				<li><a href="#tab3" id="5" data-toggle="tab">2012</a></li>
-				<li><a href="#tab3" id="6" data-toggle="tab">2011</a></li>
-				<li><a href="#tab3" id="7" data-toggle="tab">2010</a></li>
-			</ul>
-			<div class="tab-content" style="border: 1px solid #eee">
-				<div class="tab-pane active" id="tab1"> 
-					<table class="table table-hover">
-						<tr class="info">
-							<th class="text-center">지역</th>
-							<th class="text-center">강간</th>
-							<th class="text-center">강도</th>
-							<th class="text-center">살인</th>
-							<th class="text-center">절도</th>
-							<th class="text-center">폭력</th>
-							<th class="text-center">cctv</th>
-						</tr>
-						<c:forEach var="vo" items="${list }">
-							<tr>
-								<td class="text-center">${vo.c_gu }</td>
-								<td class="text-center">${vo.ganggan_c }</td>
-								<td class="text-center">${vo.gangdo_c }</td>
-								<td class="text-center">${vo.salin_c }</td>
-								<td class="text-center">${vo.juldo_c }</td>
-								<td class="text-center">${vo.pok_c }</td>
-								<td class="text-center">${vo.c_cam }</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-				
-				<div class="tab-pane" id="tab2">
-					
-				</div>
-				
-				<div class="tab-pane" id="tab3"> 
-					
-				</div>
-			</div><!-- 선 -->
-			</div>
+	    	<select class="form-control" id="selBox" style="width:100px; float: right; margin: 20px;">
+			    <option class="option1" value="2016">2016년</option>
+			    <option class="option2" value="2015">2015년</option>
+			    <option class="option3" value="2014">2014년</option>
+			    <option class="option4" value="2013">2013년</option>
+			    <option class="option5" value="2012">2012년</option>
+			    <option class="option6" value="2011">2011년</option>
+			    <option class="option7" value="2010">2010년</option>
+			</select>
+			<script>
+				$(function(){
+					$('.option1').trigger('click');
+					$('#selBox').change();
+				});
+			</script>
+	    	<div class="d_table">
+	    	
+	    	</div>
 	    </div>
     </div>
 </body>

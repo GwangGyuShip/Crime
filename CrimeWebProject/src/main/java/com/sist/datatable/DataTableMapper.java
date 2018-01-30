@@ -11,7 +11,7 @@ public interface DataTableMapper {
 			+ "b.c_name as ganggan, b.c_count as ganggan_c, "
 			+ "c.c_name as salin, c.c_count as salin_c, "
 			+ "d.c_name as juldo, d.c_count as juldo_c, "
-			+ "e.c_name as pok, e.c_count as pok, "
+			+ "e.c_name as pok, e.c_count as pok_c, "
 			+ "cc.c_cam "
 			+ "FROM crimerate a, crimerate b, crimerate c, crimerate d, crimerate e, cctv cc "
 			+ "WHERE a.c_year =#{c_year} "
