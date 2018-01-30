@@ -193,8 +193,8 @@ body {
 								<div class="tt-blog-nav left">
 									<div class="tt-blog-nav-label" style="font-family: NanumBarunGothic !important;">이전 동영상</div>
 									<a class="tt-blog-nav-title"
-										href="http://themebubble.com/demo/videoly/fashion-week-entry-created-buzz/"
-										rel="prev" style="font-family: NanumBarunGothic !important;">Fashion Week Entry Created Buzz</a>
+										href="videocontent.do?no=${no_before }"
+										rel="prev" style="font-family: NanumBarunGothic !important;">${title_before }</a>
 								</div>
 								<div class="empty-space marg-xs-b20"></div>
 							</div>
@@ -202,8 +202,8 @@ body {
 								<div class="tt-blog-nav right">
 									<div class="tt-blog-nav-label" style="font-family: NanumBarunGothic !important;">다음 동영상</div>
 									<a class="tt-blog-nav-title"
-										href="http://themebubble.com/demo/videoly/9-best-dessert-recipes/"
-										rel="next" style="font-family: NanumBarunGothic !important;">Mozzarella Chicken Roll Recipe</a>
+										href="videocontent.do?no=${no_after }"
+										rel="next" style="font-family: NanumBarunGothic !important;">${title_after }</a>
 								</div>
 							</div>
 						</div>
@@ -312,7 +312,7 @@ body {
 															<div class="tt-video-attributes">
 																<span class="tt-post-length">${relatedvo.length }</span>
 															</div> <img width="104" height="63"
-															src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-104x63.jpg"
+															src="https://img.youtube.com/vi/${relatedvo.youtubekey }/mqdefault.jpg"
 															class="img-responsive wp-post-image" />
 														</a>
 														<div class="tt-post-info">

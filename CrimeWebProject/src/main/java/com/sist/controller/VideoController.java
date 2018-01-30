@@ -59,10 +59,13 @@ public class VideoController {
 	
 	
 	@RequestMapping("video.do")
-	public String videolist(String page, Model model) {
+	public String videolist(String page, String search, Model model) {
 		if(page==null)	
 			page="1";
 		int curpage = Integer.parseInt(page);
+		
+		if(search==null)
+			search=" ";
 		
 		int rowSize = 10;
 		int start = (rowSize*curpage)-(rowSize-1);
@@ -72,6 +75,7 @@ public class VideoController {
 		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
+		map.put("search", search);
 		
 		int block=10;
 		int fromPage = ((curpage-1)/block*block)+1;  
@@ -93,6 +97,7 @@ public class VideoController {
 		model.addAttribute("fromPage",fromPage);
 		model.addAttribute("toPage",toPage);
 		model.addAttribute("block",block);
+		model.addAttribute("search", search);
 		
 		List<VideoVO> list_top7 = dao.videoTop7ListData(map);
 		for(VideoVO top7vo:list_top7) {
@@ -164,6 +169,24 @@ public class VideoController {
 		model.addAttribute("vo",vo);
 		model.addAttribute("relist", relist);
 		model.addAttribute("relatedlist", relatedlist);
+		
+		
+		
+		int no_before = no-1;
+		int no_after = no+1;
+		
+		VideoVO vo_before = dao.videoContentData(no_before);
+		VideoVO vo_after = dao.videoContentData(no_after);
+		
+		String title_before = vo_before.getTitle();
+		String title_after = vo_after.getTitle();
+		
+		model.addAttribute("no_before", no_before);
+		model.addAttribute("no_after", no_after);
+		model.addAttribute("title_before", title_before);
+		model.addAttribute("title_after", title_after);
+		
+		
 		return "video/video_detail";
 	}
 	

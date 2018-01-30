@@ -14,6 +14,7 @@ public class VideoVO {
 	private int hit;
 	private int count;
 	private int tc;
+	private String search;
 	
 	//관련동영상
 	private String keyword1;
@@ -112,6 +113,13 @@ public class VideoVO {
 	public void setKeyword4(String keyword4) {
 		this.keyword4 = keyword4;
 	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
 	
 	
 	
