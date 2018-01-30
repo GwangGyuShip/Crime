@@ -18,7 +18,7 @@ public interface VideoMapper {
 	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,num "
 			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,rownum as num "
 			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit "
-			+ "FROM bvideo WHERE title LIKE #{search} ORDER BY regdate DESC)) "
+			+ "FROM bvideo ORDER BY regdate DESC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<VideoVO> videoListAllData(Map map);
 	

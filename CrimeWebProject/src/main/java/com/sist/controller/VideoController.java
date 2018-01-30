@@ -59,13 +59,11 @@ public class VideoController {
 	
 	
 	@RequestMapping("video.do")
-	public String videolist(String page, String search, Model model) {
+	public String videolist(String page, Model model) {
 		if(page==null)	
 			page="1";
 		int curpage = Integer.parseInt(page);
 		
-		if(search==null)
-			search=" ";
 		
 		int rowSize = 10;
 		int start = (rowSize*curpage)-(rowSize-1);
@@ -75,7 +73,6 @@ public class VideoController {
 		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
-		map.put("search", search);
 		
 		int block=10;
 		int fromPage = ((curpage-1)/block*block)+1;  
@@ -97,7 +94,6 @@ public class VideoController {
 		model.addAttribute("fromPage",fromPage);
 		model.addAttribute("toPage",toPage);
 		model.addAttribute("block",block);
-		model.addAttribute("search", search);
 		
 		List<VideoVO> list_top7 = dao.videoTop7ListData(map);
 		for(VideoVO top7vo:list_top7) {
