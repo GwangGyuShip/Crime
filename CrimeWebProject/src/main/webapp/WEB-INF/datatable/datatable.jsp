@@ -16,7 +16,7 @@
 			var c_year=$(this).children("option:selected").attr("value");
 			$.ajax({
 				type:"POST",
-				url:"datatable_content.do?c_year="+c_year,
+				url:"datatable_content.do",
 				data:{"c_year":c_year},
 				success:function(res)
 				{

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
@@ -20,45 +20,48 @@
     });
   });
 </script>
+
 </head>
 <body>
 	<div class="data-content" style="width: 100%; margin: 0px auto; background-color: white; padding: 20px;">
+		<div id="parent">
+			This is the main container.
+			<div id="popup" style="display: none">some text here</div>
+			</div>
+		
 		<center>
-			<h1>${c_year } ³âµµ ¹üÁË ¹ß»ıÀ²</h1>
+			<h1>${c_year } ë…„ë„ ë²”ì£„ ë°œìƒìœ¨</h1>
 		</center>
 		<table id="myTable" class="table" cellspacing="0" width="100%">
 	        <thead>
 	            <tr class="info">
-	            	<th class="text-center">¼øÀ§</th>
-		            <th class="text-center">Áö¿ª</th>
-					<th class="text-center">°­°£</th>
-					<th class="text-center">°­µµ</th>
-					<th class="text-center">»ìÀÎ</th>
-					<th class="text-center">Àıµµ</th>
-					<th class="text-center">Æø·Â</th>
+		            <th class="text-center">ì§€ì—­</th>
+					<th class="text-center">ê°•ê°„</th>
+					<th class="text-center">ê°•ë„</th>
+					<th class="text-center">ì‚´ì¸</th>
+					<th class="text-center">ì ˆë„</th>
+					<th class="text-center">í­ë ¥</th>
 					<th class="text-center">cctv</th>
 	            </tr>
 	        </thead>
 	        <tfoot>
 	           	<tr class="info">
-	           		<th class="text-center">¼øÀ§</th>
-	                <th class="text-center">Áö¿ª</th>
-					<th class="text-center">°­°£</th>
-					<th class="text-center">°­µµ</th>
-					<th class="text-center">»ìÀÎ</th>
-					<th class="text-center">Àıµµ</th>
-					<th class="text-center">Æø·Â</th>
+	                <th class="text-center">ì§€ì—­</th>
+					<th class="text-center">ê°•ê°„</th>
+					<th class="text-center">ê°•ë„</th>
+					<th class="text-center">ì‚´ì¸</th>
+					<th class="text-center">ì ˆë„</th>
+					<th class="text-center">í­ë ¥</th>
 					<th class="text-center">cctv</th>
 	            </tr>
 	        </tfoot>
 	        <tbody>
 	            <c:forEach var="vo" items="${list }" varStatus="i">
 					<tr>
-						<td class="text-center">
-							<c:out value="${i.count }"></c:out>
-						</td>
 						<td class="text-center">${vo.c_gu }</td>
-						<td class="text-center">${vo.ganggan_c }</td>
+						<td class="text-center">
+						${vo.ganggan_c }
+						</td>
 						<td class="text-center">${vo.gangdo_c }</td>
 						<td class="text-center">${vo.salin_c }</td>
 						<td class="text-center">${vo.juldo_c }</td>
@@ -68,32 +71,6 @@
 				</c:forEach>
 	        </tbody>
 	    </table>
-	
-		<%-- <center>
-			<h1>${c_year } ³âµµ ¹üÁË ¹ß»ıÀ²</h1>
-		</center>
-		<table class="table table-hover">
-			<tr class="info">
-				<th class="text-center">Áö¿ª</th>
-				<th class="text-center">°­°£</th>
-				<th class="text-center">°­µµ</th>
-				<th class="text-center">»ìÀÎ</th>
-				<th class="text-center">Àıµµ</th>
-				<th class="text-center">Æø·Â</th>
-				<th class="text-center">cctv</th>
-			</tr>
-			<c:forEach var="vo" items="${list }">
-				<tr>
-					<td class="text-center">${vo.c_gu }</td>
-					<td class="text-center">${vo.ganggan_c }</td>
-					<td class="text-center">${vo.gangdo_c }</td>
-					<td class="text-center">${vo.salin_c }</td>
-					<td class="text-center">${vo.juldo_c }</td>
-					<td class="text-center">${vo.pok_c }</td>
-					<td class="text-center">${vo.c_cam }</td>
-				</tr>
-			</c:forEach>
-		</table> --%>
 	</div>
 </body>
 </html>
