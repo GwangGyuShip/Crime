@@ -14,18 +14,18 @@
 	color: #333 !important;
 } */
 
- a:link { 
+.header_logo2:link { 
  	color: white; text-decoration: none;
  }
- a:visited { 
+.header_logo2:visited { 
  	color: white; text-decoration: none;
  }
- a:hover {
+.header_logo2:hover {
   color: white; text-decoration: none;
   }
 </style>
 </head>
 <body>
-	<a href="main.do"><b class="header_logo">범죄도시</b></a>
+	<a class="header_logo2" href="main.do"><b class="header_logo">범죄도시</b></a>
 </body>
 </html>
