@@ -122,11 +122,12 @@
 	 	 for(var i=0; i<guList.length;i++){
 	 		 c_gu=c_gu+guList[i]+",";
 	 	 }
-	 	 	
+	 	 var c_type=$("#select_type option:selected").val();
+	 	 
 	 $.ajax({
 			type:"POST",
 			url:"chartContent.do",
-			data:{"c_gu":c_gu},
+			data:{"c_gu":c_gu,"c_type":c_type},
 			success:function(res)
 			{
 				$('.chart_content').html(res);
@@ -326,13 +327,37 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                                 <option value="강간">강간</option>
                                                 <option value="살인">살인</option>
                                                 <option value="폭력">폭력</option>
-                                                <option value="절도">강도</option>
+                                                <option value="강도">강도</option>
                                                 <option value="절도">절도</option>
                                             </select>
                                             </h2>
                                             
-                                            	<script>
-                                            	
+                                            	<script type="text/javascript">
+                                            			$(function(){
+                                            				$('#select_type').change(function(){
+                                            					 var c_type=$(this).children("option:selected").attr("value"); //선택된 옵션 값
+                                            					 
+                                            					 var guList=[]; /*체크박스에 체크된 값들 리스트에 담기*/
+                                            					 $("input[name='gu']:checked").each(function(i){
+                                            						 guList.push($(this).val());
+                                            					 	});
+                                            				 	 var c_gu="";
+                                            				 	 for(var i=0; i<guList.length;i++){
+                                            				 		 c_gu=c_gu+guList[i]+",";
+                                            				 	 	}
+                                            				 	 
+                                            					 $.ajax({
+                                            							type:"POST",
+                                            							url:"chartContent.do",
+                                            							data:{"c_type":c_type,"c_gu":c_gu},
+                                            							success:function(res)
+                                            							{
+                                            								$('.chart_content').html(res);
+                                            							}
+                                            						});
+                                            					 	
+                                            				});
+                                            			});
                                             	</script>
                                             
                                             	
