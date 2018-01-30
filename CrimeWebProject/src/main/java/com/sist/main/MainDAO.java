@@ -75,7 +75,6 @@ public class MainDAO {
 			int count = 0;
 			for(Item i : iList) {
 				NewsVO vo = new NewsVO();
-				System.out.println("a");
 				String strTitle= i.getTitle();
 				if (strTitle.length() >= 45)
 					strTitle = strTitle.substring(0, 45) + "...";

@@ -75,24 +75,64 @@ input {
 		<div class="content_list cl1 text-left">
 			<h3>뉴스</h3><br>
 			
-			<c:forEach var="vo" items="${mNews}" varStatus="i">
-				<input value="${vo.title}" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
+			<%-- <c:forEach var="vo" items="${mNews}" varStatus="i">
+				<input value="${vo.title}a" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
 				<div id="content_news_${i.count}" class="collapse content_news_c" onclick="location.href='${vo.link}'">
 					<table class="table">
 						<tr>
-							<td>${vo.author}</td>
+							<td width="100%">${vo.author}</td>
 						</tr>
 						<tr>
-							<td>${vo.description}</td>
+							<td width="100%">${vo.description}</td>
 						</tr>
 					</table>
 				</div><br><br>
-			</c:forEach>
-			
+			</c:forEach> --%>
+			<table class="table">
+				<tr style="background-color: #2961d3; color: white;">
+					<th>분류</th>
+					<th>제목</th>
+					<th>작성자</th>
+				</tr>
+				
+				<c:forEach var="i" begin="1" end="5">
+					<tr>
+						<td>${i}</td>
+						<td>테스트</td>
+						<td>테스트</td>
+					</tr>
+				</c:forEach>
+				
+				<tr>
+					<td colspan="5" class="text-right">
+						<a href="photolist.do" class="btn btn-sm">더보기</a>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<div class="content_list cl2 text-left">
 			<h3>동영상</h3><br>
-			
+			<table class="table">
+				<tr style="background-color: #2961d3; color: white;">
+					<th>분류</th>
+					<th>제목</th>
+					<th>작성자</th>
+				</tr>
+				
+				<c:forEach var="i" begin="1" end="5">
+					<tr>
+						<td>${i}</td>
+						<td>테스트</td>
+						<td>테스트</td>
+					</tr>
+				</c:forEach>
+				
+				<tr>
+					<td colspan="5" class="text-right">
+						<a href="photolist.do" class="btn btn-sm">더보기</a>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<br>
 
