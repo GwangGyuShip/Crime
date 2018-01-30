@@ -8,7 +8,7 @@ public class CrimeRateVO {
 	private int c_count;
 	private int c_cam;
 	private int total;
-	private int average;
+	private double average;
 	
 	public int getTotal() {
 		return total;
@@ -16,10 +16,10 @@ public class CrimeRateVO {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	public int getAverage() {
+	public double getAverage() {
 		return average;
 	}
-	public void setAverage(int average) {
+	public void setAverage(double average) {
 		this.average = average;
 	}
 	public int getC_year() {

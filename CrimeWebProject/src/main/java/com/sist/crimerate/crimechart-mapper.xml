@@ -4,8 +4,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sist.crimerate.crimechart-mapper">
-  <select id="totalChartData" resultType="crmVO" parameterType="java.util.Map">
-  	SELECT c_gu,c_year,sum(c_count) as total ,round(sum(c_count)/5,2) as average
+  <select id="chartAvgData" resultType="crmVO" parameterType="java.util.Map">
+  	SELECT c_gu,c_year,ROUND(SUM(c_count)/5,2) as average
 	FROM crimerate
 	<where>
 		<if test="guList.size()!=0 and guList!=null">
@@ -16,6 +16,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          	AND c_type='발생' 
          	GROUP BY c_gu,c_year 
 			ORDER BY c_gu,c_year 
+         </if>
+	</where>
+  </select>
+  
+  <select id="chartUpdateData" resultType="crmVO" parameterType="java.util.Map">
+  	SELECT c_gu,c_year,c_name,c_count
+	FROM crimerate
+	<where>
+		<if test="guList.size()!=0 and guList!=null">
+         	c_gu IN
+         	<foreach collection="guList" item="sg" open="(" close=")" separator=",">
+         		#{sg}
+         	</foreach>
+         	AND c_type='발생'
+         	AND c_name=#{c_type}
+         	ORDER BY c_gu,c_year 
+         	 
          </if>
 	</where>
   </select>
