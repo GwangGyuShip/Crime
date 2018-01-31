@@ -98,7 +98,7 @@
 	
 		
 		<center>
-			<h1>${c_year } 년도 범죄 발생율</h1>
+			<h2>${c_year } 년도 범죄 발생률</h2>
 		</center>
 		<table id="myTable" class="table" cellspacing="0" width="100%">
 	        <thead>
