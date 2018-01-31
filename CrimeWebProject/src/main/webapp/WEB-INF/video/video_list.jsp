@@ -43,12 +43,20 @@ body {
 .movie_category {
 	margin-bottom: 13px;
 }
-.movie_search a:hover img {
-	background-color: rgb(217,245,255);
+.movie_search {
+	margin-left: 3%;
+	vertical-align: middle;
+}
+.movie_search .sssss {
+	margin-bottom: -12px;
+	padding: 5px 30px 5px 30px;
 	border: 1px solid gray;
 }
-.movie_search input {
-  width: 300px;  /* 원하는 너비 설정 */ 
+.movie_search .sssss:hover {
+	border: 3px solid gray;
+}
+.sss {
+  width: 750px;  /* 원하는 너비 설정 */ 
   height: 35px;  /* 높이값 초기화 */
   line-height : normal;  /* line-height 초기화 */
   padding: 2px 5px 2px 5px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
@@ -57,7 +65,6 @@ body {
   outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
   -webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
   font-size: 16px;
-  margin-left: 50px;
 }
 
 
@@ -168,7 +175,7 @@ $(function(){
 		<div class="vc_column-inner ">
 			<div class="wpb_wrapper">
 				<div class="tt-title-block">
-					<h3 class="tt-title-text">동영상 목록</h3>
+					<h3 class="tt-title-text" style="font-family: NanumBarunGothic !important;">동영상 목록</h3>
 				</div>
 				<div class="empty-space marg-lg-b25"></div>
 				
@@ -225,7 +232,7 @@ $(function(){
 					<ul class="pagination page-numbers">
 						 <c:choose>
 				 			<c:when test="${curpage>block }">
-								<li><input type="button" class="preBtn" value="|◀"></li>
+								<li><a href="video_list.do?page=1">|◀</a></li>
 								<li><a href="video_list.do?page=${fromPage-1 }">◀</a></li>
 							</c:when>
 							<c:otherwise>
@@ -235,10 +242,10 @@ $(function(){
 						</c:choose>
 						<c:forEach var="i" begin="${fromPage }" end="${toPage }">
 							<c:if test="${i==curpage }">
-								<li class="active"><a>${i}</a></li>
+								<li class="active"><a style="font-family: NanumBarunGothic !important;">${i}</a></li>
 							</c:if>
 							<c:if test="${i!=curpage }">
-								<li class="page_btn" data-page="${i}"><a>${i}</a></li>
+								<li class="page_btn" data-page="${i}"><a style="font-family: NanumBarunGothic !important;">${i}</a></li>
 							</c:if>
 						</c:forEach>
 						

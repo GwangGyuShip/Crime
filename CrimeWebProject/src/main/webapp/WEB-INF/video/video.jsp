@@ -43,12 +43,20 @@ body {
 .movie_category {
 	margin-bottom: 13px;
 }
-.movie_search a:hover img {
-	background-color: rgb(217,245,255);
+.movie_search {
+	margin-left: 3%;
+	vertical-align: middle;
+}
+.movie_search .sssss {
+	margin-bottom: -12px;
+	padding: 5px 30px 5px 30px;
 	border: 1px solid gray;
 }
-.movie_search input {
-  width: 300px;  /* 원하는 너비 설정 */ 
+.movie_search .sssss:hover {
+	border: 3px solid gray;
+}
+.sss {
+  width: 750px;  /* 원하는 너비 설정 */ 
   height: 35px;  /* 높이값 초기화 */
   line-height : normal;  /* line-height 초기화 */
   padding: 2px 5px 2px 5px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
@@ -57,10 +65,7 @@ body {
   outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
   -webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
   font-size: 16px;
-  margin-left: 50px;
 }
-
-
 
 
 .snip1535 {
@@ -74,7 +79,7 @@ body {
   line-height: 1em;
   margin: 3px 10px;
   outline: none;
-  padding: 12px 40px 10px;
+  padding: 12px 35px 10px;
   position: relative;
   /* text-transform: uppercase; */
   font-weight: 700;
@@ -122,9 +127,7 @@ body {
 background-color: white !important;
 }
 
-
 </style>
-
 
 <script>
 function go(no, curpage){
@@ -139,7 +142,6 @@ else if(field.value == '') field.value = field.defaultValue;
 }
 </script>
 
-
 <script type="text/javascript">
 $(function () {
 
@@ -151,13 +153,22 @@ $(function () {
 });
 </script>
 
+<script type="text/javascript">
+	$(function() {
+		//검색
+		$('.sssss').click(function() {
+			$('#subbb').submit();
+		});
+	});
+</script>
+
 
 <script type="text/javascript">
 $(function(){
 	
 	$('.sortnamelist').hide();
 	
-	
+	3
 	$('.cateselect').click(function(){
 		var sortname = $(this).attr("value");
 		
@@ -191,11 +202,19 @@ $(function(){
 	<div id="wrapper">
 		
 		<div id="content-wrapper">
-			
-			
-			
+			<div class="empty-space marg-lg-b20"></div>
 			<div id="page-wrapper" class="content top-bottom">
-				<div class="empty-space marg-lg-b55 marg-sm-b30"></div>
+				
+				<div class="movie_search">
+					<form method="post" action="video_find.do" id="subbb">
+					<input type="text" value="검색어를 입력하세요." class="sss" name="search" id="ex_input" onFocus="clearText(this)" onBlur="clearText(this)">
+					<input type="image" src="images/searchhh.png" class="sssss" style="width: 85px; height: 35px; 
+							background-color: rgb(240,240,240);">
+					<!-- <img src="images/search.png" width="35px" height="35px" style="margin-top: -5px;"> -->
+					</form>
+				</div>
+							
+				<div class="empty-space marg-lg-b30"></div>
 				<div style="margin-left: 3%; margin-right: 3%;">
 					<div class="simple-tesxt">
 						<div class="row">
@@ -206,7 +225,7 @@ $(function(){
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
 									<div class="tt-title-block">
-										<h3 class="tt-title-text" style="font-family: NanumBarunGothic !important;">Weekly Top 7</h3>
+										<h3 class="tt-title-text" style="font-family: NanumBarunGothic !important;">Top 7</h3>
 									</div>
 									<div class="empty-space  marg-lg-b25"></div>
 									<div class="row">
@@ -427,6 +446,7 @@ $(function(){
 										</div>
 									</div>
 									<div class="empty-space marg-lg-b40 marg-sm-b30"></div>
+									<div class="empty-space marg-lg-b25"></div>
 								</div>
 							</div>
 								
@@ -542,7 +562,7 @@ $(function(){
 					<div class="vc_row wpb_row vc_row-fluid">
 						<div class="moviechoice">
 							<div class="movie_category">
-								<span>카테고리</span>
+								<span>카테고리 선택</span>
 								<button class="snip1535 hover" id="selectall" value="all">전체</button>
 								<button class="snip1535 cateselect" value="News">뉴스</button>
 								<button class="snip1535 cateselect" value="Youtube">유튜브</button>
@@ -550,20 +570,15 @@ $(function(){
 								<button class="snip1535 cateselect" value="UCC">UCC</button>
 								<button class="snip1535 cateselect" value="ETC">기타</button>
 							</div>
-							<div class="movie_search">
-								<span>검색</span>
-								<input type="text" value="검색어를 입력하세요" id="ex_input" onFocus="clearText(this)" onBlur="clearText(this)">
-								<a href="#"><img src="images/search.png" width="35px" height="35px" style="margin-top: -5px;"></a>
-							</div>
 						</div>
-						<div class="empty-space marg-lg-b30"></div>
+						<div class="empty-space marg-lg-b10"></div>
 					
 						
 						<div class="wpb_column vc_column_container vc_col-sm-9 allvideolist">
 							<div class="vc_column-inner ">
 								<div class="wpb_wrapper">
 									<div class="tt-title-block">
-										<h3 class="tt-title-text">동영상 목록</h3>
+										<h3 class="tt-title-text" style="font-family: NanumBarunGothic !important;">동영상 목록</h3>
 									</div>
 									<div class="empty-space marg-lg-b25"></div>
 									
@@ -620,7 +635,7 @@ $(function(){
 										<ul class="pagination page-numbers">
 											 <c:choose>
 									 			<c:when test="${curpage>block }">
-													<li><input type="button" class="preBtn" value="|◀"></li>
+													<li><a href="video.do?page=1">|◀</a></li>
 													<li><a href="video.do?page=${fromPage-1 }">◀</a></li>
 												</c:when>
 												<c:otherwise>
@@ -630,10 +645,10 @@ $(function(){
 											</c:choose>
 											<c:forEach var="i" begin="${fromPage }" end="${toPage }">
 												<c:if test="${i==curpage }">
-													<li class="active"><a>${i}</a></li>
+													<li class="active"><a style="font-family: NanumBarunGothic !important;">${i}</a></li>
 												</c:if>
 												<c:if test="${i!=curpage }">
-													<li><a href="video.do?page=${i}">${i}</a></li>
+													<li><a href="video.do?page=${i}" style="font-family: NanumBarunGothic !important;">${i}</a></li>
 												</c:if>
 											</c:forEach>
 											
