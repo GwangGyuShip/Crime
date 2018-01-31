@@ -16,10 +16,6 @@ public class DataTableController {
 	@Autowired
 	DataTableDAO dao;
 	
-	@RequestMapping("datatable.do")
-	public String datatable(){
-		return "datatable/datatable";
-	}
 	@RequestMapping("datatable_content.do")
 	public String datatable_content(Model model, int c_year){
 		
@@ -28,7 +24,7 @@ public class DataTableController {
 		model.addAttribute("c_year", c_year);
 		model.addAttribute("list", list);
 		
-		return "datatable/datatable_content";
+		return "crimerate/datatable_content";
 	}
 	
 }

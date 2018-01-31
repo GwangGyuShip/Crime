@@ -1,29 +1,20 @@
 package com.sist.newsManager;
 
 import com.sun.xml.txw2.annotation.XmlElement;
-import java.util.*;
 
 public class Item {
 	private String title;
-	private String description;
 	private String link;
+	private String description;
 	private String pubDate;
 	private String author;
-	private String thumbnail;
-	
 	
 	public String getPubDate() {
 		return pubDate;
 	}
+	@XmlElement
 	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
-	}
-	public String getThumbnail() {
-		return thumbnail;
-	}
-	@XmlElement
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
 	}
 	public String getTitle() {
 		return title;

@@ -53,7 +53,7 @@
 	<div class="menu_list menu_hover" id="menu_crimerate" onclick="location.href='crimerate.do'"><img src="images/menu_crimerate.png">지도</div>
 	<div class="menu_list menu_hover" id="menu_datatable" onclick="location.href='datatable.do'"><img src="images/menu_datatable.png">테이블</a></div>
 	<div class="menu_list menu_hover" id="menu_news" onclick="location.href='news.do'"><img src="images/menu_news.png">뉴스</div>
-	<div class="menu_list menu_hover" id="menu_videolist" onclick="location.href='video.do'"><img src="images/menu_videolist.png">동영상</div>
+	<div class="menu_list menu_hover" id="menu_video" onclick="location.href='video.do'"><img src="images/menu_video.png">동영상</div>
 	<div class="menu_list menu_hover" id="menu_boardmain" onclick="location.href='boardmain.do'"><img src="images/menu_boardmain.png">진실의 방</div>
 	<div class="menu_list menu_hover" id="menu_photolist" onclick="location.href='photolist.do'"><img src="images/menu_photolist.png">갤러리</div>
 	
