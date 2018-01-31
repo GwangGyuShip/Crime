@@ -206,11 +206,12 @@ public class BoardController {
 	@RequestMapping("freesearch.do")
 	public String board_freesearch(String freesearch,String search,Model model){
 		String board_name = "";
-		
+		String bsearch = search;
 		if(freesearch.equals("f1")){
 			board_name="board_name";
-			List<BoardVO> list=dao.searchboardname(board_name);
+			List<BoardVO> list=dao.searchboardname(bsearch);
 			model.addAttribute("list",list);
+			
 		}else if(freesearch.equals("f2")){
 			board_name="board_subject";
 			List<BoardVO> list=dao.searchboardname(board_name);

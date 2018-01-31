@@ -39,8 +39,8 @@ public int boardTotalPage();
 public void freeBoardUpdate(BoardVO vo);		
 
 @Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "+
-"FROM free_board WHERE board_name=#{board_name}")
-public List<BoardVO> searchboardname(String board_name);
+"FROM free_board WHERE board_name LIKE #{bserach%}")
+public List<BoardVO> searchboardname(String bserach);
 
 }
 

@@ -173,8 +173,10 @@ public class BoardDAO {
 		  return vo;
 	  }
 	  
-	 	public List<BoardVO> searchboardname(String board_name){
-	 		return mapper.searchboardname(board_name);
+	 
+	 
+	 	public List<BoardVO> searchboardname(String bserach){
+	 		return mapper.searchboardname(bserach);
 	 	}
 	 
 }
