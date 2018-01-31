@@ -1,11 +1,15 @@
 package com.sist.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -102,7 +106,7 @@ public class BoardController {
 	@RequestMapping("insert_ok.do")
 	public String main_insert_ok(BoardVO uploadForm){
 		List<MultipartFile> list=uploadForm.getFiles();
-		File ff=new File("c:\\download");
+		File ff=new File("/home/sist/Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CrimeWebProject/freeboardpoto/");
 		if(!ff.exists())
 			ff.mkdir();
 		if(list!=null && list.size()>0 )
@@ -113,7 +117,7 @@ public class BoardController {
 			   {
 				   
 				   String name=mf.getOriginalFilename();
-				   File file=new File("c:\\download\\"+name);
+				   File file=new File("/home/sist/Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CrimeWebProject/freeboardpoto/"+name);
 				   try
 				   {
 				     mf.transferTo(file);
@@ -142,12 +146,11 @@ public class BoardController {
 	@RequestMapping("bcontent.do")
 	public String board_content(int no,Model model){
 		BoardVO vo=dao.boardContentData(no);
-//		System.out.println(vo.getFilecount());
 		if(vo.getFilecount()>0){
-//			System.out.println(vo.getFilename());
 			String[] files=vo.getFilename().split(",");
 			model.addAttribute("files", files);
 		}
+		
 		model.addAttribute("vo",vo);
 		return "freeboard/bcontent";
 	}
@@ -169,4 +172,58 @@ public class BoardController {
 		return "freeboard/update_ok";
 	}
 	//============================================================================================================================
+	@RequestMapping("download.do")
+	   public void board_download(String fn,HttpServletResponse res)
+	   {
+		   try
+		   {
+			   System.out.println("a"+fn);
+			   File file=new File("/home/sist/Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CrimeWebProject/freeboardpoto/"+fn);
+			   
+			   res.setHeader("Content-Disposition", "attachment;filename="
+			                  +URLEncoder.encode(fn, "utf-8"));
+			   res.setContentLength((int)file.length());
+			   BufferedInputStream bis=
+					  new BufferedInputStream(new FileInputStream(file));
+			   BufferedOutputStream bos=
+					  new BufferedOutputStream(res.getOutputStream());
+			   
+			   int i=0;
+			   byte[] buffer=new byte[1024];
+			   while((i=bis.read(buffer, 0, 1024))!=-1)
+			   {
+				   bos.write(buffer, 0, i);
+			   }
+			   bis.close();
+			   bos.close();
+			   
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+	   }
+	//============================================================================================================================
+	@RequestMapping("freesearch.do")
+	public String board_freesearch(String freesearch,String search,Model model){
+		String board_name = "";
+		
+		if(freesearch.equals("f1")){
+			board_name="board_name";
+			List<BoardVO> list=dao.searchboardname(board_name);
+			model.addAttribute("list",list);
+		}else if(freesearch.equals("f2")){
+			board_name="board_subject";
+			List<BoardVO> list=dao.searchboardname(board_name);
+			model.addAttribute("list",list);
+			
+		}else if(freesearch.equals("f3")){
+			board_name="board_content";
+			List<BoardVO> list=dao.searchboardname(board_name);
+			model.addAttribute("list",list);
+		}
+		
+		
+		
+		return "freeboard/search";
+	}
 }

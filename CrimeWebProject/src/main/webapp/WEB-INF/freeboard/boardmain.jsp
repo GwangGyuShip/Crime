@@ -73,6 +73,7 @@
 </head>
 
 <body>
+
 	
 	<div class="page-wrapper">
 		<div class="container-fluid">
@@ -85,7 +86,7 @@
 
 					<!-- 구 선택 타이틀 -->
 					<table>
-						<h2 class="text-left">동네</h2ㄴ>
+						<h2 class="text-left">동네</h2>
 					</table>
 
 
@@ -222,14 +223,17 @@
 						</tr>
 
 						<!-- 검색창 카테고리 선택 부분 -->
-						<select id="freesearch">
-							<option>글쓴이</option>
-							<option>제목</option>
-							<option>내용</option>
+						<form action="freesearch.do" method="post">
+						<select name="freesearch">
+							<option value="f1">글쓴이</option>
+							<option value="f2">제목</option>
+							<option value="f3">내용</option>
 						</select>
 						<!-- 검색 텍스트 필드와 검색 버튼 부분 -->
-						<input type="text" szie=10>
+						<input type="text" szie=10 name="search">
+						
 						<button>검색</button>
+						</form>
 						<!-- 새글 쓰기 부분 -->
 						<a href="insert.do" class="inbtn btn-sm btn-primary" >새글</a>
 					</table>

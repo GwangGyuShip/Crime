@@ -3,9 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:if test="${bCheck==true }">
-	<c:redirect url="bcontent.do?no=${no }"/>
+	<script>
+     location.href="bcontent.do?no=${no}";
+   </script>
 </c:if>
-
 <c:if test="${bCheck==false }">
 <script>
  alert("비밀번호가 틀리셨습니다.");
