@@ -133,7 +133,7 @@
 				
 				<tr>
 					<td colspan="5" class="text-right">
-						<a href="videolist.do" class="btn btn-sm">더보기</a>
+						<a href="video.do" class="btn btn-sm">더보기</a>
 					</td>
 				</tr>
 			</table>
