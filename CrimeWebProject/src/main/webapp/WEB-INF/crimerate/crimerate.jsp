@@ -11,6 +11,14 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+<!-- table link -->
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+
+
 <!--hichart-->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -132,6 +140,23 @@
 	$('.totalBtn').trigger('click'); //최초 실행시 전체 값을 보여주기 위해서 자동클릭 실행
 
 });
+</script>
+<!-- 테이블 ajax -->
+<script type="text/javascript">
+	$(function() {
+		$("#selBox").change(function() {
+			var c_year=$(this).children("option:selected").attr("value");
+			$.ajax({
+				type:"POST",
+				url:"datatable_content.do",
+				data:{"c_year":c_year},
+				success:function(res)
+				{
+					$('.d_table').html(res);
+				}
+			});
+		});
+	});
 </script>
 
 <script type="text/javascript"> /*mouseover 이벤트*/
@@ -425,6 +450,29 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                 </div>
                                 </div>
                                 </div>
+                                <div class="row">
+                                	<div class="data-content" style="box-shadow:0 2px 10px rgba(0, 0, 0, 0.8); margin: 0px auto; background-color: white; padding: 20px;">
+								    	<select class="form-control" id="selBox" style="width:100px; float: right; margin: 20px;">
+										    <option class="option1" value="2016">2016년</option>
+										    <option class="option2" value="2015">2015년</option>
+										    <option class="option3" value="2014">2014년</option>
+										    <option class="option4" value="2013">2013년</option>
+										    <option class="option5" value="2012">2012년</option>
+										    <option class="option6" value="2011">2011년</option>
+										    <option class="option7" value="2010">2010년</option>
+										</select>
+										<script>
+											$(function(){
+												$('.option1').trigger('click');
+												$('#selBox').change();
+											});
+										</script>
+								    	<div class="d_table">
+								    	
+								    	</div>
+							    	</div>
+							    </div>
+
                             </div>
 </body>
 </html>

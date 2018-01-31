@@ -23,11 +23,7 @@
 
 </head>
 <body>
-	<div class="data-content" style="width: 100%; margin: 0px auto; background-color: white; padding: 20px;">
-		<div id="parent">
-			This is the main container.
-			<div id="popup" style="display: none">some text here</div>
-			</div>
+	
 		
 		<center>
 			<h1>${c_year } 년도 범죄 발생율</h1>
@@ -71,6 +67,5 @@
 				</c:forEach>
 	        </tbody>
 	    </table>
-	</div>
 </body>
 </html>
