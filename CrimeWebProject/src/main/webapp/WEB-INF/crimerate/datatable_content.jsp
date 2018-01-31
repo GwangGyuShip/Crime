@@ -24,23 +24,24 @@
 <style>
     .wrapper {
         cursor: help;
-        width: 170px;
         -webkit-transform: translateZ(0); /* webkit flicker fix */
         -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
         }
 
         .wrapper .tooltip {
-        background: #CEF6F5;
+        background: #E6E6E6;
         bottom: 100%;
         color: black;
         display: block;
-        left: 0px;
-        margin-bottom: 5px;
+        left: -22%;
+        margin-bottom: 0px;
         opacity: 0;
-        padding: 20px;
+        padding: 8px;
+        
+        border-radius: 10px;
         pointer-events: none;
         position: absolute;
-        width: 100%;
+        width: 200px;
         -webkit-transform: translateY(10px);
           -moz-transform: translateY(10px);
           -ms-transform: translateY(10px);
@@ -66,14 +67,14 @@
         height: 20px;
         left: 0;
         position: absolute;
-        width: 100%;
+        width: 200px;
         }
 
         /* CSS Triangles - see Trevor's post */
         .wrapper .tooltip:after {
         border-left: solid transparent 10px;
         border-right: solid transparent 10px;
-        border-top: solid #CEF6F5 10px;
+        border-top: solid #E6E6E6 10px;
         bottom: -10px;
         content: " ";
         height: 0;
@@ -91,6 +92,13 @@
           -ms-transform: translateY(0px);
            -o-transform: translateY(0px);
             transform: translateY(0px);
+        }
+        .tooltip .table{
+        	margin-bottom: 0px;
+        	padding-bottom: 0px;
+        }
+        .tooltip .table tr td{
+        	font-size: 12px;
         }
  </style>
 </head>
@@ -129,27 +137,159 @@
 						<td class="text-center">${vo.c_gu }</td>
 						<td class="text-center wrapper">${vo.ganggan_c }
 						 <div class="tooltip">
-						 	<table class="table">
-					              <tr style="font-size : 10px;">
-					              	<td> 발생수 : ${vo.ganggan_c }</td>
+						 	<table class="table" style="border-radius: 10px;">
+						 		  <tr class="danger">
+						 		  	<th class="text-center" colspan="2" style="font-size: 15px;">상세정보</th>
+						 		  </tr>
+						 		  <tr>
+						 		  	<th class="text-center">발생년도</th>
+					              	<td class="text-center"> ${c_year }</td>
+						 		  </tr>
+						 		  <tr>
+					              	<th class="text-center">지역</th>
+					              	<td class="text-center"> ${vo.c_gu }</td>
 					              </tr>
 					              <tr>
-					              	<td> 검거수 : ${vo.g_ganggan_c }</td>
+					              	<th class="text-center">발생수</th>
+					              	<td class="text-center">${vo.ganggan_c}</td>
 					              </tr>
 					              <tr>
-					              	<td> 검거율 : 
-					              		<fmt:formatNumber value="${vo.g_ganggan_c/vo.ganggan_c*100 }%" pattern=".0"/>
+					              	<th class="text-center">검거수</th>
+					              	<td class="text-center">${vo.g_ganggan_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거율</th>
+					              	<td class="text-center">
+					              		<fmt:formatNumber value="${vo.g_ganggan_c/vo.ganggan_c*100 }" pattern=".00"/>%
 					              	</td>
 					              </tr>
 					         </table>
 						 </div>
-						 
-						 
-						 </td>
-						<td class="text-center">${vo.gangdo_c } / ${vo.g_gangdo_c }</td>
-						<td class="text-center">${vo.salin_c } / ${vo.g_salin_c }</td>
-						<td class="text-center">${vo.juldo_c } / ${vo.g_juldo_c }</td>
-						<td class="text-center">${vo.pok_c } / ${vo.g_pok_c }</td>
+						</td>
+						<td class="text-center wrapper">${vo.gangdo_c }
+						 <div class="tooltip">
+						 	<table class="table" style="border-radius: 10px;">
+						 		  <tr class="danger">
+						 		  	<th class="text-center" colspan="2" style="font-size: 15px;">상세정보</th>
+						 		  </tr>
+						 		  <tr>
+						 		  	<th class="text-center">발생년도</th>
+					              	<td class="text-center"> ${c_year }</td>
+						 		  </tr>
+						 		  <tr>
+					              	<th class="text-center">지역</th>
+					              	<td class="text-center"> ${vo.c_gu }</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">발생수</th>
+					              	<td class="text-center">${vo.gangdo_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거수</th>
+					              	<td class="text-center">${vo.g_gangdo_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거율</th>
+					              	<td class="text-center">
+					              		<fmt:formatNumber value="${vo.g_gangdo_c/vo.gangdo_c*100 }" pattern=".00"/>%
+					              	</td>
+					              </tr>
+					         </table>
+						 </div>
+						</td>
+						<td class="text-center wrapper">${vo.salin_c } 
+						 <div class="tooltip">
+						 	<table class="table" style="border-radius: 10px;">
+						 		  <tr class="danger">
+						 		  	<th class="text-center" colspan="2" style="font-size: 15px;">상세정보</th>
+						 		  </tr>
+						 		  <tr>
+						 		  	<th class="text-center">발생년도</th>
+					              	<td class="text-center"> ${c_year }</td>
+						 		  </tr>
+						 		  <tr>
+					              	<th class="text-center">지역</th>
+					              	<td class="text-center"> ${vo.c_gu }</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">발생수</th>
+					              	<td class="text-center">${vo.salin_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거수</th>
+					              	<td class="text-center">${vo.g_salin_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거율</th>
+					              	<td class="text-center">
+					              		<fmt:formatNumber value="${vo.g_salin_c/vo.salin_c*100 }" pattern=".00"/>%
+					              	</td>
+					              </tr>
+					         </table>
+						 </div>
+						</td>
+						<td class="text-center wrapper">${vo.juldo_c }
+						  <div class="tooltip">
+						 	<table class="table" style="border-radius: 10px;">
+						 		  <tr class="danger">
+						 		  	<th class="text-center" colspan="2" style="font-size: 15px;">상세정보</th>
+						 		  </tr>
+						 		  <tr>
+						 		  	<th class="text-center">발생년도</th>
+					              	<td class="text-center"> ${c_year }</td>
+						 		  </tr>
+						 		  <tr>
+					              	<th class="text-center">지역</th>
+					              	<td class="text-center"> ${vo.c_gu }</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">발생수</th>
+					              	<td class="text-center">${vo.juldo_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거수</th>
+					              	<td class="text-center">${vo.g_juldo_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거율</th>
+					              	<td class="text-center">
+					              		<fmt:formatNumber value="${vo.g_juldo_c/vo.juldo_c*100 }" pattern=".00"/>%
+					              	</td>
+					              </tr>
+					         </table>
+						 </div>
+						</td>
+						<td class="text-center wrapper">${vo.pok_c }
+						  <div class="tooltip">
+						 	<table class="table" style="border-radius: 10px;">
+						 		  <tr class="danger">
+						 		  	<th class="text-center" colspan="2" style="font-size: 15px;">상세정보</th>
+						 		  </tr>
+						 		  <tr>
+						 		  	<th class="text-center">발생년도</th>
+					              	<td class="text-center"> ${c_year }</td>
+						 		  </tr>
+						 		  <tr>
+					              	<th class="text-center">지역</th>
+					              	<td class="text-center"> ${vo.c_gu }</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">발생수</th>
+					              	<td class="text-center">${vo.pok_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거수</th>
+					              	<td class="text-center">${vo.g_pok_c}</td>
+					              </tr>
+					              <tr>
+					              	<th class="text-center">검거율</th>
+					              	<td class="text-center">
+					              		<fmt:formatNumber value="${vo.g_pok_c/vo.pok_c*100 }" pattern=".00"/>%
+					              	</td>
+					              </tr>
+					         </table>
+						 </div>
+						</td>
 						<td class="text-center">${vo.c_cam }</td>
 					</tr>
 				</c:forEach>
