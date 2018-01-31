@@ -308,7 +308,7 @@ body {
 													<div
 														class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
 														<a class="tt-post-img custom-hover"
-															href="">
+															href="videocontent.do?no=${relatedvo.no }">
 															<div class="tt-video-attributes">
 																<span class="tt-post-length">${relatedvo.length }</span>
 															</div> <img width="104" height="63"
@@ -317,7 +317,7 @@ body {
 														</a>
 														<div class="tt-post-info">
 															<a class="tt-post-title c-h6" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
-																href="">${relatedvo.title }</a>
+																href="videocontent.do?no=${relatedvo.no }">${relatedvo.title }</a>
 															<div class="tt-post-cat">
 																<a rel="category tag" style="font-family: NanumBarunGothic !important;">${relatedvo.sortname }</a>
 															</div>
