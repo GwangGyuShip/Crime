@@ -58,7 +58,8 @@
          <td class="text-left" colspan="3">
           <ul>
            <c:forEach var="f" items="${files }">
-             <li><a href="#">${f }</a></li>
+             <li><a href="download.do?fn=${vo.filename }">${vo.filename }</a></li>
+             <img src="freeboardpoto/${vo.filename }" width=300px>
            </c:forEach>
           </ul>
          </td>
