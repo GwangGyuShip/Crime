@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sist.crimerate.CrimeRateVO;
 import com.sist.freeboard.BoardVO;
 import com.sist.main.MainDAO;
 import com.sist.news.NewsVO;
@@ -25,10 +26,12 @@ public class MainController {
 		List<NewsVO> mNews = new ArrayList<NewsVO>();
 		List<String> sortList = new ArrayList<String>();
 		List<VideoVO> mVideo = new ArrayList<VideoVO>();
+		List<CrimeRateVO> mCrime = new ArrayList<CrimeRateVO>();
 		
 		mBoard = dao.mainBoardList();
 		mNews = dao.newsSearch();
 		sortList = dao.mainVideoSort();
+		mCrime = dao.mainCrimeList();
 		
 		for(String s : sortList) {
 			mVideo.add(dao.mainVideoList(s));
@@ -37,6 +40,7 @@ public class MainController {
 		model.addAttribute("mBoard", mBoard);
 		model.addAttribute("mNews", mNews);
 		model.addAttribute("mVideo", mVideo);
+		model.addAttribute("mCrime", mCrime);
 		
 		return "main";
 	}
