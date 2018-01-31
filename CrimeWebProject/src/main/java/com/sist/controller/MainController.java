@@ -30,7 +30,6 @@ public class MainController {
 		mNews = dao.newsSearch();
 		sortList = dao.mainVideoSort();
 		
-		
 		for(String s : sortList) {
 			mVideo.add(dao.mainVideoList(s));
 		}
