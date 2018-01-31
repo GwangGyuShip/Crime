@@ -24,6 +24,11 @@
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
+<style> /* 체크박스 테이블 테두리 제거 */
+	.table-borderless td, .table-borderless th {
+    border: 0 !important;
+}
+</style>
 <script type="text/javascript">
  $(function(){
 	$('.button-checkbox').each(function () { //버튼형 체크박스 제이쿼리
@@ -338,9 +343,9 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                    <div class="col-sm-12 text-center form-inline">
                                 		
                                 		
-                                            <h2 style="margin-bottom: 20px;">
+                                            <h2 style="margin-bottom: 30px;">
                                             <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary line_reset">
-                                            			<i class="fa fa-refresh"></i></button>범죄율
+                                            			<i class="fa fa-refresh"></i></button>연도별 범죄 발생률
                                             <select class="form-control" id="select_type" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="평균">평균</option>
                                                 <option value="강간">강간</option>
@@ -379,22 +384,42 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             			});
                                             	</script>
                                             
+                                            	<div class="center-block" style="width:900px;" > 
                                             	
-                                            <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
-												       <input type="checkbox" class="hidden" name="gu" value="전체"/>
-											   	</span>	
-                                            	
-                                            <c:forEach var="gu" items="${guList}" varStatus="status">
-                                             <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
-												       <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
-											   	</span>
-											   
-											   	<c:if test="${status.count == 12}">
-											   		<br>
-											   	</c:if>	
-                                            </c:forEach>
+                                            	<table class="table table-borderless">
+                                            		<tr>
+                                            			<td style="padding:3px;">
+	                                            			<span class="button-checkbox">
+														       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
+														       <input type="checkbox" class="hidden" name="gu" value="전체"/>
+												   			</span>	
+                                            			</td>
+                                            			<c:forEach var="gu" items="${guList}" varStatus="status">
+                                            				<c:if test="${status.count<=12}">
+				                                            	<td style="padding:3px;">
+					                                             	<span class="button-checkbox">
+																	   <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+																	   <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+																   	</span>
+															   	</td>
+														   	</c:if>
+	                                            		</c:forEach>
+                                            		</tr>
+                                            		<tr>
+                                            			<c:forEach var="gu" items="${guList}" varStatus="status">
+                                            				<c:if test="${status.count>12}">
+				                                            	<td style="padding:3px;">
+					                                             	<span class="button-checkbox">
+																	   <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+																	   <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+																   	</span>
+															   	</td>
+														   	</c:if>
+	                                            		</c:forEach>
+	                                            	</tr>
+                                            	</table>
+                                         
+                                            	</div>
                                     </div>
                                 
                                    <div class="chart_content">
