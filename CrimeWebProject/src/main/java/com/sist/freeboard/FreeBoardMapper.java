@@ -40,9 +40,35 @@ public void freeBoardUpdate(BoardVO vo);
 
 @Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "+
 "FROM free_board WHERE board_name LIKE #{bserach%}")
-public List<BoardVO> searchboardname(String bserach);
+public List<BoardVO> searchboardname(String bsearch);
 
+@Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "+
+"FROM free_board WHERE board_subject LIKE #{bserach%}")
+public List<BoardVO> searchboardsubject(String bsearch);
+
+@Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "+
+"FROM free_board WHERE board_content LIKE #{bserach%}")
+public List<BoardVO> searchboardcontent(String bsearch);
+
+
+@Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount,num "+
+"FROM(SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount,rownum as num "
++"FROM(SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "
++"FROM free_board WHERE board_area=#{board_area} ORDER BY board_no DESC)) "
++"WHERE num BETWEEN #{start} AND #{end}")
+public List<BoardVO> board_area_select(Map map);
+
+@Select("SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount,num "+
+"FROM(SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount,rownum as num "
++"FROM(SELECT board_no,board_area,board_group,board_subject,board_name,board_regdate,board_hit,board_filecount "
++"FROM free_board WHERE board_group=#{board_group} ORDER BY board_no DESC)) "
++"WHERE num BETWEEN #{start} AND #{end}")
+public List<BoardVO> board_group_select(Map map);
 }
+
+
+
+
 
 
 

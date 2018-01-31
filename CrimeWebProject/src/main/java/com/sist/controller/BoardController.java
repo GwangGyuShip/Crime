@@ -214,17 +214,86 @@ public class BoardController {
 			
 		}else if(freesearch.equals("f2")){
 			board_name="board_subject";
-			List<BoardVO> list=dao.searchboardname(board_name);
+			List<BoardVO> list=dao.searchboardsubject(bsearch);
 			model.addAttribute("list",list);
 			
 		}else if(freesearch.equals("f3")){
 			board_name="board_content";
-			List<BoardVO> list=dao.searchboardname(board_name);
+			List<BoardVO> list=dao.searchboardcontent(bsearch);
 			model.addAttribute("list",list);
 		}
 		
-		
-		
 		return "freeboard/search";
+	}
+	//===========================================================================================================================
+	@RequestMapping("area_select.do")
+	public String board_area_select(String board_area, Model model,String page){
+		
+			//기본 첫 페이지 페이지는 null값이니 1로 설정 ( 스트링 값으로 )
+			if(page==null){
+				page="1";
+			}
+			//스트링으로 받은 값을 숫자로 변환
+			int curpage=Integer.parseInt(page);
+			// 게시글 갯수 나타내기
+		    int rowSize=10;
+		    // 시작페이지 구하기
+		    int start= (rowSize*curpage)-(rowSize-1);
+		    // 마지막 페이지 구하기
+		    int end= rowSize*curpage;
+		    
+		    // 맵에 저장 키와 값 전송
+		    Map map=new HashMap();
+		    map.put("board_area", board_area);
+		    map.put("start", start);
+		    map.put("end",end);
+		    // list 형식으로 VO 를 담아 SQL에 대한 값을 가져옴
+			List<BoardVO> list = dao.board_group_select(map);
+			// 그것을 보내주기 위해 model 에 담고 list를 보내준다.
+			model.addAttribute("list",list);
+			// 토탈페이지 구하기 위한 SQL구문
+			int totalpage=dao.freeBoardTotalPage();
+			//시작페이지 전송
+			model.addAttribute("curpage",curpage);
+			//토탈 페이지 
+			model.addAttribute("totalpage",totalpage);
+			//모든 값은 BoardMain 에전송하여 JSP에서 활용 하도록 하는것
+		
+		return "freeboard/board_list";
+	}
+	@RequestMapping("group_select.do")
+	public String board_group_select(String board_group, Model model,String page){
+		
+			//기본 첫 페이지 페이지는 null값이니 1로 설정 ( 스트링 값으로 )
+			if(page==null){
+				page="1";
+			}
+			//스트링으로 받은 값을 숫자로 변환
+			int curpage=Integer.parseInt(page);
+			// 게시글 갯수 나타내기
+		    int rowSize=10;
+		    // 시작페이지 구하기
+		    int start= (rowSize*curpage)-(rowSize-1);
+		    // 마지막 페이지 구하기
+		    int end= rowSize*curpage;
+		    
+		    // 맵에 저장 키와 값 전송
+		    Map map=new HashMap();
+		    map.put("board_group", board_group);
+		    map.put("start", start);
+		    map.put("end",end);
+		    // list 형식으로 VO 를 담아 SQL에 대한 값을 가져옴
+			List<BoardVO> list = dao.board_group_select(map);
+			// 그것을 보내주기 위해 model 에 담고 list를 보내준다.
+			model.addAttribute("list",list);
+			// 토탈페이지 구하기 위한 SQL구문
+			int totalpage=dao.freeBoardTotalPage();
+			//시작페이지 전송
+			model.addAttribute("curpage",curpage);
+			//토탈 페이지 
+			model.addAttribute("totalpage",totalpage);
+			//모든 값은 BoardMain 에전송하여 JSP에서 활용 하도록 하는것
+		
+		return "freeboard/board_list";
 	}
 }

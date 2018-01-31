@@ -175,8 +175,23 @@ public class BoardDAO {
 	  
 	 
 	 
-	 	public List<BoardVO> searchboardname(String bserach){
-	 		return mapper.searchboardname(bserach);
+	 	public List<BoardVO> searchboardname(String bsearch){
+	 		return mapper.searchboardname(bsearch);
 	 	}
 	 
+	 	public List<BoardVO> searchboardsubject(String bsearch){
+	 		return mapper.searchboardsubject(bsearch);
+	 	}
+	 	
+	 	public List<BoardVO> searchboardcontent(String bsearch){
+	 		return mapper.searchboardcontent(bsearch);
+	 	}
+	 	public List<BoardVO> board_area_select(Map map){
+	 		
+	 		return mapper.board_area_select(map);
+	 	}
+	 	public List<BoardVO> board_group_select(Map map){
+	 		
+	 		return mapper.board_group_select(map);
+	 	}
 }
