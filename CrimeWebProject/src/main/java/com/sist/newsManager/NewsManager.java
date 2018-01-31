@@ -1,5 +1,6 @@
 package com.sist.newsManager;
 import java.net.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.xml.bind.JAXBContext;
@@ -33,7 +34,7 @@ public class NewsManager {
 				NewsVO vo = new NewsVO();
 				vo.setTitle(i.getTitle());
 				vo.setLink(i.getLink());
-				vo.setPubDate(i.getPubDate());
+				vo.setPubDate(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date(i.getPubDate())));
 				vo.setAuthor(i.getAuthor());
 				dao.newsInsert(vo);
 			}
@@ -63,10 +64,9 @@ public class NewsManager {
 				vo.setTitle(i.getTitle());
 				vo.setDescription(i.getDescription());
 				vo.setLink(i.getLink());
-				vo.setPubDate(i.getPubDate());
+				vo.setPubDate(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date(i.getPubDate())));
 				vo.setAuthor(i.getAuthor());
-				vo.setThumbnail(i.getThumbnail());
-				dao.newsInsert(vo);
+				dao.newsCrimeInsert(vo);
 			}
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());

@@ -30,6 +30,14 @@ public interface VideoMapper {
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<VideoVO> videoListData(Map map);
 	
+	//검색결과
+	@Select("SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,num "
+			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit,rownum as num "
+			+ "FROM (SELECT no,sortno,sortname,title,regdate,youtubekey,content,length,hit "
+			+ "FROM bvideo WHERE title LIKE #{search} ORDER BY regdate DESC)) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<VideoVO> videofindAllData(Map map);
+	
 	//전체목록에서 총페이지 구하기
 	@Select("SELECT CEIL(COUNT(*)/10) FROM bvideo")
 	public int videoAllTotalPage();
@@ -37,6 +45,14 @@ public interface VideoMapper {
 	//목록별 총 페이지 구하기
 	@Select("SELECT CEIL(COUNT(*)/10) FROM bvideo WHERE sortname=#{sortname}")
 	public int videoTotalPage(String sortname);
+	
+	//검색시 총 페이지 구하기
+	@Select("SELECT CEIL(COUNT(*)/10) FROM bvideo WHERE title LIKE #{search}")
+	public int videofindTotalPage(String search);
+	
+	//검색시 총 검색결과갯수
+	@Select("SELECT COUNT(*) FROM bvideo WHERE title LIKE #{search}")
+	public int videofindcount(String search);
 	
 	//조회수 증가
 	@Update("UPDATE bvideo SET hit=hit+1 WHERE no=#{no}")

@@ -21,12 +21,24 @@ public class VideoDAO {
 		return vm.videoListData(map);
 	}
 	
+	public List<VideoVO> videofindAllData(Map map) {
+		return vm.videofindAllData(map);
+	}
+	
 	public int videoAllTotalPage() {
 		return vm.videoAllTotalPage();
 	}
 	
 	public int videoTotalPage(String sortname) {
 		return vm.videoTotalPage(sortname);
+	}
+	
+	public int videofindTotalPage(String search) {
+		return vm.videofindTotalPage(search);
+	}
+	
+	public int videofindcount(String search) {
+		return vm.videofindcount(search);
 	}
 	
 	public VideoVO videoContentData(int no) {

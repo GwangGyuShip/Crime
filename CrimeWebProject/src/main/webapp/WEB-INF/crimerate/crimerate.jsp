@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -11,11 +12,24 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+<!-- table link -->
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+
+
 <!--hichart-->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
+<style> /* 체크박스 테이블 테두리 제거 */
+	.table-borderless td, .table-borderless th {
+    border: 0 !important;
+}
+</style>
 <script type="text/javascript">
  $(function(){
 	$('.button-checkbox').each(function () { //버튼형 체크박스 제이쿼리
@@ -132,6 +146,23 @@
 	$('.totalBtn').trigger('click'); //최초 실행시 전체 값을 보여주기 위해서 자동클릭 실행
 
 });
+</script>
+<!-- 테이블 ajax -->
+<script type="text/javascript">
+	$(function() {
+		$("#selBox").change(function() {
+			var c_year=$(this).children("option:selected").attr("value");
+			$.ajax({
+				type:"POST",
+				url:"datatable_content.do",
+				data:{"c_year":c_year},
+				success:function(res)
+				{
+					$('.d_table').html(res);
+				}
+			});
+		});
+	});
 </script>
 
 <script type="text/javascript"> /*mouseover 이벤트*/
@@ -313,9 +344,9 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                    <div class="col-sm-12 text-center form-inline">
                                 		
                                 		
-                                            <h2 style="margin-bottom: 20px;">
+                                            <h2 style="margin-bottom: 30px;">
                                             <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary line_reset">
-                                            			<i class="fa fa-refresh"></i></button>범죄율
+                                            			<i class="fa fa-refresh"></i></button>연도별 범죄 발생률
                                             <select class="form-control" id="select_type" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="평균">평균</option>
                                                 <option value="강간">강간</option>
@@ -354,22 +385,42 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             			});
                                             	</script>
                                             
+                                            	<div class="center-block" style="width:900px;" > 
                                             	
-                                            <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
-												       <input type="checkbox" class="hidden" name="gu" value="전체"/>
-											   	</span>	
-                                            	
-                                            <c:forEach var="gu" items="${guList}" varStatus="status">
-                                             <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
-												       <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
-											   	</span>
-											   
-											   	<c:if test="${status.count == 12}">
-											   		<br>
-											   	</c:if>	
-                                            </c:forEach>
+                                            	<table class="table table-borderless">
+                                            		<tr>
+                                            			<td style="padding:3px;">
+	                                            			<span class="button-checkbox">
+														       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
+														       <input type="checkbox" class="hidden" name="gu" value="전체"/>
+												   			</span>	
+                                            			</td>
+                                            			<c:forEach var="gu" items="${guList}" varStatus="status">
+                                            				<c:if test="${status.count<=12}">
+				                                            	<td style="padding:3px;">
+					                                             	<span class="button-checkbox">
+																	   <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+																	   <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+																   	</span>
+															   	</td>
+														   	</c:if>
+	                                            		</c:forEach>
+                                            		</tr>
+                                            		<tr>
+                                            			<c:forEach var="gu" items="${guList}" varStatus="status">
+                                            				<c:if test="${status.count>12}">
+				                                            	<td style="padding:3px;">
+					                                             	<span class="button-checkbox">
+																	   <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+																	   <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+																   	</span>
+															   	</td>
+														   	</c:if>
+	                                            		</c:forEach>
+	                                            	</tr>
+                                            	</table>
+                                         
+                                            	</div>
                                     </div>
                                 
                                    <div class="chart_content">
@@ -425,6 +476,31 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                 </div>
                                 </div>
                                 </div>
+                                <div class="row">
+                                <div class="col-sm-12" style="padding:30px;">
+                                	<div class="data-content" style="box-shadow:0 2px 10px rgba(0, 0, 0, 0.8); margin: 0px auto; background-color: white; padding: 40px;">
+								    	<select class="form-control" id="selBox" style="width:100px; float: right; margin: 20px;">
+										    <option class="option1" value="2016">2016년</option>
+										    <option class="option2" value="2015">2015년</option>
+										    <option class="option3" value="2014">2014년</option>
+										    <option class="option4" value="2013">2013년</option>
+										    <option class="option5" value="2012">2012년</option>
+										    <option class="option6" value="2011">2011년</option>
+										    <option class="option7" value="2010">2010년</option>
+										</select>
+										<script>
+											$(function(){
+												$('.option1').trigger('click');
+												$('#selBox').change();
+											});
+										</script>
+								    	<div class="d_table">
+								    	
+								    	</div>
+							    	</div>
+							    	</div>
+							    </div>
+
                             </div>
 </body>
 </html>
