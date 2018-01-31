@@ -17,6 +17,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sist.crimerate.CrimeRateVO;
 import com.sist.freeboard.BoardVO;
 import com.sist.news.NewsVO;
 import com.sist.newsManager.Item;
@@ -80,8 +81,8 @@ public class MainDAO {
 			for(Item i : iList) {
 				NewsVO vo = new NewsVO();
 				String strTitle= i.getTitle();
-				if (strTitle.length() >= 30)
-					strTitle = strTitle.substring(0, 30) + "...";
+				if (strTitle.length() >= 100)
+					strTitle = strTitle.substring(0, 100) + "...";
 				vo.setTitle(strTitle);
 				vo.setLink(i.getLink());
 				vo.setAuthor(i.getAuthor());
@@ -90,7 +91,7 @@ public class MainDAO {
 				list.add(vo);
 				
 				count++;
-				if (count >= 10)
+				if (count >= 15)
 					break;
 			}
 		} catch (Exception ex) {
@@ -109,4 +110,8 @@ public class MainDAO {
 		
 		return vo; 
 	};
+	
+	public List<CrimeRateVO> mainCrimeList() {
+		return mapper.mainCrimeList();
+	}
 }
