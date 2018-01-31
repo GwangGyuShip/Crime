@@ -3,6 +3,7 @@ package com.sist.controller;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,7 +60,14 @@ public class VideoController {
 	
 	
 	@RequestMapping("video.do")
-	public String videolist(String page, Model model) {
+	public String videolist(String page, Model model, HttpSession session) {
+		List<VideoVO> ilist = (List<VideoVO>)session.getAttribute("ilist");
+		
+		if(ilist==null)
+			ilist = new ArrayList<VideoVO>();
+		
+		session.setAttribute("ilist", ilist);
+		
 		if(page==null)	
 			page="1";
 		int curpage = Integer.parseInt(page);
@@ -173,8 +181,35 @@ public class VideoController {
 	
 	
 	@RequestMapping("videocontent.do")
-	public String videocontent(int no, Model model) {
+	public String videocontent(int no, Model model, HttpSession session) {
+		List<VideoVO> ilist = (List<VideoVO>)session.getAttribute("ilist");
+		
+		if(ilist==null)
+			ilist = new ArrayList<VideoVO>();
+
 		VideoVO vo = dao.videoContentData(no);
+		/*int i=0;
+		while(ilist.get(i).getNo()!=no){
+			i++;
+			ilist.add(vo);
+			
+		}*/
+		boolean videoSave=true;
+		for(VideoVO tempVo:ilist){
+			if(tempVo.getNo() == no){
+				videoSave=false;
+				break;
+			}else{
+				videoSave=true;
+			}
+		}
+		if(videoSave==true){
+			ilist.add(vo);
+		}
+		
+		
+		session.setAttribute("ilist", ilist);
+		
 		List<VideoReplyVO> relist = dao.videoreplyListData(no);
 		vo.setCount(dao.videoreplyCount(no));
 		
