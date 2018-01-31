@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +15,8 @@
 	rel="stylesheet">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+	
+	
 <style type="text/css">
 .row {
 	margin: 0px auto;
@@ -28,39 +32,40 @@
 	height: 180px;
 	margin-left: 50px;
 }
+
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<center>
-				<h3>갤로리</h3>
+				<h3>게시글 보기</h3>
 			</center>
-			<div data-width="100%" data-height="350px"
+		 <div data-width="100%" data-height="350px"
 				data-transition="crossfade" class="fotorama" data-nav="thumbs"
 				data-loop="true" data-autoplay="2000" data-fit="scaledown">
-				<!-- 사진 등록한 수 만큼 -->
-				<%-- <c:forEach var="i" begin="1" end="${vo.cb_img_cnt }">
-					<img src="hot3/cb_img/cb_img_${vo.cb_no }_${i }.jpg">
-				</c:forEach> --%>
+				
+				 <c:forEach var="i" begin="0" end="${vo.filecount }">
+					<img src="gallery/${name[i]}">
+				</c:forEach> 
+ 
 
-				<img class="photolist" src="gallery/a3.jpg"> <img class="photolist"
-					src="gallery/a2.jpg"> <img class="photolist" src="gallery/a4.jpg">
-			</div>
-			<table class="table table-hover">
+			</div> 
+			 
+			<table class="table">
 
 				<tr>
-					<td class="text-center info" width="20%">번호</td>
-					<td class="text-center" width="30%">${vo.no }</td>
-					<td class="text-center info" width="20%">작성일</td>
+					<td class="text-center info" width="20%">지역</td>
+					<td class="text-center" width="30%">${vo.gu }</td>
+					<td class="text-center info" width="20%">게시날짜</td>
 					<td class="text-center" width="30%"><fmt:formatDate
 							value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
 				</tr>
 				<tr>
-					<td class="text-center info" width="20%">이름</td>
-					<td class="text-center" width="30%">${vo.name }</td>
-					<td class="text-center info" width="20%">조회수</td>
-					<td class="text-center" width="30%">${vo.hit }</td>
+					<td class="text-center info" width="20%">주소</td>
+					<td class="text-center" width="30%">${vo.addr } </td> 
+					<td class="text-center info" width="20%">공감수</td>
+					<td class="text-center" width="30%">${vo.good }</td> 
 				</tr>
 				<tr>
 					<td class="text-center info" width="20%">제목</td>
@@ -72,23 +77,31 @@
 						${vo.content }</td>
 				</tr>
 				<tr>
-					<td colspan="4" class="text-right">
+					<td colspan="5" class="text-right" height="50px">
+					 <form action="goodup.do" method="post" style="width: 100px">
 						<button class="btn btn-sm btn-info">
 							<img src="gallery/good.png"> 공감해요
-						</button> <a href="#" class="btn btn-sm btn-info">수정</a> <a href="#"
-						class="btn btn-sm btn-danger">삭제</a> <a href="#"
-						class="btn btn-sm btn-success">목록</a>
+						</button> 
+						<input type="hidden" name="no" value="${vo.no }">
+					</form>
+					<!-- <input type="submit" class="btn btn-sm btn-info" src="gallery/good.png"> -->
+					
+					<a href="#" class="btn btn-sm btn-info">수정</a> <a href="#"
+						class="btn btn-sm btn-danger">삭제</a> 
+						<!-- <a href="#"class="btn btn-sm btn-success" >\B8\F1\B7\CF</a> -->
+						<input class="btn btn-sm btn-success" type="button"
+								value="목록" onclick="javascript:history.back()">
 					</td>
 				</tr>
 			</table>
 		</div>
 	</div>
 
-	<div class="container">
+	 <div class="container">
 		<div class="row">
 			<table id="table_content" width=700>
 				<tr>
-					<td align="center">댓글보기</td>
+					<td align="center">댓글</td>
 				</tr>
 			</table>
 			<div id="view">
@@ -99,7 +112,7 @@
 									end="${rvo.group_tab }">
                 &nbsp;&nbsp;
              	</c:forEach> <img src="board/image/right-arrow.png" width=15 height=15>
-								<img src="board/image/love.png" width=15 height=15> <%-- ${rvo.name}(${rvo.dbday })&nbsp;&nbsp; --%>
+								<img src="board/image/love.png" width=15 height=15> ${rvo.name}(${rvo.dbday })&nbsp;&nbsp;
 								<c:if test="${rvo.dbday2==today }">
 									<sup><img src="board/image/qqq.gif" width=15 height=15></sup>
 								</c:if> <br>
@@ -113,17 +126,17 @@
 						<td width="80%" >
 							<input type="hidden" name=bno value="${vo.no }">
 								<textarea rows="3" cols="50" name="msg"></textarea>
-								<!-- <input type="submit" class="btn btn-sm btn-danger" value="댓글달기"> -->
+								
 							</td>
 
 						<td width="20%" class="text-center"><input type="button" class="btn btn-sm btn-danger"
-							value="댓글달기" style="vertical-align:middle; height: 40px"></td>
+							value="댓글쓰기" style="vertical-align:middle; height: 40px"></td>
 					</tr>
 				</table>
 				
 			</form>
 		</div>
 
-	</div>
+	</div> 
 </body>
 </html>
