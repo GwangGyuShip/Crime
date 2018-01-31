@@ -3,10 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%--
-      ${fn:substring("aaa",1,3)}
-      fn => 문자열(String),List
- --%>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -163,32 +160,27 @@
 	<div class="container" style="width: 90%">
 		<div class="row">
 			<div class="photohead">
-				<h1>갤러리 게시판</h1>
+				<h1>갤러리</h1>
 			</div>
+
 			<div class="photomiddle">
-				&nbsp; &nbsp; &nbsp; 
-				
-				<a href="photokang.do?kang=강남">
-					<button class="btn btn-info">강남</button>
-				</a> &nbsp; &nbsp; &nbsp;
-				<a href="photokang.do?kang=강북">
-					<button class="btn btn-info">강북</button>
+				&nbsp; &nbsp; &nbsp; <a href="photokang.do?kang=강남"> <input
+					type="button" class="btn btn-info" name="kang1" value="강남">
+				</a> &nbsp; &nbsp; &nbsp; <a href="photokang.do?kang=강북"> <input
+					type="button" class="btn btn-info" name="kang2" value="강북">
+
 				</a>
 			</div>
 			<div class="photolow">
-			
-				<c:forEach var="vo" items="${list }">
-				
-					
-						<a href="#">
-							<button class="btn btn-info btn_1">${vo.gu }</button>
-						</a>
-					
-				</c:forEach>
-
+				<form action="guchoice.do" method="post">
+					<c:forEach var="list" items="${list }">
+						<input type="submit" class="btn btn-info btn_1" name="gu"
+							value="${list.gu }">
+					</c:forEach>
+				</form>
 			</div>
 
-			<!-- foreach로 갯수만큼 뿌릴꺼 -->
+			
 			<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
 			<div class="11">
 				<div style="height: 140px; margin: 0 auto;">
@@ -196,88 +188,107 @@
 						style="display: block; margin-left: auto; margin-right: auto; height: 150px;"
 						src="gallery/skull.png" height="100%">
 				</div>
-				<div style="border-bottom: 2px solid black; margin: 0px auto;">
-					<c:forEach var="i" begin="1" end="4">
+				<%-- <div style="border-bottom: 2px solid black; margin: 0px auto;">
+					<c:forEach var="vo" items="${vo }">
 						<div style="height: 300px; width: 320px; display: inline-block;">
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 imgList"
 								style="width: 255px; margin-bottom: 15px; margin-left: 35px;">
 								<div class="hovereffect">
-									<img class="img-responsive" src="gallery/a2.jpg">
+									<img class="img-responsive" src="gallery/${vo.filename }">
 									<div class="overlay">
-										<h2>사진설명...</h2>
-										<a class="info" href="photocontent.do">개씹 위험</a>
+										<h2>\BB\E7\C1\F8\BC\B3\B8\ED...</h2>
+										<a class="info" href="photocontent.do">\B0\B3\BE\C3 \C0\A7\C7\E8</a>
 									</div>
 								</div>
 								<div
 									style="width: 50px; height: 50px; text-align: center; margin-top: 230px;">
-									<p>제목</>
+									<p>\C1\A6\B8\F1</>
 									<p>aaa</p>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
-				</div>
+				</div> --%>
 
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<div style="border-bottom: 3px solid black">
+				<div style="border-bottom: 3px solid black;height: 900px;">
 					<h1 style="text-align: center;">
-						<strong>서대문구 대신 전해드립니다.</strong>
+						<strong>${gu } 대신 전해드립니다.</strong>
 					</h1>
-					<c:forEach var="i" begin="1" end="6">
-						<div style="height: 300px; width: 450px; display: inline-block;">
+					<c:forEach var="vo" items="${list2 }">
+						<div style="height: 400px; width: 450px; display: inline-block;">
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 imgList"
 								style="width: 255px; margin-top: 15px; margin-bottom: 15px; margin-left: 45px;">
 								<div class="hovereffect">
-									<img class="img-responsive" src="gallery/a1.jpg">
+									<img class="img-responsive" src="gallery/${vo.filename }" style="height: 250px">
 									<div class="overlay">
-										<h2>사진설명...</h2>
-										<a class="info" href="photocontent.do">개씹 위험</a>
+										<h2>${vo.subject }</h2>
+										<a class="info" href="photocontent.do?no=${vo.no }">자세히보기</a>
 									</div>
 								</div>
-								<div
-									style="width: 50px; height: 50px; text-align: center; margin-top: 230px;">
-									<p>제목</>
-									<p>aaa</p>
-								</div>
+								<%-- <div
+									style="width: 100%; height: 50px; text-align: center; margin-top: 230px;">
+									<p style="font-size: 12pt"><strong>\C1\A6\B8\F1</strong>  ${vo.subject }</>
+									
+								</div> --%>
+								<table id="table_content" class="table" width=300px>
+									<tr>
+										<td align="left" style="font-size: 13pt">
+											&nbsp;<strong>주소</strong> ${vo.addr }
+										</td>										
+									</tr>
+									<tr>
+										<td align="left" style="font-size: 13pt">
+											&nbsp;<strong>공감수</strong> ${vo.good }
+										</td>
+									</tr>
+								</table>
 							</div>
 						</div>
 					</c:forEach>
 				</div>
-				<div style="height: 100px; text-align: center;">
-					
-
-				</div>
+				<div style="height: 100px; text-align: center;"></div>
 				<table class="table ">
-				<tr>
-					<td class="text-left" style="width: 33%">
-					<form method="post" action="find.do" style="width: 100%">
-						검색:<select name="fs" style="height: 30px;">
-									<option value="name">주소</option>
+					<tr>
+						<td class="text-left" style="width: 33%">
+							<form method="post" action="find.do" style="width: 100%">
+								검색:<select name="fs" style="height: 30px;">
+									<option value="name">이름</option>
 									<option value="subject">제목</option>
 									<option value="content">내용</option>
-								</select>
-								<input type="text" name="ss" size="10" style="height: 30px;">
-								<input type="submit" value="찾기" class="btn btn-sm btn-danger" style="width: 75px; height: 38px">
-					</form>
-					
-					</td>
-					<td class="text-center" style="width: 33%">
-						<a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-primary" style="width: 75px; height: 38px">이전</a>
-						[1] [2] [3]
-						<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-success" style="width: 75px; height: 38px">다음</a>
-					</td>
-					<td class="text-right" style="width: 33%">
-					<a href="photoinsert.do" style="width: 135px; height: 40px" type="button" class="btn btn-info">게시글 올리기</a>
-						
-					</td>
-				</tr>
-			</table>
+								</select> <input type="text" name="ss" size="10" style="height: 30px;">
+								<input type="submit" value="검색" class="btn btn-sm btn-danger"
+									style="width: 75px; height: 38px">
+							</form>
+
+						</td>
+						<td class="text-center" style="width: 33%"><a
+							href="guchoice.do?gu=${gu }&page=${curpage>1?curpage-1:curpage }"
+							class="btn btn-sm btn-primary" style="width: 75px; height: 38px">이전</a>
+							
+							<c:forEach var="i" begin="1" end="${totalpage<1?1:totalpage }">
+							&emsp;
+							<a href="guchoice.do?gu=${gu }&page=${i }">
+								<c:choose>
+									<c:when test="${i==curpage }"><font size="4pt">${i }</font></c:when>
+									<c:otherwise><font color="black">${i }</font></c:otherwise>
+								</c:choose>
+							</a>
+						</c:forEach>&emsp;
+							 
+							 <a	href="guchoice.do?gu=${gu }&page=${curpage<totalpage?curpage+1:curpage }"
+							class="btn btn-sm btn-success" style="width: 75px; height: 38px">다음</a>
+						</td>
+						<td class="text-right" style="width: 33%"><a
+							href="photoinsert.do" style="width: 135px; height: 40px"
+							type="button" class="btn btn-info">글쓰기</a></td>
+					</tr>
+				</table>
 
 			</div>
 		</div>
 </body>
 </html>
-
 
 
 

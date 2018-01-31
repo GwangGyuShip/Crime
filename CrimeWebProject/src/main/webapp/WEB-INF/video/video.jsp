@@ -521,25 +521,28 @@ $(function(){
 												<!-- 최근 시청한 동영상 -->
 												<div class="tt-tab-info">
 													<ul class="tt-post-list">
+														<c:forEach var="ivo" items="${sessionScope.ilist }">
 														<li>
 															<div
 																class="tt-post type-7 clearfix post-328 post type-post status-publish format-video has-post-thumbnail hentry category-movies tag-animated tag-movie post_format-post-format-video">
-																<a class="tt-post-img custom-hover" href="">
+																<a class="tt-post-img custom-hover"
+																	href="videocontent.do?no=${ivo.no }">
 																	<div class="tt-video-attributes">
-																		<span class="tt-post-length">41:27</span>
+																		<span class="tt-post-length">${ivo.length }</span>
 																	</div> <img width="104" height="63"
-																	src="http://themebubble.com/demo/videoly/wp-content/uploads/2017/03/Untitled-2-104x63.jpg"
-																	class="img-responsive wp-post-image" alt="" />
+																	src="https://img.youtube.com/vi/${ivo.youtubekey }/mqdefault.jpg"
+																	class="img-responsive wp-post-image" />
 																</a>
 																<div class="tt-post-info">
-																	<a class="tt-post-title c-h6" href="" style="font-family: NanumBarunGothic !important;">
-																		The Legends of Abra Kedabra</a>
+																	<a class="tt-post-title c-h6" style="font-family: NanumBarunGothic !important; font-weight: normal !important;"
+																		href="videocontent.do?no=${ivo.no }">${ivo.title }</a>
 																	<div class="tt-post-cat">
 																		<a rel="category tag" style="font-family: NanumBarunGothic !important;">Movies</a>
 																	</div>
 																</div>
 															</div>
 														</li>
+														</c:forEach>
 														
 													</ul>
 													
