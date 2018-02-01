@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,11 +21,7 @@
 					else {
 
 						$('#fileView').append(
-								'<tr id=f' + (fileIndex) + '>'
-										+ '<td width=80% align=left>'
-										+ '<input type=file id=f_'
-										+ (fileIndex) + ' name=files['
-										+ fileIndex + '] size="15"'
+								'<tr id=f' + (fileIndex) + '>'+ '<td width=80% align=left>'+ '<input type=file id=f_'+ (fileIndex) + ' name=file['+ fileIndex + '] size="15"'
 										+ '</td></tr>');
 
 						$('#f_' + (fileIndex)).on('change', function() {
@@ -60,10 +57,7 @@
 				$('#myimg')
 						.append(
 								'<div id="myimd"'
-										+ (fileIndex)
-										+ ' style="display:inline-block;">'
-										+ '<img id=ff'
-										+ (fileIndex)
+										+ (fileIndex)+ ' style="display:inline-block;">'+ '<img id=ff'+ (fileIndex)
 										+ ' style="border:1px solid black;" src="#" width="200px;"; height="280px";/>'
 										+ '</div>');
 				$('#ff' + (fileIndex)).attr('src', e.target.result);
@@ -75,7 +69,7 @@
 <style type="text/css">
 .row {
 	margin: 0px auto;
-	width: 700px;
+	width: 800px;
 }
 
 #board_subInput {
@@ -94,7 +88,7 @@
 }
 
 .p_top {
-	border-bottom: 3px solid black;
+	
 	font-size: 18pt;
 	height: 47px;
 	width: 100%;
@@ -103,12 +97,14 @@
 
 </head>
 <body>
+<%-- <%= application.getRealPath("gallery")  %> --%>
+
 	<div>
 		<div style="height: 20px"></div>
 		<!-- 게시판 프로필 -->
 		<div class="container">
-			<form action="p_board_insert.do" method="POST" id=frm
-				enctype="multipart/form-data">
+		<%-- 	<form action="p_board_insert.do" method="POST" id=frm	enctype="multipart/form-data" modelAttribute="uploadForm"> --%>
+		<form:form action="p_board_insert.do" method="POST" enctype="multipart/form-data" modelAttribute="uploadForm"> 
 				<div class="row">
 					<!-- 게시판 insert -->
 					<div>
@@ -130,16 +126,24 @@
 					<div>
 						<div class="s_box">
 							<div style="width: 300px;">
-								위치 <select style="width: 150px; height: 35px;">
+								위치 <select style="width: 150px; height: 35px;"  name="gu">
 									<c:forEach var="vo" items="${list }">
-										<option name="gu" value="${vo.gu  }">${vo.gu }</option>
+										<option value="${vo.gu  }">${vo.gu }</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
 					</div>
-					<div class="p_top" style="">
-						제목 <input type="text" style="width: 80%">
+					<div class="p_top" style="border-bottom: 3px solid black;">
+						비밀번호&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" style="width: 30%" height="37px" name="pwd">
+						
+					</div>
+					<div class="p_top" style="margin-top: 10px">
+						주소&nbsp;&nbsp;&nbsp;<input  placeholder="&nbsp;동 위치까지만 적어주세요."  type="text" style="width: 35%" height="37px" name="addr">
+						
+					</div>
+					<div class="p_top" style="margin-top: 5px">
+						제목&nbsp;&nbsp;&nbsp;<input type="text" style="width: 80%" name="subject">
 					</div>
 
 					<table class="table">
@@ -149,7 +153,7 @@
 						</tr>
 						<tr>
 							<td width=100% colspan="2"><textarea class="form-control"
-									rows="15" cols="100%" id="b_content" name="b_content"></textarea>
+									rows="15" cols="100%" id="b_content" name="content"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -157,10 +161,10 @@
 							<td width="80%" class="text-left">
 								<table class="table table-hover">
 									<tr>
-										<td class="text-right"><input type="button"
-											class="btn btn-sm btn-info" id="add" value="추가"> <input
-											type="button" class="btn btn-sm btn-primary" id="cancel"
-											value="취소"></td>
+										<td class="text-right">
+											<input type="button"class="btn btn-sm btn-info" id="add" value="추가">
+											<input	type="button" class="btn btn-sm btn-primary" id="cancel"value="취소">
+										</td>
 
 									</tr>
 								</table>
@@ -187,13 +191,17 @@
 						</tr>
 						<tr>
 							<td colspan="2" class="text-right" height=30px>
-								<input	class="btn btn-sm" style="background-color: #2961d3; color: white;  height: 40px; width: 70px; font-size: 16pt;" type="button"
-								value="등록" ></td>
+								<input	class="btn btn-sm" style="background-color: #2961d3; color: white;  height: 35px; width: 81px; font-size: 13pt;" type="submit"
+								value="등록하기" ></td>
+							<td colspan="2" class="text-right" height=30px>
+								<input class="btn btn-sm" style="background-color: #2961d3; color: white;  height: 35px; width: 81px; font-size: 13pt;" type="button"
+								value="취소하기" onclick="javascript:history.back()">
+							</td>
 						</tr>
 
 					</table>
 				</div>
-			</form>
+			</form:form>
 		</div>
 	</div>
 

@@ -3,6 +3,7 @@ package com.sist.controller;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,16 +60,21 @@ public class VideoController {
 	
 	
 	@RequestMapping("video.do")
-	public String videolist(String page, Model model) {
+	public String videolist(String page, Model model, HttpSession session) {
+		List<VideoVO> ilist = (List<VideoVO>)session.getAttribute("ilist");
+		
+		if(ilist==null)
+			ilist = new ArrayList<VideoVO>();
+		
+		session.setAttribute("ilist", ilist);
+		
 		if(page==null)	
 			page="1";
 		int curpage = Integer.parseInt(page);
 		
-		
 		int rowSize = 10;
 		int start = (rowSize*curpage)-(rowSize-1);
 		int end = rowSize*curpage;
-		
 		
 		Map map = new HashMap();
 		map.put("start", start);
@@ -82,7 +88,6 @@ public class VideoController {
 		for(VideoVO vo:list) {
 			vo.setCount(dao.videoreplyCount(vo.getNo()));
 		}
-		
 		
 		model.addAttribute("list", list);
 		
@@ -124,9 +129,87 @@ public class VideoController {
 		return "video/video";
 	}
 	
+	
+	@RequestMapping("video_find.do")
+	public String video_find(String page, String search, Model model) {
+		if(page==null)	
+			page="1";
+		int curpage = Integer.parseInt(page);
+		
+		if(search==null)
+			search=" ";
+		search = "%"+search+"%";
+		
+		int rowSize = 10;
+		int start = (rowSize*curpage)-(rowSize-1);
+		int end = rowSize*curpage;
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("search", search);
+		
+		int block=10;
+		int fromPage = ((curpage-1)/block*block)+1;  
+		int toPage = ((curpage-1)/block*block)+block;
+		
+		List<VideoVO> list = dao.videofindAllData(map);
+		for(VideoVO vo:list) {
+			vo.setCount(dao.videoreplyCount(vo.getNo()));
+		}
+		
+		int listsize = dao.videofindcount(search);
+		
+		model.addAttribute("list", list);
+		
+		int totalpage = dao.videofindTotalPage(search);
+		if(toPage>totalpage)
+			   toPage=totalpage;
+		model.addAttribute("curpage",curpage);
+		model.addAttribute("totalpage",totalpage);
+		model.addAttribute("fromPage",fromPage);
+		model.addAttribute("toPage",toPage);
+		model.addAttribute("block",block);
+		model.addAttribute("listsize", listsize);
+		
+		String searchcheck = search.replace("%", "");
+		model.addAttribute("searchcheck", searchcheck);
+		
+		return "video/video_find";
+	}
+	
+	
+	
 	@RequestMapping("videocontent.do")
-	public String videocontent(int no, Model model) {
+	public String videocontent(int no, Model model, HttpSession session) {
+		List<VideoVO> ilist = (List<VideoVO>)session.getAttribute("ilist");
+		
+		if(ilist==null)
+			ilist = new ArrayList<VideoVO>();
+
 		VideoVO vo = dao.videoContentData(no);
+		/*int i=0;
+		while(ilist.get(i).getNo()!=no){
+			i++;
+			ilist.add(vo);
+			
+		}*/
+		boolean videoSave=true;
+		for(VideoVO tempVo:ilist){
+			if(tempVo.getNo() == no){
+				videoSave=false;
+				break;
+			}else{
+				videoSave=true;
+			}
+		}
+		if(videoSave==true){
+			ilist.add(vo);
+		}
+		
+		
+		session.setAttribute("ilist", ilist);
+		
 		List<VideoReplyVO> relist = dao.videoreplyListData(no);
 		vo.setCount(dao.videoreplyCount(no));
 		
