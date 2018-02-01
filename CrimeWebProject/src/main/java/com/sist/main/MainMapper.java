@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.sist.crimerate.CrimeRateVO;
 import com.sist.freeboard.BoardVO;
+import com.sist.photo.PhotoVO;
 import com.sist.video.VideoVO;
 
 public interface MainMapper {
@@ -27,4 +29,14 @@ public interface MainMapper {
 			+ "FROM bvideo "
 			+ "GROUP BY sortname")
 	public List<String> mainVideoSort();
+	
+	/*@Select()
+	public List<PhotoVO> mainPhotoList();*/
+	
+	@Select("SELECT c_name, c_year, SUM(c_count) AS c_count "
+			+"FROM crimerate "
+			+"WHERE c_type = '발생' "
+			+"GROUP bY (c_year, c_name) "
+			+"ORDER BY c_name, c_year")
+	public List<CrimeRateVO> mainCrimeList();
 }

@@ -153,5 +153,45 @@ public class BoardDAO {
 		  }
 		  return bCheck;
 	  }
+	 public BoardVO freeboardFileInfo(int no){
+		  BoardVO vo=new BoardVO();
+		  try{
+			  getConnection();
+			  String sql="{CALL freeboardFileInfo(?,?,?)}";
+			  cs=conn.prepareCall(sql);
+			  cs.setInt(1, no);
+			  cs.registerOutParameter(3, OracleTypes.VARCHAR);
+			  cs.registerOutParameter(2, OracleTypes.INTEGER);
+			  cs.executeQuery();
+			  vo.setFilename(cs.getString(3));
+			  vo.setFilecount(cs.getInt(2));
+		  }catch(Exception ex){
+			  System.out.println("boardFileInfo"+ex.getMessage());
+		  }finally{
+			  disConnection();
+		  }
+		  return vo;
+	  }
 	  
+	 
+	 
+	 	public List<BoardVO> searchboardname(String bsearch){
+	 		return mapper.searchboardname(bsearch);
+	 	}
+	 
+	 	public List<BoardVO> searchboardsubject(String bsearch){
+	 		return mapper.searchboardsubject(bsearch);
+	 	}
+	 	
+	 	public List<BoardVO> searchboardcontent(String bsearch){
+	 		return mapper.searchboardcontent(bsearch);
+	 	}
+	 	public List<BoardVO> board_area_select(Map map){
+	 		
+	 		return mapper.board_area_select(map);
+	 	}
+	 	public List<BoardVO> board_group_select(Map map){
+	 		
+	 		return mapper.board_group_select(map);
+	 	}
 }

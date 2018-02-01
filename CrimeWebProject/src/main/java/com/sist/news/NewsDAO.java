@@ -1,5 +1,6 @@
 package com.sist.news;
 
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,18 @@ public class NewsDAO {
 	public NewsDAO() {
 		try{
 			mc=new MongoClient("localhost",27017);
-			db=mc.getDB("news");
+			db=mc.getDB("mydb");
+			dbc=db.getCollection("newsProject");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
 	}
 	
-	public List<NewsVO> newsListData(int page){
+	public List<NewsVO> newsListData(){
 		List<NewsVO> list=new ArrayList<NewsVO>();
 		try{
-			int skip=(page*10)-10;
-			DBCursor cursor=dbc.find().skip(skip).limit(10);
+			
+			DBCursor cursor=dbc.find().limit(10);
 			while(cursor.hasNext()){
 				BasicDBObject obj=(BasicDBObject)cursor.next();
 				NewsVO vo=new NewsVO();
@@ -47,11 +49,38 @@ public class NewsDAO {
 		return list;
 	}
 	
+	public void newsCreatDataFile(){
+		List<NewsVO> list=new ArrayList<NewsVO>();
+		try{
+			
+			DBCursor cursor=dbc.find();
+			
+			String data="";
+			while(cursor.hasNext()){
+				BasicDBObject obj=(BasicDBObject)cursor.next();
+				NewsVO vo=new NewsVO();
+				vo.setTitle(obj.getString("title"));
+				vo.setDescription(obj.getString("description"));
+				list.add(vo);
+				
+				data+=vo.getTitle()+"\n"+vo.getDescription()+"\n";
+			}
+			cursor.close();
+			
+			FileWriter fw=new FileWriter("/home/sist/movie_data/news.txt");
+			fw.write(data);
+			fw.close();
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		
+	}
+	
 	public List<NewsVO> newsCrimeListData(int page){
 		List<NewsVO> list=new ArrayList<NewsVO>();
 		try{
-			int skip=(page*10)-10;
-			DBCursor cursor=dbc.find().skip(skip).limit(10);
+			int skip=(page*8)-8;
+			DBCursor cursor=dbc.find().skip(skip).limit(8);
 			while(cursor.hasNext()){
 				BasicDBObject obj=(BasicDBObject)cursor.next();
 				NewsVO vo=new NewsVO();
@@ -61,7 +90,6 @@ public class NewsDAO {
 				vo.setDescription(obj.getString("description"));
 				vo.setPubDate(obj.getString("pubDate"));
 				vo.setAuthor(obj.getString("author"));
-				vo.setThumbnail(obj.getString("thumbnail"));
 				list.add(vo);
 			}
 			cursor.close();
@@ -72,35 +100,62 @@ public class NewsDAO {
 	}
 	
 	public void newsInsert(NewsVO vo) {
-		int max=0;
-		DBCursor cursor=dbc.find();
-		
-		while(cursor.hasNext()){
-			BasicDBObject obj=(BasicDBObject)cursor.next();
-			int no=obj.getInt("no");
-			if(max<no)
-				max=no;
+		try{
+			int max=0;
+			DBCursor cursor=dbc.find();
+			
+			while(cursor.hasNext()){
+				BasicDBObject obj=(BasicDBObject)cursor.next();
+				int no=obj.getInt("no");
+				if(max<no)
+					max=no;
+			}
+			cursor.close();
+			
+			BasicDBObject insertObj=new BasicDBObject();
+			insertObj.put("no", max+1);
+			insertObj.put("title", vo.getTitle());
+			insertObj.put("link", vo.getLink());
+			insertObj.put("pubDate", vo.getPubDate());
+			insertObj.put("author", vo.getAuthor());
+			dbc.insert(insertObj);
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
 		}
-		cursor.close();
 		
-		BasicDBObject insertObj=new BasicDBObject();
-		insertObj.put("no", max+1);
-		insertObj.put("title", vo.getTitle());
-		insertObj.put("description", vo.getDescription());
+	}
+	
+	public void newsCrimeInsert(NewsVO vo) {
+		try{
+			int max=0;
+			DBCursor cursor=dbc.find();
+			
+			while(cursor.hasNext()){
+				BasicDBObject obj=(BasicDBObject)cursor.next();
+				int no=obj.getInt("no");
+				if(max<no)
+					max=no;
+			}
+			cursor.close();
+			
+			BasicDBObject insertObj=new BasicDBObject();
+			insertObj.put("no", max+1);
+			insertObj.put("title", vo.getTitle());
+			insertObj.put("link", vo.getLink());
+			insertObj.put("description", vo.getDescription());
+			insertObj.put("pubDate", vo.getPubDate());
+			insertObj.put("author", vo.getAuthor());
+			dbc.insert(insertObj);
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
 		
-		SimpleDateFormat formatDate=new SimpleDateFormat("yyyy-MM-dd hh:mm");
-		String Date= formatDate.format(vo.getPubDate());
-		insertObj.put("pubDate", Date);
-		insertObj.put("link", vo.getLink());
-		insertObj.put("author", vo.getAuthor());
-		insertObj.put("thumbnail", vo.getThumbnail());
-		dbc.insert(insertObj);
 	}
 	
 	public void newsDrop() {
 		try{
 			dbc.drop();
-			dbc=db.getCollection("news");
+			dbc=db.getCollection("newsProject");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}

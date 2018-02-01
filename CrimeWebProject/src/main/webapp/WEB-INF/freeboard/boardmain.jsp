@@ -32,6 +32,12 @@
 	border-radius: 2px;
 	margin-top: 10px;
 }
+.group{
+	margin-right: 10px;
+	width: 100px;
+	border-radius: 2px;
+	margin-top: 10px;
+}
 
 /* 박스간의 간격 */
 #goobox {
@@ -62,17 +68,53 @@
 }
 /* 새글 쓰기 버튼*/
 .inbtn{
-	margin-left:480px;
+	float:right;
 }
 /* 전체 페이지 */
 .page-wrapper {
 	margin-left: 120px;
 }
 </style>
+<script type="text/javascript">
+ 	$(function(){
+ 		$('.goo').click(function(){
+ 			var board_area=$(this).text().trim();
+ 			
+ 			$.ajax({ /* 오른쪽 테이블에 상세내용 보여주기*/
+				type:"POST",
+				url:"area_select.do",
+				data:{"board_area":board_area},
+				success:function(res)
+				{
+					$('.board_wrapper').html(res);
+				}
+			});
+ 		});
+ 	});
+</script>
+
+<script type="text/javascript">
+ 	$(function(){
+ 		$('.group').click(function(){
+ 			var board_group=$(this).text().trim();
+ 			
+ 			$.ajax({ /* 오른쪽 테이블에 상세내용 보여주기*/
+				type:"POST",
+				url:"group_select.do",
+				data:{"board_group":board_group},
+				success:function(res)
+				{
+					$('.board_wrapper').html(res);
+				}
+			});
+ 		});
+ 	});
+</script>
 
 </head>
 
 <body>
+
 	
 	<div class="page-wrapper">
 		<div class="container-fluid">
@@ -85,7 +127,7 @@
 
 					<!-- 구 선택 타이틀 -->
 					<table>
-						<h2 class="text-left">동네</h2ㄴ>
+						<h2 class="text-left">동네</h2>
 					</table>
 
 
@@ -162,13 +204,13 @@
 					<div class="container" id="goobox">
 						<div class="btn-group" data-toggle="buttons">
 
-							<label class="goo btn btn-success"> <input type="radio"
+							<label class="group btn btn-success"> <input type="radio"
 								autocomplete="off"> HELP!
-							</label> <label class="goo btn btn-success"> <input type="radio"
+							</label> <label class="group btn btn-success"> <input type="radio"
 								autocomplete="off"> 자유
-							</label> <label class="goo btn btn-success"> <input type="radio"
+							</label> <label class="group btn btn-success"> <input type="radio"
 								autocomplete="off"> 추천
-							</label> <label class="goo btn btn-success"> <input type="radio"
+							</label> <label class="group btn btn-success"> <input type="radio"
 								autocomplete="off"> 문의
 							</label>
 
@@ -176,7 +218,7 @@
 
 						</div>
 					</div>
-
+					<div class="board_wrapper">
 					<!-- 게시판 테이블 -->
 					<table class="table table-hover" width=700>
 
@@ -222,18 +264,21 @@
 						</tr>
 
 						<!-- 검색창 카테고리 선택 부분 -->
-						<select id="freesearch">
-							<option>글쓴이</option>
-							<option>제목</option>
-							<option>내용</option>
+						<form action="freesearch.do" method="post">
+						<select name="freesearch">
+							<option value="f1">글쓴이</option>
+							<option value="f2">제목</option>
+							<option value="f3">내용</option>
 						</select>
 						<!-- 검색 텍스트 필드와 검색 버튼 부분 -->
-						<input type="text" szie=10>
+						<input type="text" szie=10 name="search">
+						
 						<button>검색</button>
+						</form>
 						<!-- 새글 쓰기 부분 -->
 						<a href="insert.do" class="inbtn btn-sm btn-primary" >새글</a>
 					</table>
-
+				</div>
 
 				</div>
 			</div>
