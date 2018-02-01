@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -24,6 +25,11 @@
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
+<style> /* 체크박스 테이블 테두리 제거 */
+	.table-borderless td, .table-borderless th {
+    border: 0 !important;
+}
+</style>
 <script type="text/javascript">
  $(function(){
 	$('.button-checkbox').each(function () { //버튼형 체크박스 제이쿼리
@@ -40,7 +46,6 @@
 	                   icon: 'glyphicon glyphicon-unchecked'
 	               }
 	           };
-
 	       // Event Handlers
 	       $button.on('click', function () {
 	           $checkbox.prop('checked', !$checkbox.is(':checked'));
@@ -50,19 +55,15 @@
 	       $checkbox.on('change', function () {
 	           updateDisplay();
 	       });
-
 	       // Actions
 	       function updateDisplay() {
 	           var isChecked = $checkbox.is(':checked');
-
 	           // Set the button's state
 	           $button.data('state', (isChecked) ? "on" : "off");
-
 	           // Set the button's icon
 	           $button.find('.state-icon')
 	               .removeClass()
 	               .addClass('state-icon ' + settings[$button.data('state')].icon);
-
 	           // Update the button's color
 	           if (isChecked) {
 	               $button
@@ -75,7 +76,6 @@
 	                   .addClass('btn-default');
 	           }
 	       }
-
 	       // Initialization
 	       function init() {
 	           updateDisplay();
@@ -138,7 +138,6 @@
 	$("input:checkbox[name='gu']").prop('checked', false); //최초 실행시 체크되있던것들 해제시키기
 	 
 	$('.totalBtn').trigger('click'); //최초 실행시 전체 값을 보여주기 위해서 자동클릭 실행
-
 });
 </script>
 <!-- 테이블 ajax -->
@@ -164,12 +163,10 @@ function fn_ShowSeoulGu(num){
 	var img=document.getElementById('seoul-map-image');
     img.src="image/img_map_s"+num+".jpg";
 }
-
 function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	var img=document.getElementById('seoul-map-image');
 	img.src="image/seoulmap.jpg";
 }
-
 </script>
     <script>
         $(function(){ /*map태그 반응형 스크립트*/
@@ -338,9 +335,9 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                    <div class="col-sm-12 text-center form-inline">
                                 		
                                 		
-                                            <h2 style="margin-bottom: 20px;">
+                                            <h2 style="margin-bottom: 30px;">
                                             <button type="button" style="font-weight:bold; font-size:20px; width:60px; float:left; vertical-align: middle;" class="btn-sm btn-primary line_reset">
-                                            			<i class="fa fa-refresh"></i></button>범죄율
+                                            			<i class="fa fa-refresh"></i></button>연도별 범죄 발생률
                                             <select class="form-control" id="select_type" style="float:right; font-size:15px; vertical-align: middle;">
                                                 <option value="평균">평균</option>
                                                 <option value="강간">강간</option>
@@ -379,22 +376,42 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             			});
                                             	</script>
                                             
+                                            	<div class="center-block" style="width:900px;" > 
                                             	
-                                            <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
-												       <input type="checkbox" class="hidden" name="gu" value="전체"/>
-											   	</span>	
-                                            	
-                                            <c:forEach var="gu" items="${guList}" varStatus="status">
-                                             <span class="button-checkbox">
-												       <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
-												       <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
-											   	</span>
-											   
-											   	<c:if test="${status.count == 12}">
-											   		<br>
-											   	</c:if>	
-                                            </c:forEach>
+                                            	<table class="table table-borderless">
+                                            		<tr>
+                                            			<td style="padding:3px;">
+	                                            			<span class="button-checkbox">
+														       <button type="button" style="width:60px;" class="btn-sm totalBtn btn-gu" data-color="primary"><b>전체</b></button>
+														       <input type="checkbox" class="hidden" name="gu" value="전체"/>
+												   			</span>	
+                                            			</td>
+                                            			<c:forEach var="gu" items="${guList}" varStatus="status">
+                                            				<c:if test="${status.count<=12}">
+				                                            	<td style="padding:3px;">
+					                                             	<span class="button-checkbox">
+																	   <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+																	   <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+																   	</span>
+															   	</td>
+														   	</c:if>
+	                                            		</c:forEach>
+                                            		</tr>
+                                            		<tr>
+                                            			<c:forEach var="gu" items="${guList}" varStatus="status">
+                                            				<c:if test="${status.count>12}">
+				                                            	<td style="padding:3px;">
+					                                             	<span class="button-checkbox">
+																	   <button type="button" style="width:60px;" class="btn-sm ${gu} btn-gu" data-color="primary">${gu}</button>
+																	   <input type="checkbox" class="hidden" name="gu" value="${gu}"/>
+																   	</span>
+															   	</td>
+														   	</c:if>
+	                                            		</c:forEach>
+	                                            	</tr>
+                                            	</table>
+                                         
+                                            	</div>
                                     </div>
                                 
                                    <div class="chart_content">
@@ -408,13 +425,11 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                     title: {
                                         text: '',
                                     },
-
                                     legend: {
                                         itemStyle:{
                                             fontSize:'15px'
                                         }
                                     },
-
                                     plotOptions: {
                                         series: {
                                             label: {
@@ -423,13 +438,11 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             pointStart: 2010
                                         }
                                     },
-
                                     series: [{
                                         name: '전체',
                                         data: [55,55,55,55,55,55,55],
                                         color:'#FF0000'
                                     }],
-
                                     responsive: {
                                         rules: [{
                                             condition: {
@@ -444,7 +457,6 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                             }
                                         }]
                                     },
-
                                 });
                                 </script> -->
                                 </div>
