@@ -43,6 +43,12 @@ public class PhotoDAO {
 	public void goodup(int no){
 		pm.goodup(no);
 	}
+	public List<PhotoVO> rank(String gu){	
+		return pm.rank(gu);
+	}
+	public void p_delete(int no){
+		pm.p_delete(no);
+	}
 	
 
 }

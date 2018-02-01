@@ -17,7 +17,17 @@ public class PhotoVO {
 	private String pwd;
 	private int good;
 	private String addr;
+	private int rank;
 	
+	
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 
 	public String getAddr() {
 		return addr;

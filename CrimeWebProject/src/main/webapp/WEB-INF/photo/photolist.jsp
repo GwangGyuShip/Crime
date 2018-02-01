@@ -10,7 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-
 <style type="text/css">
 .imgList {
 	padding: 0px;
@@ -188,27 +187,34 @@
 						style="display: block; margin-left: auto; margin-right: auto; height: 150px;"
 						src="gallery/skull.png" height="100%">
 				</div>
-				<%-- <div style="border-bottom: 2px solid black; margin: 0px auto;">
-					<c:forEach var="vo" items="${vo }">
+				 <div style="border-bottom: 2px solid black; margin: 0px auto;">
+					<c:forEach var="vo3" items="${list3 }">
 						<div style="height: 300px; width: 320px; display: inline-block;">
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 imgList"
 								style="width: 255px; margin-bottom: 15px; margin-left: 35px;">
 								<div class="hovereffect">
-									<img class="img-responsive" src="gallery/${vo.filename }">
+									<img class="img-responsive" src="gallery/${vo3.filename }">
 									<div class="overlay">
-										<h2>\BB\E7\C1\F8\BC\B3\B8\ED...</h2>
-										<a class="info" href="photocontent.do">\B0\B3\BE\C3 \C0\A7\C7\E8</a>
+										<h2>${vo3.subject }</h2>
+										<a class="info" href="photocontent.do?no=${vo3.no }">자세히보기</a>
 									</div>
 								</div>
-								<div
-									style="width: 50px; height: 50px; text-align: center; margin-top: 230px;">
-									<p>\C1\A6\B8\F1</>
-									<p>aaa</p>
-								</div>
+								<table id="table_content" class="table" width=300px>
+									<tr>
+										<td align="left" style="font-size: 13pt">
+											&nbsp;<strong>주소</strong> ${vo3.addr }
+										</td>										
+									</tr>
+									<tr>
+										<td align="left" style="font-size: 13pt">
+											&nbsp;<strong>공감수</strong> ${vo3.good }
+										</td>
+									</tr>
+								</table>
 							</div>
 						</div>
 					</c:forEach>
-				</div> --%>
+				</div> 
 
 				<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 				<div style="border-bottom: 3px solid black;height: 900px;">
