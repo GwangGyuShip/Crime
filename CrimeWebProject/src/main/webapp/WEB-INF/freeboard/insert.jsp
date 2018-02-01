@@ -23,6 +23,9 @@
 		$('#add')
 				.click(
 						function() {
+							if(fileIndex >=3){
+								alert("사진의 갯수는 3개 이상 올릴 수 없습니다.");
+							}else{
 							$('#fileView')
 									.append(
 											'<tr id=f'
@@ -35,7 +38,9 @@
 													+ '<input type=file name=files['+fileIndex+'] size=30>'
 													+ '</td></tr>');
 							fileIndex = fileIndex + 1;
+							}
 						});
+	
 		$('#cancel').click(function() {
 			$('#f' + (fileIndex - 1)).remove();
 			fileIndex = fileIndex - 1;

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +11,8 @@
 <title>Insert title here</title>
 <!-- 부트스트랩 연결 -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- 전체적인 사이즈 잡아주기 -->
 <style type="text/css">
 .row{
@@ -52,15 +57,20 @@
        <tr>
         <td width=20% class="text-center success">제목</td>
         <td colspan="3" class="text-left">${vo.board_subject }</td>
-        <c:if test="${vo.filecount>0 }">
+       
+        <c:if test="${filecount>0 }">
         <tr>
          <td class="text-center info" width=20%>첨부파일</td>
          <td class="text-left" colspan="3">
           <ul>
            <c:forEach var="f" items="${files }">
-             <li><a href="download.do?fn=${vo.filename }">${vo.filename }</a></li>
-             <img src="freeboardpoto/${vo.filename }" width=300px>
-           </c:forEach>
+             <li><a href="download.do?fn=${f }">${f }</a></li>
+             	
+             <img src="freeboardpoto/${f }" width=300px>
+             
+         </c:forEach>
+         
+         
           </ul>
          </td>
         </tr>
