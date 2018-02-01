@@ -244,7 +244,7 @@ a:hover { color: blue; text-decoration: none;}
 
 						<div style="height: 30px;"></div>
 						&nbsp;&nbsp;<strong style="font-size: 35px;">${vo.title }</strong>
-						<table class="table table-hover" style="border: 3px solid black;">
+						<table class="table table-hover" >
 							<tr>
 								<td colspan="2"><h4 style="font-weight: bold;font-size: 25px;">[${vo.author }]&nbsp;&nbsp;</h4>
 													<h4>${vo.pubDate }</h4></td>
