@@ -11,6 +11,7 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css'>
  <script src="https://code.highcharts.com/highcharts.js"></script>
+ <script src="https://code.jquery.com/jquery.min.js"></script>
  <!-- <script src="https://code.jquery.com/jquery.min.js"></script> -->
  <script type="text/javascript" src="js/jquery.rwdImageMaps.min.js"></script> <!--반응형 map, area태그-->
 <style type="text/css">
@@ -34,14 +35,14 @@
 }
 
 .content_news {
-	background-color: #2961d3;
-	color: white;
+	background-color: white;
+	color: #4f525b;
 	cursor: pointer;
 }
 
 .content_news:hover {
-	background-color: white;
-	color: #4f525b;
+	background-color: #2961d3;
+	color: white;
 }
 
 .ch {
@@ -199,6 +200,24 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
             $('#seoul-map-image').rwdImageMaps();
         });
     </script>
+    
+    <script>
+			$(function(){
+				$('.content_news').click(function(){
+					
+					var newsCount=$(this).attr("data-count");
+					var flag=$(this).attr("data-flag");
+					
+					if(parseInt(flag)==0){
+						$('.content_news_'+newsCount).slideDown('3000');
+						$(this).attr("data-flag","1");
+					}else{
+						$('.content_news_'+newsCount).slideUp('3000');
+						$(this).attr("data-flag","0");
+					}
+				});
+			});
+		</script>
 </head>
 <body>
 	<center>
@@ -404,17 +423,18 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 			</c:forEach> --%>
 			<table class="table">
 				<c:forEach var="vo" items="${mNews}" varStatus="i">
-					<tr class="content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
+					<tr class="content_news" style="border:1.8px solid #CCCCCC" data-flag="0" data-count="${i.count}">
 						<th class="text-left">${vo.title}</th>
 						<th class="text-right">${vo.author}</th>
 					</tr>
 					
-					<tr id="content_news_${i.count}" class="collapse content_news_c" onclick="location.href='${vo.link}'">
+					<tr id="content_news_${i.count}" style="display:none; border:1.8px solid #CCCCCC" class="content_news_${i.count}" onclick="location.href='${vo.link}'">
 						<td colspan="2" style="padding: 15px;">${vo.description}</td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
+		
 		</td>
 		
 		<!-- <td colspan="1" height="400px;">		
