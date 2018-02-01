@@ -15,15 +15,12 @@
 <!-- table link -->
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-
 
 <!--hichart-->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
-<!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
 <style> /* 체크박스 테이블 테두리 제거 */
 	.table-borderless td, .table-borderless th {
@@ -46,7 +43,6 @@
 	                   icon: 'glyphicon glyphicon-unchecked'
 	               }
 	           };
-
 	       // Event Handlers
 	       $button.on('click', function () {
 	           $checkbox.prop('checked', !$checkbox.is(':checked'));
@@ -56,19 +52,15 @@
 	       $checkbox.on('change', function () {
 	           updateDisplay();
 	       });
-
 	       // Actions
 	       function updateDisplay() {
 	           var isChecked = $checkbox.is(':checked');
-
 	           // Set the button's state
 	           $button.data('state', (isChecked) ? "on" : "off");
-
 	           // Set the button's icon
 	           $button.find('.state-icon')
 	               .removeClass()
 	               .addClass('state-icon ' + settings[$button.data('state')].icon);
-
 	           // Update the button's color
 	           if (isChecked) {
 	               $button
@@ -81,7 +73,6 @@
 	                   .addClass('btn-default');
 	           }
 	       }
-
 	       // Initialization
 	       function init() {
 	           updateDisplay();
@@ -144,7 +135,6 @@
 	$("input:checkbox[name='gu']").prop('checked', false); //최초 실행시 체크되있던것들 해제시키기
 	 
 	$('.totalBtn').trigger('click'); //최초 실행시 전체 값을 보여주기 위해서 자동클릭 실행
-
 });
 </script>
 <!-- 테이블 ajax -->
@@ -170,12 +160,10 @@ function fn_ShowSeoulGu(num){
 	var img=document.getElementById('seoul-map-image');
     img.src="image/img_map_s"+num+".jpg";
 }
-
 function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	var img=document.getElementById('seoul-map-image');
 	img.src="image/seoulmap.jpg";
 }
-
 </script>
     <script>
         $(function(){ /*map태그 반응형 스크립트*/
@@ -428,51 +416,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	                                      
 	                                  </div>
     								</div>
-                               <!--  <script>
-                                   Highcharts.chart('line_chart', {
-                                     
-                                    title: {
-                                        text: '',
-                                    },
-
-                                    legend: {
-                                        itemStyle:{
-                                            fontSize:'15px'
-                                        }
-                                    },
-
-                                    plotOptions: {
-                                        series: {
-                                            label: {
-                                                connectorAllowed: false
-                                            },
-                                            pointStart: 2010
-                                        }
-                                    },
-
-                                    series: [{
-                                        name: '전체',
-                                        data: [55,55,55,55,55,55,55],
-                                        color:'#FF0000'
-                                    }],
-
-                                    responsive: {
-                                        rules: [{
-                                            condition: {
-                                                maxWidth: 500
-                                            },
-                                            chartOptions: {
-                                                legend: {
-                                                    layout: 'horizontal',
-                                                    align: 'center',
-                                                    verticalAlign: 'bottom',
-                                                }
-                                            }
-                                        }]
-                                    },
-
-                                });
-                                </script> -->
+                            
                                 </div>
                                 </div>
                                 </div>

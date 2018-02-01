@@ -41,7 +41,7 @@ public class NewsController {
 		model.addAttribute("data", data);
 		
 		dao.newsCreatDataFile();
-		nrm.crimeGraph();
+		//nrm.crimeGraph();
 		
 		return "news/News";
 	}
