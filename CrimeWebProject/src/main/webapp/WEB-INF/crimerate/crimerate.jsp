@@ -15,15 +15,12 @@
 <!-- table link -->
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-
 
 <!--hichart-->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
-<!--<script src="https://code.highcharts.com/modules/exporting.js"></script>   --> 
 
 <style> /* 체크박스 테이블 테두리 제거 */
 	.table-borderless td, .table-borderless th {
@@ -419,46 +416,7 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	                                      
 	                                  </div>
     								</div>
-                               <!--  <script>
-                                   Highcharts.chart('line_chart', {
-                                     
-                                    title: {
-                                        text: '',
-                                    },
-                                    legend: {
-                                        itemStyle:{
-                                            fontSize:'15px'
-                                        }
-                                    },
-                                    plotOptions: {
-                                        series: {
-                                            label: {
-                                                connectorAllowed: false
-                                            },
-                                            pointStart: 2010
-                                        }
-                                    },
-                                    series: [{
-                                        name: '전체',
-                                        data: [55,55,55,55,55,55,55],
-                                        color:'#FF0000'
-                                    }],
-                                    responsive: {
-                                        rules: [{
-                                            condition: {
-                                                maxWidth: 500
-                                            },
-                                            chartOptions: {
-                                                legend: {
-                                                    layout: 'horizontal',
-                                                    align: 'center',
-                                                    verticalAlign: 'bottom',
-                                                }
-                                            }
-                                        }]
-                                    },
-                                });
-                                </script> -->
+                            
                                 </div>
                                 </div>
                                 </div>
