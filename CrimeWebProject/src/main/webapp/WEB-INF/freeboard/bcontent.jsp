@@ -21,6 +21,7 @@
 }
 </style>
 
+
 </head>
 <body>
    <div class="container">
@@ -64,10 +65,14 @@
          <td class="text-left" colspan="3">
           <ul>
            <c:forEach var="f" items="${files }">
-             <li><a href="download.do?fn=${f }">${f }</a></li>
-             	
-             <img src="freeboardpoto/${f }" width=300px>
-             
+             <li><a href="download.do?fn=${f }" id=filename>${f }</a></li>
+             	<c:set var="filename" value="${f }"/>
+             	<c:set var="fileNm" value="${fn:toLowerCase(filename)}"/>
+             	<c:forTokens var="token" items="${fileNm }" delims="." varStatus="status">
+             		<c:if test="${token eq 'jpg' || 'png' || 'gif' || 'tiff' }">
+             		<img src="freeboardpoto/${f }" width=300px name=freeimage>
+         			</c:if>
+         		</c:forTokens>    
          </c:forEach>
          
          

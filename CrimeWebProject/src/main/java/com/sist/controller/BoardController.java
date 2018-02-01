@@ -150,15 +150,7 @@ public class BoardController {
 		
 		if(vo.getFilecount()>0){
 			String[] files=vo.getFilename().split(",");
-			/*for(int i=0;i<vo.getFilecount();i++){
-				String[] filesname=files[i].split(".");
-				
-				model.addAttribute("filesname",filesname);
-				System.out.println(filesname[1]);
-			}*/
-			System.out.println(files[1]);
 			model.addAttribute("files", files);
-			
 		}		
 		
 		model.addAttribute("filecount",filecount);
@@ -263,7 +255,7 @@ public class BoardController {
 			// 그것을 보내주기 위해 model 에 담고 list를 보내준다.
 			model.addAttribute("list",list);
 			// 토탈페이지 구하기 위한 SQL구문
-			int totalpage=dao.freeBoardTotalPage();
+			int totalpage=dao.areaBoardPage();
 			//시작페이지 전송
 			model.addAttribute("curpage",curpage);
 			//토탈 페이지 

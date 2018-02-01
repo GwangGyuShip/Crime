@@ -142,7 +142,9 @@ public class BoardDAO {
 	  public int freeBoardTotalPage(){
 		  return mapper.boardTotalPage();
 	  }
-	  
+	  public int areaBoardPage(){
+		  return mapper.areaTotalPage();
+	  }
 	 public boolean freeBoardUpDate(BoardVO vo){
 		  boolean bCheck=false;
 		  String pwd=mapper.freeBoardGetPwd(vo.getBoard_no());
