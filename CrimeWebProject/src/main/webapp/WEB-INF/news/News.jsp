@@ -54,6 +54,12 @@
 	});
 </script>
 <style type="text/css">
+
+a:link { color: red; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: underline;}
+
+
 .searchBtn1 {
 	background-color: #0078FF;
 	border-radius: 10px;
