@@ -35,7 +35,7 @@ public void boardUpdate(BoardVO vo);
 public int boardTotalPage();
 
 @Select("SELECT CEIL(count(*)/10) FROM free_board WHERE board_area=#{board_area}")
-public int areaTotalPage();
+public int areaTotalPage(String board_area);
 
 
 @Update("UPDATE free_board SET board_group=#{board_group},board_area=#{board_area},board_name=#{board_name},"

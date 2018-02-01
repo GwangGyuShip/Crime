@@ -255,7 +255,7 @@ public class BoardController {
 			// 그것을 보내주기 위해 model 에 담고 list를 보내준다.
 			model.addAttribute("list",list);
 			// 토탈페이지 구하기 위한 SQL구문
-			int totalpage=dao.areaBoardPage();
+			int totalpage=dao.areaBoardPage(board_area);
 			//시작페이지 전송
 			model.addAttribute("curpage",curpage);
 			//토탈 페이지 
