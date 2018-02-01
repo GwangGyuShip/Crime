@@ -25,7 +25,7 @@
      <center>
        <h3>삭제하기</h3>
      </center>
-     <form method="post" action="delete_ok.do">
+     <form method="post" action="delete_ok2.do">
       <table class="table table-hover" width=300>
       	<tr>
       		<td width=30% class="text-right">비밀번호</td>

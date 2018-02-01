@@ -106,7 +106,7 @@ public class BoardController {
 	@RequestMapping("insert_ok.do")
 	public String main_insert_ok(BoardVO uploadForm){
 		List<MultipartFile> list=uploadForm.getFiles();
-		File ff=new File("/home/sist/Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CrimeWebProject/freeboardpoto/");
+		File ff=new File("/home/sist/git/Crime/CrimeWebProject/src/main/webapp/freeboardpoto/");
 		if(!ff.exists())
 			ff.mkdir();
 		if(list!=null && list.size()>0 )
@@ -117,7 +117,7 @@ public class BoardController {
 			   {
 				   
 				   String name=mf.getOriginalFilename();
-				   File file=new File("/home/sist/Project/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CrimeWebProject/freeboardpoto/"+name);
+				   File file=new File("/home/sist/git/Crime/CrimeWebProject/src/main/webapp/freeboardpoto/"+name);
 				   try
 				   {
 				     mf.transferTo(file);
@@ -146,11 +146,22 @@ public class BoardController {
 	@RequestMapping("bcontent.do")
 	public String board_content(int no,Model model){
 		BoardVO vo=dao.boardContentData(no);
+		int filecount = vo.getFilecount();
+		
 		if(vo.getFilecount()>0){
 			String[] files=vo.getFilename().split(",");
+			/*for(int i=0;i<vo.getFilecount();i++){
+				String[] filesname=files[i].split(".");
+				
+				model.addAttribute("filesname",filesname);
+				System.out.println(filesname[1]);
+			}*/
+			System.out.println(files[1]);
 			model.addAttribute("files", files);
-		}
+			
+		}		
 		
+		model.addAttribute("filecount",filecount);
 		model.addAttribute("vo",vo);
 		return "freeboard/bcontent";
 	}
@@ -223,7 +234,7 @@ public class BoardController {
 			model.addAttribute("list",list);
 		}
 		
-		return "freeboard/search";
+		return "freeboard/boardmain";
 	}
 	//===========================================================================================================================
 	@RequestMapping("area_select.do")
@@ -248,7 +259,7 @@ public class BoardController {
 		    map.put("start", start);
 		    map.put("end",end);
 		    // list 형식으로 VO 를 담아 SQL에 대한 값을 가져옴
-			List<BoardVO> list = dao.board_group_select(map);
+			List<BoardVO> list = dao.board_area_select(map);
 			// 그것을 보내주기 위해 model 에 담고 list를 보내준다.
 			model.addAttribute("list",list);
 			// 토탈페이지 구하기 위한 SQL구문
