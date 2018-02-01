@@ -24,8 +24,7 @@ public class PhotoController {
 	@RequestMapping("photolist.do")
 	public String photolist(Model model) {
 		List<AddressVO> list = dao.kangcheck("강남");
-		
-		
+
 		int curpage = 1;
 		int rowSize = 6;
 		int start = (rowSize * curpage) - (rowSize - 1);
@@ -49,10 +48,9 @@ public class PhotoController {
 				name = name.substring(0, name.indexOf(","));
 				list3.get(k).setFilename(name);
 			}
-			System.out.println(list3.get(k).getFilename());
+			
 		}
-		
-		
+
 		int totalpage = dao.photoTotalPage("강서구");
 		model.addAttribute("list", list);
 		model.addAttribute("gu", "강서구");
@@ -60,12 +58,8 @@ public class PhotoController {
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("list2", list2);
 		model.addAttribute("list3", list3);
-		
-		
-		
-		
-		
-		/*model.addAttribute("list", list);*/
+
+		/* model.addAttribute("list", list); */
 		return "photo/photolist";
 	}
 
@@ -84,7 +78,7 @@ public class PhotoController {
 		map.put("end", end);
 		map.put("gu", gu);
 		List<PhotoVO> list2 = dao.p_ContentList(map);
-		
+
 		for (int k = 0; k < list2.size(); k++) {
 			String name = list2.get(k).getFilename();
 			if (name.length() > 16) {
@@ -92,15 +86,23 @@ public class PhotoController {
 				list2.get(k).setFilename(name);
 			}
 		}
-		
-		
+		List<PhotoVO> list3 = dao.rank(gu);
+		for (int k = 0; k < list3.size(); k++) {
+			String name = list3.get(k).getFilename();
+			if (name.length() > 16) {
+				name = name.substring(0, name.indexOf(","));
+				list3.get(k).setFilename(name);
+			}
+			
+		}
+
 		int totalpage = dao.photoTotalPage(gu);
 		model.addAttribute("list", list);
 		model.addAttribute("gu", gu);
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("list2", list2);
-		
+		model.addAttribute("list3", list3);
 		return "photo/photolist";
 	}
 
@@ -120,11 +122,10 @@ public class PhotoController {
 	public String photocontent(Model model, String no) {
 		int checkno = Integer.parseInt(no);
 		PhotoVO vo = dao.p_content(checkno);
-		String [] name = vo.getFilename().split(",");
-		model.addAttribute("vo",vo);
-		model.addAttribute("name",name);
-	
-		
+		String[] name = vo.getFilename().split(",");
+		model.addAttribute("vo", vo);
+		model.addAttribute("name", name);
+
 		return "photo/photocontent";
 	}
 
@@ -187,23 +188,41 @@ public class PhotoController {
 
 		return "redirect:photolist.do";
 	}
+
 	@RequestMapping("goodup.do")
-	public String goodup(String no){
+	public String goodup(String no) {
 		int num = Integer.parseInt(no);
 		dao.goodup(num);
 		return "redirect:photolist.do";
 	}
+
 	@RequestMapping("p_delete_ok.do")
-	public String p_delete_ok(String no){
-		int num = Integer.parseInt(no);
-		dao.goodup(num);
-		return "redirect:photolist.do";
+	public String p_delete_ok(Model model, String no) {
+		boolean check = true;
+		model.addAttribute("no", no);
+		model.addAttribute("check",check);
+		return "photo/delete";
 	}
-	@RequestMapping("p_delete.do")
-	public String p_delete(String no){
+
+	/*@RequestMapping("p_delete.do")
+	public String p_delete(String no, String pwd, Model model) {
 		int num = Integer.parseInt(no);
-		dao.goodup(num);
-		return "redirect:photolist.do";
-	}
+		String pass = dao.p_pwdCheck(num);
+		
+		boolean check = false;
+		if (pass.equals(pwd)) {
+			check = true;
+			dao.p_delete(num);
+			
+		}
+		model.addAttribute("check",check);
+		model.addAttribute("no",no);
+		if(check==true){
+			return "redirect:photolist.do";
+		}else{
+			return "p_delete_ok.do";
+		}
+		return "redirect:p_delete_ok.do";
+	}*/
 
 }

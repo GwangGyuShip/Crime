@@ -105,6 +105,7 @@
 
 .row {
 	margin: 0px auto;
+	height: 1500px;
 	/* width: 80%; */
 }
 
@@ -193,7 +194,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 imgList"
 								style="width: 255px; margin-bottom: 15px; margin-left: 35px;">
 								<div class="hovereffect">
-									<img class="img-responsive" src="gallery/${vo3.filename }">
+									<img class="img-responsive" src="gallery/${vo3.filename }" style="height: 200px">
 									<div class="overlay">
 										<h2>${vo3.subject }</h2>
 										<a class="info" href="photocontent.do?no=${vo3.no }">자세히보기</a>
@@ -207,7 +208,7 @@
 									</tr>
 									<tr>
 										<td align="left" style="font-size: 13pt">
-											&nbsp;<strong>공감수</strong> ${vo3.good }
+											&nbsp;<strong>공감수</strong> ${vo3.good }<strong>건</strong>
 										</td>
 									</tr>
 								</table>
@@ -245,7 +246,7 @@
 									</tr>
 									<tr>
 										<td align="left" style="font-size: 13pt">
-											&nbsp;<strong>공감수</strong> ${vo.good }
+											&nbsp;<strong>공감수</strong> ${vo.good }<strong>건</strong>
 										</td>
 									</tr>
 								</table>
@@ -254,7 +255,7 @@
 					</c:forEach>
 				</div>
 				<div style="height: 100px; text-align: center;"></div>
-				<table class="table ">
+				<table class="table" style="margin-bottom: 100px">
 					<tr>
 						<td class="text-left" style="width: 33%">
 							<form method="post" action="find.do" style="width: 100%">
