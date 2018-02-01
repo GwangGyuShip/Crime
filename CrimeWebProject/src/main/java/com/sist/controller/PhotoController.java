@@ -198,31 +198,35 @@ public class PhotoController {
 
 	@RequestMapping("p_delete_ok.do")
 	public String p_delete_ok(Model model, String no) {
-		boolean check = true;
+		
+		
 		model.addAttribute("no", no);
-		model.addAttribute("check",check);
+		
 		return "photo/delete";
 	}
+	
 
-	/*@RequestMapping("p_delete.do")
+	@RequestMapping("p_delete.do")
 	public String p_delete(String no, String pwd, Model model) {
 		int num = Integer.parseInt(no);
 		String pass = dao.p_pwdCheck(num);
-		
-		boolean check = false;
+		String check= "false";
+		boolean ch = false;
 		if (pass.equals(pwd)) {
-			check = true;
+			ch = true;
 			dao.p_delete(num);
+			check="true";
 			
 		}
+		
 		model.addAttribute("check",check);
 		model.addAttribute("no",no);
-		if(check==true){
+		if(ch==true){
 			return "redirect:photolist.do";
 		}else{
-			return "p_delete_ok.do";
+			return "redirect:p_delete_ok.do?check=1";
 		}
-		return "redirect:p_delete_ok.do";
-	}*/
+		
+	}
 
 }
