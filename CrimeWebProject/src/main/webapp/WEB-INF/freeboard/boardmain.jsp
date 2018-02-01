@@ -79,7 +79,7 @@
  	$(function(){
  		$('.goo').click(function(){
  			var board_area=$(this).text().trim();
- 			alert(board_area);
+ 			
  			$.ajax({ /* 오른쪽 테이블에 상세내용 보여주기*/
 				type:"POST",
 				url:"area_select.do",
