@@ -46,6 +46,10 @@ public class PhotoDAO {
 	public List<PhotoVO> rank(String gu){	
 		return pm.rank(gu);
 	}
+	public String p_pwdCheck(int no){
+		return pm.p_pwdCheck(no);
+	}
+	
 	public void p_delete(int no){
 		pm.p_delete(no);
 	}

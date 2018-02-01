@@ -86,9 +86,8 @@
 					</form>
 					<!-- <input type="submit" class="btn btn-sm btn-info" src="gallery/good.png"> -->
 					
-					<a href="#" class="btn btn-sm btn-info">수정</a> <a href="#"
+					<a href="#" class="btn btn-sm btn-info">수정</a> <a href="p_delete_ok.do?no=${vo.no }"
 						class="btn btn-sm btn-danger">삭제</a> 
-						<!-- <a href="#"class="btn btn-sm btn-success" >\B8\F1\B7\CF</a> -->
 						<input class="btn btn-sm btn-success" type="button"
 								value="목록" onclick="javascript:history.back()">
 					</td>

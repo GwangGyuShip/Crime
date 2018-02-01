@@ -47,6 +47,8 @@ public interface PhotoMapper {
 
 	@Update("update photoboard set good=good+1 where no=#{no}")
 	public void goodup(int no);
+	@Select("SELECT pwd FROM photoboard WHERE no=#{no}")
+	public String p_pwdCheck(int no);
 
 	@Delete("DELETE FROM photoboard WHERE no=#{no}")
 	public void p_delete(int no);
