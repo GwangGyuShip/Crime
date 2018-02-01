@@ -55,9 +55,9 @@
 </script>
 <style type="text/css">
 
-a:link { color: red; text-decoration: none;}
+a:link { color: blue; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
-a:hover { color: blue; text-decoration: underline;}
+a:hover { color: blue; text-decoration: none;}
 
 
 .searchBtn1 {
@@ -244,9 +244,10 @@ a:hover { color: blue; text-decoration: underline;}
 
 						<div style="height: 30px;"></div>
 						&nbsp;&nbsp;<strong style="font-size: 35px;">${vo.title }</strong>
-						<table class="table table-hover">
+						<table class="table table-hover" style="border: 3px solid black;">
 							<tr>
-								<td colspan="2"><h4>[${vo.author }]&nbsp;&nbsp;</h4><h4>${vo.pubDate }</h4></td>
+								<td colspan="2"><h4 style="font-weight: bold;font-size: 25px;">[${vo.author }]&nbsp;&nbsp;</h4>
+													<h4>${vo.pubDate }</h4></td>
 							</tr>
 							<tr>
 								<td style="font-size: 20px;"> 
@@ -254,7 +255,7 @@ a:hover { color: blue; text-decoration: underline;}
 								</td>
 							</tr>
 							<tr>
-								<td class="text-right">
+								<td class="text-right" style="font-size: 20px; font-weight: bold">
 							<a	href="${vo.link }">기사 자세히 보기▶▶▶</a>
 								</td>
 							</tr>
