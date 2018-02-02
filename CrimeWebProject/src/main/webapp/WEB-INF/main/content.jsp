@@ -203,18 +203,12 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
     
     <script>
 			$(function(){
-				$('.content_news').click(function(){
+				$('tr.content_news').click(function(){
 					
 					var newsCount=$(this).attr("data-count");
-					var flag=$(this).attr("data-flag");
 					
-					if(parseInt(flag)==0){
-						$('.content_news_'+newsCount).slideDown('3000');
-						$(this).attr("data-flag","1");
-					}else{
-						$('.content_news_'+newsCount).slideUp('3000');
-						$(this).attr("data-flag","0");
-					}
+					$('div.content_news_'+newsCount).slideToggle(200);
+					
 				});
 			});
 		</script>
@@ -423,13 +417,13 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 			</c:forEach> --%>
 			<table class="table">
 				<c:forEach var="vo" items="${mNews}" varStatus="i">
-					<tr class="content_news" style="border:1.8px solid #CCCCCC" data-flag="0" data-count="${i.count}">
+					<tr class="content_news" style="border:1.8px solid #CCCCCC" data-count="${i.count}">
 						<th class="text-left">${vo.title}</th>
 						<th class="text-right">${vo.author}</th>
 					</tr>
 					
-					<tr id="content_news_${i.count}" style="display:none; border:1.8px solid #CCCCCC" class="content_news_${i.count}" onclick="location.href='${vo.link}'">
-						<td colspan="2" style="padding: 15px;">${vo.description}</td>
+					<tr id="content_news_${i.count}" style="padding:0; border:1.8px solid #CCCCCC;" class="content_news_${i.count}">
+						<td colspan="2" style="padding:0;"><div class="content_news_${i.count}" style="display:none; padding:10px;"><a href="location.href='${vo.link}'">${vo.description}</a></div></td>
 					</tr>
 				</c:forEach>
 			</table>
