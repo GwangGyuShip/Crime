@@ -402,19 +402,6 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
 	<td colspan="2" height="800px;">
 		<div class="content_list text-left">
 			<h3>뉴스</h3><br>
-			<%-- <c:forEach var="vo" items="${mNews}" varStatus="i">
-				<input value="${vo.title}a" type="button" class="btn btn-sm content_news" data-toggle="collapse" data-target="#content_news_${i.count}">
-				<div id="content_news_${i.count}" class="collapse content_news_c" onclick="location.href='${vo.link}'">
-					<table class="table">
-						<tr>
-							<td width="100%">${vo.author}</td>
-						</tr>
-						<tr>
-							<td width="100%">${vo.description}</td>
-						</tr>
-					</table>
-				</div><br><br>
-			</c:forEach> --%>
 			<table class="table">
 				<c:forEach var="vo" items="${mNews}" varStatus="i">
 					<tr class="content_news" style="border:1.8px solid #CCCCCC" data-count="${i.count}">

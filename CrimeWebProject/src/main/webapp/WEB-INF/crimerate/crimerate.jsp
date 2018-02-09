@@ -412,9 +412,9 @@ function fn_SeoulGuOut() { /*mouseout 이벤트*/
                                     </div>
                                 
                                    <div class="chart_content">
-	                                  <div id="line_chart" style="min-width: 310px; height: 400px; margin: 0 auto">
+	                                 <!--  <div id="line_chart" style="min-width: 310px; height: 400px; margin: 0 auto">
 	                                      
-	                                  </div>
+	                                  </div> -->
     								</div>
                             
                                 </div>
